@@ -26,7 +26,7 @@ public class PromotionRequestsServiceImpl implements PromotionRequestsService {
 
     @Override
     public void savePromotion(SavePromotionRequest request) {
-        if (promotionRequestsRepository.findPromotionRequestByRequester_id(request.getRequester_id()) == null) {
+        if (promotionRequestsRepository.findPromotionRequestByRequesterId(request.getRequester_id()) == null) {
             List<String> adminEmails = userService.getAdminsEmails();
             User user = userService.getUserById(request.getRequester_id());
             mailService.sendMailForPromotionRequest(adminEmails, user.getEmail(), request.getContext());
