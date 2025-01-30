@@ -1,7 +1,6 @@
 package org.example.gobooking.service.impl;
 
 import lombok.RequiredArgsConstructor;
-
 import org.example.gobooking.customException.CannotVerifyUserException;
 import org.example.gobooking.customException.UserOnlyExistException;
 import org.example.gobooking.dto.user.SaveUserRequest;
@@ -13,9 +12,7 @@ import org.example.gobooking.service.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -26,6 +23,7 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
 
     private final MailService mailService;
+
 
     @Override
     public void register(SaveUserRequest saveUserRequest) {
@@ -68,4 +66,27 @@ public class UserServiceImpl implements UserService {
 
         userRepository.save(user);
     }
+
+
+    @Override
+    public List<String> getAdminsEmails() {
+        List<String> adminEmails = new ArrayList<>();
+        List <User> adminsDb = userRepository.getUserByRole((Role.ADMIN));
+        for (User admin : adminsDb) {
+            adminEmails.add(admin.getEmail());
+        }
+        return adminEmails;
+    }
+
+    @Override
+    public User getUserById(int id) {
+        Optional<User> userDb = userRepository.findById(id);
+        if (userDb.isPresent()) {
+            return userDb.get();
+        }else {
+            throw new CannotVerifyUserException("Error: Cannot find user with id " + id);
+        }
+    }
+
+
 }

@@ -328,7 +328,7 @@
     </changeSet>
 
     <changeSet id="24" author="Raf">
-        <createTable tableName="role_change_requests">
+        <createTable tableName="role_change_request">
             <column name="employee_id" type="INT">
                 <constraints nullable="false" unique="true"/>
             </column>
@@ -340,7 +340,7 @@
 
     <changeSet id="25" author="Raf">
         <addForeignKeyConstraint
-                baseTableName="role_change_requests"
+                baseTableName="role_change_request"
                 baseColumnNames="employee_id"
                 constraintName="fk_employee_change_request_user_id"
                 referencedTableName="user"
@@ -351,7 +351,7 @@
 
     <changeSet id="26" author="Raf">
         <addForeignKeyConstraint
-                baseTableName="role_change_requests"
+                baseTableName="role_change_request"
                 baseColumnNames="company_id"
                 constraintName="fk_employee_change_request_company_id"
                 referencedTableName="company"
@@ -361,7 +361,7 @@
     </changeSet>
 
     <changeSet id="27" author="Raf">
-        <createTable tableName="promotion_requests">
+        <createTable tableName="promotion_request">
             <column name="id" type="INT" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
@@ -376,7 +376,7 @@
 
     <changeSet id="28" author="Raf">
         <addForeignKeyConstraint
-                baseTableName="promotion_requests"
+                baseTableName="promotion_request"
                 baseColumnNames="requester_id"
                 constraintName="fk_role_change_requests_user_id"
                 referencedTableName="user"
