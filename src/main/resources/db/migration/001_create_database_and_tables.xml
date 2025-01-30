@@ -1,0 +1,390 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+
+    <changeSet id="1" author="Raf">
+        <createTable tableName="user">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="surname" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role" type="ENUM('CLIENT','WORKER','DIRECTOR','ADMIN')" defaultValue="CLIENT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="picture_name" type="VARCHAR(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="enable" type="BOOLEAN" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="DATETIME" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="token" type="VARCHAR(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="company_id" type="INT">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="Raf">
+        <createTable tableName="card">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="card_number" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="expiration_date" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cvv_code" type="CHAR(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="balance" type="DECIMAL(10,2))">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3" author="Raf">
+        <addForeignKeyConstraint
+                baseTableName="card"
+                baseColumnNames="user_id"
+                referencedTableName="user"
+                referencedColumnNames="id"
+                constraintName="fk_users_card_id"
+                onDelete="CASCADE"
+                onUpdate="CASCADE"/>
+    </changeSet>
+    <changeSet id="4" author="Raf">
+        <createTable tableName="company">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone" type="VARCHAR(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="company_picture" type="VARCHAR(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="director_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="5" author="Raf">
+        <createTable tableName="address">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="country_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="region" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="street" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="apartment_number" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="company_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <changeSet id="6" author="Raf">
+        <addForeignKeyConstraint
+                baseTableName="company"
+                baseColumnNames="director_id"
+                constraintName="fk_company_director_id"
+                referencedTableName="user"
+                referencedColumnNames="id"
+                onDelete="CASCADE"
+                onUpdate="CASCADE"/>
+    </changeSet>
+
+    <changeSet id="7" author="Raf">
+        <addForeignKeyConstraint
+                baseTableName="address"
+                baseColumnNames="company_id"
+                constraintName="fk_address_company_id"
+                referencedTableName="company"
+                referencedColumnNames="id"
+                onDelete="CASCADE"
+                onUpdate="CASCADE"/>
+    </changeSet>
+
+    <changeSet id="8" author="Raf">
+        <createTable tableName="subscription">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="title" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="description" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="duration" type="TINYINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="DECIMAL(10,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="employee_count" type="INT">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <changeSet id="9" author="Raf">
+        <createTable tableName="valid_subscription">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="started_date" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ended_date" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="company_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="subscription_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="10" author="Raf">
+        <addForeignKeyConstraint
+                baseTableName="valid_subscription"
+                baseColumnNames="company_id"
+                constraintName="fk_com_company_id"
+                referencedTableName="company"
+                referencedColumnNames="id"
+                onDelete="CASCADE"
+                onUpdate="CASCADE"/>
+    </changeSet>
+
+    <changeSet id="11" author="Raf">
+        <addForeignKeyConstraint
+                baseTableName="valid_subscription"
+                baseColumnNames="subscription_id"
+                constraintName="fk_sub_subscription_id"
+                referencedTableName="subscription"
+                referencedColumnNames="id"
+                onDelete="CASCADE"
+                onUpdate="CASCADE"/>
+    </changeSet>
+
+
+    <changeSet id="20" author="Raf">
+        <createTable tableName="work_graphic">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="star_work_date" type="TIME">
+                <constraints nullable="true"/>
+            </column>
+            <column name="ended_work_date" type="TIME">
+                <constraints nullable="true"/>
+            </column>
+            <column name="active" type="BOOLEAN" defaultValue="1">
+                <constraints nullable="false"/>
+            </column>
+            <column name="worker_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="weekday" type="ENUM('MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY','SUNDAY')">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="21" author="Raf">
+        <addForeignKeyConstraint
+                baseTableName="work_graphic"
+                baseColumnNames="worker_id"
+                constraintName="fk_work_worker_id"
+                referencedTableName="user"
+                referencedColumnNames="id"
+                onDelete="CASCADE"
+                onUpdate="CASCADE"/>
+    </changeSet>
+
+
+    <changeSet id="15" author="Raf">
+        <createTable tableName="services">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="title" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="duration" type="TIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="worker_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="16" author="Raf">
+        <addForeignKeyConstraint
+                baseTableName="services"
+                baseColumnNames="worker_id"
+                constraintName="fk_services_worker_id"
+                referencedTableName="user"
+                referencedColumnNames="id"
+                onDelete="CASCADE"
+                onUpdate="CASCADE"/>
+    </changeSet>
+
+    <changeSet id="17" author="Raf">
+        <createTable tableName="booking">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="service_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="client_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="started_time" type="TIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ended_time" type="TIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="payment_method" type="ENUM('CASH','CARD')">
+                <constraints nullable="true"/>
+            </column>
+            <column name="type" type="ENUM('NONE','REJECTED','APPROVED','FINISHED') ">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="18" author="Raf">
+        <addForeignKeyConstraint
+                baseTableName="booking"
+                baseColumnNames="service_id"
+                constraintName="fk_booking_service_id"
+                referencedTableName="services"
+                referencedColumnNames="id"
+                onDelete="CASCADE"
+                onUpdate="CASCADE"/>
+    </changeSet>
+
+    <changeSet id="23" author="Raf">
+        <addForeignKeyConstraint
+                baseTableName="booking"
+                baseColumnNames="client_id"
+                constraintName="fk_booking_client_id"
+                referencedTableName="user"
+                referencedColumnNames="id"
+                onDelete="CASCADE"
+                onUpdate="CASCADE"/>
+    </changeSet>
+
+    <changeSet id="24" author="Raf">
+        <createTable tableName="role_change_requests">
+            <column name="employee_id" type="INT">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="company_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="25" author="Raf">
+        <addForeignKeyConstraint
+                baseTableName="role_change_requests"
+                baseColumnNames="employee_id"
+                constraintName="fk_employee_change_request_user_id"
+                referencedTableName="user"
+                referencedColumnNames="id"
+                onDelete="CASCADE"
+                onUpdate="CASCADE"/>
+    </changeSet>
+
+    <changeSet id="26" author="Raf">
+        <addForeignKeyConstraint
+                baseTableName="role_change_requests"
+                baseColumnNames="company_id"
+                constraintName="fk_employee_change_request_company_id"
+                referencedTableName="company"
+                referencedColumnNames="id"
+                onDelete="CASCADE"
+                onUpdate="CASCADE"/>
+    </changeSet>
+
+    <changeSet id="27" author="Raf">
+        <createTable tableName="promotion_requests">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="requester_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="message" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="28" author="Raf">
+        <addForeignKeyConstraint
+                baseTableName="promotion_requests"
+                baseColumnNames="requester_id"
+                constraintName="fk_role_change_requests_user_id"
+                referencedTableName="user"
+                referencedColumnNames="id"
+                onDelete="CASCADE"
+                onUpdate="CASCADE"/>
+    </changeSet>
+
+
+
+</databaseChangeLog>

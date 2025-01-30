@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/global/all/css/login.css">
+</head>
+<body>
+<main class="main">
+    <div class="container">
+        <div class="forms">
+
+            <div class="sign__blog">
+
+                <form method="post" action="/login" class="signin">
+                    <div class="profile__img__blog">
+                        <img src="https://raw.githubusercontent.com/Uzcoin404/Register-page/9efae3a1f7178386748b478ff47cb3bb118a784e/img/undraw_profile_pic_ic5t.svg"
+                             alt="" class="profile">
+                    </div>
+                    <h2 class="title">Sign in</h2>
+                    <h3 th:if="${errorMessages != null}" th:text="${errorMessages}" ></h3>
+                    <div class="input__blog">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="email" name="username">
+                    </div>
+                    <div class="input__blog">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password" name="password">
+                    </div>
+                    <input type="submit" value="Login" class="btn login">
+                    <div class="social__media">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="panels__blog">
+
+            <div class="panel left__panel">
+                <div class="content">
+                    <h1 class="panel__title">✨ Welcome to Near You! ✨</h1>
+                    <a href="/user/register">
+                        <button class="btn transparent" id="register__btn">Register</button>
+                    </a>
+                    <a href="/">
+                        <button class="btn transparent" id="register__btn" href="/">Home</button>
+                    </a>
+                </div>
+                <img src="https://raw.githubusercontent.com/Uzcoin404/Register-page/9efae3a1f7178386748b478ff47cb3bb118a784e/img/undraw_Login_re_4vu2.svg"
+                     alt="" class="panel__img">
+            </div>
+        </div>
+
+    </div>
+</main>
+</body>
+</html>

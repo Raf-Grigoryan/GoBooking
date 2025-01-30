@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/global/all/css/login.css">
+</head>
+<body>
+<main class="main">
+    <div class="container">
+        <div class="forms">
+
+            <div class="sign__blog">
+
+                <form method="post" action="" class="signin">
+
+                    <div class="profile__img__blog">
+                        <img src="https://raw.githubusercontent.com/Uzcoin404/Register-page/9efae3a1f7178386748b478ff47cb3bb118a784e/img/undraw_profile_pic_ic5t.svg"
+                             alt="" class="profile">
+                    </div>
+                    <h2 class="title">Register</h2>
+                    <h3 th:if="${errorMessages != null}" th:text="${errorMessages}" style="color: #cf4747"></h3>
+                    <div class="input__blog">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Name" name="name">
+                    </div>
+                    <div class="input__blog">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Surname" name="surname">
+                    </div>
+                    <div class="input__blog">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Phone" name="phone">
+                    </div>
+                    <div class="input__blog">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Email" name="email">
+                    </div>
+                    <div class="input__blog">
+                        <i class="fas fa-user"></i>
+                        <input type="password" placeholder="Password" name="password">
+                    </div>
+                    <input type="submit" value="Register" class="btn login">
+                </form>
+            </div>
+        </div>
+        <div class="panels__blog">
+            <div class="panel left__panel">
+                <div class="content">
+                    <h1 class="panel__title">✨ Welcome to Near You! ✨</h1>
+                    <button class="btn transparent" id="register__btn"><a id="la"
+                                                                          style="text-decoration: none; color: white;"
+                                                                          href="/user/login">Login</a>
+                        <a href="/">
+                            <button class="btn transparent" id="register__btn">Home</button>
+                        </a>
+                    </button>
+                </div>
+                <img src="https://raw.githubusercontent.com/Uzcoin404/Register-page/9efae3a1f7178386748b478ff47cb3bb118a784e/img/undraw_Login_re_4vu2.svg"
+                     alt="" class="panel__img">
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
