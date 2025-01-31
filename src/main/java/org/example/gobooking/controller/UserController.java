@@ -42,12 +42,12 @@ public class UserController {
         return "/user/login";
     }
 
-    @GetMapping("/createCard")
+    @GetMapping("/create-card")
     public String createCardPage() {
         return "/card/card";
     }
 
-    @PostMapping("/createCard")
+    @PostMapping("/create-card")
     public String createCard(@Valid @ModelAttribute SaveCardRequest cardRequest) {
         cardService.save(cardRequest);
         return "redirect:/";
