@@ -1,6 +1,7 @@
 package org.example.gobooking.service.impl;
 
 import lombok.RequiredArgsConstructor;
+
 import org.example.gobooking.customException.CannotVerifyUserException;
 import org.example.gobooking.customException.UserOnlyExistException;
 import org.example.gobooking.dto.user.SaveUserRequest;
@@ -23,7 +24,6 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
 
     private final MailService mailService;
-
 
     @Override
     public void register(SaveUserRequest saveUserRequest) {
@@ -89,4 +89,10 @@ public class UserServiceImpl implements UserService {
     }
 
 
+
+    @Override
+    public User getUserById(int id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
+    }
 }

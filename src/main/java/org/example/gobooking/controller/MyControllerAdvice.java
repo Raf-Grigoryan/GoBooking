@@ -1,6 +1,5 @@
 package org.example.gobooking.controller;
 
-
 import org.example.gobooking.entity.user.User;
 import org.example.gobooking.security.CurrentUser;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

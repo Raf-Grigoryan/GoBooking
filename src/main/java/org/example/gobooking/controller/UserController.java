@@ -2,9 +2,8 @@ package org.example.gobooking.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.example.gobooking.dto.request.SavePromotionRequest;
+
 import org.example.gobooking.dto.user.SaveUserRequest;
-import org.example.gobooking.service.PromotionRequestsService;
 import org.example.gobooking.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     private final UserService userService;
+    private final CardService cardService;
 
     private final PromotionRequestsService promotionRequestsService;
 
