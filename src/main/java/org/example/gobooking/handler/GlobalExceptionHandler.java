@@ -1,8 +1,7 @@
 package org.example.gobooking.handler;
 
 
-import org.example.gobooking.customException.CannotVerifyUserException;
-import org.example.gobooking.customException.UserOnlyExistException;
+import org.example.gobooking.customException.*;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
