@@ -13,9 +13,7 @@ import org.example.gobooking.service.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -69,9 +67,27 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
+
+    @Override
+    public List<String> getAdminsEmails() {
+        List<String> adminEmails = new ArrayList<>();
+        List <User> adminsDb = userRepository.getUserByRole((Role.ADMIN));
+        for (User admin : adminsDb) {
+            adminEmails.add(admin.getEmail());
+        }
+        return adminEmails;
+    }
+
     @Override
     public User getUserById(int id) {
-        return userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
+        Optional<User> userDb = userRepository.findById(id);
+        if (userDb.isPresent()) {
+            return userDb.get();
+        }else {
+            throw new CannotVerifyUserException("Error: Cannot find user with id " + id);
+        }
     }
+
+
+
 }

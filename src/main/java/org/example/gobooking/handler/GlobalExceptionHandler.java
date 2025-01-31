@@ -1,10 +1,7 @@
 package org.example.gobooking.handler;
 
 
-import org.example.gobooking.customException.CannotVerifyUserException;
-import org.example.gobooking.customException.CardOnlyExistException;
-import org.example.gobooking.customException.UserNotFoundException;
-import org.example.gobooking.customException.UserOnlyExistException;
+import org.example.gobooking.customException.*;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -72,6 +69,15 @@ public class GlobalExceptionHandler {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("errorMessage", e.getMessage());
         modelAndView.addObject("status", "409 bad request");
+        modelAndView.setViewName("error/globalErrorPage");
+        return modelAndView;
+    }
+
+    @ExceptionHandler(AlreadyDirectorRequestedException.class)
+    public ModelAndView handleCannotVerifyUserException(AlreadyDirectorRequestedException e) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("errorMessage", e.getMessage());
+        modelAndView.addObject("status", "409 Conflict");
         modelAndView.setViewName("error/globalErrorPage");
         return modelAndView;
     }

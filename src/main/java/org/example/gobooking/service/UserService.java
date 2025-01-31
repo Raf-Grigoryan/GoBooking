@@ -5,6 +5,7 @@ package org.example.gobooking.service;
 import org.example.gobooking.dto.user.SaveUserRequest;
 import org.example.gobooking.entity.user.User;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
@@ -15,5 +16,8 @@ public interface UserService {
 
     void verifyUserAccount(String email, String token);
 
+    List<String> getAdminsEmails();
+
     User getUserById(int id);
+
 }

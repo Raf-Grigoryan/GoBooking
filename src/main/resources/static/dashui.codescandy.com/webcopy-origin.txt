@@ -1,0 +1,1316 @@
+Uri: https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\npm\moment@2.29.1\min\moment.min.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/css/theme.min.css
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\css\theme.min.css
+Content Type: text/css
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-1.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\avatar\avatar-1.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-10.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\avatar\avatar-10.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-11.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\avatar\avatar-11.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-12.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\avatar\avatar-12.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-13.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\avatar\avatar-13.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-14.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\avatar\avatar-14.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-15.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\avatar\avatar-15.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-16.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\avatar\avatar-16.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-17.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\avatar\avatar-17.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-19.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\avatar\avatar-19.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-2.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\avatar\avatar-2.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-21.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\avatar\avatar-21.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-3.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\avatar\avatar-3.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-4.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\avatar\avatar-4.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-5.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\avatar\avatar-5.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-6.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\avatar\avatar-6.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-7.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\avatar\avatar-7.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-8.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\avatar\avatar-8.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-9.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\avatar\avatar-9.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/background/giftbox.png
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\background\giftbox.png
+Content Type: image/png
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/background/profile-bg.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\background\profile-bg.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/background/profile-cover-1.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\background\profile-cover-1.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/background/profile-cover-2.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\background\profile-cover-2.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/background/profile-cover-3.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\background\profile-cover-3.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/background/profile-cover.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\background\profile-cover.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/background/project-cover-img.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\background\project-cover-img.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/blog/blog-img-1.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\blog\blog-img-1.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/blog/blog-img-2.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\blog\blog-img-2.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/blog/blog-img-3.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\blog\blog-img-3.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/blog/blog-img-4.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\blog\blog-img-4.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/brand/logo/brand-logo.png
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\brand\logo\brand-logo.png
+Content Type: image/png
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/brand/logo/logo-2.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\brand\logo\logo-2.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/brand/logo/logo-primary.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\brand\logo\logo-primary.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/ecommerce/product-1.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\ecommerce\product-1.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/ecommerce/product-2.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\ecommerce\product-2.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/ecommerce/product-3.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\ecommerce\product-3.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/ecommerce/product-4.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\ecommerce\product-4.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/ecommerce/product-5.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\ecommerce\product-5.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/ecommerce/product-6.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\ecommerce\product-6.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/ecommerce/product-7.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\ecommerce\product-7.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/ecommerce/product-8.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\ecommerce\product-8.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/ecommerce/product-9.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\ecommerce\product-9.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/error/404-error-img.png
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\error\404-error-img.png
+Content Type: image/png
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/favicon/favicon.ico
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\favicon\favicon.ico
+Content Type: image/x-icon
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/placeholder/4by3.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\placeholder\4by3.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/placeholder/placeholder-4by3.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\placeholder\placeholder-4by3.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/png/bootstrap-5-admin-dashboard-template 1.png
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\png\bootstrap-5-admin-dashboard-template 1.png
+Content Type: image/png
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/png/dot-move.png
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\png\dot-move.png
+Content Type: image/png
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/slide-img/carousel-img-1.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\slide-img\carousel-img-1.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/slide-img/carousel-img-2.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\slide-img\carousel-img-2.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/slide-img/carousel-img-3.jpg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\slide-img\carousel-img-3.jpg
+Content Type: image/jpeg
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/bootstrap-5.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\bootstrap-5.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/brand-logo-1.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\brand-logo-1.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/brand-logo-2.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\brand-logo-2.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/brand-logo-3.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\brand-logo-3.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/brand-logo-4.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\brand-logo-4.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/brand-logo-5.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\brand-logo-5.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/brand-logo-6.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\brand-logo-6.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/browser-svg/brave.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\browser-svg\brave.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/browser-svg/chrome.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\browser-svg\chrome.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/browser-svg/firefox.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\browser-svg\firefox.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/browser-svg/ie.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\browser-svg\ie.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/browser-svg/microsoft-edge.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\browser-svg\microsoft-edge.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/browser-svg/opera.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\browser-svg\opera.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/browser-svg/safari.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\browser-svg\safari.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/checked-mark.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\checked-mark.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/draft.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\draft.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/file-1.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\file-1.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/file-2.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\file-2.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/file-3.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\file-3.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/file-4.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\file-4.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/file-5.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\file-5.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/file-6.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\file-6.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/google-meet.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\google-meet.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/gulp.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\gulp.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/maintenance.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\maintenance.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/moon.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\moon.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/nodejs.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\nodejs.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/payment-logo-dhl.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\payment-logo-dhl.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/payment-logo-fedex.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\payment-logo-fedex.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/sass.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\sass.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/sellerlogo-1.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\sellerlogo-1.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/sellerlogo-2.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\sellerlogo-2.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/sellerlogo-3.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\sellerlogo-3.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/sellerlogo-4.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\sellerlogo-4.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/sellerlogo-5.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\sellerlogo-5.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/sellerlogo-6.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\sellerlogo-6.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/sun.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\sun.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/images/svg/zoom.svg
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\images\svg\zoom.svg
+Content Type: image/svg+xml
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/js/theme.min.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\js\theme.min.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/js/vendors/beStepper.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\js\vendors\beStepper.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/js/vendors/calendar.init.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\js\vendors\calendar.init.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/js/vendors/chart.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\js\vendors\chart.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/js/vendors/chat.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\js\vendors\chat.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/js/vendors/choice.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\js\vendors\choice.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/js/vendors/color-modes.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\js\vendors\color-modes.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/js/vendors/counter.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\js\vendors\counter.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/js/vendors/crm-company.init.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\js\vendors\crm-company.init.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/js/vendors/crm-contact.init.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\js\vendors\crm-contact.init.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/js/vendors/datatable.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\js\vendors\datatable.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/js/vendors/increment-value.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\js\vendors\increment-value.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/js/vendors/inputmask.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\js\vendors\inputmask.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/js/vendors/tooltip.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\js\vendors\tooltip.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/@mdi/font/css/materialdesignicons.min.css
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\@mdi\font\css\materialdesignicons.min.css
+Content Type: text/css
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/@mdi/font/fonts/materialdesignicons-webfont.eot?
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\@mdi\font\fonts\materialdesignicons-webfont-1.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/@mdi/font/fonts/materialdesignicons-webfont.eot?v=7.3.67
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\@mdi\font\fonts\materialdesignicons-webfont.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/@mdi/font/fonts/materialdesignicons-webfont.ttf?v=7.3.67
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\@mdi\font\fonts\materialdesignicons-webfont.ttf
+Content Type: application/x-font-ttf
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/@mdi/font/fonts/materialdesignicons-webfont.woff2?v=7.3.67
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\@mdi\font\fonts\materialdesignicons-webfont.woff2
+Content Type: font/woff2
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/@mdi/font/fonts/materialdesignicons-webfont.woff?v=7.3.67
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\@mdi\font\fonts\materialdesignicons-webfont.woff
+Content Type: font/woff
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/@popperjs/core/dist/umd/popper.min.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\@popperjs\core\dist\umd\popper.min.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/@yaireo/tagify/dist/tagify.css
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\@yaireo\tagify\dist\tagify.css
+Content Type: text/css
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/@yaireo/tagify/dist/tagify.min.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\@yaireo\tagify\dist\tagify.min.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/apexcharts/dist/apexcharts.min.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\apexcharts\dist\apexcharts.min.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/bootstrap-icons/font/bootstrap-icons.min.css
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\bootstrap-icons\font\bootstrap-icons.min.css
+Content Type: text/css
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/bootstrap-icons/font/fonts/bootstrap-icons.woff2?7141511ac37f13e1a387fb9fc6646256
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\bootstrap-icons\font\fonts\bootstrap-icons.woff2
+Content Type: font/woff2
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/bootstrap-icons/font/fonts/bootstrap-icons.woff?7141511ac37f13e1a387fb9fc6646256
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\bootstrap-icons\font\fonts\bootstrap-icons.woff
+Content Type: font/woff
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\bootstrap\dist\js\bootstrap.bundle.min.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/bs-stepper/dist/js/bs-stepper.min.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\bs-stepper\dist\js\bs-stepper.min.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/choices.js/public/assets/scripts/choices.min.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\choices.js\public\assets\scripts\choices.min.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\datatables.net-bs5\css\dataTables.bootstrap5.min.css
+Content Type: text/css
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\datatables.net-bs5\js\dataTables.bootstrap5.min.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\datatables.net-responsive\js\dataTables.responsive.min.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/datatables/media/js/jquery.dataTables.min.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\datatables\media\js\jquery.dataTables.min.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/dragula/dist/dragula.min.css
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\dragula\dist\dragula.min.css
+Content Type: text/css
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/dragula/dist/dragula.min.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\dragula\dist\dragula.min.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/dropzone/dist/dropzone.css
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\dropzone\dist\dropzone.css
+Content Type: text/css
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/dropzone/dist/min/dropzone.min.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\dropzone\dist\min\dropzone.min.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/feather-icons/dist/feather.min.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\feather-icons\dist\feather.min.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/flatpickr/dist/flatpickr.min.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\flatpickr\dist\flatpickr.min.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/fullcalendar/index.global.min.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\fullcalendar\index.global.min.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/inputmask/dist/jquery.inputmask.min.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\inputmask\dist\jquery.inputmask.min.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/jQuery.print/jQuery.print.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\jQuery.print\jQuery.print.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/jquery/dist/jquery.min.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\jquery\dist\jquery.min.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/jsvectormap/dist/js/jsvectormap.min.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\jsvectormap\dist\js\jsvectormap.min.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/jsvectormap/dist/maps/world.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\jsvectormap\dist\maps\world.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/list.js/dist/list.min.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\list.js\dist\list.min.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/list.pagination.js/dist/list.pagination.min.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\list.pagination.js\dist\list.pagination.min.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/prismjs/components/prism-scss.min.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\prismjs\components\prism-scss.min.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\prismjs\plugins\copy-to-clipboard\prism-copy-to-clipboard.min.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/prismjs/plugins/toolbar/prism-toolbar.min.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\prismjs\plugins\toolbar\prism-toolbar.min.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/prismjs/prism.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\prismjs\prism.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/prismjs/themes/prism-okaidia.min.css
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\prismjs\themes\prism-okaidia.min.css
+Content Type: text/css
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/quill/dist/quill.min.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\quill\dist\quill.min.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/simplebar/dist/simplebar.min.css
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\simplebar\dist\simplebar.min.css
+Content Type: text/css
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/simplebar/dist/simplebar.min.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\simplebar\dist\simplebar.min.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/tiny-slider/dist/min/tiny-slider.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\tiny-slider\dist\min\tiny-slider.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/tiny-slider/dist/tiny-slider.css
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\tiny-slider\dist\tiny-slider.css
+Content Type: text/css
+
+Uri: https://dashui.codescandy.com/dashuipro/assets/libs/tippy.js/dist/tippy-bundle.umd.min.js
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\assets\libs\tippy.js\dist\tippy-bundle.umd.min.js
+Content Type: application/javascript
+
+Uri: https://dashui.codescandy.com/dashuipro/docs/changelog.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\docs\changelog.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/docs/compiled-files.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\docs\compiled-files.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/docs/environment-setup.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\docs\environment-setup.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/docs/file-structure.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\docs\file-structure.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/docs/index.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\docs\index.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/docs/resources-assets.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\docs\resources-assets.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/docs/working-with-gulp.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\docs\working-with-gulp.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/404-error.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\404-error.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/apps-file-manager.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\apps-file-manager.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/blog-author-detail.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\blog-author-detail.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/blog-author.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\blog-author.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/calendar.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\calendar.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/chat-app.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\chat-app.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/components/accordions.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\components\accordions.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/components/alerts.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\components\alerts.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/components/badge.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\components\badge.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/components/breadcrumb.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\components\breadcrumb.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/components/button-group.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\components\button-group.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/components/buttons.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\components\buttons.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/components/card.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\components\card.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/components/carousel.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\components\carousel.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/components/close-button.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\components\close-button.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/components/collapse.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\components\collapse.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/components/dropdowns.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\components\dropdowns.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/components/forms.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\components\forms.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/components/list-group.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\components\list-group.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/components/modal.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\components\modal.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/components/navbar.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\components\navbar.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/components/navs-tabs.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\components\navs-tabs.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/components/offcanvas.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\components\offcanvas.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/components/pagination.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\components\pagination.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/components/placeholders.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\components\placeholders.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/components/popovers.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\components\popovers.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/components/progress.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\components\progress.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/components/scrollspy.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\components\scrollspy.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/components/spinners.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\components\spinners.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/components/tables.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\components\tables.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/components/toasts.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\components\toasts.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/components/tooltips.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\components\tooltips.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/create-blog-post.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\create-blog-post.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/crm-company.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\crm-company.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/crm-contacts.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\crm-contacts.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/dashboard-analytics.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\dashboard-analytics.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/dashboard-blog.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\dashboard-blog.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/dashboard-crm.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\dashboard-crm.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/dashboard-ecommerce.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\dashboard-ecommerce.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/dashboard-finance.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\dashboard-finance.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/deals-single.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\deals-single.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/deals.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\deals.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/ecommerce-cart.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\ecommerce-cart.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/ecommerce-checkout.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\ecommerce-checkout.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/ecommerce-customer.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\ecommerce-customer.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/ecommerce-order-detail.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\ecommerce-order-detail.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/ecommerce-order-list.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\ecommerce-order-list.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/ecommerce-product-edit.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\ecommerce-product-edit.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/ecommerce-products-details.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\ecommerce-products-details.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/ecommerce-products.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\ecommerce-products.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/ecommerce-seller.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\ecommerce-seller.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/forget-password.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\forget-password.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/index.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\index.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/invoice-detail.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\invoice-detail.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/invoice-generator.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\invoice-generator.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/invoice-list.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\invoice-list.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/mail-details.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\mail-details.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/mail-draft.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\mail-draft.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/mail.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\mail.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/maintenance.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\maintenance.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/pricing.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\pricing.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/profile-activity.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\profile-activity.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/profile-files.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\profile-files.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/profile-followers.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\profile-followers.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/profile-overview.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\profile-overview.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/profile-project.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\profile-project.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/profile-settings.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\profile-settings.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/profile-team.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\profile-team.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/project-budget.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\project-budget.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/project-files.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\project-files.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/project-grid.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\project-grid.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/project-list.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\project-list.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/project-overview.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\project-overview.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/project-task.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\project-task.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/project-team.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\project-team.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/sign-in.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\sign-in.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/sign-up.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\sign-up.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/starter.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\starter.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/task-kanban-grid.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\task-kanban-grid.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/horizontal/task-kanban-list.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\horizontal\task-kanban-list.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/index.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\index.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/404-error.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\404-error.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/add-project.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\add-project.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/apps-file-manager.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\apps-file-manager.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/blog-author-detail.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\blog-author-detail.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/blog-author.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\blog-author.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/calendar.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\calendar.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/chat-app.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\chat-app.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/components/accordions.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\components\accordions.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/components/alerts.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\components\alerts.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/components/badge.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\components\badge.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/components/breadcrumb.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\components\breadcrumb.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/components/button-group.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\components\button-group.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/components/buttons.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\components\buttons.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/components/card.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\components\card.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/components/carousel.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\components\carousel.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/components/close-button.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\components\close-button.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/components/collapse.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\components\collapse.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/components/dropdowns.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\components\dropdowns.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/components/forms.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\components\forms.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/components/list-group.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\components\list-group.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/components/modal.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\components\modal.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/components/navbar.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\components\navbar.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/components/navs-tabs.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\components\navs-tabs.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/components/offcanvas.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\components\offcanvas.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/components/pagination.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\components\pagination.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/components/placeholders.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\components\placeholders.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/components/popovers.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\components\popovers.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/components/progress.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\components\progress.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/components/scrollspy.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\components\scrollspy.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/components/spinners.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\components\spinners.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/components/tables.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\components\tables.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/components/toasts.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\components\toasts.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/components/tooltips.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\components\tooltips.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/create-blog-post.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\create-blog-post.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/crm-company.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\crm-company.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/crm-contacts.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\crm-contacts.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/dashboard-analytics.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\dashboard-analytics.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/dashboard-blog.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\dashboard-blog.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/dashboard-crm.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\dashboard-crm.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/dashboard-ecommerce.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\dashboard-ecommerce.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/dashboard-finance.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\dashboard-finance.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/deals-single.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\deals-single.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/deals.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\deals.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/ecommerce-cart.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\ecommerce-cart.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/ecommerce-checkout.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\ecommerce-checkout.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/ecommerce-customer.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\ecommerce-customer.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/ecommerce-order-detail.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\ecommerce-order-detail.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/ecommerce-order-list.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\ecommerce-order-list.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/ecommerce-product-edit.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\ecommerce-product-edit.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/ecommerce-products-details.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\ecommerce-products-details.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/ecommerce-products.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\ecommerce-products.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/ecommerce-seller.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\ecommerce-seller.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/forget-password.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\forget-password.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/invoice-detail.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\invoice-detail.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/invoice-generator.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\invoice-generator.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/invoice-list.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\invoice-list.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/mail-details.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\mail-details.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/mail-draft.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\mail-draft.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/mail.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\mail.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/maintenance.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\maintenance.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/pricing.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\pricing.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/profile-activity.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\profile-activity.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/profile-files.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\profile-files.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/profile-followers.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\profile-followers.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/profile-overview.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\profile-overview.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/profile-project.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\profile-project.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/profile-settings.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\profile-settings.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/profile-team.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\profile-team.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/project-budget.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\project-budget.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/project-files.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\project-files.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/project-grid.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\project-grid.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/project-list.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\project-list.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/project-overview.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\project-overview.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/project-task.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\project-task.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/project-team.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\project-team.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/sign-in.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\sign-in.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/sign-up.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\sign-up.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/starter.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\starter.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/task-kanban-grid.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\task-kanban-grid.html
+Content Type: text/html
+
+Uri: https://dashui.codescandy.com/dashuipro/pages/task-kanban-list.html
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\dashuipro\pages\task-kanban-list.html
+Content Type: text/html
+
+Uri: https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\css2
+Content Type: text/css
+
+Uri: https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuBWYMZg.ttf
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\s\inter\v18\UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuBWYMZg.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuDyfMZg.ttf
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\s\inter\v18\UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuDyfMZg.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuDyYMZg.ttf
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\s\inter\v18\UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuDyYMZg.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYMZg.ttf
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\s\inter\v18\UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYMZg.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.ttf
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\s\inter\v18\UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuI6fMZg.ttf
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\s\inter\v18\UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuI6fMZg.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyeMZg.ttf
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\s\inter\v18\UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyeMZg.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.ttf
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\s\inter\v18\UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuOKfMZg.ttf
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\s\inter\v18\UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuOKfMZg.ttf
+Content Type: font/ttf
+
+Uri: https://www.googletagmanager.com/gtag/js?id=G-M8S4MT3EYG
+File Name: C:\Downloaded Web Sites\dashui.codescandy.com\gtag\js
+Content Type: application/javascript
+
