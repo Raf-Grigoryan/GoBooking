@@ -2,15 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Verify Error</title>
+    <title>Error</title>
     <link href="/global/all/css/error.css" rel="stylesheet">
 </head>
 <body>
 <div id="main">
     <div class="fof">
+        <!-- These lines remain unchanged -->
         <h1 th:if="${status != null}" th:text="${status}"></h1>
-        <p th:if="${errorMessage != null}" th:text="${errorMessage}"></p>
-        <button type="submit" href="/">Home Page</button>
+        <p th:if="${errorMessage != null}" th:text="${errorMessage}"></p><br>
+        <button type="submit" onclick="window.location.href='/'">Home Page</button>
     </div>
 </div>
 </body>

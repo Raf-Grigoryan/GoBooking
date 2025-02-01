@@ -1,14 +1,17 @@
 package org.example.gobooking.handler;
 
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.example.gobooking.customException.*;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -25,26 +28,33 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(UsernameNotFoundException.class)
     public ModelAndView message(UsernameNotFoundException e) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("errorMessages", e.getMessage());
+        modelAndView.addObject("errorMessage", e.getMessage());
         modelAndView.setViewName("user/login");
         return modelAndView;
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ModelAndView message(MethodArgumentNotValidException e) {
+    public ModelAndView handleValidationException(MethodArgumentNotValidException e, HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
         BindingResult bindingResult = e.getBindingResult();
-        StringBuilder errorMessages = new StringBuilder();
-        for (FieldError fieldError : bindingResult.getFieldErrors()) {
-            errorMessages.append(fieldError.getField())
-                    .append(": ")
-                    .append(fieldError.getDefaultMessage())
-                    .append(",");
+
+        List<String> errorMessages = bindingResult.getFieldErrors().stream()
+                .map(fieldError -> fieldError.getField() + ": " + fieldError.getDefaultMessage())
+                .collect(Collectors.toList());
+
+        String requestURI = request.getRequestURI();
+
+        if (requestURI.contains("/user/register")) {
+            modelAndView.setViewName("user/register");
+        } else if (requestURI.contains("/user/create-card")) {
+            modelAndView.setViewName("error/globalErrorPage");
+            modelAndView.addObject("status","400 bad request");
         }
-        modelAndView.addObject("errorMessages", errorMessages.toString());
-        modelAndView.setViewName("user/register");
+
+        modelAndView.addObject("errorMessages", errorMessages);
         return modelAndView;
     }
+
 
     @ExceptionHandler(CannotVerifyUserException.class)
     public ModelAndView handleCannotVerifyUserException(CannotVerifyUserException e) {

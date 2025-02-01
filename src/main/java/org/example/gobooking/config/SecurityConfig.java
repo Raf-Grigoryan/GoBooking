@@ -23,10 +23,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
-                        .requestMatchers("/").permitAll()
-                        .requestMatchers("/user/register").permitAll()
-                        .requestMatchers("/user/login").permitAll()
-                        .requestMatchers("/global/all/**").permitAll()
+                        .requestMatchers("/", "/user/register", "/user/login", "/global/all/**", "/user/verify", "/allCss/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer
