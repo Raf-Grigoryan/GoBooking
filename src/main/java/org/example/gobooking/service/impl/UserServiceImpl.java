@@ -71,7 +71,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<String> getAdminsEmails() {
         List<String> adminEmails = new ArrayList<>();
-        List <User> adminsDb = userRepository.getUserByRole((Role.ADMIN));
+        List<User> adminsDb = userRepository.getUserByRole((Role.ADMIN));
         for (User admin : adminsDb) {
             adminEmails.add(admin.getEmail());
         }
@@ -83,11 +83,9 @@ public class UserServiceImpl implements UserService {
         Optional<User> userDb = userRepository.findById(id);
         if (userDb.isPresent()) {
             return userDb.get();
-        }else {
-            throw new CannotVerifyUserException("Error: Cannot find user with id " + id);
         }
+        throw new CannotVerifyUserException("Error: Cannot find user with id " + id);
     }
-
 
 
 }

@@ -1,57 +1,122 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="/global/all/css/login.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Codescandy">
+
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="/allCss/gtag/js?id=G-M8S4MT3EYG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-M8S4MT3EYG');
+    </script>
+
+    <link rel="shortcut icon" type="image/x-icon" href="/allCss/dashuipro/assets/images/favicon/favicon.ico">
+
+    <!-- Color modes -->
+    <script src="/allCss/dashuipro/assets/js/vendors/color-modes.js"></script>
+
+    <!-- Libs CSS -->
+    <link href="/allCss/dashuipro/assets/libs/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="/allCss/dashuipro/assets/libs/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="/allCss/dashuipro/assets/libs/simplebar/dist/simplebar.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="/allCss/dashuipro/assets/css/theme.min.css">
+
+    <title>Login</title>
 </head>
+
 <body>
-<main class="main">
-    <div class="container">
-        <div class="forms">
-
-            <div class="sign__blog">
-
-                <form method="post" action="/login" class="signin">
-                    <div class="profile__img__blog">
-                        <img src="https://raw.githubusercontent.com/Uzcoin404/Register-page/9efae3a1f7178386748b478ff47cb3bb118a784e/img/undraw_profile_pic_ic5t.svg"
-                             alt="" class="profile">
-                    </div>
-                    <h2 class="title">Sign in</h2>
-                    <h3 th:if="${errorMessages != null}" th:text="${errorMessages}" ></h3>
-                    <div class="input__blog">
-                        <i class="fas fa-user"></i>
-                        <input type="text" placeholder="email" name="username">
-                    </div>
-                    <div class="input__blog">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" name="password">
-                    </div>
-                    <input type="submit" value="Login" class="btn login">
-                    <div class="social__media">
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <div class="panels__blog">
-
-            <div class="panel left__panel">
-                <div class="content">
-                    <h1 class="panel__title">✨ Welcome to Near You! ✨</h1>
-                    <a href="/user/register">
-                        <button class="btn transparent" id="register__btn">Register</button>
-                    </a>
-                    <a href="/">
-                        <button class="btn transparent" id="register__btn" href="/">Home</button>
-                    </a>
+<!-- container -->
+<main class="container d-flex flex-column">
+    <div class="row align-items-center justify-content-center g-0 min-vh-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xxl-4 py-8 py-xl-0">
+            <div class="position-absolute end-0 top-0 p-8">
+                <div class="dropdown">
+                    <button class="btn btn-ghost btn-icon rounded-circle" type="button" aria-expanded="false"
+                            data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
+                        <i class="bi theme-icon-active"></i>
+                        <span class="visually-hidden bs-theme-text">Toggle theme</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bs-theme-text">
+                        <li>
+                            <button type="button" class="dropdown-item d-flex align-items-center"
+                                    data-bs-theme-value="light" aria-pressed="false">
+                                <i class="bi theme-icon bi-sun-fill"></i>
+                                <span class="ms-2">Light</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="dropdown-item d-flex align-items-center"
+                                    data-bs-theme-value="dark" aria-pressed="false">
+                                <i class="bi theme-icon bi-moon-stars-fill"></i>
+                                <span class="ms-2">Dark</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="dropdown-item d-flex align-items-center active"
+                                    data-bs-theme-value="auto" aria-pressed="true">
+                                <i class="bi theme-icon bi-circle-half"></i>
+                                <span class="ms-2">Auto</span>
+                            </button>
+                        </li>
+                    </ul>
                 </div>
-                <img src="https://raw.githubusercontent.com/Uzcoin404/Register-page/9efae3a1f7178386748b478ff47cb3bb118a784e/img/undraw_Login_re_4vu2.svg"
-                     alt="" class="panel__img">
+            </div>
+            <!-- Card -->
+            <div class="card smooth-shadow-md">
+                <!-- Card body -->
+                <div class="card-body p-6">
+                    <div class="mb-4">
+                        <h1><a href="/" style="color: green">Go Booking</a></h1>
+                    </div>
+                    <!-- Form -->
+                    <form action="/login" method="post">
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" class="form-control" name="username"
+                                   placeholder="Email address here" required="">
+                        </div>
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" id="password" class="form-control" name="password"
+                                   placeholder="Password Here" required="">
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary" style="margin-left: 100px;width: 200px;background-color: green;border: white">Login</button>
+                            <div style="margin-top: 20px">
+                                <a href="/user/register" style="color: #0a3622">Register</a> / <a href="/" style="color: #0a3622">Back</a>
+
+
+                                <a style="margin-left: 150px" href="/allCss/dashuipro/pages/forget-password.html"
+                                   class="text-inherit fs-5">Forgot
+                                    your password?</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-
     </div>
 </main>
+
+<script src="/allCss/dashuipro/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/feather-icons/dist/feather.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/simplebar/dist/simplebar.min.js"></script>
+
+<!-- Theme JS -->
+<script src="/allCss/dashuipro/assets/js/theme.min.js"></script>
+
 </body>
 </html>

@@ -10,7 +10,6 @@ import org.example.gobooking.service.CardService;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,8 +19,7 @@ public class CardServiceImpl implements CardService {
 
     @Override
     public void save(SaveCardRequest saveCardRequest) {
-        Optional<Card> cardDb = cardRepository.findByCardNumber(saveCardRequest.getCardNumber());
-        if (cardDb.isEmpty()){
+        if (!cardRepository.existsCardByCardNumber(saveCardRequest.getCardNumber())) {
             Card card = cardMapper.toEntity(saveCardRequest);
             card.setBalance(new BigDecimal(0));
             cardRepository.save(card);

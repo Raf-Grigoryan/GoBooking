@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Vencer - Multipurpose Responsive Template</title>
+    <title>GO Booking</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -11,636 +11,206 @@
 </head>
 
 <body>
-    <a id="skippy" class="sr-only sr-only-focusable u-skippy" href="index.html#content">
-        <div class="container">
-            <span class="u-skiplink-text">Skip to main content</span>
-        </div>
-    </a>
-    <div id="loading" class="preloader">
-        <div class="spinner-border text-primary" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
+<a id="skippy" class="sr-only sr-only-focusable u-skippy" href="index.html#content">
+    <div class="container">
+        <span class="u-skiplink-text">Skip to main content</span>
     </div>
-    <header class="header-main header-dark fixed-top">
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container">
-                <!-- Logo -->
-                <a class="navbar-brand" href="/global/index.html">
-                    <img class="logo-dark" src="/global/all/img/logo.svg" title="" alt="">
-                    <img class="logo-light" src="/global/all/img/logo-light.svg" title="" alt="">
-                </a>
-                <!-- Logo -->
-                <!-- Mobile Toggle -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <!-- End Mobile Toggle -->
-                <!-- Menu -->
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="dropdown nav-item">
-                            <a href="index.html#" class="nav-link">Demos</a>
-                            <label class="dropdown-toggle mob-menu" data-bs-toggle="dropdown"></label>
-                            <div class="dropdown-menu shadow-lg">
-                                <a class="dropdown-item" href="/global/index.html">Landing 1</a>
-                                <a class="dropdown-item" href="/global/index-02.html">Landing 2</a>
-                                <a class="dropdown-item" href="/global/index-03.html">Landing 3</a>
-                                <a class="dropdown-item" href="/global/index-04.html">Landing 4</a>
-                                <a class="dropdown-item" href="/global/index-05.html">Landing 5</a>
-                                <a class="dropdown-item" href="/global/index-06.html">Landing 6</a>
-                                <a class="dropdown-item" href="/global/index-07.html">Landing 7</a>
-                                <a class="dropdown-item" href="/global/index-08.html">Landing 8</a>
-                                <a class="dropdown-item" href="index.html">Landing 9</a>
-                                <a class="dropdown-item" href="/global/index-10.html">Landing 10</a>
-                                <a class="dropdown-item" href="/global/index-11.html">Landing 11</a>
-                                <a class="dropdown-item" href="/global/index-12.html">Landing 12</a>
-                            </div>
-                        </li>
-                        <li class="dropdown nav-item">
-                            <a href="index.html#" class="nav-link">Pages</a>
-                            <label class="dropdown-toggle mob-menu" data-bs-toggle="dropdown"></label>
-                            <div class="dropdown-menu shadow-lg">
-                                <a class="dropdown-item" href="/global/about-1.html">About 1</a>
-                                <a class="dropdown-item" href="/global/about-2.html">About 2</a>
-                                <a class="dropdown-item" href="/global/services-1.html">Services 1</a>
-                                <a class="dropdown-item" href="/global/services-2.html">Services 2</a>
-                                <a class="dropdown-item" href="/global/portfolio.html">Portfolio</a>
-                                <a class="dropdown-item" href="/global/team.html">Team</a>
-                                <a class="dropdown-item" href="/global/single-team.html">Team Single</a>
-                                <a class="dropdown-item" href="/global/contact-us.html">Contact Us</a>
-                                <a class="dropdown-item" href="/global/faq.html">Faq's</a>
-                            </div>
-                        </li>
-                        <li class="dropdown dropdown-xl nav-item">
-                            <a href="index.html#" class="nav-link">Elements</a>
-                            <label class="dropdown-toggle mob-menu" data-bs-toggle="dropdown"></label>
-                            <div class="dropdown-menu shadow-lg px-mega-menu p-2 p-lg-4">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-lg-3 my-3">
-                                            <h6 class="mm-title">Elements</h6>
-                                            <ul class="mm-link">
-                                                <li><a href="/global/accordions.html"><i class="ti-layout-accordion-separated"></i> Accordions</a></li>
-                                                <li><a href="/global/blockquote.html"><i class="ti-quote-left"></i> Blockquote</a></li>
-                                                <li><a href="/global/button.html"><i class="ti-mouse"></i> Button</a></li>
-                                                <li><a href="/global/call-to-action.html"><i class="ti-headphone-alt"></i> Call to action</a></li>
-                                                <li><a href="/global/client-carousel.html"><i class="ti-layout-slider"></i> Client carousel</a></li>
-                                                <li><a href="/global/clients.html"><i class="ti-layout-slider"></i> Clients</a></li>
-                                                <li><a href="/global/columns.html"><i class="ti-layout-column3-alt"></i> Columns</a></li>
-                                                <li><a href="/global/video.html"><i class="ti-video-camera"></i> Video</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-lg-3 my-3">
-                                            <h6 class="mm-title">Elements</h6>
-                                            <ul class="mm-link">
-                                                <li><a href="/global/counters.html"><i class="ti-timer"></i> Counters</a></li>
-                                                <li><a href="/global/google-map.html"><i class="ti-location-pin"></i> Google map</a></li>
-                                                <li><a href="/global/heading.html"><i class="ti-text"></i> Heading</a></li>
-                                                <li><a href="/global/highlights.html"><i class="ti-underline"></i> Highlights</a></li>
-                                                <li><a href="/global/icon-with-text.html"><i class="ti-layout-media-left"></i> Icon with text</a></li>
-                                                <li><a href="/global/interactive-banners.html"><i class="ti-image"></i> Interactive banners</a></li>
-                                                <li><a href="/global/lists.html"><i class="ti-list"></i> Lists</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-lg-3 my-3">
-                                            <h6 class="mm-title">Elements</h6>
-                                            <ul class="mm-link">
-                                                <li><a href="/global/message-box.html"><i class="ti-layout-media-right-alt"></i> Message box</a></li>
-                                                <li><a href="/global/pie-chart.html"><i class="ti-pie-chart"></i> Pie chart</a></li>
-                                                <li><a href="/global/pricing-table.html"><i class="ti-layout-grid2-thumb"></i> Pricing table</a></li>
-                                                <li><a href="/global/process-bar.html"><i class="icon-hourglass"></i> Process bar</a></li>
-                                                <li><a href="/global/process-step.html"><i class="ti-stats-up"></i> Process step</a></li>
-                                                <li><a href="/global/seperators.html"><i class="ti-layout-line-solid"></i> Seperators</a></li>
-                                                <li><a href="/global/social-icons.html"><i class="ti-signal"></i> Social icons</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-lg-3 my-3">
-                                            <h6 class="mm-title">Elements</h6>
-                                            <ul class="mm-link">
-                                                <li><a href="/global/subscribe.html"><i class="ti-bookmark"></i> Subscribe</a></li>
-                                                <li><a href="/global/tabs.html"><i class="ti-layout-tab"></i> Tabs</a></li>
-                                                <li><a href="/global/teams.html"><i class="ti-user"></i> Team</a></li>
-                                                <li><a href="/global/team-carousel.html"><i class="ti-layout-slider"></i> Team carousel</a></li>
-                                                <li><a href="/global/testimonials.html"><i class="ti-thought"></i> Testimonials</a></li>
-                                                <li><a href="/global/testimonials-carousel.html"><i class="ti-comments"></i> Testimonials Carousel</a></li>
-                                                <li><a href="/global/text-slider.html"><i class="ti-layout-media-overlay"></i> Text Slider</a></li>
-                                            </ul>
-                                        </div>
+</a>
+<div id="loading" class="preloader">
+    <div class="spinner-border text-primary" role="status" >
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+<header class="header-main header-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/global/index.html">
+                <h1><a href="/">GoBooking</a></h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="dropdown nav-item">
+                        <a href="index.html#" class="nav-link">Demos</a>
+                        <label class="dropdown-toggle mob-menu" data-bs-toggle="dropdown"></label>
+                        <div class="dropdown-menu shadow-lg">
+                            <a class="dropdown-item" href="/global/index.html">Landing 1</a>
+                            <a class="dropdown-item" href="/global/index-02.html">Landing 2</a>
+                            <a class="dropdown-item" href="/global/index-03.html">Landing 3</a>
+                            <a class="dropdown-item" href="/global/index-04.html">Landing 4</a>
+                            <a class="dropdown-item" href="/global/index-05.html">Landing 5</a>
+                            <a class="dropdown-item" href="/global/index-06.html">Landing 6</a>
+                            <a class="dropdown-item" href="/global/index-07.html">Landing 7</a>
+                            <a class="dropdown-item" href="/global/index-08.html">Landing 8</a>
+                            <a class="dropdown-item" href="index.html">Landing 9</a>
+                            <a class="dropdown-item" href="/global/index-10.html">Landing 10</a>
+                            <a class="dropdown-item" href="/global/index-11.html">Landing 11</a>
+                            <a class="dropdown-item" href="/global/index-12.html">Landing 12</a>
+                        </div>
+                    </li>
+                    <li class="dropdown nav-item">
+                        <a href="index.html#" class="nav-link">Pages</a>
+                        <label class="dropdown-toggle mob-menu" data-bs-toggle="dropdown"></label>
+                        <div class="dropdown-menu shadow-lg">
+                            <a class="dropdown-item" href="/global/about-1.html">About 1</a>
+                            <a class="dropdown-item" href="/global/about-2.html">About 2</a>
+                            <a class="dropdown-item" href="/global/services-1.html">Services 1</a>
+                            <a class="dropdown-item" href="/global/services-2.html">Services 2</a>
+                            <a class="dropdown-item" href="/global/portfolio.html">Portfolio</a>
+                            <a class="dropdown-item" href="/global/team.html">Team</a>
+                            <a class="dropdown-item" href="/global/single-team.html">Team Single</a>
+                            <a class="dropdown-item" href="/global/contact-us.html">Contact Us</a>
+                            <a class="dropdown-item" href="/global/faq.html">Faq's</a>
+                        </div>
+                    </li>
+                    <li class="dropdown dropdown-xl nav-item">
+                        <a href="index.html#" class="nav-link">Elements</a>
+                        <label class="dropdown-toggle mob-menu" data-bs-toggle="dropdown"></label>
+                        <div class="dropdown-menu shadow-lg px-mega-menu p-2 p-lg-4">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-3 my-3">
+                                        <h6 class="mm-title">Elements</h6>
+                                        <ul class="mm-link">
+                                            <li><a href="/global/accordions.html"><i
+                                                    class="ti-layout-accordion-separated"></i> Accordions</a></li>
+                                            <li><a href="/global/blockquote.html"><i class="ti-quote-left"></i>
+                                                Blockquote</a></li>
+                                            <li><a href="/global/button.html"><i class="ti-mouse"></i> Button</a></li>
+                                            <li><a href="/global/call-to-action.html"><i class="ti-headphone-alt"></i>
+                                                Call to action</a></li>
+                                            <li><a href="/global/client-carousel.html"><i class="ti-layout-slider"></i>
+                                                Client carousel</a></li>
+                                            <li><a href="/global/clients.html"><i class="ti-layout-slider"></i> Clients</a>
+                                            </li>
+                                            <li><a href="/global/columns.html"><i class="ti-layout-column3-alt"></i>
+                                                Columns</a></li>
+                                            <li><a href="/global/video.html"><i class="ti-video-camera"></i> Video</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-3 my-3">
+                                        <h6 class="mm-title">Elements</h6>
+                                        <ul class="mm-link">
+                                            <li><a href="/global/counters.html"><i class="ti-timer"></i> Counters</a>
+                                            </li>
+                                            <li><a href="/global/google-map.html"><i class="ti-location-pin"></i> Google
+                                                map</a></li>
+                                            <li><a href="/global/heading.html"><i class="ti-text"></i> Heading</a></li>
+                                            <li><a href="/global/highlights.html"><i class="ti-underline"></i>
+                                                Highlights</a></li>
+                                            <li><a href="/global/icon-with-text.html"><i
+                                                    class="ti-layout-media-left"></i> Icon with text</a></li>
+                                            <li><a href="/global/interactive-banners.html"><i class="ti-image"></i>
+                                                Interactive banners</a></li>
+                                            <li><a href="/global/lists.html"><i class="ti-list"></i> Lists</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-3 my-3">
+                                        <h6 class="mm-title">Elements</h6>
+                                        <ul class="mm-link">
+                                            <li><a href="/global/message-box.html"><i
+                                                    class="ti-layout-media-right-alt"></i> Message box</a></li>
+                                            <li><a href="/global/pie-chart.html"><i class="ti-pie-chart"></i> Pie chart</a>
+                                            </li>
+                                            <li><a href="/global/pricing-table.html"><i
+                                                    class="ti-layout-grid2-thumb"></i> Pricing table</a></li>
+                                            <li><a href="/global/process-bar.html"><i class="icon-hourglass"></i>
+                                                Process bar</a></li>
+                                            <li><a href="/global/process-step.html"><i class="ti-stats-up"></i> Process
+                                                step</a></li>
+                                            <li><a href="/global/seperators.html"><i class="ti-layout-line-solid"></i>
+                                                Seperators</a></li>
+                                            <li><a href="/global/social-icons.html"><i class="ti-signal"></i> Social
+                                                icons</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-3 my-3">
+                                        <h6 class="mm-title">Elements</h6>
+                                        <ul class="mm-link">
+                                            <li><a href="/global/subscribe.html"><i class="ti-bookmark"></i>
+                                                Subscribe</a></li>
+                                            <li><a href="/global/tabs.html"><i class="ti-layout-tab"></i> Tabs</a></li>
+                                            <li><a href="/global/teams.html"><i class="ti-user"></i> Team</a></li>
+                                            <li><a href="/global/team-carousel.html"><i class="ti-layout-slider"></i>
+                                                Team carousel</a></li>
+                                            <li><a href="/global/testimonials.html"><i class="ti-thought"></i>
+                                                Testimonials</a></li>
+                                            <li><a href="/global/testimonials-carousel.html"><i class="ti-comments"></i>
+                                                Testimonials Carousel</a></li>
+                                            <li><a href="/global/text-slider.html"><i
+                                                    class="ti-layout-media-overlay"></i> Text Slider</a></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                        </li>
-                        <li class="dropdown nav-item">
-                            <a href="index.html#" class="nav-link">Blog</a>
-                            <label class="dropdown-toggle mob-menu" data-bs-toggle="dropdown"></label>
-                            <div class="dropdown-menu shadow-lg">
-                                <a class="dropdown-item" href="/global/blog.html">Blog</a>
-                                <a class="dropdown-item" href="/global/blog-single.html">Blog Single</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/global/contact-us.html" class="nav-link">
-                                Contact Us
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/user/login" class="nav-link">
-                                Login
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/user/register" class="nav-link">
-                                Register
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- End Menu -->
+                        </div>
+                    </li>
+                    <li class="dropdown nav-item">
+                        <a href="index.html#" class="nav-link">Blog</a>
+                        <label class="dropdown-toggle mob-menu" data-bs-toggle="dropdown"></label>
+                        <div class="dropdown-menu shadow-lg">
+                            <a class="dropdown-item" href="/global/blog.html">Blog</a>
+                            <a class="dropdown-item" href="/global/blog-single.html">Blog Single</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/global/contact-us.html" class="nav-link">
+                            Contact Us
+                        </a>
+                    </li>
+
+                    <li class="nav-item"  th:if="${currentUser == null}">
+                        <a href="/user/login" class="nav-link">
+                            Login
+                        </a>
+                    </li>
+                    <li class="nav-item" th:if="${currentUser == null}">
+                        <a href="/user/register" class="nav-link">
+                            Register
+                        </a>
+                    </li>
+                </ul>
             </div>
-        </nav>
-    </header>
-    <!-- Header End -->
-    <!-- Main -->
-    <main>
-        <!-- Home Banner -->
-        <section class="parallax effect-section" data-jarallax-video="https://vimeo.com/274361642">
-            <div class="mask bg-black opacity-7"></div>
-            <div class="container position-relative">
-                <div class="row justify-content-center align-items-center min-vh-100 py-12">
-                    <div class="col-lg-9 col-xl-8 my-4 text-center">
-                        <h1 class="display-1 text-white">WE DEVELOPED WEB & MOBILE APPS</h1>
-                        <p class="lead mx-auto w-lg-80 text-white">Vencer is a HTML5 template based on Sass and Bootstrap 5 with modern and creative multipurpose design you can use it as a startups.</p>
-                        <div class="pt-4">
-                            <a class="btn btn-primary" href="index.html#">
-                                <span class="fas fa-check"></span>
-                                <span class="btn--text">GET STARTED</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="bg-gray-100">
-            <div class="container mt-n10">
-                <div class="row">
-                    <div class="col-sm-6 col-lg-3 my-3">
-                        <div class="card theme-hover-bg hover-top h-100">
-                            <div class="card-body py-7">
-                                <div class="only-icon-lg mb-3 text-primary">
-                                    <i class="icon-desktop"></i>
-                                </div>
-                                <h5>Web Development</h5>
-                                <p class="m-0">Lorem Ipsum is simply text the printing and typesetting.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3 my-3">
-                        <div class="card theme-hover-bg hover-top h-100">
-                            <div class="card-body py-7">
-                                <div class="only-icon-lg mb-3 text-primary">
-                                    <i class="icon-hotairballoon"></i>
-                                </div>
-                                <h5>Logo &amp; Identity</h5>
-                                <p class="m-0">Lorem Ipsum is simply text the printing and typesetting.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3 my-3">
-                        <div class="card theme-hover-bg hover-top h-100">
-                            <div class="card-body py-7">
-                                <div class="only-icon-lg mb-3 text-primary">
-                                    <i class="icon-scissors"></i>
-                                </div>
-                                <h5>Graphics Design</h5>
-                                <p class="m-0">Lorem Ipsum is simply text the printing and typesetting.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3 my-3">
-                        <div class="card theme-hover-bg hover-top h-100">
-                            <div class="card-body py-7">
-                                <div class="only-icon-lg mb-3 text-primary">
-                                    <i class="icon-laptop"></i>
-                                </div>
-                                <h5>Social Marketing</h5>
-                                <p class="m-0">Lorem Ipsum is simply text the printing and typesetting.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Section -->
-        <!-- Section -->
-        <section class="section bg-gray-100">
-            <div class="container">
-                <div class="row justify-content-center section-heading">
-                    <div class="col-lg-8 col-xl-6 text-center">
-                        <div class="lead text-primary mb-4">We Can Do It</div>
-                        <h3 class="h1">We know that good design means good business.</h3>
-                        <div class="lead">Vencer is a HTML5 template based on Sass and Bootstrap 5 with modern and creative multipurpose design you can use it as a startups.</div>
-                    </div>
-                </div>
-                <div class="row justify-content-center pt-3">
-                    <div class="col-lg-10">
-                        <div class="card overflow-hidden">
-                            <div class="card-img-overlay d-flex align-items-center justify-content-center z-index-1">
-                                <a class="icon icon-xl bg-white text-dark video-btn rounded-circle  shadow-lg" href="https://www.youtube.com/watch?v=dNIfsv1rKJo"><span class="fas fa-play"></span></a>
-                            </div>
-                            <img src="/global/all/img/home-9-video-1.jpg" title="" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="section bg-gray-900">
-            <div class="container">
-                <div class="row justify-content-center section-heading">
-                    <div class="col-lg-8 col-xl-6 text-center">
-                        <h3 class="display-4 text-white">Plans and Pricing</h3>
-                        <div class="lead text-white-50">Vencer is a HTML5 template based on Sass and Bootstrap 5 with modern and creative multipurpose design you can use it as a startups.</div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 my-3">
-                        <div class="card hover-top border-0">
-                            <div class="card-header bg-primary text-center py-5">
-                                <label class="px-3 py-1 bg-white rounded-pill small font-w-600 mb-4">Business</label>
-                                <div class="text-center">
-                                    <h5 class="display-2 d-flex align-items-center text-white justify-content-center m-0"><sup class="h2 mb-0 font-w-300">$</sup>49<span class="h5 mb-4 ms-1 font-w-200 mt-auto">/Mo</span></h5>
-                                    <p class="m-0 pt-2 text-white lead">Per user</p>
-                                </div>
-                            </div>
-                            <div class="card-body text-center">
-                                <ul class="list-unstyled mb-5">
-                                    <li class="my-3">Drag &amp; Drop Builder</li>
-                                    <li class="my-3">1,000s of Templates Ready</li>
-                                    <li class="my-3">Blog Tools</li>
-                                    <li class="my-3">eCommerce Store</li>
-                                    <li class="my-3">30+ Webmaster Tools</li>
-                                </ul>
-                                <div class="pt-5 border-style top text-center">
-                                    <a class="btn btn-primary btn-lg" href="index.html#">
-                                        Register Now
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 my-3">
-                        <div class="card hover-top border-0">
-                            <div class="card-header bg-primary text-center py-5">
-                                <label class="px-3 py-1 bg-white rounded-pill small font-w-600 mb-4">Business</label>
-                                <div class="text-center">
-                                    <h5 class="display-2 d-flex align-items-center text-white justify-content-center m-0"><sup class="h2 mb-0 font-w-300">$</sup>49<span class="h5 mb-4 ms-1 font-w-200 mt-auto">/Mo</span></h5>
-                                    <p class="m-0 pt-2 text-white lead">Per user</p>
-                                </div>
-                            </div>
-                            <div class="card-body text-center">
-                                <ul class="list-unstyled mb-5">
-                                    <li class="my-3">Drag &amp; Drop Builder</li>
-                                    <li class="my-3">1,000s of Templates Ready</li>
-                                    <li class="my-3">Blog Tools</li>
-                                    <li class="my-3">eCommerce Store</li>
-                                    <li class="my-3">30+ Webmaster Tools</li>
-                                </ul>
-                                <div class="pt-5 border-style top text-center">
-                                    <a class="btn btn-primary btn-lg" href="index.html#">
-                                        Register Now
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 my-3">
-                        <div class="card hover-top border-0">
-                            <div class="card-header bg-primary text-center py-5">
-                                <label class="px-3 py-1 bg-white rounded-pill small font-w-600 mb-4">Business</label>
-                                <div class="text-center">
-                                    <h5 class="display-2 d-flex align-items-center text-white justify-content-center m-0"><sup class="h2 mb-0 font-w-300">$</sup>49<span class="h5 mb-4 ms-1 font-w-200 mt-auto">/Mo</span></h5>
-                                    <p class="m-0 pt-2 text-white lead">Per user</p>
-                                </div>
-                            </div>
-                            <div class="card-body text-center">
-                                <ul class="list-unstyled mb-5">
-                                    <li class="my-3">Drag &amp; Drop Builder</li>
-                                    <li class="my-3">1,000s of Templates Ready</li>
-                                    <li class="my-3">Blog Tools</li>
-                                    <li class="my-3">eCommerce Store</li>
-                                    <li class="my-3">30+ Webmaster Tools</li>
-                                </ul>
-                                <div class="pt-5 border-style top text-center">
-                                    <a class="btn btn-primary btn-lg" href="index.html#">
-                                        Register Now
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Section -->
-        <!-- Section -->
-        <section class="section">
-            <div class="container">
-                <div class="row justify-content-center section-heading">
-                    <div class="col-lg-8 col-xl-6 text-center">
-                        <h3 class="h1">Our Portfolio</h3>
-                        <div class="lead">Vencer is a HTML5 template based on Sass and Bootstrap 5 with modern and creative multipurpose design you can use it as a startups.</div>
-                    </div>
-                </div>
-                <div class="row lightbox-gallery">
-                    <div class="col-sm-6 col-lg-4 my-3">
-                        <div class="card">
-                            <img class="card-img-top" src="/global/all/img/home-1-tab-1.jpg" title="" alt="">
-                            <div class="card-body text-center">
-                                <h5>Web Development</h5>
-                                <p>Lorem Ipsum is simply text the printing and typesetting.</p>
-                                <a class="btn btn-primary rounded-pill btn-sm" href="index.html#">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-4 my-3">
-                        <div class="card">
-                            <img class="card-img-top" src="/global/all/img/home-1-tab-2.jpg" title="" alt="">
-                            <div class="card-body text-center">
-                                <h5>Web Development</h5>
-                                <p>Lorem Ipsum is simply text the printing and typesetting.</p>
-                                <a class="btn btn-primary rounded-pill btn-sm" href="index.html#">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-4 my-3">
-                        <div class="card">
-                            <img class="card-img-top" src="/global/all/img/home-1-tab-3.jpg" title="" alt="">
-                            <div class="card-body text-center">
-                                <h5>Web Development</h5>
-                                <p>Lorem Ipsum is simply text the printing and typesetting.</p>
-                                <a class="btn btn-primary rounded-pill btn-sm" href="index.html#">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-4 my-3">
-                        <div class="card">
-                            <img class="card-img-top" src="/global/all/img/home-1-tab-4.jpg" title="" alt="">
-                            <div class="card-body text-center">
-                                <h5>Web Development</h5>
-                                <p>Lorem Ipsum is simply text the printing and typesetting.</p>
-                                <a class="btn btn-primary rounded-pill btn-sm" href="index.html#">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-4 my-3">
-                        <div class="card">
-                            <img class="card-img-top" src="/global/all/img/home-1-tab-3.jpg" title="" alt="">
-                            <div class="card-body text-center">
-                                <h5>Web Development</h5>
-                                <p>Lorem Ipsum is simply text the printing and typesetting.</p>
-                                <a class="btn btn-primary rounded-pill btn-sm" href="index.html#">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-4 my-3">
-                        <div class="card">
-                            <img class="card-img-top" src="/global/all/img/home-1-tab-2.jpg" title="" alt="">
-                            <div class="card-body text-center">
-                                <h5>Web Development</h5>
-                                <p>Lorem Ipsum is simply text the printing and typesetting.</p>
-                                <a class="btn btn-primary rounded-pill btn-sm" href="index.html#">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Section -->
-        <!-- Section -->
-        <div class="section bg-gray-900">
-            <div class="container">
-                <div class="owl-carousel" data-items="7" data-nav-dots="false" data-lg-items="7" data-md-items="5" data-sm-items="4" data-xs-items="3" data-space="30" data-autoplay="true">
-                    <div>
-                        <img src="/global/all/img/spotify-white.svg" title="" alt="">
-                    </div>
-                    <div>
-                        <img src="/global/all/img/slack-white.svg" title="" alt="">
-                    </div>
-                    <div>
-                        <img src="/global/all/img/paypal-white.svg" title="" alt="">
-                    </div>
-                    <div>
-                        <img src="/global/all/img/airbnb-white.svg" title="" alt="">
+        </div>
+    </nav>
+</header>
+<main>
+    <section class="parallax effect-section" data-jarallax-video="https://vimeo.com/274361642">
+        <div class="mask bg-black opacity-7"></div>
+        <div class="container position-relative">
+            <div class="row justify-content-center align-items-center min-vh-100 py-12">
+                <div class="col-lg-9 col-xl-8 my-4 text-center">
+                    <h1 class="display-1 text-white">GoBooking convenient and fast</h1>
+                    <div class="pt-4">
+                        <a class="btn btn-primary" href="/user/login">
+                            <span class="btn--text">GET STARTED</span>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- End Section -->
-        <!-- Section -->
-        <section class="section">
-            <div class="container">
-                <div class="row justify-content-center section-heading">
-                    <div class="col-lg-8 col-xl-6 text-center">
-                        <h3 class="h1">Let's Talk?</h3>
-                        <div class="lead">Vencer is a HTML5 template based on Sass and Bootstrap 5 with modern and creative multipurpose design you can use it as a startups.</div>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-md-10 col-lg-9 col-xl-8">
-                        <form class="rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="https://vencer/static/vendor/mail/bat/rd-mailform.php">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group mb-4">
-                                        <label class="form-label" for="contact-name">Your Name</label>
-                                        <input id="contact-name" type="text" name="name" placeholder="Rachel Roth" data-constraints="@Required" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group mb-4">
-                                        <label class="form-label" for="contact-email">Email Address</label>
-                                        <input id="contact-email" type="email" name="email" placeholder="name@example.com" data-constraints="@Required" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group mb-4">
-                                        <label class="form-label" for="contact-company">Company (optional)</label>
-                                        <input type="text" name="contact-company" class="form-control" placeholder="pxdraft" id="contact-company">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group mb-4">
-                                        <label class="form-label" for="contact-phone">Phone (optional)</label>
-                                        <input type="tel" name="contact-phone" class="form-control" placeholder="+01 888 888 6666" id="contact-phone">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-group mb-4">
-                                        <label class="form-label" for="contact-message">Message</label>
-                                        <textarea class="form-control" id="contact-message" name="message" rows="3" placeholder="Hi there, I would like to ..." data-constraints="@Required"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary" type="submit" name="send">Get Started</button>
-                                    <div class="snackbars" id="form-output-global"></div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Section -->
-    </main>
-    <!-- End Main -->
-    <!-- Footer -->
-    <footer class="bg-gray-900 footer">
-        <div class="footer-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 my-4">
-                        <img src="/global/all/img/logo-light.svg" title="" alt="">
-                    </div>
-                    <div class="col-sm-6 col-lg-2 my-4">
-                        <h5 class="text-white mb-3">Useful</h5>
-                        <ul class="list-unstyled white-link footer-links">
-                            <li>
-                                <a href="index.html#">Apps Store</a>
-                            </li>
-                            <li>
-                                <a href="index.html#">Google Store</a>
-                            </li>
-                            <li>
-                                <a href="index.html#">Latest News</a>
-                            </li>
-                            <li>
-                                <a href="index.html#">Our Blog</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-6 col-lg-2 my-4">
-                        <h5 class="text-white mb-3">Useful</h5>
-                        <ul class="list-unstyled white-link footer-links">
-                            <li>
-                                <a href="index.html#">Apps Store</a>
-                            </li>
-                            <li>
-                                <a href="index.html#">Google Store</a>
-                            </li>
-                            <li>
-                                <a href="index.html#">Latest News</a>
-                            </li>
-                            <li>
-                                <a href="index.html#">Our Blog</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-6 col-lg-2 my-4">
-                        <h5 class="text-white mb-3">Useful</h5>
-                        <ul class="list-unstyled white-link footer-links">
-                            <li>
-                                <a href="index.html#">Apps Store</a>
-                            </li>
-                            <li>
-                                <a href="index.html#">Google Store</a>
-                            </li>
-                            <li>
-                                <a href="index.html#">Latest News</a>
-                            </li>
-                            <li>
-                                <a href="index.html#">Our Blog</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-6 col-lg-3 my-4 ms-auto">
-                        <h5 class="text-white mb-5">Contact Us</h5>
-                        <ul class="list-unstyled white-link footer-links">
-                            <li>
-                                <a href="index.html#" class="media">
-                                    <div class="icon icon-primary icon-sm rounded-circle">
-                                        <i class="icon-map"></i>
-                                    </div>
-                                    <span class="media-body ps-3">
-                                        301 The Greenhouse, <br>Custard Factory, LD, E2 8DY
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.html#" class="media align-items-center">
-                                    <div class="icon icon-primary icon-sm rounded-circle">
-                                        <i class="icon-envelope"></i>
-                                    </div>
-                                    <span class="media-body ps-3">
-                                        info@domain.com
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.html#" class="media align-items-center">
-                                    <div class="icon icon-primary icon-sm rounded-circle">
-                                        <i class="icon-phone"></i>
-                                    </div>
-                                    <span class="media-body ps-3">
-                                        1-800-222-000
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom border-style top light">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 my-3">
-                        <div class="nav justify-content-center justify-content-md-start">
-                            <a class="icon icon-sm icon-primary rounded-circle me-2" href="index.html#">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a class="icon icon-sm icon-primary rounded-circle me-2" href="index.html#">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a class="icon icon-sm icon-primary rounded-circle me-2" href="index.html#">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a class="icon icon-sm icon-primary rounded-circle me-2" href="index.html#">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 my-3 text-center text-md-end">
-                        <p class="m-0 text-white-50">© 2020 copyright all right reserved</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- End Footer -->
-    <!-- jquery -->
-    <script src="/global/all/js/jquery-3.5.1.min.js"></script>
-    <!-- appear -->
-    <script src="/global/all/vendor/appear/jquery.appear.js"></script>
-    <!--bootstrap-->
-    <script src="/global/all/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- countTo -->
-    <script src="/global/all/vendor/counter/jquery.countTo.js"></script>
-    <!-- typed -->
-    <script src="/global/all/vendor/typed/typed.js"></script>
-    <!-- owl-carousel -->
-    <script src="/global/all/vendor/owl-carousel/js/owl.carousel.min.js"></script>
-    <!-- magnific -->
-    <script src="/global/all/vendor/magnific/jquery.magnific-popup.min.js"></script>
-    <!-- isotope -->
-    <script src="/global/all/vendor/isotope/isotope.pkgd.min.js"></script>
-    <!-- svg-injector -->
-    <script src="/global/all/vendor/svginjector/svg-injector.min.js"></script>
-    <!-- jarallax -->
-    <script src="/global/all/vendor/jarallax/jarallax-all.js"></script>
-    <script src="/global/all/vendor/easy-pie-chart/jquery.easypiechart.min.js"></script>
-    <!-- working form -->
-    <script src="/global/all/vendor/mail/js/form.min.js"></script>
-    <script src="/global/all/vendor/mail/js/script.js"></script>
-    <!-- Theme Js -->
-    <script src="/global/all/js/custom.js"></script>
+    </section>
+
+
+</main>
+<script src="/global/all/js/jquery-3.5.1.min.js"></script>
+<script src="/global/all/vendor/appear/jquery.appear.js"></script>
+<script src="/global/all/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/global/all/vendor/counter/jquery.countTo.js"></script>
+<script src="/global/all/vendor/typed/typed.js"></script>
+<script src="/global/all/vendor/owl-carousel/js/owl.carousel.min.js"></script>
+<script src="/global/all/vendor/magnific/jquery.magnific-popup.min.js"></script>
+<script src="/global/all/vendor/isotope/isotope.pkgd.min.js"></script>
+<script src="/global/all/vendor/svginjector/svg-injector.min.js"></script>
+<script src="/global/all/vendor/jarallax/jarallax-all.js"></script>
+<script src="/global/all/vendor/easy-pie-chart/jquery.easypiechart.min.js"></script>
+<script src="/global/all/vendor/mail/js/form.min.js"></script>
+<script src="/global/all/vendor/mail/js/script.js"></script>
+<script src="/global/all/js/custom.js"></script>
 </body>
-<!-- end body -->
 </html>

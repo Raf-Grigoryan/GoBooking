@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Card</title>
+    <link rel="stylesheet" href="/card/card.css">
+</head>
+<body>
+<div class="container">
+    <section id="card" class="card">
+        <div class="front-card">
+            <div id="logo-card" class="logo-card"></div>
+            <img src="https://firebasestorage.googleapis.com/v0/b/fire-fotos-8e3f9.appspot.com/o/img%2Fchip-tarjeta.png?alt=media&token=489dc6be-d75d-47db-b544-e7020041cc90"
+                 alt="Chip" title="Chip" class="chip">
+
+            <div class="info-card-front">
+                <div id="group-number-card" class="group-number-card">
+                    <p class="label-card">Name Surname</p>
+                    <p class="number-card">#### #### #### ####</p>
+                </div>
+
+                <div class="flexbox">
+                    <div id="group-name-card" class="group-name-card">
+                        <p class="label-card">Name Surname</p>
+                        <p class="name-card">Name Surname</p>
+                    </div>
+
+                    <div id="group-expiration-card" class="group-expiration-card">
+                        <p class="label-card">Expiration</p>
+                        <p class="expiration-card">
+                            <span class="mounth-expiration-card">MM</span>
+                            /
+                            <span class="year-expiration-card">AA</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="back-card">
+            <div class="magnetic-bar-card"></div>
+
+            <div class="info-card-back">
+                <div id="group-firm-card" class="group-firm-card">
+                    <p class="label-card">Firma</p>
+                    <div class="firm-card">
+                        <p>John Doe</p>
+                    </div>
+                </div>
+
+                <div id="group-ccv-card" class="group-ccv-card">
+                    <p class="label-card">CCV</p>
+                    <p class="ccv-card"></p>
+                </div>
+            </div>
+
+            <p class="legend-card">
+                Lorem ipsum dolor sit amet consectetur
+            </p>
+
+            <a class="link-bank-card" href="javascript:void(0);">
+                www.tubanco.com
+            </a>
+        </div>
+    </section>
+
+    <div class="ctn-btn">
+        <button type="button" id="btn-open-form-card" class="btn-open-form-card">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
+
+    <form action="/user/create-card" method="post" id="form-card" class="form-card active">
+        <input type="hidden" name="userId" th:value="${currentUser.getId()}">
+
+        <div>
+            <label for="name-card-form">
+                Card Number
+            </label>
+            <input type="text" id="name-card-form" maxlength="16" autocomplete="off" name="cardNumber">
+        </div>
+
+        <div class="flexbox">
+            <div class="group-expiration-card-form">
+                <label for="mounth-expiration-card-form">
+                    Expiration
+                </label>
+                <div class="flexbox">
+                    <input id="mounth-expiration-card-form" type="text" pattern="\d{2}/\d{2}"
+                           placeholder="MM/YY" name="expirationMonthYear">
+                </div>
+            </div>
+
+            <div class="group-ccv-card-form"  style="margin-left: 40px;margin-top: -2px">
+                <label for="ccv-card-form">
+                    CVV
+                </label>
+                <input type="text" id="ccv-card-form" maxlength="3" autocomplete="off" name="cvvCode">
+            </div>
+        </div>
+
+        <button type="submit" class="btn-send-form-card">
+            Submit
+        </button>
+    </form>
+</div>
+
+</body>
+</html>
