@@ -9,5 +9,5 @@ import org.example.gobooking.entity.user.User;
 @NoArgsConstructor
 @Data
 public class PromotionRequestDto {
-    User requester;
+    private User requester;
 }
