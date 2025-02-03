@@ -1,8 +1,10 @@
 package org.example.gobooking.controller;
 
 import org.apache.commons.io.IOUtils;
+import org.example.gobooking.security.CurrentUser;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,7 +28,12 @@ public class MainController {
     }
 
     @GetMapping("/loginSuccess")
-    public String loginSuccess() {
+    public String loginSuccess(@AuthenticationPrincipal CurrentUser user) {
+        switch (user.getUser().getRole()){
+            case DIRECTOR -> {
+                return "redirect:/director";
+            }
+        }
         return "redirect:/";
     }
 

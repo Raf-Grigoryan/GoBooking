@@ -10,6 +10,7 @@ import org.example.gobooking.entity.user.User;
 import org.example.gobooking.repository.UserRepository;
 import org.example.gobooking.service.MailService;
 import org.example.gobooking.service.UserService;
+import org.mapstruct.Named;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -79,6 +80,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Named("getUserById")
     public User getUserById(int id) {
         Optional<User> userDb = userRepository.findById(id);
         if (userDb.isPresent()) {

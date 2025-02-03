@@ -1,0 +1,167 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="1" author="Hovhannes">
+    <createTable tableName="country">
+        <column name="id" type="INT" autoIncrement="true">
+            <constraints primaryKey="true" nullable="false"/>
+        </column>
+        <column name="name" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+        </column>
+    </createTable>
+    </changeSet>
+    <changeSet id="2" author="Hovhannes">
+        <addForeignKeyConstraint
+                baseTableName="address"
+                baseColumnNames="country_id"
+                constraintName="fk_address_country_country_id"
+                referencedTableName="country"
+                referencedColumnNames="id"
+                onDelete="CASCADE"
+                onUpdate="CASCADE"/>
+    </changeSet>
+
+    <changeSet id="3" author="Hovhannes">
+        <sql>
+            INSERT INTO country (name) VALUES
+                                           ('Afghanistan'),
+                                           ('Albania'),
+                                           ('Algeria'),
+                                           ('Andorra'),
+                                           ('Angola'),
+                                           ('Antigua and Barbuda'),
+                                           ('Argentina'),
+                                           ('Armenia'),
+                                           ('Australia'),
+                                           ('Austria'),
+                                           ('Azerbaijan'),
+                                           ('Bahamas'),
+                                           ('Bahrain'),
+                                           ('Bangladesh'),
+                                           ('Barbados'),
+                                           ('Belarus'),
+                                           ('Belgium'),
+                                           ('Belize'),
+                                           ('Benin'),
+                                           ('Bhutan'),
+                                           ('Bolivia'),
+                                           ('Bosnia and Herzegovina'),
+                                           ('Botswana'),
+                                           ('Brazil'),
+                                           ('Brunei'),
+                                           ('Bulgaria'),
+                                           ('Burkina Faso'),
+                                           ('Burundi'),
+                                           ('Cabo Verde'),
+                                           ('Cambodia'),
+                                           ('Cameroon'),
+                                           ('Canada'),
+                                           ('Central African Republic'),
+                                           ('Chad'),
+                                           ('Chile'),
+                                           ('China'),
+                                           ('Colombia'),
+                                           ('Comoros'),
+                                           ('Congo (Congo-Brazzaville)'),
+                                           ('Congo (Congo-Kinshasa)'),
+                                           ('Costa Rica'),
+                                           ('Croatia'),
+                                           ('Cuba'),
+                                           ('Cyprus'),
+                                           ('Czechia'),
+                                           ('Denmark'),
+                                           ('Djibouti'),
+                                           ('Dominica'),
+                                           ('Dominican Republic'),
+                                           ('Ecuador'),
+                                           ('Egypt'),
+                                           ('El Salvador'),
+                                           ('Equatorial Guinea'),
+                                           ('Eritrea'),
+                                           ('Estonia'),
+                                           ('Eswatini'),
+                                           ('Ethiopia'),
+                                           ('Fiji'),
+                                           ('Finland'),
+                                           ('France'),
+                                           ('Gabon'),
+                                           ('Gambia'),
+                                           ('Georgia'),
+                                           ('Germany'),
+                                           ('Ghana'),
+                                           ('Greece'),
+                                           ('Grenada'),
+                                           ('Guatemala'),
+                                           ('Guinea'),
+                                           ('Guinea-Bissau'),
+                                           ('Guyana'),
+                                           ('Haiti'),
+                                           ('Honduras'),
+                                           ('Hungary'),
+                                           ('Iceland'),
+                                           ('India'),
+                                           ('Indonesia'),
+                                           ('Iran'),
+                                           ('Iraq'),
+                                           ('Ireland'),
+                                           ('Israel'),
+                                           ('Italy'),
+                                           ('Jamaica'),
+                                           ('Japan'),
+                                           ('Jordan'),
+                                           ('Kazakhstan'),
+                                           ('Kenya'),
+                                           ('Kiribati'),
+                                           ('Kuwait'),
+                                           ('Kyrgyzstan'),
+                                           ('Laos'),
+                                           ('Latvia'),
+                                           ('Lebanon'),
+                                           ('Lesotho'),
+                                           ('Liberia'),
+                                           ('Libya'),
+                                           ('Liechtenstein'),
+                                           ('Lithuania'),
+                                           ('Luxembourg'),
+                                           ('Madagascar'),
+                                           ('Malawi'),
+                                           ('Malaysia'),
+                                           ('Maldives'),
+                                           ('Mali'),
+                                           ('Malta'),
+                                           ('Mexico'),
+                                           ('Moldova'),
+                                           ('Monaco'),
+                                           ('Mongolia'),
+                                           ('Montenegro'),
+                                           ('Morocco'),
+                                           ('Mozambique'),
+                                           ('Myanmar'),
+                                           ('Namibia'),
+                                           ('Nepal'),
+                                           ('Netherlands'),
+                                           ('New Zealand'),
+                                           ('Nicaragua'),
+                                           ('Niger'),
+                                           ('Nigeria'),
+                                           ('North Korea'),
+                                           ('Norway'),
+                                           ('Oman'),
+                                           ('Pakistan'),
+                                           ('Panama'),
+                                           ('Paraguay'),
+                                           ('Peru'),
+                                           ('Philippines'),
+                                           ('Poland'),
+                                           ('Portugal'),
+                                           ('Qatar'),
+                                           ('Romania'),
+                                           ('Russia'),
+                                           ('Rwanda');
+        </sql>
+    </changeSet>
+
+
+</databaseChangeLog>
