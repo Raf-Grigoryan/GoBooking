@@ -83,6 +83,24 @@ public class GlobalExceptionHandler {
         return modelAndView;
     }
 
+    @ExceptionHandler(AddressOnlyExistException.class)
+    public ModelAndView message(AddressOnlyExistException e) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("errorMessage", e.getMessage());
+        modelAndView.addObject("status", "409 bad request");
+        modelAndView.setViewName("error/globalErrorPage");
+        return modelAndView;
+    }
+
+    @ExceptionHandler(CompanyAlreadyExistsException.class)
+    public ModelAndView message(CompanyAlreadyExistsException e) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("errorMessage", e.getMessage());
+        modelAndView.addObject("status", "409 bad request");
+        modelAndView.setViewName("error/globalErrorPage");
+        return modelAndView;
+    }
+
     @ExceptionHandler(AlreadyDirectorRequestedException.class)
     public ModelAndView handleCannotVerifyUserException(AlreadyDirectorRequestedException e) {
         ModelAndView modelAndView = new ModelAndView();

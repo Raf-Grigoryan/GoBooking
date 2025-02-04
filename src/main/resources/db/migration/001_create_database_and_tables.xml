@@ -94,6 +94,9 @@
             <column name="director_id" type="INT">
                 <constraints nullable="false"/>
             </column>
+            <column name="address_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
     </changeSet>
 
@@ -117,9 +120,6 @@
             <column name="apartment_number" type="VARCHAR(20)">
                 <constraints nullable="false"/>
             </column>
-            <column name="company_id" type="INT">
-                <constraints nullable="false"/>
-            </column>
         </createTable>
     </changeSet>
 
@@ -137,10 +137,10 @@
 
     <changeSet id="7" author="Raf">
         <addForeignKeyConstraint
-                baseTableName="address"
-                baseColumnNames="company_id"
-                constraintName="fk_address_company_id"
-                referencedTableName="company"
+                baseTableName="company"
+                baseColumnNames="address_id"
+                constraintName="fk_company_address_id"
+                referencedTableName="address"
                 referencedColumnNames="id"
                 onDelete="CASCADE"
                 onUpdate="CASCADE"/>
