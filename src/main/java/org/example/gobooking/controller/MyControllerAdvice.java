@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 @ControllerAdvice
 public class MyControllerAdvice {
-
     @ModelAttribute("currentUser")
     public User createUser(@AuthenticationPrincipal CurrentUser currentUser) {
         if (currentUser == null) {
