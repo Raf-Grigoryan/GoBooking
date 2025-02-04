@@ -8,4 +8,9 @@ public interface MailService {
 
     void sendMailForPromotionRequest(List<String> adminsEmails, String requesterEmail, String context);
 
+    void sendMailForPromotionRequestAgree(String to);
+
+    void sendMailForPromotionRequestDisagree(String to);
+
+
 }
