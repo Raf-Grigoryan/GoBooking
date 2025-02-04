@@ -89,5 +89,10 @@ public class UserServiceImpl implements UserService {
         throw new CannotVerifyUserException("Error: Cannot find user with id " + id);
     }
 
+    @Override
+    public void saveUser(User user) {
+        userRepository.save(user);
+    }
+
 
 }

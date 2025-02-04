@@ -1,7 +1,6 @@
 package org.example.gobooking.service;
 
 
-
 import org.example.gobooking.dto.user.SaveUserRequest;
 import org.example.gobooking.entity.user.User;
 
@@ -19,5 +18,7 @@ public interface UserService {
     List<String> getAdminsEmails();
 
     User getUserById(int id);
+
+    void saveUser(User user);
 
 }

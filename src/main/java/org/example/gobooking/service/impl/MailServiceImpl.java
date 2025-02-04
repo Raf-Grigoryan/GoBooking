@@ -43,4 +43,24 @@ public class MailServiceImpl implements MailService {
         }
     }
 
+    @Async
+    @Override
+    public void sendMailForPromotionRequestAgree(String to) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(to);
+        message.setSubject("Promotion Request Agree");
+        message.setText("Hello " + to + " your promotion request agree");
+        mailSender.send(message);
+    }
+
+    @Async
+    @Override
+    public void sendMailForPromotionRequestDisagree(String to) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(to);
+        message.setSubject("Promotion Request Agree");
+        message.setText("Hello " + to + " your promotion request disagree");
+        mailSender.send(message);
+    }
+
 }
