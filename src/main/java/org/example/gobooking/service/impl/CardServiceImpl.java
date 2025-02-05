@@ -1,6 +1,7 @@
 package org.example.gobooking.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.example.gobooking.customException.CardCountException;
 import org.example.gobooking.customException.CardOnlyExistException;
 import org.example.gobooking.dto.card.SaveCardRequest;
 import org.example.gobooking.entity.user.Card;
@@ -19,12 +20,16 @@ public class CardServiceImpl implements CardService {
 
     @Override
     public void save(SaveCardRequest saveCardRequest) {
-        if (!cardRepository.existsCardByCardNumber(saveCardRequest.getCardNumber())) {
-            Card card = cardMapper.toEntity(saveCardRequest);
-            card.setBalance(new BigDecimal(0));
-            cardRepository.save(card);
+        System.out.println(cardRepository.countByUserId(saveCardRequest.getUserId()));
+        if(cardRepository.countByUserId(saveCardRequest.getUserId())>=4) {
+           throw new CardCountException("Card count can't be more 4");
         }
-        throw  new CardOnlyExistException("Card only exist");
+        if (cardRepository.existsCardByCardNumber(saveCardRequest.getCardNumber())) {
+            throw new CardOnlyExistException("Card only exist");
+        }
+        Card card = cardMapper.toEntity(saveCardRequest);
+        card.setBalance(new BigDecimal(0));
+        cardRepository.save(card);
     }
 
 

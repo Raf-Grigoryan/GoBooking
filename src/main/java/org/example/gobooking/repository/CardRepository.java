@@ -7,4 +7,5 @@ public interface CardRepository extends JpaRepository<Card,Integer> {
 
   boolean  existsCardByCardNumber(String cardNumber);
 
+  int countByUserId(int userId);
 }
