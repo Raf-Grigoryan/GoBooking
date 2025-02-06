@@ -118,13 +118,13 @@ public class GlobalExceptionHandler {
         return modelAndView;
     }
 
-//    @ExceptionHandler(RuntimeException.class)
-//    public ModelAndView handleRuntimeException(RuntimeException e) {
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.addObject("errorMessage", e.getMessage());
-//        modelAndView.addObject("status", "500 internal server error");
-//        modelAndView.setViewName("error/globalErrorPage");
-//        return modelAndView;
-//    }
+    @ExceptionHandler(RuntimeException.class)
+    public ModelAndView handleRuntimeException(RuntimeException e) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("errorMessage", e.getMessage());
+        modelAndView.addObject("status", "500 internal server error");
+        modelAndView.setViewName("error/globalErrorPage");
+        return modelAndView;
+    }
 
 }
