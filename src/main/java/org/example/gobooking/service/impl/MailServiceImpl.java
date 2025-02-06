@@ -1,6 +1,7 @@
 package org.example.gobooking.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.example.gobooking.service.MailService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailSender;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class MailServiceImpl implements MailService {
 
     private final MailSender mailSender;
@@ -23,11 +25,17 @@ public class MailServiceImpl implements MailService {
     @Override
     @Async
     public void sendMailForUserVerify(String to, String token) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(to);
-        message.setSubject("Welcome to GoBooking Web Site! Please verify your account by clicking on this link ");
-        message.setText(url + "/user/verify?email=" + to + "&token=" + token);
-        mailSender.send(message);
+        try {
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setTo(to);
+            message.setSubject("Welcome to GoBooking Web Site! Please verify your account by clicking on this link ");
+            message.setText(url + "/auth/verify?email=" + to + "&token=" + token);
+
+            mailSender.send(message);
+            log.info("Verification email sent to {}", to);
+        } catch (Exception e) {
+            log.error("Error sending verification email to {}: {}", to, e.getMessage());
+        }
     }
 
     @Override
@@ -63,4 +71,23 @@ public class MailServiceImpl implements MailService {
         mailSender.send(message);
     }
 
+    @Async
+    @Override
+    public void sendMailForChangePassword(String to, String newPassword) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(to);
+        message.setSubject("Password changed");
+        message.setText("New password is " + newPassword + " " + to);
+        mailSender.send(message);
+    }
+
+    @Override
+    @Async
+    public void sendMailForDeleteCard(String to, String context) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(to);
+        message.setSubject("Your Card Deleted");
+        message.setText("Your Card in " + context + " deleted");
+        mailSender.send(message);
+    }
 }

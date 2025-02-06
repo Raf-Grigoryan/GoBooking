@@ -23,13 +23,13 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
-                        .requestMatchers("/", "/user/register", "/user/login", "/global/all/**", "/user/verify", "/allCss/**").permitAll()
+                        .requestMatchers("/", "/user/register", "/user/login", "/global/all/**", "/auth/verify", "/allCss/**").permitAll()
                         .requestMatchers("/admin/**").hasAuthority("ADMIN")
-                        .requestMatchers("/user/send-promotion-request").hasAuthority("CLIENT")
+                        .requestMatchers("/user/**").hasAuthority("USER")
                         .anyRequest().authenticated()
                 )
                 .formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer
-                        .loginPage("/user/login")
+                        .loginPage("/auth/login")
                         .loginProcessingUrl("/login")
                         .defaultSuccessUrl("/loginSuccess", true)
                         .permitAll()
