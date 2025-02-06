@@ -5,12 +5,16 @@ import lombok.RequiredArgsConstructor;
 import org.example.gobooking.customException.CannotVerifyUserException;
 import org.example.gobooking.customException.UserOnlyExistException;
 import org.example.gobooking.dto.user.SaveUserRequest;
+import org.example.gobooking.dto.user.UserDto;
 import org.example.gobooking.entity.user.Role;
 import org.example.gobooking.entity.user.User;
+import org.example.gobooking.mapper.UserMapper;
 import org.example.gobooking.repository.UserRepository;
 import org.example.gobooking.service.MailService;
 import org.example.gobooking.service.UserService;
 import org.mapstruct.Named;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +29,8 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
 
     private final MailService mailService;
+
+    private final UserMapper userMapper;
 
     @Override
     public void register(SaveUserRequest saveUserRequest) {
@@ -92,6 +98,18 @@ public class UserServiceImpl implements UserService {
     @Override
     public void saveUser(User user) {
         userRepository.save(user);
+    }
+
+    @Override
+    public Page<UserDto> getAllUsers(PageRequest pageRequest) {
+        Page<User> users = userRepository.findAllByRole(Role.CLIENT, pageRequest);
+        return users.map(userMapper::toDto);
+    }
+
+    @Override
+    public Page<UserDto> getAllUsersByEmail(PageRequest pageRequest, String keyword) {
+        Page<User> users = userRepository.findUserByRoleAndEmailContaining(Role.CLIENT, keyword, pageRequest);
+        return users.map(userMapper::toDto);
     }
 
 

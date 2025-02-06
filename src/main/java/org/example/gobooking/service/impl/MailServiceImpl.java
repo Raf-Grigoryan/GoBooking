@@ -1,6 +1,8 @@
 package org.example.gobooking.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.example.gobooking.entity.company.Company;
+import org.example.gobooking.entity.request.RoleChangeRequest;
 import org.example.gobooking.service.MailService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailSender;
@@ -60,6 +62,24 @@ public class MailServiceImpl implements MailService {
         message.setTo(to);
         message.setSubject("Promotion Request Agree");
         message.setText("Hello " + to + " your promotion request disagree");
+        mailSender.send(message);
+    }
+
+    @Async
+    @Override
+    public void sendMailForRoleChangeRequest(RoleChangeRequest request) {
+        Company company = request.getCompany();
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(request.getEmployee().getEmail());
+        message.setSubject("Job Offer at " + company.getName());
+        message.setText("We have carefully reviewed your professional background and would like to offer you a position at\n" +
+                company.getName() + ". Your experience and skills are a great fit for our team, and we believe we can provide \n" +
+                "you with exciting opportunities for growth.\n" +
+                "If you're interested in discussing the details, we’d be happy to arrange a call or meeting at a convenient \n" +
+                "time for you.\n\n" +
+                "Director: " + company.getDirector().getName() +"\n" +
+                "Company: " + company.getName() + "\n" +
+                "Phone: " + company.getPhone());
         mailSender.send(message);
     }
 

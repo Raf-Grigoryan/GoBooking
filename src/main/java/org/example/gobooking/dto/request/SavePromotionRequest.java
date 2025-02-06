@@ -7,5 +7,5 @@ import lombok.Data;
 public class SavePromotionRequest {
     @NotBlank
     private String context;
-    int requester_id;
+    private int requester_id;
 }
