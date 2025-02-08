@@ -1,16 +1,16 @@
 package org.example.gobooking.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.gobooking.dto.request.PromotionRequestDto;
+import org.example.gobooking.dto.subscription.SaveSubscriptionRequest;
 import org.example.gobooking.service.PromotionRequestsService;
+import org.example.gobooking.service.SubscriptionService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -21,6 +21,7 @@ import java.util.stream.IntStream;
 public class AdminController {
 
     private final PromotionRequestsService promotionRequestsService;
+    private final SubscriptionService subscriptionService;
 
     @GetMapping("/panel-1")
     public String panel() {
@@ -57,5 +58,14 @@ public class AdminController {
         return "redirect:/admin/promotion-request-dashboard";
     }
 
+    @GetMapping("/create-subscription")
+    public String createSubscriptionPage() {
+        return "/admin/createSubscription";
+    }
 
+    @PostMapping("/create-subscription")
+    public String createSubscription(@Valid @ModelAttribute SaveSubscriptionRequest subscriptionRequest) {
+        subscriptionService.save(subscriptionRequest);
+        return "redirect:/";
+    }
 }

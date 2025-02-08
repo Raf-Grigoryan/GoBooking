@@ -12,4 +12,5 @@ public interface CardService {
     List<CardResponse> getCardsByUserId(int userId);
 
     void deleteCardByCardNumber(String email,String cardNumber);
+    void save (SaveCardRequest saveCardRequest);
 }
