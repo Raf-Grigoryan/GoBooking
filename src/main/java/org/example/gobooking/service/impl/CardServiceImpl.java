@@ -29,21 +29,14 @@ public class CardServiceImpl implements CardService {
 
     @Override
     public void save(SaveCardRequest saveCardRequest) {
-        if (!cardRepository.existsCardByCardNumber(saveCardRequest.getCardNumber())) {
-            Card card = cardMapper.toEntity(saveCardRequest);
-            card.setBalance(new BigDecimal(0));
-            cardRepository.save(card);
-        }
-        throw new CardOnlyExistException("Card only exist");
-        System.out.println(cardRepository.countByUserId(saveCardRequest.getUserId()));
-        if(cardRepository.countByUserId(saveCardRequest.getUserId())>=4) {
-           throw new CardCountException("Card count can't be more 4");
+        if (cardRepository.countByUserId(saveCardRequest.getUserId()) >= 4) {
+            throw new CardCountException("Card count can't be more than 4");
         }
         if (cardRepository.existsCardByCardNumber(saveCardRequest.getCardNumber())) {
-            throw new CardOnlyExistException("Card only exist");
+            throw new CardOnlyExistException("Card already exists");
         }
         Card card = cardMapper.toEntity(saveCardRequest);
-        card.setBalance(new BigDecimal(0));
+        card.setBalance(BigDecimal.ZERO);
         cardRepository.save(card);
     }
 
