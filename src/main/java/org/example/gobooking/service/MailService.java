@@ -17,5 +17,7 @@ public interface MailService {
 
     void sendMailForRoleChangeRequest(RoleChangeRequest request);
 
+    void sendMailForChangePassword(String to, String newPassword);
 
+    void sendMailForDeleteCard(String to,String context);
 }

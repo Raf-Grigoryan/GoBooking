@@ -23,7 +23,7 @@
             <column name="phone" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="role" type="ENUM('CLIENT','WORKER','DIRECTOR','ADMIN')" defaultValue="CLIENT">
+            <column name="role" type="ENUM('USER','WORKER','DIRECTOR','ADMIN')" defaultValue="USER">
                 <constraints nullable="false"/>
             </column>
             <column name="picture_name" type="VARCHAR(255)">
