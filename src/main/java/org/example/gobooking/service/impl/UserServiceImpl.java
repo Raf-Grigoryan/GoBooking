@@ -165,13 +165,13 @@ public class UserServiceImpl implements UserService {
     }
     @Override
     public Page<UserDto> getAllUsers(PageRequest pageRequest) {
-        Page<User> users = userRepository.findAllByRole(Role.CLIENT, pageRequest);
+        Page<User> users = userRepository.findAllByRole(Role.USER, pageRequest);
         return users.map(userMapper::toDto);
     }
 
     @Override
     public Page<UserDto> getAllUsersByEmail(PageRequest pageRequest, String keyword) {
-        Page<User> users = userRepository.findUserByRoleAndEmailContaining(Role.CLIENT, keyword, pageRequest);
+        Page<User> users = userRepository.findUserByRoleAndEmailContaining(Role.USER, keyword, pageRequest);
         return users.map(userMapper::toDto);
     }
 
