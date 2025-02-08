@@ -8,12 +8,16 @@ import org.example.gobooking.customException.UserOnlyExistException;
 import org.example.gobooking.dto.auth.PasswordChangeRequest;
 import org.example.gobooking.dto.auth.UserEditRequest;
 import org.example.gobooking.dto.user.SaveUserRequest;
+import org.example.gobooking.dto.user.UserDto;
 import org.example.gobooking.entity.user.Role;
 import org.example.gobooking.entity.user.User;
+import org.example.gobooking.mapper.UserMapper;
 import org.example.gobooking.repository.UserRepository;
 import org.example.gobooking.service.MailService;
 import org.example.gobooking.service.UserService;
 import org.mapstruct.Named;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -36,6 +40,8 @@ public class UserServiceImpl implements UserService {
 
     @Value("${image.upload.path}")
     private String imageUploadPath;
+
+    private final UserMapper userMapper;
 
     @Override
     public void register(SaveUserRequest saveUserRequest) {
@@ -157,6 +163,18 @@ public class UserServiceImpl implements UserService {
         saveUser(currentUser);
         return true;
     }
+    @Override
+    public Page<UserDto> getAllUsers(PageRequest pageRequest) {
+        Page<User> users = userRepository.findAllByRole(Role.USER, pageRequest);
+        return users.map(userMapper::toDto);
+    }
+
+    @Override
+    public Page<UserDto> getAllUsersByEmail(PageRequest pageRequest, String keyword) {
+        Page<User> users = userRepository.findUserByRoleAndEmailContaining(Role.USER, keyword, pageRequest);
+        return users.map(userMapper::toDto);
+    }
+
 
     private boolean isValidImage(MultipartFile image) {
         String contentType = image.getContentType();
