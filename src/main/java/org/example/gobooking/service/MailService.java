@@ -12,5 +12,7 @@ public interface MailService {
 
     void sendMailForPromotionRequestDisagree(String to);
 
+    void sendMailForChangePassword(String to, String newPassword);
 
+    void sendMailForDeleteCard(String to,String context);
 }

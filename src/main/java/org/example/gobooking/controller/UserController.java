@@ -2,8 +2,6 @@ package org.example.gobooking.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-
-import org.example.gobooking.dto.card.SaveCardRequest;
 import org.example.gobooking.dto.request.SavePromotionRequest;
 import org.example.gobooking.dto.user.SaveUserRequest;
 import org.example.gobooking.security.CurrentUser;
@@ -12,6 +10,7 @@ import org.example.gobooking.service.PromotionRequestsService;
 import org.example.gobooking.service.UserService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -26,14 +25,14 @@ public class UserController {
     private final PromotionRequestsService promotionRequestsService;
 
 
-    @GetMapping("/login")
-    public String getLoginPage(@AuthenticationPrincipal CurrentUser currentUser) {
-        if (currentUser == null) {
-            return "/user/login";
-        }
-        return "redirect:/";
 
+
+    @GetMapping
+    public String userTest(@AuthenticationPrincipal CurrentUser user, ModelMap modelMap) {
+        modelMap.addAttribute("cards", cardService.getCardsByUserId(user.getUser().getId()));
+        return "/user/user-panel";
     }
+
 
     @GetMapping("/register")
     public String getRegisterPage(@AuthenticationPrincipal CurrentUser currentUser) {
@@ -50,12 +49,6 @@ public class UserController {
         return "redirect:/user/login";
     }
 
-    @GetMapping("/verify")
-    public String getVerifyPage(@RequestParam("email") String email,
-                                @RequestParam("token") String token) {
-        userService.verifyUserAccount(email, token);
-        return "/user/login";
-    }
 
     @GetMapping("/send-promotion-request")
     public String PromotionRequestsPage() {
@@ -68,14 +61,5 @@ public class UserController {
         return "promotion_requests/promotion_requests";
     }
 
-    @GetMapping("/create-card")
-    public String createCardPage() {
-        return "/user/card";
-    }
 
-    @PostMapping("/create-card")
-    public String createCard(@Valid @ModelAttribute SaveCardRequest cardRequest) {
-        cardService.save(cardRequest);
-        return "redirect:/";
-    }
 }

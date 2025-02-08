@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Codescandy">
+
+    <script async="" src="/allCss/gtag/js?id=G-M8S4MT3EYG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-M8S4MT3EYG');
+    </script>
+
+    <!-- Favicon icon-->
+    <link rel="shortcut icon" type="image/x-icon" href="/allCss/dashuipro/assets/images/favicon/favicon.ico">
+
+    <!-- Color modes -->
+    <script src="/allCss/dashuipro/assets/js/vendors/color-modes.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="/allCss/dashuipro/assets/libs/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="/allCss/dashuipro/assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="/allCss/dashuipro/assets/libs/simplebar/dist/simplebar.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="/allCss/dashuipro/assets/css/theme.min.css">
+
+    <title>Finance Page</title>
+</head>
+
+<body>
+<main id="main-wrapper" class="main-wrapper">
+    <th:block th:include="fragment/userMenu::userMenu"></th:block>
+    <div id="app-content">
+        <div class="app-content-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-12">
+                        <!-- Page header -->
+                        <div class="d-flex justify-content-between align-items-center mb-5">
+                            <h3 class="mb-0 " th:text="${currentUser.getRole}"></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xxl-6 col-12 mb-5">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between mt-3 mb-8">
+                                    <div>
+                                        <img th:src="@{/getImage(imageName=${currentUser.getPictureName()})}"
+                                             alt="Image" style="width: 100px">
+
+                                    </div>
+                                    <div class="text-end">
+
+                                        <span style="margin-right: 300px;margin-top: 20px">Email</span> <h4
+                                            style="margin-right: 170px;margin-top: 10px"
+                                            th:text="${currentUser.getEmail}"></h4>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span>Full Name</span>
+                                    <h4 th:text="${currentUser.getName + ' ' + currentUser.getSurname }"
+                                        style="margin-right: 370px"></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-6 col-12 mb-5">
+                        <div class="row">
+                            <div class="col-lg-4 col-12 mb-5 mb-lg-0">
+                                <div class="card h-100 ">
+                                    <div class="card-body ">
+                                        <div class="mb-9">
+                                            <div class="icon-shape icon-xxl rounded-circle bg-primary-soft">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                     fill="currentColor" class="bi bi-wallet text-primary"
+                                                     viewbox="0 0 16 16">
+                                                    <path d="M0 3a2 2 0 0 1 2-2h13.5a.5.5 0 0 1 0 1H15v2a1 1 0 0 1 1 1v8.5a1.5 1.5 0 0 1-1.5 1.5h-12A2.5 2.5 0 0 1 0 12.5V3zm1 1.732V12.5A1.5 1.5 0 0 0 2.5 14h12a.5.5 0 0 0 .5-.5V5H2a1.99 1.99 0 0 1-1-.268zM1 3a1 1 0 0 0 1 1h12V2H2a1 1 0 0 0-1 1z"></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <span>Total Balance</span>
+                                        <h3 id="total-balance"></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-12 mb-5 mb-lg-0">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <div class="mb-9">
+                                            <div class="icon-shape icon-xxl rounded-circle bg-danger-soft">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                     fill="currentColor " class="bi bi-piggy-bank text-danger"
+                                                     viewbox="0 0 16 16">
+                                                    <path d="M5 6.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0zm1.138-1.496A6.613 6.613 0 0 1 7.964 4.5c.666 0 1.303.097 1.893.273a.5.5 0 0 0 .286-.958A7.602 7.602 0 0 0 7.964 3.5c-.734 0-1.441.103-2.102.292a.5.5 0 1 0 .276.962z"></path>
+                                                    <path fill-rule="evenodd"
+                                                          d="M7.964 1.527c-2.977 0-5.571 1.704-6.32 4.125h-.55A1 1 0 0 0 .11 6.824l.254 1.46a1.5 1.5 0 0 0 1.478 1.243h.263c.3.513.688.978 1.145 1.382l-.729 2.477a.5.5 0 0 0 .48.641h2a.5.5 0 0 0 .471-.332l.482-1.351c.635.173 1.31.267 2.011.267.707 0 1.388-.095 2.028-.272l.543 1.372a.5.5 0 0 0 .465.316h2a.5.5 0 0 0 .478-.645l-.761-2.506C13.81 9.895 14.5 8.559 14.5 7.069c0-.145-.007-.29-.02-.431.261-.11.508-.266.705-.444.315.306.815.306.815-.417 0 .223-.5.223-.461-.026a.95.95 0 0 0 .09-.255.7.7 0 0 0-.202-.645.58.58 0 0 0-.707-.098.735.735 0 0 0-.375.562c-.024.243.082.48.32.654a2.112 2.112 0 0 1-.259.153c-.534-2.664-3.284-4.595-6.442-4.595zM2.516 6.26c.455-2.066 2.667-3.733 5.448-3.733 3.146 0 5.536 2.114 5.536 4.542 0 1.254-.624 2.41-1.67 3.248a.5.5 0 0 0-.165.535l.66 2.175h-.985l-.59-1.487a.5.5 0 0 0-.629-.288c-.661.23-1.39.359-2.157.359a6.558 6.558 0 0 1-2.157-.359.5.5 0 0 0-.635.304l-.525 1.471h-.979l.633-2.15a.5.5 0 0 0-.17-.534 4.649 4.649 0 0 1-1.284-1.541.5.5 0 0 0-.446-.275h-.56a.5.5 0 0 1-.492-.414l-.254-1.46h.933a.5.5 0 0 0 .488-.393zm12.621-.857a.565.565 0 0 1-.098.21.704.704 0 0 1-.044-.025c-.146-.09-.157-.175-.152-.223a.236.236 0 0 1 .117-.173c.049-.027.08-.021.113.012a.202.202 0 0 1 .064.199z"></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <span>Total Spending</span>
+                                        <h3>$ 8,123.82</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xxl-3 col-lg-6 mb-5" th:each="card : ${cards}">
+                        <div class="position-relative">
+                            <div class="card-selected card-lift">
+                                <div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-end mb-6">
+                                                <h4 class="text-color-change" style="margin-right: 170px">CARD</h4>
+                                                <a th:href="@{/auth/delete-card(cardNumber=${card.getCardNumber()})}">
+                                                    <i class='bx bxs-trash'
+                                                       style="font-size: 20px;color: red"></i></a>
+                                            </div>
+                                            <div class="mb-6">
+                                                <h3 class="card-number" th:text="${card.getCardNumber()}"></h3>
+                                            </div>
+                                            <div class="d-flex justify-content-between">
+                                                <div>
+                                                    <small>Available Funds</small>
+                                                    <h4 class="balance text-color-change mb-0"
+                                                        th:text="${card.balance + '$'}"></h4>
+                                                </div>
+                                                <div class="d-flex">
+                                                    <div>
+                                                        <small>Expires</small>
+                                                        <h4 class="expiration-date"
+                                                            th:text="${card.expirationDate}"></h4>
+                                                    </div>
+                                                    <div class="ms-6">
+                                                        <small>CVV</small>
+                                                        <h4 class="cvv text-color-change mb-0"
+                                                            th:text="${card.getCvvCode()}"></h4></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-4 col-12 mb-5 mb-xl-0">
+                <div class="card h-100">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h4 class="mb-0">Spending vs Saving</h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="cashFlowChart" class="my-10 justify-content-center d-flex"></div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-4 col-6">
+                                <div class="rounded-3 d-flex bg-warning-soft text-warning p-4">
+                                    <div>
+                                        <i data-feather="arrow-down" class="icon-xs"></i>
+                                    </div>
+                                    <div class="ms-2 lh-1">
+                                        <h4 class="mb-0 text-warning">1,538.23</h4>
+                                        <small>Expenses</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" col-md-4 col-6">
+                                <div class="rounded-3 d-flex bg-primary-soft  p-4 text-primary ">
+                                    <div>
+                                        <i data-feather="arrow-up" class="text-primary icon-xs"></i>
+                                    </div>
+                                    <div class="ms-2 lh-1">
+                                        <h4 class="mb-0 text-primary">3,456.87</h4>
+                                        <small>Income</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-8 col-12 mb-5 mb-xl-0">
+                <div class="card h-100">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h4 class="mb-0">Latest Transactions</h4>
+                        <a href="#!" class="btn btn-primary btn-sm">All transactions
+                            <i data-feather="arrow-right" class="icon-xs">
+                            </i></a>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive table-card">
+                            <table class="table text-nowrap table-centered mb-0">
+                                <thead class="table-light">
+                                <tr>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Payment</th>
+                                    <th scope="col">Amount</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+
+                                    <td>25/07/2023</td>
+                                    <td>Clothes</td>
+                                    <td>Card payment</td>
+                                    <td><span class="text-danger">- $15.00</span></td>
+                                    <td>
+                                        <div class="dropdown dropstart">
+                                            <a href="#!" class="btn btn-ghost btn-icon btn-sm rounded-circle"
+                                               data-bs-toggle="dropdown" aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                     viewbox="0 0 24 24" fill="none" stroke="currentColor"
+                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                     class="feather feather-more-vertical">
+                                                    <circle cx="12" cy="12" r="1"></circle>
+                                                    <circle cx="12" cy="5" r="1"></circle>
+                                                    <circle cx="12" cy="19" r="1"></circle>
+                                                </svg>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item d-flex align-items-center"
+                                                       href="#!">Action</a></li>
+                                                <li><a class="dropdown-item d-flex align-items-center" href="#!">Another
+                                                    action</a></li>
+                                                <li><a class="dropdown-item d-flex align-items-center" href="#!">Something
+                                                    else here</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>20/07/2023</td>
+                                    <td>Food</td>
+                                    <td>Transfer</td>
+                                    <td><span class="text-danger">- $15.00</span></td>
+                                    <td>
+                                        <div class="dropdown dropstart">
+                                            <a href="#!" class="btn btn-ghost btn-icon btn-sm rounded-circle"
+                                               data-bs-toggle="dropdown" aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                     viewbox="0 0 24 24" fill="none" stroke="currentColor"
+                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                     class="feather feather-more-vertical">
+                                                    <circle cx="12" cy="12" r="1"></circle>
+                                                    <circle cx="12" cy="5" r="1"></circle>
+                                                    <circle cx="12" cy="19" r="1"></circle>
+                                                </svg>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item d-flex align-items-center"
+                                                       href="#!">Action</a></li>
+                                                <li><a class="dropdown-item d-flex align-items-center" href="#!">Another
+                                                    action</a></li>
+                                                <li><a class="dropdown-item d-flex align-items-center" href="#!">Something
+                                                    else here</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>16/07/2023</td>
+                                    <td>Medical Checkup</td>
+                                    <td>Salary</td>
+                                    <td><span class="text-success">$9000.00</span></td>
+                                    <td>
+                                        <div class="dropdown dropstart">
+                                            <a href="#!" class="btn btn-ghost btn-icon btn-sm rounded-circle"
+                                               data-bs-toggle="dropdown" aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                     viewbox="0 0 24 24" fill="none" stroke="currentColor"
+                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                     class="feather feather-more-vertical">
+                                                    <circle cx="12" cy="12" r="1"></circle>
+                                                    <circle cx="12" cy="5" r="1"></circle>
+                                                    <circle cx="12" cy="19" r="1"></circle>
+                                                </svg>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item d-flex align-items-center"
+                                                       href="#!">Action</a></li>
+                                                <li><a class="dropdown-item d-flex align-items-center" href="#!">Another
+                                                    action</a></li>
+                                                <li><a class="dropdown-item d-flex align-items-center" href="#!">Something
+                                                    else here</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>12/07/2023</td>
+                                    <td>Clothes</td>
+                                    <td>Freelancing</td>
+                                    <td><span class="text-success">$1300.00</span></td>
+                                    <td>
+                                        <div class="dropdown dropstart">
+                                            <a href="#!" class="btn btn-ghost btn-icon btn-sm rounded-circle"
+                                               data-bs-toggle="dropdown" aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                     viewbox="0 0 24 24" fill="none" stroke="currentColor"
+                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                     class="feather feather-more-vertical">
+                                                    <circle cx="12" cy="12" r="1"></circle>
+                                                    <circle cx="12" cy="5" r="1"></circle>
+                                                    <circle cx="12" cy="19" r="1"></circle>
+                                                </svg>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item d-flex align-items-center"
+                                                       href="#!">Action</a></li>
+                                                <li><a class="dropdown-item d-flex align-items-center" href="#!">Another
+                                                    action</a></li>
+                                                <li><a class="dropdown-item d-flex align-items-center" href="#!">Something
+                                                    else here</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>06/07/2023</td>
+                                    <td>Financial</td>
+                                    <td>Card payment</td>
+                                    <td><span class="text-danger">- $25.00</span></td>
+                                    <td>
+                                        <div class="dropdown dropstart">
+                                            <a href="#!" class="btn btn-ghost btn-icon btn-sm rounded-circle"
+                                               data-bs-toggle="dropdown" aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                     viewbox="0 0 24 24" fill="none" stroke="currentColor"
+                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                     class="feather feather-more-vertical">
+                                                    <circle cx="12" cy="12" r="1"></circle>
+                                                    <circle cx="12" cy="5" r="1"></circle>
+                                                    <circle cx="12" cy="19" r="1"></circle>
+                                                </svg>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item d-flex align-items-center"
+                                                       href="#!">Action</a></li>
+                                                <li><a class="dropdown-item d-flex align-items-center" href="#!">Another
+                                                    action</a></li>
+                                                <li><a class="dropdown-item d-flex align-items-center" href="#!">Something
+                                                    else here</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>06/06/2023</td>
+                                    <td>Subscriptions</td>
+                                    <td>Card payment</td>
+                                    <td><span class="text-danger">- $115.00</span></td>
+                                    <td>
+                                        <div class="dropdown dropstart">
+                                            <a href="#!" class="btn btn-ghost btn-icon btn-sm rounded-circle"
+                                               data-bs-toggle="dropdown" aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                     viewbox="0 0 24 24" fill="none" stroke="currentColor"
+                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                     class="feather feather-more-vertical">
+                                                    <circle cx="12" cy="12" r="1"></circle>
+                                                    <circle cx="12" cy="5" r="1"></circle>
+                                                    <circle cx="12" cy="19" r="1"></circle>
+                                                </svg>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item d-flex align-items-center"
+                                                       href="#!">Action</a></li>
+                                                <li><a class="dropdown-item d-flex align-items-center" href="#!">Another
+                                                    action</a></li>
+                                                <li><a class="dropdown-item d-flex align-items-center" href="#!">Something
+                                                    else here</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>06/05/2023</td>
+                                    <td>Rent</td>
+                                    <td>Card payment</td>
+                                    <td><span class="text-danger">- $46.00</span></td>
+                                    <td>
+                                        <div class="dropdown dropstart">
+                                            <a href="#!" class="btn btn-ghost btn-icon btn-sm rounded-circle"
+                                               data-bs-toggle="dropdown" aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                     viewbox="0 0 24 24" fill="none" stroke="currentColor"
+                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                     class="feather feather-more-vertical">
+                                                    <circle cx="12" cy="12" r="1"></circle>
+                                                    <circle cx="12" cy="5" r="1"></circle>
+                                                    <circle cx="12" cy="19" r="1"></circle>
+                                                </svg>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item d-flex align-items-center"
+                                                       href="#!">Action</a></li>
+                                                <li><a class="dropdown-item d-flex align-items-center" href="#!">Another
+                                                    action</a></li>
+                                                <li><a class="dropdown-item d-flex align-items-center" href="#!">Something
+                                                    else here</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>03/05/2023</td>
+                                    <td>Maintenance</td>
+                                    <td>Card payment</td>
+                                    <td><span class="text-danger">- $15.00</span></td>
+                                    <td>
+                                        <div class="dropdown dropstart">
+                                            <a href="#!" class="btn btn-ghost btn-icon btn-sm rounded-circle"
+                                               data-bs-toggle="dropdown" aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                     viewbox="0 0 24 24" fill="none" stroke="currentColor"
+                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                     class="feather feather-more-vertical">
+                                                    <circle cx="12" cy="12" r="1"></circle>
+                                                    <circle cx="12" cy="5" r="1"></circle>
+                                                    <circle cx="12" cy="19" r="1"></circle>
+                                                </svg>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item d-flex align-items-center"
+                                                       href="#!">Action</a></li>
+                                                <li><a class="dropdown-item d-flex align-items-center" href="#!">Another
+                                                    action</a></li>
+                                                <li><a class="dropdown-item d-flex align-items-center" href="#!">Something
+                                                    else here</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="/allCss/dashuipro/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/feather-icons/dist/feather.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/simplebar/dist/simplebar.min.js"></script>
+<script src="/allCss/dashuipro/assets/js/theme.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+<script src="/allCss/dashuipro/assets/js/vendors/chart.js"></script>
+<script src="/js/finance.js"></script>
+
+</body>
+</html>

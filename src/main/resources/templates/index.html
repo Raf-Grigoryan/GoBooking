@@ -164,7 +164,7 @@
                         </a>
                     </li>
 
-                    <li class="nav-item"  th:if="${currentUser == null}">
+                    <li class="nav-item" th:if="${currentUser == null}">
                         <a href="/user/login" class="nav-link">
                             Login
                         </a>
@@ -186,8 +186,8 @@
             <div class="row justify-content-center align-items-center min-vh-100 py-12">
                 <div class="col-lg-9 col-xl-8 my-4 text-center">
                     <h1 class="display-1 text-white">GoBooking convenient and fast</h1>
-                    <div class="pt-4">
-                        <a class="btn btn-primary" href="/user/login">
+                    <div class="pt-4" th:if="${currentUser == null}">
+                        <a class="btn btn-primary" href="/auth/login">
                             <span class="btn--text">GET STARTED</span>
                         </a>
                     </div>
