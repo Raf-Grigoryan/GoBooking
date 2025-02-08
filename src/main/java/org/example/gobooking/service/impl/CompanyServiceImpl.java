@@ -14,6 +14,7 @@ import org.example.gobooking.mapper.CompanyMapper;
 import org.example.gobooking.repository.CompanyRepository;
 import org.example.gobooking.service.AddressService;
 import org.example.gobooking.service.CompanyService;
+import org.mapstruct.Named;
 import org.springframework.stereotype.Service;
 
 
@@ -50,5 +51,11 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public void deleteCompany(int id) {
         companyRepository.deleteById(id);
+    }
+
+    @Override
+    @Named("getCompanyById")
+    public Company getCompanyById(int id) {
+        return companyRepository.findById(id).orElse(null);
     }
 }

@@ -128,6 +128,24 @@ public class GlobalExceptionHandler {
         return modelAndView;
     }
 
+    @ExceptionHandler(AlreadyRoleChangeRequestException.class)
+    public ModelAndView message(AlreadyRoleChangeRequestException e) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("errorMessage", e.getMessage());
+        modelAndView.addObject("status", "409 bad request");
+        modelAndView.setViewName("error/globalErrorPage");
+        return modelAndView;
+    }
+
+    @ExceptionHandler(CompanyNoCreateException.class)
+    public ModelAndView message(CompanyNoCreateException e) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("errorMessage", e.getMessage());
+        modelAndView.addObject("status", "409 bad request");
+        modelAndView.setViewName("error/globalErrorPage");
+        return modelAndView;
+    }
+
     @ExceptionHandler(CardCountException.class)
     public ModelAndView message(CardCountException e) {
         ModelAndView modelAndView = new ModelAndView();

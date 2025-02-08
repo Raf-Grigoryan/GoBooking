@@ -1,5 +1,8 @@
 package org.example.gobooking.service;
 
+
+import org.example.gobooking.entity.request.RoleChangeRequest;
+
 import java.util.List;
 
 public interface MailService {
@@ -11,6 +14,8 @@ public interface MailService {
     void sendMailForPromotionRequestAgree(String to);
 
     void sendMailForPromotionRequestDisagree(String to);
+
+    void sendMailForRoleChangeRequest(RoleChangeRequest request);
 
     void sendMailForChangePassword(String to, String newPassword);
 

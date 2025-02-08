@@ -13,5 +13,4 @@ public interface CompanyRepository extends JpaRepository<Company, Integer> {
     Optional<Company> findCompanyByDirectorId(int directorId);
 
     Company findCompanyByDirector(User director);
-
 }
