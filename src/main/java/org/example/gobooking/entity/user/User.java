@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.gobooking.entity.company.Company;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -30,4 +31,7 @@ public class User {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdAt;
     private String token;
+    private boolean accountNonLocked;
+    @ManyToOne
+    private Company company;
 }

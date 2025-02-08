@@ -29,7 +29,7 @@ public class GlobalExceptionHandler {
     public ModelAndView message(UsernameNotFoundException e) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("errorMessage", e.getMessage());
-        modelAndView.setViewName("user/login");
+        modelAndView.setViewName("auth/login");
         return modelAndView;
     }
 
@@ -48,13 +48,12 @@ public class GlobalExceptionHandler {
             modelAndView.setViewName("user/register");
         } else if (requestURI.contains("/user/create-card")) {
             modelAndView.setViewName("error/globalErrorPage");
-            modelAndView.addObject("status","400 bad request");
+            modelAndView.addObject("status", "400 bad request");
         }
 
         modelAndView.addObject("errorMessages", errorMessages);
         return modelAndView;
     }
-
 
     @ExceptionHandler(CannotVerifyUserException.class)
     public ModelAndView handleCannotVerifyUserException(CannotVerifyUserException e) {
@@ -110,5 +109,22 @@ public class GlobalExceptionHandler {
         return modelAndView;
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ModelAndView handleInvalidImageFormat(IllegalArgumentException e) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("errorMessage", e.getMessage());
+        modelAndView.addObject("status", "400 bad request");
+        modelAndView.setViewName("error/globalErrorPage");
+        return modelAndView;
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    public ModelAndView handleRuntimeException(RuntimeException e) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("errorMessage", e.getMessage());
+        modelAndView.addObject("status", "500 internal server error");
+        modelAndView.setViewName("error/globalErrorPage");
+        return modelAndView;
+    }
 
 }

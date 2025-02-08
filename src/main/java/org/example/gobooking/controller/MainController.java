@@ -30,6 +30,9 @@ public class MainController {
     @GetMapping("/loginSuccess")
     public String loginSuccess(@AuthenticationPrincipal CurrentUser user) {
         switch (user.getUser().getRole()){
+            case USER->{
+                return "redirect:/user";
+            }
             case DIRECTOR -> {
                 return "redirect:/director";
             }
