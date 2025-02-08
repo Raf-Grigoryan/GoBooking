@@ -46,7 +46,8 @@ public class GlobalExceptionHandler {
 
         if (requestURI.contains("/user/register")) {
             modelAndView.setViewName("user/register");
-        } else if (requestURI.contains("/user/create-card")) {
+        }
+         else if (requestURI.contains("/user/create-card")) {
             modelAndView.setViewName("error/globalErrorPage");
             modelAndView.addObject("status", "400 bad request");
         }
@@ -127,4 +128,21 @@ public class GlobalExceptionHandler {
         return modelAndView;
     }
 
+    @ExceptionHandler(CardCountException.class)
+    public ModelAndView message(CardCountException e) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("errorMessage", e.getMessage());
+        modelAndView.addObject("status", "409 bad request");
+        modelAndView.setViewName("error/globalErrorPage");
+        return modelAndView;
+    }
+
+    @ExceptionHandler(SubscriptionOnlyExistException.class)
+    public ModelAndView message(SubscriptionOnlyExistException e) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("errorMessage", e.getMessage());
+        modelAndView.addObject("status", "409 bad request");
+        modelAndView.setViewName("error/globalErrorPage");
+        return modelAndView;
+    }
 }

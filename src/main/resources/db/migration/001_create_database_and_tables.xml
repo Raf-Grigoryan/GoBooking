@@ -157,7 +157,7 @@
             <column name="description" type="TEXT">
                 <constraints nullable="false"/>
             </column>
-            <column name="duration" type="TINYINT">
+            <column name="duration" type="INT">
                 <constraints nullable="false"/>
             </column>
             <column name="price" type="DECIMAL(10,2)">
