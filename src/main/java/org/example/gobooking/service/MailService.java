@@ -20,4 +20,8 @@ public interface MailService {
     void sendMailForChangePassword(String to, String newPassword);
 
     void sendMailForDeleteCard(String to,String context);
+
+    void sendMailForRoleChangeRequestAgree(String to, String workerName);
+
+    void sendMailForRoleChangeRequestDisagree(String to, String workerName);
 }
