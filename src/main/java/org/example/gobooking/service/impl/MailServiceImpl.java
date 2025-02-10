@@ -110,4 +110,24 @@ public class MailServiceImpl implements MailService {
         message.setText("Your Card in " + context + " deleted");
         mailSender.send(message);
     }
+
+    @Async
+    @Override
+    public void sendMailForRoleChangeRequestAgree(String to, String workerName) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(to);
+        message.setSubject("Role Change Request from " + workerName);
+        message.setText("Your role changed request agree");
+        mailSender.send(message);
+    }
+
+    @Async
+    @Override
+    public void sendMailForRoleChangeRequestDisagree(String to, String workerName) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(to);
+        message.setSubject("Role Change Request from " + workerName);
+        message.setText("Your role changed request disagree");
+        mailSender.send(message);
+    }
 }

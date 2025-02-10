@@ -1,5 +1,6 @@
 package org.example.gobooking.mapper;
 
+import org.example.gobooking.dto.request.RoleChangeRequestDto;
 import org.example.gobooking.dto.request.SaveRoleChangeRequest;
 import org.example.gobooking.entity.request.RoleChangeRequest;
 import org.example.gobooking.service.CompanyService;
@@ -15,5 +16,7 @@ public interface RoleChangeRequestMapper {
     @Mapping(source = "employeeId", target = "employee")
     @Mapping(source = "companyId", target = "company")
     RoleChangeRequest toEntity(SaveRoleChangeRequest saveRoleChangeRequest);
+
+    RoleChangeRequestDto toDto(RoleChangeRequest roleChangeRequest);
 
 }
