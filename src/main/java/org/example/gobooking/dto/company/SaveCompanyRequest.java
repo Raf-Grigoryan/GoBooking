@@ -19,7 +19,7 @@ public class SaveCompanyRequest {
     @Size(max = 255, message = "Company name must be less than 255 characters")
     private String name;
 
-    @Pattern(regexp = "^\\+?[0-9. ()-]{7,25}$", message = "Invalid phone number format")
+    @NotBlank(message = "Phone cannot be empty")
     private String phone;
 
     @Min(value = 1, message = "Director ID must be a positive integer")

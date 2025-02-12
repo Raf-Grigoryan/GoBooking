@@ -22,6 +22,4 @@ public class AddressServiceImpl implements AddressService {
         return addressRepository.existsByStreetAndApartmentNumber(street,apartmentNumber);
     }
 
-
-
 }

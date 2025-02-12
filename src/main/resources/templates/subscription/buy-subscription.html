@@ -1,0 +1,403 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="Codescandy">
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			let cardElement = document.getElementById("cardNumber");
+			let cardNumber = cardElement.innerText.replace(/\D/g, ''); // Remove non-digits
+			cardElement.innerText = cardNumber.replace(/(\d{4})/g, '$1-').replace(/-$/, '');
+		});
+	</script>
+
+	<!-- Favicon icon-->
+	<link rel="shortcut icon" type="image/x-icon" href="/allCss/dashuipro/assets/images/favicon/favicon.ico">
+
+	<!-- Color modes -->
+	<script src="/allCss/dashuipro/assets/js/vendors/color-modes.js"></script>
+
+	<!-- Libs CSS -->
+	<link href="/allCss/dashuipro/assets/libs/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
+	<link href="/allCss/dashuipro/assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
+	<link href="/allCss/dashuipro/assets/libs/simplebar/dist/simplebar.min.css" rel="stylesheet">
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" href="/allCss/dashuipro/assets/css/theme.min.css">
+
+	<title>Buy Subscription</title>
+</head>
+
+<body>
+<main id="main-wrapper" class="main-wrapper">
+
+	<div class="header">
+		<!-- navbar -->
+		<div class="navbar-custom navbar navbar-expand-lg">
+			<div class="container-fluid px-0">
+				<a class="navbar-brand d-block d-md-none" href="../index.html">
+					<img src="/allCss/dashuipro/assets/images/brand/logo/logo-2.svg" alt="Image">
+				</a>
+
+				<a id="nav-toggle" href="#!" class="ms-auto ms-md-0 me-0 me-lg-3">
+					<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-text-indent-left text-muted" viewbox="0 0 16 16">
+						<path d="M2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm.646 2.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L4.293 8 2.646 6.354a.5.5 0 0 1 0-.708zM7 6.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm-5 3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"></path>
+					</svg>
+				</a>
+
+				<div class="d-none d-md-none d-lg-block">
+					<!-- Form -->
+					<form action="#">
+						<div class="input-group">
+							<input class="form-control rounded-3 bg-transparent ps-9" type="search" value="" id="searchInput" placeholder="Search">
+							<span class="">
+							<button class="btn position-absolute start-0" type="button">
+								<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search text-dark">
+									<circle cx="11" cy="11" r="8"></circle>
+									<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+								</svg>
+							</button>
+						</span>
+						</div>
+					</form>
+				</div>
+				<!--Navbar nav -->
+				<ul class="navbar-nav navbar-right-wrap ms-lg-auto d-flex nav-top-wrap align-items-center ms-4 ms-lg-0">
+					<li>
+						<div class="dropdown">
+							<button class="btn btn-ghost btn-icon rounded-circle" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
+								<i class="bi theme-icon-active"></i>
+								<span class="visually-hidden bs-theme-text">Toggle theme</span>
+							</button>
+							<ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bs-theme-text">
+								<li>
+									<button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+										<i class="bi theme-icon bi-sun-fill"></i>
+										<span class="ms-2">Light</span>
+									</button>
+								</li>
+								<li>
+									<button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+										<i class="bi theme-icon bi-moon-stars-fill"></i>
+										<span class="ms-2">Dark</span>
+									</button>
+								</li>
+								<li>
+									<button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+										<i class="bi theme-icon bi-circle-half"></i>
+										<span class="ms-2">Auto</span>
+									</button>
+								</li>
+							</ul>
+						</div>
+					</li>
+
+					<li class="dropdown stopevent ms-2">
+						<a class="btn btn-ghost btn-icon rounded-circle" href="#!" role="button" id="dropdownNotification" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="icon-xs" data-feather="bell"></i>
+						</a>
+						<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end" aria-labelledby="dropdownNotification">
+							<div>
+								<div class="border-bottom px-3 pt-2 pb-3 d-flex justify-content-between align-items-center">
+									<p class="mb-0 text-dark fw-medium fs-4">Notifications</p>
+									<a href="#!" class="text-muted">
+									<span>
+										<i class="me-1 icon-xs" data-feather="settings"></i>
+									</span>
+									</a>
+								</div>
+								<div data-simplebar="" style="height: 250px">
+									<!-- List group -->
+									<ul class="list-group list-group-flush notification-list-scroll">
+										<!-- List group item -->
+										<li class="list-group-item bg-light">
+											<a href="#!" class="text-muted">
+												<h5 class="mb-1">Rishi Chopra</h5>
+												<p class="mb-0">Mauris blandit erat id nunc blandit, ac eleifend dolor pretium.</p>
+											</a>
+										</li>
+										<!-- List group item -->
+										<li class="list-group-item">
+											<a href="#!" class="text-muted">
+												<h5 class="mb-1">Neha Kannned</h5>
+												<p class="mb-0">Proin at elit vel est condimentum elementum id in ante. Maecenas et sapien metus.</p>
+											</a>
+										</li>
+										<!-- List group item -->
+										<li class="list-group-item">
+											<a href="#!" class="text-muted">
+												<h5 class="mb-1">Nirmala Chauhan</h5>
+												<p class="mb-0">Morbi maximus urna lobortis elit sollicitudin sollicitudieget elit vel pretium.</p>
+											</a>
+										</li>
+										<!-- List group item -->
+										<li class="list-group-item">
+											<a href="#!" class="text-muted">
+												<h5 class="mb-1">Sina Ray</h5>
+												<p class="mb-0">Sed aliquam augue sit amet mauris volutpat hendrerit sed nunc eu diam.</p>
+											</a>
+										</li>
+									</ul>
+								</div>
+								<div class="border-top px-3 py-2 text-center">
+									<a href="#!" class="text-inherit">View all Notifications</a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<!-- List -->
+					<li class="dropdown ms-2">
+						<a class="rounded-circle" href="#!" role="button" id="dropdownUser" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<div class="avatar avatar-md avatar-indicators avatar-online">
+								<img alt="avatar" src="../assets/images/avatar/avatar-11.jpg" class="rounded-circle">
+							</div>
+						</a>
+						<div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser">
+							<div class="px-4 pb-0 pt-2">
+								<div class="lh-1">
+									<h5 class="mb-1">John E. Grainger</h5>
+									<a href="#!" class="text-inherit fs-6">View my profile</a>
+								</div>
+								<div class="dropdown-divider mt-3 mb-2"></div>
+							</div>
+
+							<ul class="list-unstyled">
+								<li>
+									<a class="dropdown-item d-flex align-items-center" href="#!">
+										<i class="me-2 icon-xxs dropdown-item-icon" data-feather="user"></i>
+										Edit Profile
+									</a>
+								</li>
+								<li>
+									<a class="dropdown-item" href="#!">
+										<i class="me-2 icon-xxs dropdown-item-icon" data-feather="activity"></i>
+										Activity Log
+									</a>
+								</li>
+
+								<li>
+									<a class="dropdown-item d-flex align-items-center" href="#!">
+										<i class="me-2 icon-xxs dropdown-item-icon" data-feather="settings"></i>
+										Settings
+									</a>
+								</li>
+								<li>
+									<a class="dropdown-item" href="../index.html">
+										<i class="me-2 icon-xxs dropdown-item-icon" data-feather="power"></i>
+										Sign Out
+									</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<!-- navbar vertical -->
+
+	<!-- Sidebar -->
+
+	<th:block th:include="fragment/userMenu::userMenu"></th:block>
+
+	<!-- page content -->
+
+
+	<div id="app-content">
+		<!-- Container fluid -->
+		<div class="app-content-area">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-12">
+						<!-- Page header -->
+						<div class="mb-5">
+							<h3 class="mb-0 ">Buy Subscription</h3>
+
+						</div>
+					</div>
+				</div>
+				<div>
+					<!-- row -->
+
+
+					<div class="row">
+						<div class="col-xxl-8 col-12">
+							<div>
+								<!-- stepper -->
+								<div id="stepperForm" class="bs-stepper">
+									<!-- Stepper Button -->
+									<div class="bs-stepper-header p-0 bg-transparent mb-4" role="tablist">
+										<div class="step" data-target="#test-l-1">
+											<button type="hidden"  class="step-trigger" role="tab" id="stepperFormtrigger1" aria-controls="test-l-1">
+
+											</button>
+										</div>
+										<div class="bs-stepper-line"></div>
+										<!-- Stepper Button -->
+										<div class="step" data-target="#test-l-2">
+											<button type="hidden" class="step-trigger" role="tab" id="stepperFormtrigger2" aria-controls="test-l-2">
+
+											</button>
+										</div>
+										<div class="bs-stepper-line"></div>
+										<!-- Stepper Button -->
+										<div class="step" data-target="#test-l-3">
+											<button type="hidden" class="step-trigger" role="tab" id="stepperFormtrigger3" aria-controls="test-l-3">
+
+											</button>
+										</div>
+
+									</div>
+									<!-- card -->
+									<div class="card">
+
+										<div class="card-body">
+											<!-- Stepper content -->
+											<div class="bs-stepper-content">
+												<form onsubmit="return false">
+													<!-- Content one -->
+													<div id="test-l-1" role="tabpanel" class="bs-stepper-pane fade" aria-labelledby="stepperFormtrigger1">
+														<!-- heading -->
+														<div class="mb-5">
+															<h3 class="mb-1">Subscription</h3>
+
+														</div>
+														<!-- text -->
+
+														<!-- row -->
+
+													<!-- Content two -->
+													<div id="test-l-2" role="tabpanel" class="bs-stepper-pane fade" aria-labelledby="stepperFormtrigger2">
+														<!-- text -->
+
+														</div>
+														<div>
+
+
+															<div class="col-xl-4 col-lg-6 col-md-12 col-12 mb-3">
+																<!-- card -->
+																<div class="card">
+																	<!-- card body -->
+																	<div class="card-body p-6 border-bottom mb-4">
+																		<!-- text -->
+																		<h2 class="mb-3" th:text="${subscription.title}"></h2>
+																		<p th:text="${subscription.description}"></p>
+																		<!-- price -->
+																		<div class="d-flex align-items-end mt-6 mb-3">
+																			<h1 class=" me-1 mb-0">$</h1><h1 class=" me-1 mb-0" th:text="${subscription.price}"></h1>
+																		</div>
+																		<!-- button -->
+
+																	</div>
+
+
+																	<!-- card body -->
+																	<div class="card-body">
+																		<ul class="list-unstyled mt-4 mb-0">
+																			<li class="mb-1"><i data-feather="check-circle" class="me-2 text-success icon-xs" th:text="${subscription.duration}"></i>Months
+																			</li>
+																			<li class="mb-1"><i data-feather="check-circle" class="me-2 text-success icon-xs" th:text="${subscription.employeeCount}"></i>Employees
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+
+															<!-- card -->
+															<div class="card card-bordered shadow-none mb-2" th:each="card : ${cards}">
+																<!-- card body -->
+																<div class="card-body">
+																	<!-- form check -->
+																	<div class="d-flex">
+
+																		<div>
+																			<h5 class="mb-1">Card</h5>
+																			<h5 class="mb-1" th:text="${#strings.concat('**** **** **** ', #strings.substring(card.cardNumber, 12, 16))}"></h5>
+																		</div>
+																		<form action="/director/buy-subscription" method="post">
+																			<input type="hidden" name="subscriptionTitle" th:value="${subscription.title}">
+																			<input type="hidden" name="cardNumber" th:value="${card.cardNumber}">
+																			<button type="submit" style="border: none; background: none; cursor: pointer;"> <p style="margin-left: 500px">Buy</p></button>
+																		</form>
+																	</div>
+																</div>
+															</div>
+															<!-- card -->
+
+
+
+														<!-- Button -->
+
+													</div>
+													<!-- Content three -->
+													<div id="test-l-3" role="tabpanel" class="bs-stepper-pane fade" aria-labelledby="stepperFormtrigger3">
+														<!-- Card -->
+
+
+														</div>
+
+
+														<!-- card -->
+
+														<!-- card -->
+
+														<!-- Button -->
+
+
+
+
+											</div>
+										</div>
+									</div>
+
+
+
+
+
+								</div>
+
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+<!-- flatpickr -->
+<script src="/allCss/dashuipro/assets/libs/flatpickr/dist/flatpickr.min.js"></script>
+
+
+<!-- Libs JS -->
+
+<script src="/allCss/dashuipro/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/feather-icons/dist/feather.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/simplebar/dist/simplebar.min.js"></script>
+
+<!-- Theme JS -->
+<script src="/allCss/dashuipro/assets/js/theme.min.js"></script>
+
+<script src="/allCss/dashuipro/assets/libs/inputmask/dist/jquery.inputmask.min.js"></script>
+<script src="/allCss/dashuipro/assets/js/vendors/inputmask.js"></script>
+<!-- popper js -->
+<script src="/allCss/dashuipro/assets/libs/%40popperjs/core/dist/umd/popper.min.js"></script>
+<!-- tippy js -->
+<script src="/allCss/dashuipro/assets/libs/tippy.js/dist/tippy-bundle.umd.min.js"></script>
+<script src="/allCss/dashuipro/assets/js/vendors/tooltip.js"></script>
+<!-- Scripts -->
+<script src="/allCss/dashuipro/assets/libs/bs-stepper/dist/js/bs-stepper.min.js"></script>
+<script src="/allCss/dashuipro/assets/js/vendors/beStepper.js"></script>
+
+
+
+</body>
+
+</html>

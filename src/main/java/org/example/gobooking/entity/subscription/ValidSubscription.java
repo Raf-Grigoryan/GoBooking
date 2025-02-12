@@ -1,25 +1,25 @@
-package org.example.gobooking.entity.company;
+package org.example.gobooking.entity.subscription;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.example.gobooking.entity.user.User;
+import org.example.gobooking.entity.company.Company;
+
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
-public class Company {
+public class ValidSubscription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
-    private String phone;
+    private Date startedDate;
+    private Date endedDate;
     @ManyToOne
-    private User director;
-    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
-    private Address address;
+    private Company company;
 }

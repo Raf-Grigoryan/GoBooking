@@ -1,5 +1,6 @@
 package org.example.gobooking.service.impl;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.gobooking.customException.AddressOnlyExistException;
 import org.example.gobooking.customException.CompanyAlreadyExistsException;
@@ -32,8 +33,8 @@ public class CompanyServiceImpl implements CompanyService {
         if (companyRepository.findCompanyByDirectorId(saveCompanyRequest.getDirectorId()).isPresent()) {
             throw new CompanyAlreadyExistsException("Director already has an associated company.");
         }
-            if (addressService.getAddressByStreetAndApartmentNumber(saveAddressRequest.getStreet(), saveAddressRequest.getApartmentNumber())) {
-        throw new AddressOnlyExistException("Address only exist");
+        if (addressService.getAddressByStreetAndApartmentNumber(saveAddressRequest.getStreet(), saveAddressRequest.getApartmentNumber())) {
+            throw new AddressOnlyExistException("Address only exist");
         }
         Address address = addressMapper.toEntity(saveAddressRequest);
         addressService.saveAddress(address);
@@ -44,10 +45,16 @@ public class CompanyServiceImpl implements CompanyService {
 
 
     @Override
-    public CompanyDto getCompanyByDirector(User director) {
+    public CompanyDto getCompanyDtoByDirector(User director) {
         return companyMapper.toDto(companyRepository.findCompanyByDirector(director));
     }
 
+    @Override
+    public Company getCompanyByDirector(User director) {
+        return companyRepository.findCompanyByDirector(director);
+    }
+
+    @Transactional
     @Override
     public void deleteCompany(int id) {
         companyRepository.deleteById(id);

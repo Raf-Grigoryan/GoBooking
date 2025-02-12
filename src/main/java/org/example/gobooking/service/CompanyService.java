@@ -11,9 +11,11 @@ public interface CompanyService {
 
     void save (SaveCompanyRequest saveCompanyRequest, SaveAddressRequest saveAddressRequest);
 
-    CompanyDto getCompanyByDirector(User director);
+    CompanyDto getCompanyDtoByDirector(User director);
 
     void deleteCompany(int id);
 
     Company getCompanyById(int id);
+
+    Company getCompanyByDirector(User director);
 }

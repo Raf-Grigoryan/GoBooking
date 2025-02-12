@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Subscription</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <link rel="stylesheet" href="/subscription/subscription.css">
+</head>
+<body>
+
+<script src="/subscription/subscription.js"></script>
+
+<button onclick="window.history.back()" class="back-button">
+    &#8592; Back
+</button>
+<div class="slide-container">
+    <div class="wrapper" th:each="subscription : ${subscriptions}">
+        <div class="clash-card barbarian" style="height: 330px">
+            <div class="clash-card__level clash-card__level--barbarian">Subscription</div>
+            <div class="clash-card__unit-name" th:text="${subscription.title}"></div>
+            <div class="clash-card__unit-description" th:text="${subscription.description}"></div>
+            <div class="clash-card__unit-stats clash-card__unit-stats--barbarian clearfix" style="padding-bottom: 150px">
+                <div class="one-third">
+                    <div class="stat" th:text="${subscription.duration}"></div>
+                    <div class="stat-value">Month</div>
+                </div>
+                <div class="one-third">
+                    <div class="stat" th:text="${#numbers.formatDecimal(subscription.price, 0,0)}"></div>
+                    <div class="stat-value">Price</div>
+                </div>
+                <div class="one-third no-border">
+                    <div class="stat" th:text="${subscription.employeeCount}"></div>
+                    <div class="stat-value">Employees</div>
+                </div>
+                <div class="buy-button-container">
+                    <a class="buy-button" th:href="@{/director/buy-subscription(subscriptionTitle=${subscription.title})}">Buy</a>
+                </div>
+            </div>
+        </div> <!-- end clash-card barbarian-->
+    </div> <!-- end wrapper -->
+</div>
+
+</body>
+
+</html>
+

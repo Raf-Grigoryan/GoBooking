@@ -163,4 +163,13 @@ public class GlobalExceptionHandler {
         modelAndView.setViewName("error/globalErrorPage");
         return modelAndView;
     }
+
+    @ExceptionHandler(InsufficientFundsException.class)
+    public ModelAndView handleCannotVerifyUserException(InsufficientFundsException e) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("errorMessage", e.getMessage());
+        modelAndView.addObject("status", "409 Conflict");
+        modelAndView.setViewName("error/globalErrorPage");
+        return modelAndView;
+    }
 }

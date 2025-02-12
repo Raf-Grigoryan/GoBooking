@@ -14,5 +14,9 @@ public interface CardRepository extends JpaRepository<Card, Integer> {
     int id(int id);
 
     void deleteCardByCardNumber(String cardNumber);
-  int countByUserId(int userId);
+
+    int countByUserId(int userId);
+
+    Card findCardByCardNumber(String cardNumber);
+
 }
