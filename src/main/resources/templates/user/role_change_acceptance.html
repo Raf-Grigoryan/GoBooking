@@ -904,44 +904,44 @@
                                 <ul class="list-group list-group-flush">
                                     <!-- list group item -->
                                     <li class="list-group-item p-3"
-                                        th:each="promotionRequestDto : ${promotionRequestDtoList}">
+                                        th:each="roleChangeRequestDto : ${roleChangeRequestDtoPage}">
                                         <div class="d-flex justify-content-between
                                              align-items-center">
                                             <div class="d-flex align-items-center">
                                                 <!-- img -->
                                                 <div>
-                                                    <img th:src="@{/getImage(imageName=${promotionRequestDto.getRequester().getPictureName()})}"
+                                                    <img th:src="@{/getImage(imageName=${roleChangeRequestDto.getCompany().getCompanyPicture()})}"
                                                          alt="Image" class="avatar-sm rounded-circle">
                                                 </div>
                                                 <!-- content -->
                                                 <div class="ms-3">
                                                     <p class="mb-0
                                                      font-weight-medium"
-                                                       th:text="${promotionRequestDto.getRequester().getEmail()}">
+                                                       th:text="${roleChangeRequestDto.getCompany().getName()}">
                                                         <</p>
                                                 </div>
                                             </div>
                                             <div>
                                                 <!-- dropdown -->
                                                 <div class="dropdown dropstart">
-                                                    <form th:action="@{/admin/agree}" method="post"
+                                                    <form th:action="@{/user/agree}" method="post"
                                                           style="display: inline;">
-                                                        <input type="hidden" name="id"
-                                                               th:value="${promotionRequestDto.getRequester().getId()}">
+                                                        <input type="hidden" name="companyId"
+                                                               th:value="${roleChangeRequestDto.getCompany().getId()}">
                                                         <input type="hidden" name="agree" value="true">
                                                         <button type="submit"
                                                                 style="border: none; background: none; cursor: pointer;">
                                                             <i class='bx bx-check' style="font-size: 20px;color: green"></i>
                                                         </button>
                                                     </form>
-                                                    <form th:action="@{/admin/agree}" method="post"
+                                                    <form th:action="@{/user/agree}" method="post"
                                                           style="display: inline;">
-                                                        <input type="hidden" name="id"
-                                                               th:value="${promotionRequestDto.getRequester().getId()}">
+                                                        <input type="hidden" name="companyId"
+                                                               th:value="${roleChangeRequestDto.getCompany().getId()}">
                                                         <input type="hidden" name="agree" value="false">
                                                         <button type="submit"
                                                                 style="border: none; background: none; cursor: pointer;">
-                                                            <i class='bx bx-x' style="font-size: 20px;color: red"></i>
+                                                            <i class='bx bx-x' style="font-size: 20px; color: red"></i>
                                                         </button>
                                                     </form>
 
@@ -958,7 +958,7 @@
                             <div style="margin: 25px 0 0 50px;">
                                 <div th:if="${pageNumbers != null}" class="pagination"
                                      th:each="pageNumber : ${pageNumbers}">
-                                    <a th:href="@{/admin/promotion-request-dashboard(pageNumer=${pageNumber - 1})}"
+                                    <a th:href="@{/user/role-change-acceptance(pageNumer=${pageNumber - 1})}"
                                        th:text="${pageNumber}"
                                      style="color: #333333"></a>
                                 </div>

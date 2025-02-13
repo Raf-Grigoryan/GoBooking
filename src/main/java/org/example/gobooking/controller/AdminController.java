@@ -28,11 +28,11 @@ public class AdminController {
         return "admin/profile-followers";
     }
 
-    @GetMapping("/promotion-request-dashboard")
-    public String promotionRequestDashboard(ModelMap modelMap,
-                                            @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
-                                            @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
-                                            @RequestParam(value = "keyword", defaultValue = "") String keyword) {
+    @GetMapping("/promotion-request")
+    public String promotionRequest(ModelMap modelMap,
+                                   @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
+                                   @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
+                                   @RequestParam(value = "keyword", defaultValue = "") String keyword) {
         PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
         Page<PromotionRequestDto> promotionRequestDtoList;
         if (keyword != null && !keyword.isEmpty()) {
@@ -48,7 +48,7 @@ public class AdminController {
             modelMap.addAttribute("pageNumbers", pageNumbers);
         }
         modelMap.addAttribute("promotionRequestDtoList", promotionRequestDtoList);
-        return "/admin/promotion_request_dashboard";
+        return "/admin/promotion_request";
     }
 
     @PostMapping("/agree")
