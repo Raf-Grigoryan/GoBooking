@@ -10,10 +10,7 @@ import org.example.gobooking.entity.user.Role;
 import org.example.gobooking.entity.user.User;
 import org.example.gobooking.mapper.RoleChangeRequestMapper;
 import org.example.gobooking.repository.RoleChangeRequestRepository;
-import org.example.gobooking.service.CompanyService;
-import org.example.gobooking.service.MailService;
-import org.example.gobooking.service.RoleChangeRequestService;
-import org.example.gobooking.service.UserService;
+import org.example.gobooking.service.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -31,6 +28,8 @@ public class RoleChangeRequestServiceImpl implements RoleChangeRequestService {
     private final UserService userService;
 
     private final CompanyService companyService;
+
+    private final WorkGraphicService workGraphicService;
 
     @Override
     public void save(RoleChangeRequest request) {
@@ -58,13 +57,13 @@ public class RoleChangeRequestServiceImpl implements RoleChangeRequestService {
     @Override
     public void agree(int companyId, boolean agree, User user) {
         Company company = companyService.getCompanyById(companyId);
-        if(agree){
+        if (agree) {
             mailService.sendMailForRoleChangeRequestAgree(company.getDirector().getEmail(), user.getName());
             user.setCompany(company);
             user.setRole(Role.WORKER);
             userService.saveUser(user);
-        }
-        else {
+            workGraphicService.addDefaultWorkGraphic(user);
+        } else {
             mailService.sendMailForRoleChangeRequestDisagree(company.getDirector().getEmail(), user.getName());
         }
         roleChangeRequestRepository.deleteByCompany(company);

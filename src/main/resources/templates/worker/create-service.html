@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Codescandy">
+
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="/allCss/gtag/js?id=G-M8S4MT3EYG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-M8S4MT3EYG');
+    </script>
+
+    <!-- Favicon icon-->
+    <link rel="shortcut icon" type="image/x-icon" href="/allCss/dashuipro/assets/images/favicon/favicon.ico">
+
+    <!-- Color modes -->
+    <script src="/allCss/dashuipro/assets/js/vendors/color-modes.js"></script>
+
+    <!-- Libs CSS -->
+    <link href="/allCss/dashuipro/assets/libs/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="/allCss/dashuipro/assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="/allCss/dashuipro/assets/libs/simplebar/dist/simplebar.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="/allCss/dashuipro/assets/css/theme.min.css">
+
+    <title>Create Post | Dash UI - Bootstrap 5 Admin Dashboard Template</title>
+    <!-- dropzone -->
+    <link href="/allCss/dashuipro/assets/libs/dropzone/dist/dropzone.css" rel="stylesheet">
+</head>
+
+<body>
+<main id="main-wrapper" class="main-wrapper">
+    <th:block th:include="fragment/userMenu::mainPanel"></th:block>
+    <div id="app-content">
+        <div class="app-content-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-12">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-9 col-lg-8 col-md-12 col-12">
+                        <!-- Card -->
+                        <div class="card border-0 mb-4">
+                            <!-- Card header -->
+                            <div class="card-header">
+                                <h4 class="mb-0">Create Post</h4>
+                            </div>
+                            <!-- Card body -->
+                            <div class="card-body">
+                                <div class="mt-4">
+                                    <form action="/worker/create-service" method="post" enctype="multipart/form-data">
+                                        <div class="file-upload btn btn-outline-white ms-4" style="margin-top: -20px">
+                                            <input type="file" class="file-input opacity-0" name="image">Upload
+                                            Photo
+                                        </div>
+                                        <div class="mb-3 col-md-9">
+                                            <label for="postTitle" class="form-label">Title</label>
+                                            <input type="text" id="postTitle" class="form-control "
+                                                   placeholder="Title" name="title">
+                                        </div>
+                                        <div class="mb-3 col-md-9">
+                                            <label for="description" class="form-label">Description</label>
+                                            <textarea id="description" class="form-control"
+                                                      placeholder="Description" rows="5" name="description"></textarea>
+                                        </div>
+                                        <div class="mb-3 col-md-9">
+                                            <label for="price" class="form-label">Price</label>
+                                            <input type="number" id="price" class="form-control" placeholder="Price"
+                                                   min="0" step="0.01" name="price">
+                                        </div>
+                                        <div class="mb-3 col-md-9">
+                                            <label for="duration" class="form-label">Duration in minutes</label>
+                                            <div class="input-group">
+                                                <button type="button" class="btn btn-outline-secondary" onclick="changeDuration(-30)">-</button>
+                                                <input type="text" id="duration" class="form-control text-center" value="30" name="duration" readonly>
+                                                <button type="button" class="btn btn-outline-secondary" onclick="changeDuration(30)">+</button>
+                                            </div>
+                                        </div>
+                                        <div class="offset-md-4 col-md-8 mt-4">
+                                            <button type="submit" class="btn btn-primary">Create</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<script src="/allCss/dashuipro/assets/libs/dropzone/dist/min/dropzone.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/flatpickr/dist/flatpickr.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/quill/dist/quill.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/feather-icons/dist/feather.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/simplebar/dist/simplebar.min.js"></script>
+<script src="/allCss/dashuipro/assets/js/theme.min.js"></script>
+<script>
+    function changeDuration(amount) {
+        let input = document.getElementById("duration");
+        let currentValue = parseInt(input.value, 10);
+
+        let newValue = currentValue + amount;
+        if (newValue >= 30 && newValue <= 180) {
+            input.value = newValue;
+        }
+    }
+</script>
+
+</body>
+
+</html>

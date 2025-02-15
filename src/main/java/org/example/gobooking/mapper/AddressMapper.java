@@ -14,8 +14,11 @@ import org.mapstruct.Mapping;
 )
 public interface AddressMapper {
 
-    @Mapping(source = "countryId",target = "country")
+    @Mapping(source = "countryId", target = "country")
     Address toEntity(SaveAddressRequest request);
+
     AddressDto toDto(Address address);
+
+
 
 }

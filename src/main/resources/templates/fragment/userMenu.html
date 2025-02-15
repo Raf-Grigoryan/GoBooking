@@ -2,9 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <link rel="shortcut icon" type="image/x-icon" href="/allCss/dashuipro/assets/images/favicon/favicon.ico">
 
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 <body>
-<div class="navbar-vertical navbar nav-dashboard" th:fragment="userMenu">
+<div class="navbar-vertical navbar nav-dashboard" th:fragment="mainPanel">
     <div class="header">
         <!-- navbar -->
         <div class="navbar-custom navbar navbar-expand-lg">
@@ -21,25 +22,18 @@
                 </a>
 
                 <div class="d-none d-md-none d-lg-block">
-                    <!-- Form -->
-                    <form action="#">
+                    <form action="/booking/search-company">
                         <div class="input-group">
-                            <input class="form-control rounded-3 bg-transparent ps-9" type="search" value=""
-                                   id="searchInput" placeholder="Search">
+                            <input class="form-control rounded-3 bg-transparent ps-9" type="search"
+                                   id="searchInput" placeholder="Search Company" name="keyword">
                             <span class="">
-							<button class="btn position-absolute start-0" type="button">
-								<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewbox="0 0 24 24"
-                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                     stroke-linejoin="round" class="feather feather-search text-dark">
-									<circle cx="11" cy="11" r="8"></circle>
-									<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-								</svg>
-							</button>
 						</span>
+                            <button class="btn position-absolute start-0" type="submit" style="margin-left: 200px">
+                                <i class='bx bx-search-alt-2'></i>
+                            </button>
                         </div>
                     </form>
                 </div>
-                <!--Navbar nav -->
                 <ul class="navbar-nav navbar-right-wrap ms-lg-auto d-flex nav-top-wrap align-items-center ms-4 ms-lg-0">
 
                     <!-- List -->
@@ -320,62 +314,46 @@
                     </div>
                 </li>
                 <!-- Nav item -->
-                <li class="nav-item">
-                    <a class="nav-link has-arrow  collapsed " href="#!" data-bs-toggle="collapse"
-                       data-bs-target="#navinvoice" aria-expanded="false" aria-controls="navinvoice">
-                        <i data-feather="clipboard" class="nav-icon me-2 icon-xxs"></i>
-                        Invoice
-                    </a>
 
-                    <div id="navinvoice" class="collapse " data-bs-parent="#sideNavbar">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link has-arrow " href="/allCss/dashuipro/pages/invoice-list.html">List</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link has-arrow "
-                                   href="/allCss/dashuipro/pages/invoice-detail.html">Detail</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link has-arrow " href="/allCss/dashuipro/pages/invoice-generator.html">Invoice
-                                    Generator</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="#!" data-bs-toggle="collapse" data-bs-target="#navprofilePages"
-                       aria-expanded="false" aria-controls="navprofilePages">
-                        <i data-feather="user" class="nav-icon me-2 icon-xxs"></i>
-                        Profile
-                    </a>
-                    <div id="navprofilePages" class="collapse  show " data-bs-parent="#sideNavbar">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link " href="/allCss/dashuipro/pages/profile-overview.html">Overview</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="/allCss/dashuipro/pages/profile-project.html">Project</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link  active " href="userPanel.html">Files</a>
-                            </li>
+                <div th:if="${currentUser.getRole().name == 'WORKER'}">
+                    <li class="nav-item">
+                        <a class="nav-link " href="/loginSuccess" data-bs-toggle="collapse"
+                           data-bs-target="#navprofilePages">
+                            <i data-feather="user"></i>
+                            Worker Panel <i class='bx bx-chevron-down'></i>
+                        </a>
+                        <div id="navprofilePages" class="collapse  show " data-bs-parent="#sideNavbar">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link "
+                                       href="/worker/my-work-graphic">My Work Graphic</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="/worker/my-services">My Services</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link  active " href="userPanel.html">Files</a>
+                                </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link " href="/allCss/dashuipro/pages/profile-team.html">Team</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="/allCss/dashuipro/pages/profile-followers.html">Followers</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="/allCss/dashuipro/pages/profile-activity.html">Activity</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="/allCss/dashuipro/pages/profile-settings.html">Settings</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="/allCss/dashuipro/pages/profile-team.html">Team</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link "
+                                       href="/allCss/dashuipro/pages/profile-followers.html">Followers</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link "
+                                       href="/allCss/dashuipro/pages/profile-activity.html">Activity</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link "
+                                       href="/templates/worker/my-work-graphic.html">Settings</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </div>
                 <!-- Nav item -->
                 <li class="nav-item">
                     <a class="nav-link has-arrow  collapsed " href="#!" data-bs-toggle="collapse"
@@ -403,19 +381,19 @@
 
                 <!-- Nav item -->
                 <li class="nav-item">
-                    <div class="navbar-heading">Layouts & Pages</div>
+                    <div class="navbar-heading">Companies</div>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link  collapsed " href="#!" data-bs-toggle="collapse" data-bs-target="#navlayoutPage"
                        aria-expanded="false" aria-controls="navlayoutPage">
                         <i class="nav-icon me-2 icon-xxs" data-feather="file"></i>
-                        Pages
+                        Booking
                     </a>
                     <div id="navlayoutPage" class="collapse " data-bs-parent="#sideNavbar">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link " href="/allCss/dashuipro/pages/starter.html">Starter</a>
+                                <a class="nav-link " href="/booking/search-company">Search Companies</a>
                             </li>
 
                             <li class="nav-item">
@@ -430,46 +408,8 @@
                         </ul>
                     </div>
                 </li>
-
-                <!-- Nav item -->
                 <li class="nav-item">
-                    <a class="nav-link has-arrow  collapsed " href="#!" data-bs-toggle="collapse"
-                       data-bs-target="#navAuthentication" aria-expanded="false" aria-controls="navAuthentication">
-                        <i data-feather="lock" class="nav-icon me-2 icon-xxs"></i>
-                        Authentication
-                    </a>
-                    <div id="navAuthentication" class="collapse " data-bs-parent="#sideNavbar">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link " href="../auth/login.html">Sign Up</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="/allCss/dashuipro/pages/forget-password.html">Forget
-                                    Password</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link has-arrow  collapsed " href="#!" data-bs-toggle="collapse"
-                       data-bs-target="#navLayouts" aria-expanded="false" aria-controls="navLayouts">
-                        <i data-feather="sidebar" class="nav-icon me-2 icon-xxs"></i>
-                        Layouts
-                    </a>
-                    <div id="navLayouts" class="collapse " data-bs-parent="#sideNavbar">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link " href="/allCss/dashuipro/index.html">Default</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link " href="/allCss/dashuipro/horizontal/index.html">Horizontal</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
-                <!-- Nav item -->
+                    <!-- Nav item -->
                 <li class="nav-item">
                     <div class="navbar-heading">UI Components</div>
                 </li>
@@ -552,18 +492,8 @@
                     </a>
                 </li>
             </ul>
-            <div class="card bg-light shadow-none text-center mx-4 my-8">
-                <div class="card-body py-6">
-                    <img src="/allCss/dashuipro/assets/images/background/giftbox.png"
-                         alt="dash ui - admin dashboard template">
-                    <div class="mt-4">
-                        <h5>Unlimited Access</h5>
-                        <p class="fs-6 mb-4">Upgrade your plan from a Free trial, to select Business Plan. Start Now</p>
-                        <a href="#" class="btn btn-secondary btn-sm">Upgrade Now</a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
+
 </body>
 </html>
