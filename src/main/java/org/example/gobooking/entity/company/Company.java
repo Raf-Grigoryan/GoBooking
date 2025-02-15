@@ -23,4 +23,5 @@ public class Company {
     private User director;
     @ManyToOne
     private Address address;
+    private boolean valid;
 }

@@ -36,6 +36,9 @@ public class MainController {
             case DIRECTOR -> {
                 return "redirect:/director";
             }
+            case WORKER -> {
+                return "redirect:/worker";
+            }
         }
         return "redirect:/";
     }

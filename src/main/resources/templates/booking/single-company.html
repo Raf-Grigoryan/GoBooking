@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Codescandy">
+
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="../../gtag/js?id=G-M8S4MT3EYG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-M8S4MT3EYG');
+    </script>
+
+    <!-- Favicon icon-->
+    <link rel="shortcut icon" type="image/x-icon" href="/allCss/dashuipro/assets/images/favicon/favicon.ico">
+
+    <!-- Color modes -->
+    <script src="/allCss/dashuipro/assets/js/vendors/color-modes.js"></script>
+
+    <!-- Libs CSS -->
+    <link href="/allCss/dashuipro/assets/libs/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="/allCss/dashuipro/assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="/allCss/dashuipro/assets/libs/simplebar/dist/simplebar.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="/allCss/dashuipro/assets/css/theme.min.css">
+
+    <title>Company</title>
+</head>
+
+<body>
+<main id="main-wrapper" class="main-wrapper">
+    <th:block th:include="fragment/userMenu::mainPanel"></th:block>
+
+    <div id="app-content">
+        <!-- Container fluid -->
+        <div class="app-content-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-12">
+                        <div class="mb-5">
+                            <h3 class="mb-0 " th:text="${company.name + ' workers'}"></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xxl-3 col-lg-6 mb-4" th:each="worker : ${workers}">
+                        <div class="card">
+                            <div class="card-body text-center  ">
+                                <div class="my-4">
+                                    <div class="mb-5">
+                                        <img th:src="@{/getImage(imageName=${worker.getPictureName()})}"
+                                             alt="Service Image"
+                                             style="width: 150px; height: 150px; object-fit: cover; border-radius: 9px;">
+                                    </div>
+                                    <h4 class="mb-0" th:text="${worker.name + ' ' + worker.surname}"></h4>
+                                    <span th:text="${worker.phone}"></span>
+                                </div>
+
+                                <div id="storeOne" class="px-8"></div>
+                                <div class="mt-6 row ">
+                                    <div class="card-footer text-end">
+                                        <a th:href="@{/booking/worker-services(workerId=${worker.id})}"
+                                           class="btn btn-primary-soft">
+                                            Worker Services<i class="ms-1 icon-xs" data-feather="arrow-right"></i>
+                                        </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="/allCss/dashuipro/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/feather-icons/dist/feather.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/simplebar/dist/simplebar.min.js"></script>
+<script src="/allCss/dashuipro/assets/js/theme.min.js"></script>
+</body>
+
+</html>
