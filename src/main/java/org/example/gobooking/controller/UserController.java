@@ -69,8 +69,8 @@ public class UserController {
         return "promotion_requests/promotion_requests";
     }
 
-    @GetMapping("/role-change-acceptance-dashboard")
-    public String roleChangeAcceptanceDashboard(@AuthenticationPrincipal CurrentUser currentUser, ModelMap modelMap,
+    @GetMapping("/role-change-acceptance")
+    public String roleChangeAcceptance(@AuthenticationPrincipal CurrentUser currentUser, ModelMap modelMap,
                                                 @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
                                                 @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
         PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
@@ -84,7 +84,7 @@ public class UserController {
         }
         modelMap.addAttribute("roleChangeRequestDtoPage", roleChangeRequestDtoPage);
 
-        return "/user/role_change_acceptance_dashboard";
+        return "/user/role_change_acceptance";
     }
 
 

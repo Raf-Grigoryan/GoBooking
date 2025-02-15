@@ -872,7 +872,7 @@
                     <div class="row">
                         <div class="offset-lg-1 col-lg-10 col-md-12 col-12">
                             <!-- row -->
-                            <form action="/director/role-change-request-dashboard" method="get">
+                            <form action="/admin/promotion-request-dashboard" method="get">
                                 <div class="row align-items-center mb-6">
                                     <div class="col-lg-6 col-md-12 col-12">
                                         <!-- form -->
@@ -880,100 +880,108 @@
                                     </div>
 
 
-                                    <div class="col-lg-6 col-md-12 col-12 d-flex justify-content-end"
-                                         style="width: 30px">
-                                        <!-- form -->
-                                        <div>
-                                            <button type="submit"
-                                                    style="border: none; background: none; cursor: pointer;">
-                                                <i class='bx bx-search-alt-2'></i>
-                                            </button>
-                                        </div>
-
-                                    </div>
+                            <div class="col-lg-6 col-md-12 col-12 d-flex justify-content-end"
+                                 style="width: 30px">
+                                <!-- form -->
+                                <div>
+                                    <button type="submit"
+                                            style="border: none; background: none; cursor: pointer;">
+                                        <i class='bx bx-search-alt-2'></i>
+                                    </button>
                                 </div>
+
+                            </div>
+                        </div>
                             </form>
 
-                            <!-- hr -->
+                        <!-- hr -->
 
-                            <div class="mb-8">
+                        <div class="mb-8">
 
-                                <!-- im avelcracs-->
-                                <main class="card">
-                                    <!-- list group -->
-                                    <ul class="list-group list-group-flush">
-                                        <!-- list group item -->
-                                        <li class="list-group-item p-3"
-                                            th:each="userDto : ${userDtoList}">
-                                            <div class="d-flex justify-content-between
+                            <!-- im avelcracs-->
+                            <main class="card">
+                                <!-- list group -->
+                                <ul class="list-group list-group-flush">
+                                    <!-- list group item -->
+                                    <li class="list-group-item p-3"
+                                        th:each="roleChangeRequestDto : ${roleChangeRequestDtoPage}">
+                                        <div class="d-flex justify-content-between
                                              align-items-center">
-                                                <div class="d-flex align-items-center">
-                                                    <!-- img -->
-                                                    <div>
-                                                        <img th:src="@{/getImage(imageName=${userDto.getPictureName()})}"
-                                                             alt="Image" class="avatar-sm rounded-circle">
-                                                    </div>
-                                                    <!-- content -->
-                                                    <div class="ms-3">
-                                                        <p class="mb-0
-                                                     font-weight-medium"
-                                                           th:text="${userDto.getEmail()}">
-                                                            <</p>
-                                                    </div>
-                                                </div>
+                                            <div class="d-flex align-items-center">
+                                                <!-- img -->
                                                 <div>
-                                                    <!-- dropdown -->
-                                                    <div class="dropdown dropstart">
-                                                        <form th:action="@{/director/send-role-change-request}" method="post"
-                                                              style="display: inline;">
-                                                            <input type="hidden" name="companyId"
-                                                                   th:value="${companyId}">
-                                                            <input type="hidden" name="employeeId"
-                                                                   th:value="${userDto.getId()}">
-                                                            <input type="hidden" name="agree" value="true">
-                                                            <button type="submit"
-                                                                    style="border: none; background: none; cursor: pointer;">
-                                                                <i class='bx bx-send' style="font-size: 20px;"></i>
-                                                            </button>
-                                                        </form>
-
-                                                    </div>
+                                                    <img th:src="@{/getImage(imageName=${roleChangeRequestDto.getCompany().getCompanyPicture()})}"
+                                                         alt="Image" class="avatar-sm rounded-circle">
+                                                </div>
+                                                <!-- content -->
+                                                <div class="ms-3">
+                                                    <p class="mb-0
+                                                     font-weight-medium"
+                                                       th:text="${roleChangeRequestDto.getCompany().getName()}">
+                                                        <</p>
                                                 </div>
                                             </div>
+                                            <div>
+                                                <!-- dropdown -->
+                                                <div class="dropdown dropstart">
+                                                    <form th:action="@{/user/agree}" method="post"
+                                                          style="display: inline;">
+                                                        <input type="hidden" name="companyId"
+                                                               th:value="${roleChangeRequestDto.getCompany().getId()}">
+                                                        <input type="hidden" name="agree" value="true">
+                                                        <button type="submit"
+                                                                style="border: none; background: none; cursor: pointer;">
+                                                            <i class='bx bx-check' style="font-size: 20px;color: green"></i>
+                                                        </button>
+                                                    </form>
+                                                    <form th:action="@{/user/agree}" method="post"
+                                                          style="display: inline;">
+                                                        <input type="hidden" name="companyId"
+                                                               th:value="${roleChangeRequestDto.getCompany().getId()}">
+                                                        <input type="hidden" name="agree" value="false">
+                                                        <button type="submit"
+                                                                style="border: none; background: none; cursor: pointer;">
+                                                            <i class='bx bx-x' style="font-size: 20px; color: red"></i>
+                                                        </button>
+                                                    </form>
 
-                                        </li>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </li>
 
 
-                                        <!--im avelcras \-->
+                                    <!--im avelcras \-->
 
-                                </main>
-                                <div style="margin: 25px 0 0 50px;">
-                                    <div th:if="${pageNumbers != null}" class="pagination"
-                                         th:each="pageNumber : ${pageNumbers}">
-                                        <a th:href="@{/director/send-role-change-request(pageNumer=${pageNumber - 1})}"
-                                           th:text="${pageNumber}"
-                                           style="color: #333333"></a>
-                                    </div>
+                            </main>
+                            <div style="margin: 25px 0 0 50px;">
+                                <div th:if="${pageNumbers != null}" class="pagination"
+                                     th:each="pageNumber : ${pageNumbers}">
+                                    <a th:href="@{/user/role-change-acceptance(pageNumer=${pageNumber - 1})}"
+                                       th:text="${pageNumber}"
+                                     style="color: #333333"></a>
                                 </div>
-
-
-                                <!-- Scripts -->
-
-                                <!-- Libs JS -->
-
-                                <script src="/allCss/dashuipro/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-                                <script src="/allCss/dashuipro/assets/libs/feather-icons/dist/feather.min.js"></script>
-                                <script src="/allCss/dashuipro/assets/libs/simplebar/dist/simplebar.min.js"></script>
-
-                                <!-- Theme JS -->
-                                <script src="/allCss/dashuipro/assets/js/theme.min.js"></script>
-
-                                <!-- popper js -->
-                                <script src="/allCss/dashuipro/assets/libs/%40popperjs/core/dist/umd/popper.min.js"></script>
-                                <!-- tippy js -->
-                                <script src="/allCss/dashuipro/assets/libs/tippy.js/dist/tippy-bundle.umd.min.js"></script>
-                                <script src="/allCss/dashuipro/assets/js/vendors/tooltip.js"></script>
                             </div>
+
+
+                            <!-- Scripts -->
+
+                            <!-- Libs JS -->
+
+                            <script src="/allCss/dashuipro/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+                            <script src="/allCss/dashuipro/assets/libs/feather-icons/dist/feather.min.js"></script>
+                            <script src="/allCss/dashuipro/assets/libs/simplebar/dist/simplebar.min.js"></script>
+
+                            <!-- Theme JS -->
+                            <script src="/allCss/dashuipro/assets/js/theme.min.js"></script>
+
+                            <!-- popper js -->
+                            <script src="/allCss/dashuipro/assets/libs/%40popperjs/core/dist/umd/popper.min.js"></script>
+                            <!-- tippy js -->
+                            <script src="/allCss/dashuipro/assets/libs/tippy.js/dist/tippy-bundle.umd.min.js"></script>
+                            <script src="/allCss/dashuipro/assets/js/vendors/tooltip.js"></script>
+                        </div>
 </body>
 
 </html>
