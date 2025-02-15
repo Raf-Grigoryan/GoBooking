@@ -19,9 +19,6 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public boolean getAddressByStreetAndApartmentNumber(String street, String apartmentNumber) {
-        return addressRepository.existsByStreetAndApartmentNumber(street,apartmentNumber);
+        return addressRepository.existsByStreetAndApartmentNumber(street, apartmentNumber);
     }
-
-
-
 }

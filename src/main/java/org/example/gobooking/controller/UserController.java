@@ -2,7 +2,6 @@ package org.example.gobooking.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.example.gobooking.dto.request.PromotionRequestDto;
 import org.example.gobooking.dto.request.RoleChangeRequestDto;
 import org.example.gobooking.dto.request.SavePromotionRequest;
 import org.example.gobooking.dto.user.SaveUserRequest;

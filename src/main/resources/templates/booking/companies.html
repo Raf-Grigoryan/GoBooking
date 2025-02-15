@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Codescandy">
+
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-M8S4MT3EYG');
+    </script>
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="shortcut icon" type="image/x-icon" href="/allCss/dashuipro/assets/images/favicon/favicon.ico">
+
+    <!-- Color modes -->
+    <script src="/allCss/dashuipro/assets/js/vendors/color-modes.js"></script>
+
+    <!-- Libs CSS -->
+    <link href="/allCss/dashuipro/assets/libs/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="/allCss/dashuipro/assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="/allCss/dashuipro/assets/libs/simplebar/dist/simplebar.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="/allCss/dashuipro/assets/css/theme.min.css">
+
+    <title>Companies</title>
+</head>
+
+<body>
+<main id="main-wrapper" class="main-wrapper">
+    <th:block th:include="fragment/userMenu::mainPanel"></th:block>
+    <div id="app-content">
+        <!-- Container fluid -->
+        <div class="app-content-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-12">
+                        <div class="mb-5">
+                            <h3 class="mb-0 ">Companies</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xxl-3 col-lg-6 mb-4" th:each="company : ${companyResponses}">
+                        <div class="card">
+                            <div class="card-body text-center  ">
+                                <div class="my-4">
+                                    <div class="mb-5">
+                                        <img th:src="@{/getImage(imageName=${company.getCompanyPicture()})}"
+                                             alt="Service Image"
+                                             style="width: 150px; height: 150px; object-fit: cover; border-radius: 9px;">
+
+                                    </div>
+                                    <h3 class="mb-0" th:text="${company.getName()}"></h3>
+                                    <h4 th:text="${company.phone}"></h4>
+                                </div>
+                                <div id="storeOne" class="px-8"></div>
+                                <span>Country</span> <span style="color: black !important;"
+                                                           th:text="${company.getAddress().getCountry().name}"></span><br>
+                                <span>City</span>
+                                <span th:text="${company.getAddress().getCity()}"
+                                      style="color: black !important;"></span><br>
+                                <span>Region</span> <span style="color: black !important;"
+                                                          th:text="${company.getAddress().getRegion()}"></span><br>
+                                <span>Street</span> <span style="color: black !important;"
+                                                          th:text="${company.getAddress().getStreet() + ' ' + company.getAddress().getApartmentNumber()}"></span>
+                                <div class="card-footer text-end">
+                                    <a th:href="@{/booking/single-company(id=${company.id})}"
+                                       class="btn btn-primary-soft">
+                                        View Workers<i class="ms-1 icon-xs" data-feather="arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li th:each="pageNum : ${pageNumbers}" class="page-item">
+                                <a class="page-link"
+                                   th:href="@{/booking/search-company(keyword=${keyword}, pageNumber=${pageNum - 1}, pageSize=${companyResponses.size})}"
+                                   th:text="${pageNum}"></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<script src="/allCss/dashuipro/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/feather-icons/dist/feather.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/simplebar/dist/simplebar.min.js"></script>
+<script src="/allCss/dashuipro/assets/js/theme.min.js"></script>
+
+
+</body>
+
+</html>
