@@ -1,6 +1,7 @@
 package org.example.gobooking.service.impl;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.gobooking.customException.AddressOnlyExistException;
 import org.example.gobooking.customException.CompanyAlreadyExistsException;
@@ -51,10 +52,16 @@ public class CompanyServiceImpl implements CompanyService {
 
 
     @Override
-    public CompanyDto getCompanyByDirector(User director) {
+    public CompanyDto getCompanyDtoByDirector(User director) {
         return companyMapper.toDto(companyRepository.findCompanyByDirector(director));
     }
 
+    @Override
+    public Company getCompanyByDirector(User director) {
+        return companyRepository.findCompanyByDirector(director);
+    }
+
+    @Transactional
     @Override
     public void deleteCompany(int id) {
         companyRepository.deleteById(id);

@@ -18,10 +18,9 @@ public class Company {
     private int id;
     private String name;
     private String phone;
-    private String companyPicture;
     @ManyToOne
     private User director;
-    @ManyToOne
+    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Address address;
     private boolean valid;
 }

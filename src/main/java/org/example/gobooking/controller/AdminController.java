@@ -60,7 +60,7 @@ public class AdminController {
 
     @GetMapping("/create-subscription")
     public String createSubscriptionPage() {
-        return "/admin/createSubscription";
+        return "/subscription/create-subscription";
     }
 
     @PostMapping("/create-subscription")

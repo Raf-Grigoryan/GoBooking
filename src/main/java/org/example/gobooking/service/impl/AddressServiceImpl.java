@@ -21,4 +21,5 @@ public class AddressServiceImpl implements AddressService {
     public boolean getAddressByStreetAndApartmentNumber(String street, String apartmentNumber) {
         return addressRepository.existsByStreetAndApartmentNumber(street, apartmentNumber);
     }
+
 }

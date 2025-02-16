@@ -51,4 +51,9 @@ public class CardServiceImpl implements CardService {
         cardRepository.deleteCardByCardNumber(cardNumber);
         mailService.sendMailForDeleteCard(email, cardNumber);
     }
+
+    @Override
+    public Card getCardByCardNumber(String cardNumber) {
+        return cardRepository.findCardByCardNumber(cardNumber);
+    }
 }

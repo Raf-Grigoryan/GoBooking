@@ -88,9 +88,6 @@
             <column name="phone" type="VARCHAR(255)">
                 <constraints nullable="true"/>
             </column>
-            <column name="company_picture" type="VARCHAR(255)">
-                <constraints nullable="true"/>
-            </column>
             <column name="director_id" type="INT">
                 <constraints nullable="false"/>
             </column>
@@ -184,9 +181,6 @@
             <column name="company_id" type="INT">
                 <constraints nullable="false"/>
             </column>
-            <column name="subscription_id" type="INT">
-                <constraints nullable="false"/>
-            </column>
         </createTable>
     </changeSet>
 
@@ -200,18 +194,6 @@
                 onDelete="CASCADE"
                 onUpdate="CASCADE"/>
     </changeSet>
-
-    <changeSet id="11" author="Raf">
-        <addForeignKeyConstraint
-                baseTableName="valid_subscription"
-                baseColumnNames="subscription_id"
-                constraintName="fk_sub_subscription_id"
-                referencedTableName="subscription"
-                referencedColumnNames="id"
-                onDelete="CASCADE"
-                onUpdate="CASCADE"/>
-    </changeSet>
-
 
     <changeSet id="20" author="Raf">
         <createTable tableName="work_graphic">

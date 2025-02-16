@@ -9,6 +9,4 @@ public interface AddressService {
 
     boolean getAddressByStreetAndApartmentNumber(String street, String apartmentNumber);
 
-
-
 }

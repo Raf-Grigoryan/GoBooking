@@ -26,6 +26,7 @@ public class SecurityConfig {
                         .requestMatchers("/", "/user/register", "/user/login", "/global/all/**", "/auth/verify", "/allCss/**").permitAll()
                         .requestMatchers("/admin/**").hasAuthority("ADMIN")
                         .requestMatchers("/user/**").hasAuthority("USER")
+                        .requestMatchers("/director/**").hasAuthority("DIRECTOR")
                         .requestMatchers("/worker/**").hasAuthority("WORKER")
                         .anyRequest().authenticated()
                 )
