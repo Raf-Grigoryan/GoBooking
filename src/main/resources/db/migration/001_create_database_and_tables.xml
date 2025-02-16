@@ -200,7 +200,7 @@
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="star_work_date" type="TIME">
+            <column name="start_work_date" type="TIME">  <!-- Исправлено -->
                 <constraints nullable="true"/>
             </column>
             <column name="ended_work_date" type="TIME">
@@ -231,7 +231,7 @@
 
 
     <changeSet id="15" author="Raf">
-        <createTable tableName="services">
+        <createTable tableName="service">
             <column name="id" type="INT" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
@@ -241,7 +241,7 @@
             <column name="description" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="duration" type="TIME">
+            <column name="duration" type="INT">
                 <constraints nullable="false"/>
             </column>
             <column name="worker_id" type="INT">
@@ -252,9 +252,9 @@
 
     <changeSet id="16" author="Raf">
         <addForeignKeyConstraint
-                baseTableName="services"
+                baseTableName="service"
                 baseColumnNames="worker_id"
-                constraintName="fk_services_worker_id"
+                constraintName="fk_service_worker_id"
                 referencedTableName="user"
                 referencedColumnNames="id"
                 onDelete="CASCADE"
@@ -292,7 +292,7 @@
                 baseTableName="booking"
                 baseColumnNames="service_id"
                 constraintName="fk_booking_service_id"
-                referencedTableName="services"
+                referencedTableName="service"
                 referencedColumnNames="id"
                 onDelete="CASCADE"
                 onUpdate="CASCADE"/>

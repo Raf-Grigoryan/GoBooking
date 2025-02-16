@@ -1,6 +1,7 @@
 package org.example.gobooking.handler;
 
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.example.gobooking.customException.*;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -46,8 +47,7 @@ public class GlobalExceptionHandler {
 
         if (requestURI.contains("/user/register")) {
             modelAndView.setViewName("user/register");
-        }
-         else if (requestURI.contains("/user/create-card")) {
+        } else if (requestURI.contains("/user/create-card")) {
             modelAndView.setViewName("error/globalErrorPage");
             modelAndView.addObject("status", "400 bad request");
         }
@@ -163,6 +163,16 @@ public class GlobalExceptionHandler {
         modelAndView.setViewName("error/globalErrorPage");
         return modelAndView;
     }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ModelAndView message(EntityNotFoundException e) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("errorMessage", e.getMessage());
+        modelAndView.addObject("status", "404 bad request");
+        modelAndView.setViewName("error/globalErrorPage");
+        return modelAndView;
+    }
+
 
     @ExceptionHandler(InsufficientFundsException.class)
     public ModelAndView handleCannotVerifyUserException(InsufficientFundsException e) {

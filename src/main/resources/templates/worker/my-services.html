@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Codescandy">
+
+    <script async="" src="/allCss/gtag/js?id=G-M8S4MT3EYG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-M8S4MT3EYG');
+    </script>
+
+    <link rel="shortcut icon" type="image/x-icon" href="/allCss/dashuipro/assets/images/favicon/favicon.ico">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
+    <!-- Color modes -->
+    <script src="/allCss/dashuipro/assets/js/vendors/color-modes.js"></script>
+
+    <!-- Libs CSS -->
+    <link href="/allCss/dashuipro/assets/libs/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="/allCss/dashuipro/assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="/allCss/dashuipro/assets/libs/simplebar/dist/simplebar.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="/allCss/dashuipro/assets/css/theme.min.css">
+
+    <title>My Services</title>
+</head>
+
+<body>
+<main id="main-wrapper" class="main-wrapper">
+    <th:block th:include="fragment/userMenu::mainPanel"></th:block>
+
+    <div id="app-content">
+        <div class="app-content-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-12">
+                        <div class="mb-5">
+                            <h3 class="mb-0 " style="margin-left: 10px">My Services</h3>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="row justify-content-between mb-4" style="width:150px;margin-left: 10px">
+                        <a href="/worker/create-service" class="btn btn-primary">
+                            <button class="btn btn-primary edit-btn">Create Service</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xxl-3 col-lg-6 mb-4" th:each="service : ${services}">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="my-4">
+                                    <div class="mb-5">
+                                        <img th:if="${service.getPictureName() != null and not #strings.isEmpty(service.getPictureName())}"
+                                             th:src="@{/getImage(imageName=${service.getPictureName()})}"
+                                             alt="Service Image"
+                                             style="width: 250px; height: 250px; object-fit: cover; border-radius: 9px;">
+                                    </div>
+                                    <h4 class="mb-0" th:text="${service.title}"></h4>
+                                    <span th:text="${service.description}"></span>
+                                </div>
+                                <div id="storeOne" class="px-8"></div>
+
+                                <div class="mt-6 row">
+                                    <div class="col">
+                                        <div>
+                                            <h3 class="mb-0" th:text="${service.duration + ' min'}"></h3>
+                                            <span>Duration</span>
+                                        </div>
+                                    </div>
+                                    <div class="vr g-0"></div>
+                                    <div class="col">
+                                        <div>
+                                            <h3 class="mb-0"
+                                                th:text="${#numbers.formatDecimal(service.price, 1, 2) + ' $'}"></h3>
+                                            <span>Price</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-footer text-end">
+                                <a th:href="@{/worker/delete-service(serviceId=${service.id})}"
+                                   class="btn btn-primary-soft"
+                                   style="margin-right: 50px">
+                                    <i class='bx bx-trash'></i>
+                                </a>
+                                <a th:href="@{/worker/edit-service(serviceId=${service.id})}"
+                                   class="btn btn-primary-soft">
+                                    Edit<i class="ms-1 icon-xs" data-feather="arrow-right"></i>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+<script src="/allCss/dashuipro/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/feather-icons/dist/feather.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/simplebar/dist/simplebar.min.js"></script>
+<script src="/allCss/dashuipro/assets/js/theme.min.js"></script>
+</body>
+
+</html>

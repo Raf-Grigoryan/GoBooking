@@ -77,6 +77,13 @@ public class DirectorController {
                                             @RequestParam(value = "keyword", defaultValue = "") String keyword,
                                             @AuthenticationPrincipal CurrentUser currentUser) {
         CompanyDto company = companyService.getCompanyDtoByDirector(currentUser.getUser());
+    @GetMapping("/send-role-change-request")
+    public String sendRoleChangeRequest(ModelMap modelMap,
+                                   @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
+                                   @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
+                                   @RequestParam(value = "keyword", defaultValue = "") String keyword,
+                                   @AuthenticationPrincipal CurrentUser currentUser) {
+        CompanyDto company = companyService.getCompanyByDirector(currentUser.getUser());
         if (company != null) {
             PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
             Page<UserDto> userDtoList;
@@ -94,15 +101,15 @@ public class DirectorController {
             }
             modelMap.addAttribute("companyId", company.getId());
             modelMap.addAttribute("userDtoList", userDtoList);
-            return "/director/role_change_request_dashboard";
+            return "/director/send_role_change_request";
         }
         throw new CompanyNoCreateException("Company not found");
     }
 
     @PostMapping("/send-role-change-request")
-    public String endRoleChangeRequest(@ModelAttribute SaveRoleChangeRequest roleChangeRequest) {
+    public String sendRoleChangeRequest(@ModelAttribute SaveRoleChangeRequest roleChangeRequest) {
         directorService.sendWorkRequest(roleChangeRequest);
-        return "redirect:/director/role-change-request-dashboard";
+        return "redirect:/director/send-role-change-request";
     }
 
     @GetMapping("/subscription")

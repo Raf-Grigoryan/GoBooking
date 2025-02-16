@@ -27,6 +27,7 @@ public class SecurityConfig {
                         .requestMatchers("/admin/**").hasAuthority("ADMIN")
                         .requestMatchers("/user/**").hasAuthority("USER")
                         .requestMatchers("/director/**").hasAuthority("DIRECTOR")
+                        .requestMatchers("/worker/**").hasAuthority("WORKER")
                         .anyRequest().authenticated()
                 )
                 .formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer

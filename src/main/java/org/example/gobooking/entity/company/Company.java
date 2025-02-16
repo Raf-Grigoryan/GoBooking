@@ -22,4 +22,5 @@ public class Company {
     private User director;
     @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Address address;
+    private boolean valid;
 }

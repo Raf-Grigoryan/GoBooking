@@ -1,5 +1,6 @@
 package org.example.gobooking.service.impl;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.gobooking.customException.CannotVerifyUserException;
@@ -9,6 +10,7 @@ import org.example.gobooking.dto.auth.PasswordChangeRequest;
 import org.example.gobooking.dto.auth.UserEditRequest;
 import org.example.gobooking.dto.user.SaveUserRequest;
 import org.example.gobooking.dto.user.UserDto;
+import org.example.gobooking.dto.user.WorkerResponse;
 import org.example.gobooking.entity.user.Role;
 import org.example.gobooking.entity.user.User;
 import org.example.gobooking.mapper.UserMapper;
@@ -16,9 +18,9 @@ import org.example.gobooking.repository.UserRepository;
 import org.example.gobooking.service.MailService;
 import org.example.gobooking.service.UserService;
 import org.mapstruct.Named;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -163,6 +165,7 @@ public class UserServiceImpl implements UserService {
         saveUser(currentUser);
         return true;
     }
+
     @Override
     public Page<UserDto> getAllUsers(PageRequest pageRequest) {
         Page<User> users = userRepository.findAllByRole(Role.USER, pageRequest);
@@ -181,6 +184,19 @@ public class UserServiceImpl implements UserService {
         return contentType != null && (contentType.equals("image/png") || contentType.equals("image/jpeg"));
     }
 
+    @Override
+    public List<WorkerResponse> workersByCompanyId(int companyId) {
+        List<User> users = userRepository.findUserByCompany_Id(companyId);
+        return userMapper.toDto(users);
+    }
 
+    @Override
+    public WorkerResponse getWorkerById(int id) {
+        Optional<User> user = userRepository.findById(id);
+        if (user.isPresent()) {
+            return userMapper.toWorker(user.get());
+        }
+        throw new EntityNotFoundException("Worker does not exist");
+    }
 }
 
