@@ -2,6 +2,7 @@ package org.example.gobooking.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.example.gobooking.dto.auth.Finance;
 import org.example.gobooking.dto.work.CreateServiceRequest;
 import org.example.gobooking.dto.work.EditServiceRequest;
 import org.example.gobooking.dto.work.EditWorkGraphicRequest;
@@ -30,6 +31,9 @@ public class WorkerController {
     @GetMapping
     public String worker(@AuthenticationPrincipal CurrentUser user, ModelMap modelMap) {
         modelMap.addAttribute("cards", cardService.getCardsByUserId(user.getUser().getId()));
+        Finance finance = new Finance();
+        finance.setSpending(5000);
+        modelMap.addAttribute("finance", finance);
         return "/worker/worker-panel";
     }
 
@@ -87,5 +91,6 @@ public class WorkerController {
         workService.editService(editServiceRequest, image);
         return "redirect:/worker/my-services";
     }
+
 
 }

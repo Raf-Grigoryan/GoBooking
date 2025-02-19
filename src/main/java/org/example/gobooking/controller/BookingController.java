@@ -1,7 +1,9 @@
 package org.example.gobooking.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.example.gobooking.dto.booking.SaveBookingRequest;
 import org.example.gobooking.dto.company.CompanyResponse;
+import org.example.gobooking.security.CurrentUser;
 import org.example.gobooking.service.BookingService;
 import org.example.gobooking.service.CompanyService;
 import org.example.gobooking.service.UserService;
@@ -9,12 +11,12 @@ import org.example.gobooking.service.WorkService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -72,11 +74,28 @@ public class BookingController {
     @GetMapping("/select-time")
     public String confirm(@RequestParam("workerId") int workerId,
                           @RequestParam("serviceId") int serviceId,
-                          @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date bookingDate,
+                          @RequestParam(value = "bookingDate", defaultValue = "") @DateTimeFormat(pattern = "yyyy-MM-dd") Date bookingDate,
                           ModelMap modelmap) {
         modelmap.put("selectTimeInformation",
                 bookingService.getSelectTimeByWorkerIdAndServiceId(workerId, serviceId, bookingDate));
+        modelmap.put("bookingDate", bookingDate);
         return "/booking/select-time";
+    }
+
+    @PostMapping("/save-booking")
+    public String saveBooking(@RequestParam(value = "bookingDate", defaultValue = "")
+                              @DateTimeFormat(pattern = "yyyy-MM-dd") Date bookingDate,
+                              @RequestParam("workerId") int workerId,
+                              @ModelAttribute SaveBookingRequest saveBookingRequest,
+                              @AuthenticationPrincipal CurrentUser currentUser) {
+        System.out.println(bookingDate);
+        bookingService.save(saveBookingRequest, currentUser.getUser(), bookingDate);
+        if (bookingDate != null) {
+            return "redirect:/booking/select-time?workerId=" + workerId + "&serviceId=" + saveBookingRequest.getServiceId() + "&bookingDate=" + bookingDate.toInstant()
+                    .atZone(ZoneId.systemDefault())
+                    .toLocalDate();
+        }
+        return "redirect:/booking/select-time?workerId=" + workerId + "&serviceId=" + saveBookingRequest.getServiceId() + "&bookingDate=";
     }
 
 }

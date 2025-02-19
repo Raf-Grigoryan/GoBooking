@@ -93,7 +93,7 @@ public class UserController {
                         @RequestParam("companyId") int companyId,
                         @RequestParam("agree") boolean agree){
         roleChangeRequestService.agree(companyId, agree, currentUser.getUser());
-        return "/user/user-panel";
+        return "redirect:/logout";
     }
 
 }
