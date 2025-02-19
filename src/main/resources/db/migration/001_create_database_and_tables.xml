@@ -97,6 +97,9 @@
             <column name="address_id" type="INT">
                 <constraints nullable="false"/>
             </column>
+            <column name="valid" type="BOOLEAN" defaultValue="false">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
     </changeSet>
 

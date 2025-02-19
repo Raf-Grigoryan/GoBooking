@@ -18,6 +18,7 @@ public class Company {
     private int id;
     private String name;
     private String phone;
+    private String companyPicture;
     @ManyToOne
     private User director;
     @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
