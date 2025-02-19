@@ -43,6 +43,7 @@ public class DirectorController {
 
     private final ValidSubscriptionService validSubscriptionService;
 
+
     @GetMapping
     public String getDirectorPage(@AuthenticationPrincipal CurrentUser currentUser, ModelMap modelMap) {
         CompanyDto company = companyService.getCompanyDtoByDirector(currentUser.getUser());
@@ -62,28 +63,20 @@ public class DirectorController {
         return "redirect:/director";
     }
 
-    @Transactional
     @GetMapping("/delete-company")
     public String deleteCompany(@RequestParam("id") int id) {
+        System.out.println(id);
         companyService.deleteCompany(id);
         return "redirect:/director";
     }
 
-
-    @GetMapping("/role-change-request")
-    public String promotionRequestDashboard(ModelMap modelMap,
-                                            @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
-                                            @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
-                                            @RequestParam(value = "keyword", defaultValue = "") String keyword,
-                                            @AuthenticationPrincipal CurrentUser currentUser) {
-        CompanyDto company = companyService.getCompanyDtoByDirector(currentUser.getUser());
     @GetMapping("/send-role-change-request")
     public String sendRoleChangeRequest(ModelMap modelMap,
-                                   @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
-                                   @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
-                                   @RequestParam(value = "keyword", defaultValue = "") String keyword,
-                                   @AuthenticationPrincipal CurrentUser currentUser) {
-        CompanyDto company = companyService.getCompanyByDirector(currentUser.getUser());
+                                        @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
+                                        @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
+                                        @RequestParam(value = "keyword", defaultValue = "") String keyword,
+                                        @AuthenticationPrincipal CurrentUser currentUser) {
+        CompanyDto company = companyService.getCompanyDtoByDirector(currentUser.getUser());
         if (company != null) {
             PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
             Page<UserDto> userDtoList;
@@ -134,4 +127,5 @@ public class DirectorController {
         validSubscriptionService.save(companyService.getCompanyByDirector(currentUser.getUser()),subscription,card);
         return "redirect:/director";
     }
+
 }
