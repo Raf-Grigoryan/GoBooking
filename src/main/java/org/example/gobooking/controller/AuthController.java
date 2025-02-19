@@ -73,6 +73,11 @@ public class AuthController {
         return "redirect:/logout";
     }
 
+    @GetMapping("/delete-profile")
+    public String deleteProfile(@AuthenticationPrincipal CurrentUser user){
+        userService.delete(user.getUser());
+        return "redirect:/logout";
+    }
 
     @GetMapping("/delete-card")
     public String deleteCard(@AuthenticationPrincipal CurrentUser currentUser, @RequestParam("cardNumber") String cardNumber) {

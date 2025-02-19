@@ -39,4 +39,6 @@ public interface UserService {
     List<WorkerResponse> workersByCompanyId(int companyId);
 
     WorkerResponse getWorkerById(int id);
+
+    void delete(User user);
 }

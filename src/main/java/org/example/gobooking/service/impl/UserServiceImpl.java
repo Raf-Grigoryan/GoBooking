@@ -123,7 +123,7 @@ public class UserServiceImpl implements UserService {
         if (!passwordEncoder.matches(passwordChangeRequest.getOldPassword(), user.getPassword())) {
             throw new PasswordIncorrectException("Error: Old password does not match");
         }
-        if (passwordChangeRequest.getNewPassword().equals(passwordChangeRequest.getConfirmPassword())) {
+        if (!passwordChangeRequest.getNewPassword().equals(passwordChangeRequest.getConfirmPassword())) {
             throw new PasswordIncorrectException("Error: Confirm password does not match");
         }
         user.setPassword(passwordEncoder.encode(passwordChangeRequest.getNewPassword()));
@@ -197,6 +197,13 @@ public class UserServiceImpl implements UserService {
             return userMapper.toWorker(user.get());
         }
         throw new EntityNotFoundException("Worker does not exist");
+    }
+
+    @Override
+    public void delete(User user) {
+        user.setPictureName("user-removal-linear-style-icon-600nw-2473043843.webp");
+        user.setEnable(false);
+        userRepository.save(user);
     }
 }
 
