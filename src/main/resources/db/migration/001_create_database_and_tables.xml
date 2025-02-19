@@ -88,6 +88,9 @@
             <column name="phone" type="VARCHAR(255)">
                 <constraints nullable="true"/>
             </column>
+            <column name="company_picture" type="VARCHAR(255)">
+                <constraints nullable="true"/>
+            </column>
             <column name="director_id" type="INT">
                 <constraints nullable="false"/>
             </column>
