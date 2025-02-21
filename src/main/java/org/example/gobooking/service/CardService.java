@@ -10,11 +10,15 @@ public interface CardService {
 
     void save(SaveCardRequest saveCardRequest);
 
+    void save(Card card);
+
     List<CardResponse> getCardsByUserId(int userId);
 
     void deleteCardByCardNumber(String email,String cardNumber);
 
     Card getCardByCardNumber(String cardNumber);
+
+    int getCardsCountByUserId(int userId);
 
     void editCard(Card card);
 }

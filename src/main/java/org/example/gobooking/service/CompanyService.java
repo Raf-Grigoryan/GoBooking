@@ -8,11 +8,14 @@ import org.example.gobooking.entity.company.Company;
 import org.example.gobooking.entity.user.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.web.multipart.MultipartFile;
 
 
 public interface CompanyService {
 
     void save(SaveCompanyRequest saveCompanyRequest, SaveAddressRequest saveAddressRequest, User director);
+
+    void save(SaveCompanyRequest saveCompanyRequest, SaveAddressRequest saveAddressRequest, MultipartFile image);
 
     CompanyDto getCompanyDtoByDirector(User director);
 
@@ -25,8 +28,5 @@ public interface CompanyService {
     Page<CompanyResponse> companyByKeyword(String keyword, PageRequest pageRequest);
 
     Page<CompanyResponse> getAllCompanies(PageRequest pageRequest);
-
-    CompanyResponse getCompanyResponseById(int id);
-
 
 }

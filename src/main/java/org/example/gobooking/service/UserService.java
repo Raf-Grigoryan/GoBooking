@@ -43,4 +43,5 @@ public interface UserService {
     WorkerResponse getWorkerById(int id);
 
     void delete(User user);
+
 }

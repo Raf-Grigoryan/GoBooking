@@ -4,12 +4,14 @@ import lombok.RequiredArgsConstructor;
 import org.example.gobooking.customException.InsufficientFundsException;
 import org.example.gobooking.dto.booking.SaveBookingRequest;
 import org.example.gobooking.dto.booking.SelectTimeResponse;
+import org.example.gobooking.dto.booking.*;
 import org.example.gobooking.entity.booking.Booking;
 import org.example.gobooking.entity.booking.Type;
 import org.example.gobooking.entity.user.Card;
 import org.example.gobooking.entity.user.User;
 import org.example.gobooking.entity.work.Service;
 import org.example.gobooking.entity.work.WorkGraphic;
+import org.example.gobooking.mapper.BookingMapper;
 import org.example.gobooking.repository.BookingRepository;
 import org.example.gobooking.repository.ServiceRepository;
 import org.example.gobooking.service.BookingService;
@@ -34,6 +36,8 @@ public class BookingServiceImpl implements BookingService {
     private final BookingRepository bookingRepository;
 
     private final ServiceRepository serviceRepository;
+
+    private final BookingMapper bookingMapper;
 
     private final CardService cardService;
 
@@ -123,6 +127,30 @@ public class BookingServiceImpl implements BookingService {
                 .type(Type.APPROVED)
                 .bookingDate(date)
                 .build());
+    }
+
+    @Override
+    public List<WorkerBookingResponse> clientFinishedBookings(int clientId, Type type) {
+        return bookingMapper.workerBookingResponses(bookingRepository.getBookingByService_Worker_IdAndType(clientId, type));
+    }
+
+    @Override
+    public List<PendingBookingResponse> getUnfinishedServices(int workerId) {
+        return bookingMapper.pendingBookingResponses(bookingRepository.getBookingByService_Worker_IdAndType(workerId, Type.APPROVED));
+    }
+
+    @Override
+    public BookingAnalyticsWorker getBookingAnalyticsWorker(int workerId) {
+        return BookingAnalyticsWorker.builder()
+                .clientCount(bookingRepository.countDistinctClientsByWorker(workerId))
+                .totalEarnings(bookingRepository.sumTotalEarningsByWorker(workerId))
+                .bookingCount(bookingRepository.countBookingsByWorker(workerId))
+                .build();
+    }
+
+    @Override
+    public List<PendingBookingResponse> getFinishedBookings(int workerId) {
+        return bookingMapper.pendingBookingResponses(bookingRepository.getBookingByService_Worker_IdAndType(workerId, Type.FINISHED));
     }
 
 }

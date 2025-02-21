@@ -273,60 +273,64 @@
                                 <p class="mb-0">Please fill all information below
                                 </p>
                               </div>
-                                <div class="mb-3 col-md-6">
-                                    <form action="/director/create-company" method="post">
-                                        <input type="hidden" name="directorId" th:value="${currentUser.getId()}">
-                                        <label class="form-label" for="firstName">Company Name</label>
-                                        <input type="text" class="form-control" placeholder="Enter company name" id="firstName" name="name">
-                                </div>
+								<div class="mb-3 col-md-6">
+									<form action="/director/create-company" method="post" enctype="multipart/form-data">
+										<input type="hidden" name="directorId" th:value="${currentUser.getId()}">
 
-                                <!-- input -->
-                                <div class="mb-3 col-md-6">
-                                    <label class="form-label" for="lastName">Company Phone</label>
-                                    <input type="text" class="form-control" placeholder="Enter phone number" id="lastName" name="phone">
-                                </div>
-                                <!-- input -->
-                                <div class="mb-3 col-md-6">
-                                    <label class="form-label" for="countrySelect">Country</label>
-                                    <select  name="countryId" class="form-select" id="countrySelect" required>
-                                        <option th:each="country : ${countries}" th:text="${country.name}" th:value="${country.id}"></option>
-                                    </select>
-                                </div>
-                                <!-- input -->
-                                <div class="mb-3 col-md-6">
-                                    <label class="form-label" for="phone">Region</label>
-                                    <input type="text" class="form-control" placeholder="Enter region" id="phone" name="region">
-                                </div>
-                                <!-- input -->
-
-                                <!-- input -->
-                                <div class="mb-3 col-12">
-                                    <label class="form-label" for="town">City</label>
-                                    <input type="text" class="form-control" placeholder="Enter City" id="town" name="city">
-                                </div>
-                                <!-- input -->
-                                <div class="mb-3 col-12">
-                                    <label class="form-label" for="state">Street</label>
-                                    <input type="text" class="form-control" placeholder="Enter Street" id="state" name="street">
-                                </div>
-                                <!-- input -->
-                                <div class="mb-3 col-12">
-                                    <label class="form-label" for="zip">Apartment Number</label>
-                                    <input type="text" class="form-control" placeholder="Apartment Number" id="zip" name="apartmentNumber">
-                                </div>
-                                <!-- select -->
+										<div class="file-upload btn btn-outline-white ms-4">
+											<input type="file" class="file-input opacity-0" name="image">Upload
+											Picture
+										</div>
+										<br>
+										<label class="form-label" for="firstName">Company Name</label>
+										<input type="text" class="form-control" placeholder="Enter company name" id="firstName" name="name">
 
 
-                            <!-- checkbox -->
+								</div>
 
+								<!-- Company Phone -->
+								<div class="mb-3 col-md-6">
+									<label class="form-label" for="lastName">Company Phone</label>
+									<input type="text" class="form-control" placeholder="Enter phone number" id="lastName" name="phone">
+								</div>
 
-                        <!-- Button -->
-                        <div class="d-flex justify-content-end">
-                            <button class="btn btn-primary" type="submit" >Create Company
-                            </button>
-                        </div>
+								<!-- Country -->
+								<div class="mb-3 col-md-6">
+									<label class="form-label" for="countrySelect">Country</label>
+									<select name="countryId" class="form-select" id="countrySelect" required>
+										<option th:each="country : ${countries}" th:text="${country.name}" th:value="${country.id}"></option>
+									</select>
+								</div>
 
-                        </form>
+								<!-- Region -->
+								<div class="mb-3 col-md-6">
+									<label class="form-label" for="phone">Region</label>
+									<input type="text" class="form-control" placeholder="Enter region" id="phone" name="region">
+								</div>
+
+								<!-- City -->
+								<div class="mb-3 col-12">
+									<label class="form-label" for="town">City</label>
+									<input type="text" class="form-control" placeholder="Enter City" id="town" name="city">
+								</div>
+
+								<!-- Street -->
+								<div class="mb-3 col-12">
+									<label class="form-label" for="state">Street</label>
+									<input type="text" class="form-control" placeholder="Enter Street" id="state" name="street">
+								</div>
+
+								<!-- Apartment Number -->
+								<div class="mb-3 col-12">
+									<label class="form-label" for="zip">Apartment Number</label>
+									<input type="text" class="form-control" placeholder="Apartment Number" id="zip" name="apartmentNumber">
+								</div>
+
+								<!-- Submit Button -->
+								<div class="d-flex justify-content-end">
+									<button class="btn btn-primary" type="submit">Create Company</button>
+								</div>
+								</form>
                             <!-- Content two -->
                             <div id="test-l-2" role="tabpanel" class="bs-stepper-pane fade" aria-labelledby="stepperFormtrigger2">
                               <!-- text -->

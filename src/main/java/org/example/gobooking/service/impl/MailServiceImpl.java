@@ -1,16 +1,32 @@
 package org.example.gobooking.service.impl;
 
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.example.gobooking.entity.company.Company;
 import org.example.gobooking.entity.request.RoleChangeRequest;
-import lombok.extern.slf4j.Slf4j;
+import org.example.gobooking.entity.user.Role;
+import org.example.gobooking.entity.user.User;
+import org.example.gobooking.repository.BookingRepository;
+import org.example.gobooking.repository.CompanyRepository;
+import org.example.gobooking.repository.UserRepository;
 import org.example.gobooking.service.MailService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -19,6 +35,13 @@ import java.util.List;
 public class MailServiceImpl implements MailService {
 
     private final MailSender mailSender;
+
+    private final JavaMailSender javaMailSender;
+
+    private final UserRepository userRepository;
+
+    private final CompanyRepository companyRepository;
+    private final BookingRepository bookingRepository;
 
 
     @Value("${site.url}")
@@ -85,7 +108,7 @@ public class MailServiceImpl implements MailService {
                 "you with exciting opportunities for growth.\n" +
                 "If you're interested in discussing the details, we’d be happy to arrange a call or meeting at a convenient \n" +
                 "time for you.\n\n" +
-                "Director: " + company.getDirector().getName() +"\n" +
+                "Director: " + company.getDirector().getName() + "\n" +
                 "Company: " + company.getName() + "\n" +
                 "Phone: " + company.getPhone());
         mailSender.send(message);
@@ -128,6 +151,93 @@ public class MailServiceImpl implements MailService {
         message.setTo(to);
         message.setSubject("Role Change Request from " + workerName);
         message.setText("Your role changed request disagree");
+        mailSender.send(message);
+    }
+
+
+    public byte[] generateExcelReport() throws IOException {
+        Workbook workbook = new XSSFWorkbook();
+        Sheet sheet = workbook.createSheet("Report");
+
+
+        Row headerRow = sheet.createRow(0);
+        headerRow.createCell(0).setCellValue("Worker Name");
+        headerRow.createCell(1).setCellValue("Monthly Income");
+
+
+        int rowIndex = 1;
+        List<User> directors = userRepository.getUserByRole(Role.DIRECTOR);
+
+        for (User director : directors) {
+            Company company = companyRepository.findCompanyByDirector(director);
+            if (company != null) {
+                List<User> workers = userRepository.findUserByCompany(company);
+                for (User worker : workers) {
+                    Row dataRow = sheet.createRow(rowIndex++);
+                    dataRow.createCell(0).setCellValue(worker.getName());
+                    dataRow.createCell(0).setCellValue(bookingRepository.sumTotalEarningsByWorker(worker.getId()));
+                }
+            }
+        }
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        workbook.write(outputStream);
+        workbook.close();
+        return outputStream.toByteArray();
+    }
+
+
+    public void sendEmailWithAttachment(String to) throws MessagingException, IOException {
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
+
+        helper.setTo(to);
+        helper.setSubject("Scheduled Email with Excel Attachment");
+        helper.setText("Please find the attached Excel report.");
+
+
+        helper.addAttachment("Report.xlsx", new org.springframework.core.io.ByteArrayResource(generateExcelReport()));
+
+        javaMailSender.send(mimeMessage);
+    }
+
+
+    @Scheduled(cron = "0 0 1 * * ?")
+    public void sendScheduledEmail() {
+        for (User director : userRepository.getUserByRole(Role.DIRECTOR)) {
+            try {
+                sendEmailWithAttachment(director.getEmail());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+    }
+
+    @Override
+    public void sendSubscriptionExpiryEmail(String toEmail, String userName, String expiryDate) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(toEmail);
+        message.setSubject("Subscription Expiring Soon!");
+        message.setText(
+                "Dear " + userName + "," +
+                        "Your subscription will expire on " + expiryDate +
+                        ". Please renew to continue enjoying our services." +
+                        "Best Regards,Your Company");
+
+        mailSender.send(message);
+    }
+
+    @Override
+    public void sendSubscriptionDeletedEmail(String toEmail, String userName) {
+        SimpleMailMessage message = new SimpleMailMessage();
+
+        message.setTo(toEmail);
+        message.setSubject("Subscription Deleted");
+        message.setText(
+                "Dear " + userName + "," +
+                        "Your subscription has been deleted." +
+                        "Best Regards,Your Company");
         mailSender.send(message);
     }
 }

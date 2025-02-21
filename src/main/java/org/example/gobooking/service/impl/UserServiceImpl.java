@@ -235,5 +235,6 @@ public class UserServiceImpl implements UserService {
         user.setEnable(false);
         userRepository.save(user);
     }
+
 }
 

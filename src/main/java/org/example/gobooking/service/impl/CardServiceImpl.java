@@ -61,4 +61,14 @@ public class CardServiceImpl implements CardService {
     public void editCard(Card card) {
         cardRepository.save(card);
     }
+
+    @Override
+    public void save(Card card) {
+        cardRepository.save(card);
+    }
+
+    @Override
+    public int getCardsCountByUserId(int userId) {
+        return cardRepository.countByUserId(userId);
+    }
 }
