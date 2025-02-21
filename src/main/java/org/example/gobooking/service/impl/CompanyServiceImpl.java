@@ -1,6 +1,5 @@
 package org.example.gobooking.service.impl;
 
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.gobooking.customException.AddressOnlyExistException;
@@ -21,8 +20,6 @@ import org.mapstruct.Named;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 
 @Service
@@ -85,12 +82,5 @@ public class CompanyServiceImpl implements CompanyService {
         return companies.map(companyMapper::toResponse);
     }
 
-    @Override
-    public CompanyResponse getCompanyResponseById(int id) {
-        Optional<Company> byId = companyRepository.findById(id);
-        if (byId.isPresent()) {
-            return companyMapper.toResponse(byId.get());
-        }
-        throw new EntityNotFoundException("Company not found");
-    }
+
 }

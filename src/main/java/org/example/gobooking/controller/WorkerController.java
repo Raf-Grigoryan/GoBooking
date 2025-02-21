@@ -2,12 +2,11 @@ package org.example.gobooking.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.example.gobooking.dto.auth.Finance;
 import org.example.gobooking.dto.work.CreateServiceRequest;
 import org.example.gobooking.dto.work.EditServiceRequest;
 import org.example.gobooking.dto.work.EditWorkGraphicRequest;
 import org.example.gobooking.security.CurrentUser;
-import org.example.gobooking.service.CardService;
+import org.example.gobooking.service.BookingService;
 import org.example.gobooking.service.WorkGraphicService;
 import org.example.gobooking.service.WorkService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -21,21 +20,13 @@ import org.springframework.web.multipart.MultipartFile;
 @RequiredArgsConstructor
 public class WorkerController {
 
-    private final CardService cardService;
 
     private final WorkGraphicService workGraphicService;
 
     private final WorkService workService;
 
+    private final BookingService bookingService;
 
-    @GetMapping
-    public String worker(@AuthenticationPrincipal CurrentUser user, ModelMap modelMap) {
-        modelMap.addAttribute("cards", cardService.getCardsByUserId(user.getUser().getId()));
-        Finance finance = new Finance();
-        finance.setSpending(5000);
-        modelMap.addAttribute("finance", finance);
-        return "/worker/worker-panel";
-    }
 
     @GetMapping("/my-work-graphic")
     public String createServicePage(@AuthenticationPrincipal CurrentUser user, ModelMap modelMap) {
@@ -90,6 +81,20 @@ public class WorkerController {
         editServiceRequest.setWorkerId(user.getUser().getId());
         workService.editService(editServiceRequest, image);
         return "redirect:/worker/my-services";
+    }
+
+    @GetMapping("/my-unfinished-bookings")
+    public String myUnfinishedBookings(@AuthenticationPrincipal CurrentUser user, ModelMap modelMap) {
+        modelMap.put("bookings", bookingService.getUnfinishedServices(user.getUser().getId()));
+        modelMap.put("analytics", bookingService.getBookingAnalyticsWorker(user.getUser().getId()));
+        return "/worker/my-bookings";
+    }
+
+    @GetMapping("/my-finished-bookings")
+    public String myFinishedBookings(@AuthenticationPrincipal CurrentUser user, ModelMap modelMap) {
+        modelMap.put("bookings", bookingService.getFinishedBookings(user.getUser().getId()));
+        modelMap.put("analytics", bookingService.getBookingAnalyticsWorker(user.getUser().getId()));
+        return "/worker/my-finished-bookings";
     }
 
 

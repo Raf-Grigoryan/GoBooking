@@ -26,6 +26,4 @@ public interface CompanyService {
 
     Page<CompanyResponse> getAllCompanies(PageRequest pageRequest);
 
-    CompanyResponse getCompanyResponseById(int id);
-
 }
