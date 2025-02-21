@@ -24,4 +24,5 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     List<User> findUserByCompany_Id(int companyId);
 
     List<User> findUserByCompany(Company company);
+
 }

@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface CompanyService {
 
-    void save(SaveCompanyRequest saveCompanyRequest, SaveAddressRequest saveAddressRequest, MultipartFile image);
+    void save(SaveCompanyRequest saveCompanyRequest, SaveAddressRequest saveAddressRequest, MultipartFile image, User director);
 
     CompanyDto getCompanyDtoByDirector(User director);
 

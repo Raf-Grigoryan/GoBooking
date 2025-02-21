@@ -12,5 +12,7 @@ public interface WorkerGraphicRepository extends JpaRepository<WorkGraphic, Inte
     List<WorkGraphic> getWorkGraphicByWorker_Id(int workerId);
 
     Optional<WorkGraphic> getWorkGraphicByWorker_IdAndWeekday(int id, WeekDay weekDay);
+
+    void deleteByWorker_Id(int id);
 }
 

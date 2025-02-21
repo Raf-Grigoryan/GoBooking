@@ -16,6 +16,7 @@ import org.example.gobooking.mapper.CompanyMapper;
 import org.example.gobooking.repository.CompanyRepository;
 import org.example.gobooking.service.AddressService;
 import org.example.gobooking.service.CompanyService;
+import org.example.gobooking.service.UserService;
 import org.mapstruct.Named;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -36,12 +37,13 @@ public class CompanyServiceImpl implements CompanyService {
     private final CompanyMapper companyMapper;
     private final AddressService addressService;
     private final AddressMapper addressMapper;
+    private final UserService userService;
 
     @Value("${image.upload.path}")
     private String imageUploadPath;
 
     @Override
-    public void save(SaveCompanyRequest saveCompanyRequest, SaveAddressRequest saveAddressRequest, MultipartFile image) {
+    public void save(SaveCompanyRequest saveCompanyRequest, SaveAddressRequest saveAddressRequest, MultipartFile image, User director) {
         if (companyRepository.findCompanyByDirectorId(saveCompanyRequest.getDirectorId()).isPresent()) {
             throw new CompanyAlreadyExistsException("Director already has an associated company.");
         }
@@ -68,7 +70,8 @@ public class CompanyServiceImpl implements CompanyService {
         Address address = addressMapper.toEntity(saveAddressRequest);
         addressService.saveAddress(address);
         company.setAddress(address);
-        companyRepository.save(company);
+        director.setCompany(companyRepository.save(company));
+        userService.editUser(director);
     }
 
 

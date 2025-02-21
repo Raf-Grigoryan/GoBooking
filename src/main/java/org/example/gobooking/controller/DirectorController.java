@@ -63,9 +63,10 @@ public class DirectorController {
     @PostMapping("/create-company")
     public String createCompany(@Valid @ModelAttribute SaveCompanyRequest companyRequest,
                                 @Valid @ModelAttribute SaveAddressRequest saveAddressRequest,
-                                @RequestParam("image") MultipartFile image) {
+                                @RequestParam("image") MultipartFile image,
+                                @AuthenticationPrincipal CurrentUser currentUser) {
         log.info("Creating company with request: {}", companyRequest);
-        companyService.save(companyRequest, saveAddressRequest, image);
+        companyService.save(companyRequest, saveAddressRequest, image ,currentUser.getUser());
         log.debug("Company successfully created.");
         return "redirect:/director";
     }

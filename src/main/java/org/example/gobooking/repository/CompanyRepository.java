@@ -19,4 +19,9 @@ public interface CompanyRepository extends JpaRepository<Company, Integer> {
     Page<Company> findCompaniesByNameContainingAndValid(String name, Pageable pageable, boolean valid);
 
     Page<Company> findCompaniesByValid(boolean valid, Pageable pageable);
+
+    boolean existsCompanyByDirector(User director);
+
+    void deleteByDirector(User director);
+
 }

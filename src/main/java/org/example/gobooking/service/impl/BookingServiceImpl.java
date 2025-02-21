@@ -1,9 +1,13 @@
 package org.example.gobooking.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.example.gobooking.customException.InsufficientFundsException;
+import org.example.gobooking.dto.booking.SaveBookingRequest;
+import org.example.gobooking.dto.booking.SelectTimeResponse;
 import org.example.gobooking.dto.booking.*;
 import org.example.gobooking.entity.booking.Booking;
 import org.example.gobooking.entity.booking.Type;
+import org.example.gobooking.entity.user.Card;
 import org.example.gobooking.entity.user.User;
 import org.example.gobooking.entity.work.Service;
 import org.example.gobooking.entity.work.WorkGraphic;
@@ -11,9 +15,11 @@ import org.example.gobooking.mapper.BookingMapper;
 import org.example.gobooking.repository.BookingRepository;
 import org.example.gobooking.repository.ServiceRepository;
 import org.example.gobooking.service.BookingService;
+import org.example.gobooking.service.CardService;
 import org.example.gobooking.service.WorkGraphicService;
 import org.example.gobooking.service.WorkService;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
@@ -32,6 +38,8 @@ public class BookingServiceImpl implements BookingService {
     private final ServiceRepository serviceRepository;
 
     private final BookingMapper bookingMapper;
+
+    private final CardService cardService;
 
     @Override
     public SelectTimeResponse getSelectTimeByWorkerIdAndServiceId(int workerId, int serviceId, Date bookingDate) {
@@ -85,20 +93,41 @@ public class BookingServiceImpl implements BookingService {
         return response;
     }
 
+
     @Override
-    public void save(SaveBookingRequest saveBookingRequest, User user, Date bookingDate) {
+    public void save(SaveBookingRequest saveBookingRequest, User user, Date bookingDate, String cardNumber) {
+
+        if (cardNumber != null && !cardNumber.isEmpty()) {
+            Card card = cardService.getCardByCardNumber(cardNumber);
+            Service service = serviceRepository.findById(saveBookingRequest.getServiceId()).orElse(null);
+            assert service != null;
+            if (card.getBalance().compareTo(BigDecimal.valueOf(service.getPrice())) > 0) {
+                Date date = Objects.requireNonNullElseGet(bookingDate, Date::new);
+                bookingSave(service, user, date, saveBookingRequest);
+                card.setBalance(card.getBalance().subtract(BigDecimal.valueOf(service.getPrice())));
+                cardService.editCard(card);
+            } else {
+                throw new InsufficientFundsException("There may be insufficient funds on your card.");
+            }
+        } else {
+            Date date = Objects.requireNonNullElseGet(bookingDate, Date::new);
+            Service service = serviceRepository.findById(saveBookingRequest.getServiceId()).orElse(null);
+            bookingSave(service, user, date, saveBookingRequest);
+        }
+
+    }
+
+    private void bookingSave(Service service, User user, Date bookingDate, SaveBookingRequest saveBookingRequest) {
         Date date = Objects.requireNonNullElseGet(bookingDate, Date::new);
-        Optional<Service> service = serviceRepository.findById(saveBookingRequest.getServiceId());
-        service.ifPresent(value -> bookingRepository.save(Booking.builder()
-                .service(value)
+        bookingRepository.save(Booking.builder()
+                .service(service)
                 .client(user)
                 .startedTime(saveBookingRequest.getStartTime())
-                .endedTime(saveBookingRequest.getStartTime().plusMinutes(value.getDuration()))
+                .endedTime(saveBookingRequest.getStartTime().plusMinutes(service.getDuration()))
                 .paymentMethod(saveBookingRequest.getPaymentMethod())
-                .type(Type.REJECTED)
+                .type(Type.APPROVED)
                 .bookingDate(date)
-                .build()));
-
+                .build());
     }
 
     @Override

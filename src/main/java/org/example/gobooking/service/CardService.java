@@ -19,4 +19,6 @@ public interface CardService {
     Card getCardByCardNumber(String cardNumber);
 
     int getCardsCountByUserId(int userId);
+
+    void editCard(Card card);
 }

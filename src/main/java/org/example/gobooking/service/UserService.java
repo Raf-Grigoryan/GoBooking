@@ -36,6 +36,8 @@ public interface UserService {
 
     boolean editUser(User currentUser, UserEditRequest user, MultipartFile image);
 
+    void  editUser(User user);
+
     List<WorkerResponse> workersByCompanyId(int companyId);
 
     WorkerResponse getWorkerById(int id);
