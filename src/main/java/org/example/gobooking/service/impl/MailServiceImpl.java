@@ -41,6 +41,7 @@ public class MailServiceImpl implements MailService {
     private final UserRepository userRepository;
 
     private final CompanyRepository companyRepository;
+    private final BookingRepository bookingRepository;
 
 
     @Value("${site.url}")
@@ -174,6 +175,7 @@ public class MailServiceImpl implements MailService {
                 for (User worker : workers) {
                     Row dataRow = sheet.createRow(rowIndex++);
                     dataRow.createCell(0).setCellValue(worker.getName());
+                    dataRow.createCell(0).setCellValue(bookingRepository.sumTotalEarningsByWorker(worker.getId()));
                 }
             }
         }

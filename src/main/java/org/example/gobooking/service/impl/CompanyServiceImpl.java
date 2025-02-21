@@ -106,15 +106,6 @@ public class CompanyServiceImpl implements CompanyService {
         return companies.map(companyMapper::toResponse);
     }
 
-    @Override
-    public CompanyResponse getCompanyResponseById(int id) {
-        Optional<Company> byId = companyRepository.findById(id);
-        if (byId.isPresent()) {
-            return companyMapper.toResponse(byId.get());
-        }
-        throw new EntityNotFoundException("Company not found");
-    }
-
     private boolean isValidImage(MultipartFile image) {
         String contentType = image.getContentType();
         return contentType != null && (contentType.equals("image/png") || contentType.equals("image/jpeg"));

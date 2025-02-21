@@ -3,7 +3,6 @@ package org.example.gobooking.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.gobooking.dto.auth.Finance;
 import org.example.gobooking.dto.work.CreateServiceRequest;
 import org.example.gobooking.dto.work.EditServiceRequest;
 import org.example.gobooking.dto.work.EditWorkGraphicRequest;
@@ -30,15 +29,7 @@ public class WorkerController {
 
     private final BookingService bookingService;
 
-    @GetMapping
-    public String worker(@AuthenticationPrincipal CurrentUser user, ModelMap modelMap) {
-        log.info("Worker {} accessing their worker panel.", user.getUser().getName());
-        modelMap.addAttribute("cards", cardService.getCardsByUserId(user.getUser().getId()));
-        Finance finance = new Finance();
-        finance.setSpending(5000);
-        modelMap.addAttribute("finance", finance);
-        return "/worker/worker-panel";
-    }
+
 
     @GetMapping("/my-work-graphic")
     public String createServicePage(@AuthenticationPrincipal CurrentUser user, ModelMap modelMap) {
