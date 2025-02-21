@@ -55,3 +55,81 @@ document.addEventListener("DOMContentLoaded", function () {
         totalBalanceElement.style.display = "inline-block";
     }
 });
+document.addEventListener("DOMContentLoaded", function () {
+    let totalSpending = 0;
+    document.querySelectorAll(".price").forEach(function (element) {
+        let price = parseFloat(element.getAttribute("data-price")) || 0;
+        totalSpending += price;
+    });
+    document.getElementById("total-spending").textContent = "-$ " + totalSpending.toFixed(2);
+});
+document.addEventListener("DOMContentLoaded", function () {
+    const rowsPerPage = 7; // Количество строк на страницу
+    const table = document.getElementById("bookingTable");
+    const tbody = table.querySelector("tbody");
+    const rows = Array.from(tbody.querySelectorAll("tr"));
+    const totalRows = rows.length;
+    const totalPages = Math.ceil(totalRows / rowsPerPage);
+    let currentPage = 1;
+
+    const paginationContainer = document.getElementById("paginationControls");
+
+    function displayRows(page) {
+        // Скрываем все строки
+        rows.forEach(row => row.style.display = "none");
+
+        const start = (page - 1) * rowsPerPage;
+        const end = start + rowsPerPage;
+        for (let i = start; i < end && i < totalRows; i++) {
+            rows[i].style.display = "";
+        }
+    }
+
+    function generatePagination() {
+        let pageItems = Array.from(paginationContainer.querySelectorAll("li.page-item.number"));
+        pageItems.forEach(item => item.remove());
+
+        for (let i = 1; i <= totalPages; i++) {
+            const li = document.createElement("li");
+            li.classList.add("page-item", "number");
+            if (i === currentPage) {
+                li.classList.add("active");
+            }
+            const a = document.createElement("a");
+            a.classList.add("page-link");
+            a.href = "#";
+            a.textContent = i;
+            a.addEventListener("click", function (e) {
+                e.preventDefault();
+                currentPage = i;
+                updatePagination();
+            });
+            li.appendChild(a);
+            paginationContainer.insertBefore(li, document.getElementById("nextPage"));
+        }
+    }
+
+
+    function updatePagination() {
+        displayRows(currentPage);
+        generatePagination();
+    }
+
+    document.getElementById("prevPage").addEventListener("click", function (e) {
+        e.preventDefault();
+        if (currentPage > 1) {
+            currentPage--;
+            updatePagination();
+        }
+    });
+
+    document.getElementById("nextPage").addEventListener("click", function (e) {
+        e.preventDefault();
+        if (currentPage < totalPages) {
+            currentPage++;
+            updatePagination();
+        }
+    });
+
+    updatePagination();
+});
