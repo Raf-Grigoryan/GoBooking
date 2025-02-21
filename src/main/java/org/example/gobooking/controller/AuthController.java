@@ -6,11 +6,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.gobooking.dto.auth.PasswordChangeRequest;
 import org.example.gobooking.dto.auth.UserEditRequest;
 import org.example.gobooking.dto.card.SaveCardRequest;
+import org.example.gobooking.entity.booking.Type;
 import org.example.gobooking.security.CurrentUser;
+import org.example.gobooking.service.BookingService;
 import org.example.gobooking.service.CardService;
 import org.example.gobooking.service.UserService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,6 +26,16 @@ public class AuthController {
     private final UserService userService;
 
     private final CardService cardService;
+
+    private final BookingService bookingService;
+
+
+    @GetMapping
+    public String userPanel(@AuthenticationPrincipal CurrentUser user, ModelMap modelMap) {
+        modelMap.addAttribute("cards", cardService.getCardsByUserId(user.getUser().getId()));
+        modelMap.addAttribute("bookings", bookingService.clientFinishedBookings(user.getUser().getId(), Type.FINISHED));
+        return "/auth/user-main";
+    }
 
     @GetMapping("/login")
     public String getLoginPage(@AuthenticationPrincipal CurrentUser currentUser) {
@@ -81,10 +94,10 @@ public class AuthController {
         if (isUpdated) {
             log.debug("User profile updated successfully for: {}", user.getUser().getName());
             return "redirect:/loginSuccess";
-        } else {
+        }
             log.warn("Failed to update user profile for: {}", user.getUser().getName());
             return "redirect:/logout";
-        }
+
     }
 
     @GetMapping("/delete-profile")

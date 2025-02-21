@@ -11,6 +11,7 @@ import org.example.gobooking.mapper.ServiceMapper;
 import org.example.gobooking.repository.ServiceRepository;
 import org.example.gobooking.service.UserService;
 import org.example.gobooking.service.WorkService;
+import org.mapstruct.Named;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -127,6 +128,7 @@ public class WorkServiceImpl implements WorkService {
     }
 
     @Override
+    @Named("getServiceById")
     public Service getServiceByIdForBooking(int id) {
         Optional<Service> serviceInDb = serviceRepository.findById(id);
         if (serviceInDb.isPresent()) {
@@ -134,5 +136,7 @@ public class WorkServiceImpl implements WorkService {
         }
         throw new EntityNotFoundException("Service with id " + id + " not found");
     }
+
+
 }
 

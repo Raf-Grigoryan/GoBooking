@@ -1,6 +1,5 @@
 package org.example.gobooking.service.impl;
 
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.gobooking.customException.AddressOnlyExistException;
@@ -120,4 +119,5 @@ public class CompanyServiceImpl implements CompanyService {
         String contentType = image.getContentType();
         return contentType != null && (contentType.equals("image/png") || contentType.equals("image/jpeg"));
     }
+
 }
