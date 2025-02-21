@@ -56,4 +56,9 @@ public class CardServiceImpl implements CardService {
     public Card getCardByCardNumber(String cardNumber) {
         return cardRepository.findCardByCardNumber(cardNumber);
     }
+
+    @Override
+    public void editCard(Card card) {
+        cardRepository.save(card);
+    }
 }

@@ -12,7 +12,7 @@ import org.springframework.data.domain.PageRequest;
 
 public interface CompanyService {
 
-    void save(SaveCompanyRequest saveCompanyRequest, SaveAddressRequest saveAddressRequest);
+    void save(SaveCompanyRequest saveCompanyRequest, SaveAddressRequest saveAddressRequest, User director);
 
     CompanyDto getCompanyDtoByDirector(User director);
 
@@ -27,5 +27,6 @@ public interface CompanyService {
     Page<CompanyResponse> getAllCompanies(PageRequest pageRequest);
 
     CompanyResponse getCompanyResponseById(int id);
+
 
 }

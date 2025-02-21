@@ -15,4 +15,6 @@ public interface CardService {
     void deleteCardByCardNumber(String email,String cardNumber);
 
     Card getCardByCardNumber(String cardNumber);
+
+    void editCard(Card card);
 }

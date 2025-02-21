@@ -85,4 +85,8 @@ public class WorkGraphicServiceImpl implements WorkGraphicService {
         Optional<WorkGraphic> workGraphic = workerGraphicRepository.getWorkGraphicByWorker_IdAndWeekday(workerId, WeekDay.valueOf(dayWeek));
         return workGraphic.orElseThrow(() -> new EntityNotFoundException("Work graphic not found"));
     }
+
+    public void deleteWorkGraphic(int workGraphicId) {
+        workerGraphicRepository.deleteByWorker_Id(workGraphicId);
+    }
 }

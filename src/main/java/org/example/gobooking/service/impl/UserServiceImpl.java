@@ -1,6 +1,7 @@
 package org.example.gobooking.service.impl;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.gobooking.customException.CannotVerifyUserException;
@@ -14,6 +15,7 @@ import org.example.gobooking.dto.user.WorkerResponse;
 import org.example.gobooking.entity.user.Role;
 import org.example.gobooking.entity.user.User;
 import org.example.gobooking.mapper.UserMapper;
+import org.example.gobooking.repository.CompanyRepository;
 import org.example.gobooking.repository.UserRepository;
 import org.example.gobooking.service.MailService;
 import org.example.gobooking.service.UserService;
@@ -39,6 +41,10 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
 
     private final MailService mailService;
+
+    private final CompanyRepository companyRepository;
+
+    private final WorkGraphicServiceImpl workGraphicService;
 
     @Value("${image.upload.path}")
     private String imageUploadPath;
@@ -167,6 +173,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void editUser(User user) {
+        userRepository.save(user);
+    }
+
+    @Override
     public Page<UserDto> getAllUsers(PageRequest pageRequest) {
         Page<User> users = userRepository.findAllByRole(Role.USER, pageRequest);
         return users.map(userMapper::toDto);
@@ -199,8 +210,27 @@ public class UserServiceImpl implements UserService {
         throw new EntityNotFoundException("Worker does not exist");
     }
 
+    @Transactional
     @Override
     public void delete(User user) {
+        if (user.getRole().equals(Role.DIRECTOR)) {
+            if (companyRepository.existsCompanyByDirector(user)) {
+                List<User> workers = userRepository.findUserByCompany_Id(user.getCompany().getId());
+                user.setCompany(null);
+                for (User worker : workers) {
+                    worker.setCompany(null);
+                    worker.setRole(Role.USER);
+                    userRepository.save(worker);
+                }
+                companyRepository.deleteByDirector(user);
+            }
+        }
+        if(user.getRole().equals(Role.WORKER)){
+            user.setRole(Role.USER);
+            user.setCompany(null);
+            userRepository.save(user);
+            workGraphicService.deleteWorkGraphic(user.getId());
+        }
         user.setPictureName("user-removal-linear-style-icon-600nw-2473043843.webp");
         user.setEnable(false);
         userRepository.save(user);

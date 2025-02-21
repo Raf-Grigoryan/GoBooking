@@ -58,8 +58,10 @@ public class DirectorController {
     }
 
     @PostMapping("/create-company")
-    public String createCompany(@Valid @ModelAttribute SaveCompanyRequest companyRequest, @Valid @ModelAttribute SaveAddressRequest saveAddressRequest) {
-        companyService.save(companyRequest, saveAddressRequest);
+    public String createCompany(@Valid @ModelAttribute SaveCompanyRequest companyRequest,
+                                @Valid @ModelAttribute SaveAddressRequest saveAddressRequest,
+                                @AuthenticationPrincipal CurrentUser currentUser) {
+        companyService.save(companyRequest, saveAddressRequest, currentUser.getUser());
         return "redirect:/director";
     }
 

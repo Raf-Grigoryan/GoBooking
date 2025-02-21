@@ -5,10 +5,13 @@ import lombok.RequiredArgsConstructor;
 import org.example.gobooking.dto.auth.PasswordChangeRequest;
 import org.example.gobooking.dto.auth.UserEditRequest;
 import org.example.gobooking.dto.card.SaveCardRequest;
+import org.example.gobooking.entity.user.User;
 import org.example.gobooking.security.CurrentUser;
 import org.example.gobooking.service.CardService;
 import org.example.gobooking.service.UserService;
+import org.hibernate.validator.internal.util.stereotypes.Lazy;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,9 +21,11 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/auth")
 public class AuthController {
 
-    private final UserService userService;
+    private final  UserService userService;
 
     private final CardService cardService;
+
+    private final PasswordEncoder passwordEncoder;
 
 
     @GetMapping("/login")
@@ -74,9 +79,20 @@ public class AuthController {
     }
 
     @GetMapping("/delete-profile")
-    public String deleteProfile(@AuthenticationPrincipal CurrentUser user){
-        userService.delete(user.getUser());
-        return "redirect:/logout";
+    public String deleteProfile(){
+        return "/auth/delete-profile";
+    }
+
+    @PostMapping("/delete-profile")
+    public String deleteProfile(@AuthenticationPrincipal CurrentUser currentUser,
+                                @RequestParam("password") String password,
+                                @RequestParam("confirmPassword") String confirmPassword) {
+        User user = currentUser.getUser();
+        if (password.equals(confirmPassword) && passwordEncoder.matches(password, user.getPassword())) {
+            userService.delete(user);
+            return "redirect:/logout";
+        }
+        return "redirect:/auth/delete-profile?error=true";
     }
 
     @GetMapping("/delete-card")

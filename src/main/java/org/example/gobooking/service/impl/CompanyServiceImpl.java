@@ -17,6 +17,7 @@ import org.example.gobooking.mapper.CompanyMapper;
 import org.example.gobooking.repository.CompanyRepository;
 import org.example.gobooking.service.AddressService;
 import org.example.gobooking.service.CompanyService;
+import org.example.gobooking.service.UserService;
 import org.mapstruct.Named;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -33,10 +34,11 @@ public class CompanyServiceImpl implements CompanyService {
     private final CompanyMapper companyMapper;
     private final AddressService addressService;
     private final AddressMapper addressMapper;
+    private final UserService userService;
 
 
     @Override
-    public void save(SaveCompanyRequest saveCompanyRequest, SaveAddressRequest saveAddressRequest) {
+    public void save(SaveCompanyRequest saveCompanyRequest, SaveAddressRequest saveAddressRequest, User director) {
         if (companyRepository.findCompanyByDirectorId(saveCompanyRequest.getDirectorId()).isPresent()) {
             throw new CompanyAlreadyExistsException("Director already has an associated company.");
         }
@@ -47,7 +49,8 @@ public class CompanyServiceImpl implements CompanyService {
         addressService.saveAddress(address);
         Company company = companyMapper.toEntity(saveCompanyRequest);
         company.setAddress(address);
-        companyRepository.save(company);
+        director.setCompany(companyRepository.save(company));
+        userService.editUser(director);
     }
 
 
@@ -93,4 +96,5 @@ public class CompanyServiceImpl implements CompanyService {
         }
         throw new EntityNotFoundException("Company not found");
     }
+
 }
