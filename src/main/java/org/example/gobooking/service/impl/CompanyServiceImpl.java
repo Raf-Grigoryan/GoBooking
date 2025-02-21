@@ -18,10 +18,14 @@ import org.example.gobooking.repository.CompanyRepository;
 import org.example.gobooking.service.AddressService;
 import org.example.gobooking.service.CompanyService;
 import org.mapstruct.Named;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Optional;
 
 
@@ -34,18 +38,36 @@ public class CompanyServiceImpl implements CompanyService {
     private final AddressService addressService;
     private final AddressMapper addressMapper;
 
+    @Value("${image.upload.path}")
+    private String imageUploadPath;
 
     @Override
-    public void save(SaveCompanyRequest saveCompanyRequest, SaveAddressRequest saveAddressRequest) {
+    public void save(SaveCompanyRequest saveCompanyRequest, SaveAddressRequest saveAddressRequest, MultipartFile image) {
         if (companyRepository.findCompanyByDirectorId(saveCompanyRequest.getDirectorId()).isPresent()) {
             throw new CompanyAlreadyExistsException("Director already has an associated company.");
         }
         if (addressService.getAddressByStreetAndApartmentNumber(saveAddressRequest.getStreet(), saveAddressRequest.getApartmentNumber())) {
             throw new AddressOnlyExistException("Address only exist");
         }
+        Company company = companyMapper.toEntity(saveCompanyRequest);
+        try {
+            if (image != null && !image.isEmpty()) {
+                if (!isValidImage(image)) {
+                    throw new IllegalArgumentException("Invalid image format");
+                }
+                String fileName = System.currentTimeMillis() + "_" + image.getOriginalFilename();
+                File file = new File(imageUploadPath, fileName);
+                image.transferTo(file);
+                company.setCompanyPicture(fileName);
+            }
+        }catch (IOException e) {
+            throw new RuntimeException("File upload error: " + e.getMessage(), e);
+        } catch (Exception e) {
+            throw new RuntimeException("User update error: " + e.getMessage(), e);
+        }
+
         Address address = addressMapper.toEntity(saveAddressRequest);
         addressService.saveAddress(address);
-        Company company = companyMapper.toEntity(saveCompanyRequest);
         company.setAddress(address);
         companyRepository.save(company);
     }
@@ -92,5 +114,10 @@ public class CompanyServiceImpl implements CompanyService {
             return companyMapper.toResponse(byId.get());
         }
         throw new EntityNotFoundException("Company not found");
+    }
+
+    private boolean isValidImage(MultipartFile image) {
+        String contentType = image.getContentType();
+        return contentType != null && (contentType.equals("image/png") || contentType.equals("image/jpeg"));
     }
 }

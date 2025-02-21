@@ -8,5 +8,4 @@ import java.util.List;
 public interface ServiceRepository extends JpaRepository<Service, Integer> {
 
     List<Service> findAllByWorker_id(int workerId);
-
 }

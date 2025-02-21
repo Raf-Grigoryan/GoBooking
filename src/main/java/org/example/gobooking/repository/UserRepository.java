@@ -1,6 +1,7 @@
 package org.example.gobooking.repository;
 
 
+import org.example.gobooking.entity.company.Company;
 import org.example.gobooking.entity.user.Role;
 import org.example.gobooking.entity.user.User;
 import org.springframework.data.domain.Page;
@@ -21,4 +22,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     Page<User> findUserByRoleAndEmailContaining(Role role, String email, Pageable pageable);
 
     List<User> findUserByCompany_Id(int companyId);
+
+    List<User> findUserByCompany(Company company);
 }

@@ -5,4 +5,5 @@
     <include file="/db/migration/002_all_country_insert.xml"/>
     <include file="/db/migration/003.add_user_column.xml"/>
     <include file="/db/migration/004.alter.table.service.and.company.xml"/>
+    <include file="/db/migration/005.add.table.project.finance.xml"/>
 </databaseChangeLog>
