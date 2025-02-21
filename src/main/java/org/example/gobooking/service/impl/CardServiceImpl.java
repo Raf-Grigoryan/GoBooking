@@ -56,4 +56,14 @@ public class CardServiceImpl implements CardService {
     public Card getCardByCardNumber(String cardNumber) {
         return cardRepository.findCardByCardNumber(cardNumber);
     }
+
+    @Override
+    public void save(Card card) {
+        cardRepository.save(card);
+    }
+
+    @Override
+    public int getCardsCountByUserId(int userId) {
+        return cardRepository.countByUserId(userId);
+    }
 }

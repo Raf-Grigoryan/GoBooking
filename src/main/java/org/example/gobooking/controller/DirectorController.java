@@ -1,8 +1,8 @@
 package org.example.gobooking.controller;
 
-import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.example.gobooking.customException.CompanyNoCreateException;
 import org.example.gobooking.dto.company.CompanyDto;
 import org.example.gobooking.dto.company.SaveAddressRequest;
@@ -10,8 +10,6 @@ import org.example.gobooking.dto.company.SaveCompanyRequest;
 import org.example.gobooking.dto.request.SaveRoleChangeRequest;
 import org.example.gobooking.dto.subscription.SubscriptionDto;
 import org.example.gobooking.dto.user.UserDto;
-import org.example.gobooking.entity.subscription.Subscription;
-import org.example.gobooking.entity.user.Card;
 import org.example.gobooking.security.CurrentUser;
 import org.example.gobooking.service.*;
 import org.springframework.data.domain.Page;
@@ -20,6 +18,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -27,6 +26,7 @@ import java.util.stream.IntStream;
 @Controller
 @RequestMapping("/director")
 @RequiredArgsConstructor
+@Slf4j
 public class DirectorController {
 
     private final CompanyService companyService;
@@ -46,27 +46,35 @@ public class DirectorController {
 
     @GetMapping
     public String getDirectorPage(@AuthenticationPrincipal CurrentUser currentUser, ModelMap modelMap) {
+        log.info("Fetching director page for user: {}", currentUser.getUser().getName());
         CompanyDto company = companyService.getCompanyDtoByDirector(currentUser.getUser());
         modelMap.addAttribute("company", company);
+        log.debug("Company fetched: {}", company);
         return "/director/director";
     }
 
     @GetMapping("/create-company")
     public String createCompanyPage(ModelMap modelMap) {
+        log.info("Fetching create company page");
         modelMap.put("countries", countryService.getAllCountries());
         return "/director/add-company";
     }
 
     @PostMapping("/create-company")
-    public String createCompany(@Valid @ModelAttribute SaveCompanyRequest companyRequest, @Valid @ModelAttribute SaveAddressRequest saveAddressRequest) {
-        companyService.save(companyRequest, saveAddressRequest);
+    public String createCompany(@Valid @ModelAttribute SaveCompanyRequest companyRequest,
+                                @Valid @ModelAttribute SaveAddressRequest saveAddressRequest,
+                                @RequestParam("image") MultipartFile image) {
+        log.info("Creating company with request: {}", companyRequest);
+        companyService.save(companyRequest, saveAddressRequest, image);
+        log.debug("Company successfully created.");
         return "redirect:/director";
     }
 
     @GetMapping("/delete-company")
     public String deleteCompany(@RequestParam("id") int id) {
-        System.out.println(id);
+        log.info("Deleting company with ID: {}", id);
         companyService.deleteCompany(id);
+        log.debug("Company with ID {} deleted.", id);
         return "redirect:/director";
     }
 
@@ -76,6 +84,7 @@ public class DirectorController {
                                         @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
                                         @RequestParam(value = "keyword", defaultValue = "") String keyword,
                                         @AuthenticationPrincipal CurrentUser currentUser) {
+        log.info("Fetching role change request page for director: {}", currentUser.getUser().getName());
         CompanyDto company = companyService.getCompanyDtoByDirector(currentUser.getUser());
         if (company != null) {
             PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
@@ -94,37 +103,48 @@ public class DirectorController {
             }
             modelMap.addAttribute("companyId", company.getId());
             modelMap.addAttribute("userDtoList", userDtoList);
+            log.debug("Role change request page loaded for company ID: {}", company.getId());
             return "/director/send_role_change_request";
         }
+        log.error("Company not found for director: {}", currentUser.getUser().getName());
         throw new CompanyNoCreateException("Company not found");
     }
 
     @PostMapping("/send-role-change-request")
     public String sendRoleChangeRequest(@ModelAttribute SaveRoleChangeRequest roleChangeRequest) {
+        log.info("Sending role change request: {}", roleChangeRequest);
         directorService.sendWorkRequest(roleChangeRequest);
+        log.debug("Role change request sent.");
         return "redirect:/director/send-role-change-request";
     }
 
     @GetMapping("/subscription")
     public String getSubscriptionPage(ModelMap modelMap) {
+        log.info("Fetching subscription page.");
         List<SubscriptionDto> subscriptions = subscriptionService.getAllSubscriptions();
         modelMap.addAttribute("subscriptions", subscriptions);
+        log.debug("Subscriptions fetched: {}", subscriptions.size());
         return "/subscription/subscription";
     }
 
     @GetMapping("/buy-subscription")
-    public String BuySubscriptionPage(@AuthenticationPrincipal CurrentUser currentUser, ModelMap modelMap, @RequestParam ("subscriptionTitle") String title ) {
+    public String buySubscriptionPage(@AuthenticationPrincipal CurrentUser currentUser, ModelMap modelMap, @RequestParam("subscriptionTitle") String title) {
+        log.info("Fetching subscription page for user: {} with title: {}", currentUser.getUser().getName(), title);
+        if (cardService.getCardsCountByUserId(currentUser.getUser().getId()) == 0) {
+            log.warn("No cards found for user: {}. Redirecting to card creation.", currentUser.getUser().getName());
+            return "redirect:/create-card";
+        }
         modelMap.addAttribute("cards", cardService.getCardsByUserId(currentUser.getUser().getId()));
-        modelMap.addAttribute("subscription",subscriptionService.getSubscriptionDtoByTitle(title));
+        modelMap.addAttribute("subscription", subscriptionService.getSubscriptionDtoByTitle(title));
         return "/subscription/buy-subscription";
     }
 
-    @Transactional
+
     @PostMapping("/buy-subscription")
-    public String BuySubscription(@AuthenticationPrincipal CurrentUser currentUser,  @RequestParam ("subscriptionTitle") String title, @RequestParam("cardNumber") String cardNumber) {
-        Subscription subscription = subscriptionService.getSubscriptionByTitle(title);
-        Card card = cardService.getCardByCardNumber(cardNumber);
-        validSubscriptionService.save(companyService.getCompanyByDirector(currentUser.getUser()),subscription,card);
+    public String buySubscription(@AuthenticationPrincipal CurrentUser currentUser, @RequestParam("subscriptionTitle") String title, @RequestParam("cardNumber") String cardNumber) {
+        log.info("Buying subscription for user: {} with title: {} and card number: {}", currentUser.getUser().getName(), title, cardNumber);
+        validSubscriptionService.save(companyService.getCompanyByDirector(currentUser.getUser()), title, cardNumber);
+        log.debug("Subscription purchased successfully.");
         return "redirect:/director";
     }
 

@@ -1,18 +1,23 @@
 package org.example.gobooking.service.impl;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.gobooking.customException.InsufficientFundsException;
 import org.example.gobooking.entity.company.Company;
 import org.example.gobooking.entity.subscription.Subscription;
 import org.example.gobooking.entity.subscription.ValidSubscription;
 import org.example.gobooking.entity.user.Card;
-import org.example.gobooking.repository.CardRepository;
 import org.example.gobooking.repository.ValidSubscriptionRepository;
+import org.example.gobooking.service.CardService;
+import org.example.gobooking.service.MailService;
+import org.example.gobooking.service.SubscriptionService;
 import org.example.gobooking.service.ValidSubscriptionService;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 
 @Service
@@ -20,9 +25,14 @@ import java.util.Date;
 public class ValidSubscriptionServiceImpl implements ValidSubscriptionService {
 
     private final ValidSubscriptionRepository validSubscriptionRepository;
-    private final CardRepository cardRepository;
+    private final CardService cardService;
+    private final SubscriptionService subscriptionService;
+    private final MailService mailService;
 
-    public void save(Company company, Subscription subscription, Card card) {
+    @Transactional
+    public void save(Company company, String subscriptionTitle, String cardNumber) {
+        Subscription subscription = subscriptionService.getSubscriptionByTitle(subscriptionTitle);
+        Card card = cardService.getCardByCardNumber(cardNumber);
         if (card.getBalance().compareTo(subscription.getPrice()) < 0) {
             throw new InsufficientFundsException("Not enough balance on the card.");
         }
@@ -35,7 +45,32 @@ public class ValidSubscriptionServiceImpl implements ValidSubscriptionService {
         calendar.add(Calendar.MONTH, subscription.getDuration());
         Date endedDate = calendar.getTime();
         validSubscription.setEndedDate(endedDate);
-        cardRepository.save(card);
+        cardService.save(card);
         validSubscriptionRepository.save(validSubscription);
+    }
+
+    @Scheduled(cron = "0 0 9 * * ?")
+    public void notifyExpiringSubscriptions() {
+        Date notifyDate = new Date(System.currentTimeMillis() + (3L * 24 * 60 * 60 * 1000)); // Current time + 3 days
+        List<ValidSubscription> expiringSoon = validSubscriptionRepository.findByEndedDate(new java.sql.Date(notifyDate.getTime()));
+
+        for (ValidSubscription sub : expiringSoon) {
+            mailService.sendSubscriptionExpiryEmail(sub.getCompany().getDirector().getEmail(), sub.getCompany().getDirector().getName(), sub.getEndedDate().toString());
+        }
+    }
+
+    @Scheduled(cron = "0 0 0 * * ?")
+    @Override
+    public void deleteExpiredSubscriptions() {
+        Date today = new Date();
+        List<ValidSubscription> expiredSubscriptions = validSubscriptionRepository.findByEndedDateBefore(today);
+        if (!expiredSubscriptions.isEmpty()) {
+            for (ValidSubscription sub : expiredSubscriptions) {
+                mailService.sendSubscriptionDeletedEmail(sub.getCompany().getDirector().getEmail(), sub.getCompany().getDirector().getName());
+            }
+
+            validSubscriptionRepository.deleteAll(expiredSubscriptions);
+            System.out.println("Deleted " + expiredSubscriptions.size() + " expired subscriptions.");
+        }
     }
 }

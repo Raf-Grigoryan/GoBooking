@@ -20,4 +20,5 @@ public interface BookingService {
     BookingAnalyticsWorker getBookingAnalyticsWorker(int workerId);
 
     List<PendingBookingResponse> getFinishedBookings(int workerId);
+
 }

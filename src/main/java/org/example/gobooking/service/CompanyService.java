@@ -8,11 +8,12 @@ import org.example.gobooking.entity.company.Company;
 import org.example.gobooking.entity.user.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.web.multipart.MultipartFile;
 
 
 public interface CompanyService {
 
-    void save(SaveCompanyRequest saveCompanyRequest, SaveAddressRequest saveAddressRequest);
+    void save(SaveCompanyRequest saveCompanyRequest, SaveAddressRequest saveAddressRequest, MultipartFile image);
 
     CompanyDto getCompanyDtoByDirector(User director);
 

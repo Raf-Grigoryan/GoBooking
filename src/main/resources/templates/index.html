@@ -40,7 +40,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/logout" class="nav-link">
+                        <a href="/logout" class="nav-link" th:if="${currentUser != null}">
                             Sign Out
                         </a>
                     </li>

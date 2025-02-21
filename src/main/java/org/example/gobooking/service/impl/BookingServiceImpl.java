@@ -124,4 +124,5 @@ public class BookingServiceImpl implements BookingService {
     public List<PendingBookingResponse> getFinishedBookings(int workerId) {
         return bookingMapper.pendingBookingResponses(bookingRepository.getBookingByService_Worker_IdAndType(workerId, Type.FINISHED));
     }
+
 }
