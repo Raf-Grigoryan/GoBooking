@@ -11,8 +11,6 @@ public interface BookingService {
 
     SelectTimeResponse getSelectTimeByWorkerIdAndServiceId(int workerId, int serviceId, Date bookingDate);
 
-    void save(SaveBookingRequest saveBookingRequest, User user, Date bookingDate);
-
     List<WorkerBookingResponse> clientFinishedBookings(int clientId, Type type);
 
     List<PendingBookingResponse> getUnfinishedServices(int workerId);

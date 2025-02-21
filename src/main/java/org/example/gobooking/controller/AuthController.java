@@ -115,10 +115,10 @@ public class AuthController {
                                 @RequestParam("password") String password,
                                 @RequestParam("confirmPassword") String confirmPassword) {
         User user = currentUser.getUser();
-        log.info("User {} is requesting to delete their profile.", user.getUser().getName());
+        log.info("User {} is requesting to delete their profile.", user.getName());
         if (password.equals(confirmPassword) && passwordEncoder.matches(password, user.getPassword())) {
             userService.delete(user);
-            log.debug("User profile deleted successfully for: {}", user.getUser().getName());
+            log.debug("User profile deleted successfully for: {}", user.getName());
             return "redirect:/logout";
         }
         return "redirect:/auth/delete-profile?error=true";
