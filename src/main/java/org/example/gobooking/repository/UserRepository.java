@@ -25,4 +25,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     List<User> findUserByCompany(Company company);
 
+    User getUserById(int id);
+
 }
