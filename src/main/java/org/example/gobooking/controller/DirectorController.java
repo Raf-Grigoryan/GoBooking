@@ -43,6 +43,10 @@ public class DirectorController {
 
     private final ValidSubscriptionService validSubscriptionService;
 
+    private final BookingService bookingService;
+
+    private final WorkService workService;
+
 
     @GetMapping
     public String getDirectorPage(@AuthenticationPrincipal CurrentUser currentUser, ModelMap modelMap) {
@@ -66,7 +70,7 @@ public class DirectorController {
                                 @RequestParam("image") MultipartFile image,
                                 @AuthenticationPrincipal CurrentUser currentUser) {
         log.info("Creating company with request: {}", companyRequest);
-        companyService.save(companyRequest, saveAddressRequest, image ,currentUser.getUser());
+        companyService.save(companyRequest, saveAddressRequest, image, currentUser.getUser());
         log.debug("Company successfully created.");
         return "redirect:/director";
     }
@@ -149,4 +153,21 @@ public class DirectorController {
         return "redirect:/director";
     }
 
+    @GetMapping("/my-company")
+    public String getMyCompanyPage(@AuthenticationPrincipal CurrentUser currentUser, ModelMap modelMap) {
+        modelMap.put("companyResponse", directorService.getCompanyManagementByDirectorId(currentUser.getUser().getId()));
+        return "/director/my-company";
+    }
+
+    @GetMapping("all-services")
+    public String getAllServicesPage(@AuthenticationPrincipal CurrentUser currentUser, ModelMap modelMap) {
+        modelMap.put("services", workService.getAllServicesByDirectorId(currentUser.getUser().getId()));
+        return "/director/all-services";
+    }
+
+    @GetMapping("/all-bookings")
+    public String getAllBookingsPage(@AuthenticationPrincipal CurrentUser currentUser, ModelMap modelMap) {
+        modelMap.put("bookings", bookingService.getFinishedBookingsByDirectorId(currentUser.getUser().getId()));
+        return "/director/all-bookings";
+    }
 }

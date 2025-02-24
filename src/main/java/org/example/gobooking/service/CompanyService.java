@@ -27,4 +27,5 @@ public interface CompanyService {
 
     Page<CompanyResponse> getAllCompanies(PageRequest pageRequest);
 
+    CompanyResponse getCompanyResponseByDirectorId(int doctorId);
 }

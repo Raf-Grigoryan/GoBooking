@@ -1,6 +1,7 @@
 package org.example.gobooking.mapper;
 
 import org.example.gobooking.dto.work.CreateServiceRequest;
+import org.example.gobooking.dto.work.DirectorServiceResponse;
 import org.example.gobooking.dto.work.ServiceResponse;
 import org.example.gobooking.entity.work.Service;
 import org.example.gobooking.service.UserService;
@@ -20,5 +21,8 @@ public interface ServiceMapper {
     Service mapServiceToService(CreateServiceRequest serviceRequest);
 
     List<ServiceResponse> mapServices(List<Service> services);
+
+    @Mapping(source = "workerId", target = "worker")
+    List<DirectorServiceResponse> mapDirectorServices(List<Service> services);
 
 }
