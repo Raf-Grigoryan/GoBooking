@@ -9,4 +9,5 @@ public class BookingAnalyticsWorker {
     private int clientCount;
     private int bookingCount;
     private double totalEarnings;
+    private double potentialEarnings;
 }

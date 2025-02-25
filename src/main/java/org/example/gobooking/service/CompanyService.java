@@ -28,4 +28,7 @@ public interface CompanyService {
 
     Page<CompanyForAdminDto> getAllCompaniesByValid(boolean valid, PageRequest pageRequest);
 
+    void editCompany(SaveCompanyRequest companyRequest, int id, MultipartFile image, SaveAddressRequest addressRequest, int addressId);
+
+    CompanyResponse getCompanyResponseByDirectorId(int doctorId);
 }

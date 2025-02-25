@@ -24,7 +24,7 @@ window.theme = theme, function () {
     "use strict";
     var e;
     document.getElementById("perfomanceChart") && (e = {
-        series: [100, 78, 89],
+        series: [21, 78, 89],
         chart: {height: 320, type: "radialBar"},
         colors: [window.theme.primary, window.theme.success, window.theme.danger],
         stroke: {lineCap: "round"},
@@ -37,7 +37,7 @@ window.theme = theme, function () {
                 dataLabels: {show: !1}
             }
         }
-    }/*new ApexCharts(document.querySelector("#perfomanceChart"), e).render()), document.getElementById("revenueChart") && (e = {
+    }, new ApexCharts(document.querySelector("#perfomanceChart"), e).render()), document.getElementById("revenueChart") && (e = {
         series: [{
             name: "Current Week",
             data: [31, 40, 28, 51, 42, 109, 100]
@@ -80,7 +80,7 @@ window.theme = theme, function () {
                 }
             }
         }
-    },*//* new ApexCharts(document.querySelector("#revenueChart"), e).render()), document.getElementById("totalSale") && (e = {
+    }, new ApexCharts(document.querySelector("#revenueChart"), e).render()), document.getElementById("totalSale") && (e = {
         series: [45, 38, 28, 15],
         labels: ["Direct", "Affiliate", "Sponsored", "E-mail"],
         colors: ["#624BFF", "#0EA5E9", "#DC3545", "#F59E0B"],
@@ -90,7 +90,7 @@ window.theme = theme, function () {
         plotOptions: {pie: {donut: {size: "70%"}}},
         stroke: {width: 0},
         responsive: [{breakpoint: 1400, options: {chart: {type: "donut", width: 290, height: 330}}}]
-    }*/, new ApexCharts(document.querySelector("#totalSale"), e).render()), document.getElementById("locationmap") && new jsVectorMap({
+    }, new ApexCharts(document.querySelector("#totalSale"), e).render()), document.getElementById("locationmap") && new jsVectorMap({
         map: "world",
         selector: "#locationmap",
         zoomOnScroll: !0,

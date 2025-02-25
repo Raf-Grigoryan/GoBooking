@@ -305,9 +305,12 @@
 
                                 <div class="card-header d-flex justify-content-between align-items-center">
                                     <h4 class="mb-0" th:text="${company.name}"></h4>
-                                    <button style="color: slategray" onclick="confirmDelete()">
+                                    <button style="color: slategray">
                                         <a th:href="@{/director/delete-company(id=${company.getId()})}">Delete</a> </button>
+                                    <button style="color: slategray">
+                                        <a th:href="@{/director/delete-company(id=${company.getId()})}">Edit</a> </button>
                                 </div>
+
                                 <div class="card-body">
                                     <!-- card title -->
                                     <h5 class="text-uppercase">Phone</h5>

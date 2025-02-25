@@ -3,6 +3,7 @@ package org.example.gobooking.service.impl;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.example.gobooking.dto.work.CreateServiceRequest;
+import org.example.gobooking.dto.work.DirectorServiceResponse;
 import org.example.gobooking.dto.work.EditServiceRequest;
 import org.example.gobooking.dto.work.ServiceResponse;
 import org.example.gobooking.entity.user.User;
@@ -137,6 +138,19 @@ public class WorkServiceImpl implements WorkService {
         throw new EntityNotFoundException("Service with id " + id + " not found");
     }
 
+    @Override
+    public int getWorkerServiceCountByDirector(int directorId) {
+        return serviceRepository.countByWorker_Company_Director_Id(directorId);
+    }
 
+    @Override
+    public List<ServiceResponse> getServicesByCompanyId(int companyId) {
+        return serviceMapper.mapServices(serviceRepository.findRandomServicesByCompanyId(companyId));
+    }
+
+    @Override
+    public List<DirectorServiceResponse> getAllServicesByDirectorId(int directorId) {
+        return serviceMapper.mapDirectorServices(serviceRepository.findAllServicesByDirectorIdDesc(directorId));
+    }
 }
 

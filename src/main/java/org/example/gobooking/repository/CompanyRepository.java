@@ -26,4 +26,6 @@ public interface CompanyRepository extends JpaRepository<Company, Integer> {
 
     int countCompaniesByValid(boolean valid);
 
+    Company getCompanyById(int id);
+
 }

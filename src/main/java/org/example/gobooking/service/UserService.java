@@ -36,7 +36,7 @@ public interface UserService {
 
     boolean editUser(User currentUser, UserEditRequest user, MultipartFile image);
 
-    void  editUser(User user);
+    void editUser(User user);
 
     List<WorkerResponse> workersByCompanyId(int companyId);
 
@@ -50,4 +50,5 @@ public interface UserService {
 
     int grtRoleChangeRequestCount(User user);
 
+    List<WorkerResponse> getWorkersByDirectorId(int directorId);
 }

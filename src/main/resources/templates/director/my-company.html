@@ -1,0 +1,386 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Codescandy">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script async="" src="/allCss/gtag/js?id=G-M8S4MT3EYG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-M8S4MT3EYG');
+    </script>
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/allCss/dashuipro/assets/images/favicon/favicon.ico">
+
+    <script src="/allCss/dashuipro/assets/js/vendors/color-modes.js"></script>
+    <link href="/allCss/dashuipro/assets/libs/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="/allCss/dashuipro/assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="/allCss/dashuipro/assets/libs/simplebar/dist/simplebar.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/allCss/dashuipro/assets/css/theme.min.css">
+    <!-- dropzone -->
+    <link href="/allCss/dashuipro/assets/libs/dropzone/dist/dropzone.css" rel="stylesheet">
+
+
+    <title>My Company</title>
+</head>
+<body>
+<main id="main-wrapper" class="main-wrapper">
+    <th:block th:include="fragment/userMenu::mainPanel"></th:block>
+    <div id="app-content">
+        <div class="app-content-area">
+            <div class="bg-primary pt-10 pb-21 mt-n6 mx-n4"></div>
+            <div class="container-fluid mt-n22">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-12">
+                        <div class="d-flex justify-content-between align-items-center mb-5">
+                            <div class="mb-2 mb-lg-0">
+                                <img th:src="@{/getImage(imageName=${companyResponse.company.getCompanyPicture()})}"
+                                     style="width: 100px">
+                                <h3 class="mb-0 text-white"
+                                    th:text="${companyResponse.company.name}"></h3>
+                            </div>
+                            <div>
+                                <a href="#!" class="btn btn-white">Edit Company</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-3 col-lg-6 col-md-12 col-12 mb-5">
+                        <!-- card -->
+                        <div class="card h-100 card-lift">
+                            <!-- card body -->
+                            <div class="card-body">
+                                <!-- heading -->
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div>
+                                        <h4 class="mb-0">Worker Count</h4>
+                                    </div>
+                                    <div class="icon-shape icon-md bg-primary-soft text-primary rounded-2">
+                                        <i data-feather="briefcase" height="20" width="20"></i>
+                                    </div>
+                                </div>
+                                <!-- project number -->
+                                <div class="lh-1">
+                                    <h1 class="mb-1 fw-bold" th:text="${companyResponse.workers.size()}"></h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-12 col-12 mb-5">
+                        <div class="card h-100 card-lift">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div>
+                                        <h4 class="mb-0">Service Count</h4>
+                                    </div>
+                                    <div class="icon-shape icon-md bg-primary-soft text-primary rounded-2">
+                                        <i data-feather="list" height="20" width="20"></i>
+                                    </div>
+                                </div>
+                                <!-- project number -->
+                                <div class="lh-1">
+                                    <h1 class="mb-1 fw-bold" th:text="${companyResponse.serviceCount}"></h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-12 col-12 mb-5">
+                        <!-- card -->
+                        <div class="card h-100 card-lift">
+                            <!-- card body -->
+                            <div class="card-body">
+                                <!-- heading -->
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div>
+                                        <h4 class="mb-0">Bookings Count</h4>
+                                    </div>
+                                    <div class="icon-shape icon-md bg-primary-soft text-primary rounded-2">
+                                        <i data-feather="users" height="20" width="20"></i>
+                                    </div>
+                                </div>
+                                <div class="lh-1">
+                                    <h1 class="mb-1 fw-bold" th:text="${companyResponse.bookingCount}"></h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-12 col-12 mb-5">
+                        <!-- card -->
+                        <div class="card h-100 card-lift">
+                            <!-- card body -->
+                            <div class="card-body">
+                                <!-- heading -->
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div>
+                                        <h4 class="mb-0">Month Earning</h4>
+                                    </div>
+                                    <div class="icon-shape icon-md bg-primary-soft text-primary rounded-2">
+                                        <i data-feather="target" height="20" width="20"></i>
+                                    </div>
+                                </div>
+                                <!-- project number -->
+                                <div class="lh-1">
+                                    <h1 class="mb-1 fw-bold" th:text="${companyResponse.getMonthEarning() + '$'}"></h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-xl-8 col-12 mb-5">
+                        <!-- card  -->
+                        <div class="card">
+                            <!-- card header  -->
+                            <div class="card-header">
+                                <h4 class="mb-0">My Workers</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive table-card">
+                                    <table class="table text-nowrap mb-0 table-centered table-hover">
+                                        <thead class="table-light">
+                                        <tr>
+                                            <th>Full Name</th>
+                                            <th>Phone</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="worker : ${companyResponse.getWorkers()}">
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div>
+                                                        <div>
+                                                            <img th:src="@{/getImage(imageName=${worker.getPictureName()})}"
+                                                                 alt="Image" class="avatar avatar-sm rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                    <div class="ms-3 lh-1">
+                                                        <h5 class="mb-1"><a href="#!" class="text-inherit"
+                                                                            th:text="${worker.name + ' ' + worker.surname}"></a>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td th:text="${worker.phone}">
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-12 col-md-12 col-12 mb-5">
+                        <!-- card  -->
+                        <div class="card h-100">
+                            <!-- card body  -->
+                            <div class="card-header d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h4 class="mb-0">Booking Statuses</h4>
+                                </div>
+
+                                <!-- dropdown  -->
+                                <div class="dropdown dropstart">
+                                    <a class="btn btn-icon btn-ghost btn-sm rounded-circle" href="#!" role="button"
+                                       id="dropdownTask" data-bs-toggle="dropdown" aria-haspopup="true"
+                                       aria-expanded="false">
+                                        <i class="icon-xs" data-feather="more-vertical"></i>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownTask">
+                                        <a class="dropdown-item d-flex align-items-center" href="#!">Action</a>
+                                        <a class="dropdown-item d-flex align-items-center" href="#!">Another action</a>
+                                        <a class="dropdown-item d-flex align-items-center" href="#!">Something else
+                                            here</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <!-- chart  -->
+                                <div class="mb-6">
+                                    <div id="perfomanceChart"></div>
+                                </div>
+                                <!-- icon with content  -->
+                                <div class="d-flex align-items-center justify-content-around">
+                                    <div class="text-center">
+                                        <i class="icon-sm text-success" data-feather="check-circle"></i>
+                                        <h1 class="fs-2 mb-0"
+                                            th:text="${companyResponse.getCompanyBookingStatistics().getApprovedBookingsCount()}"></h1>
+                                        <p>Approved</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <i class="icon-sm text-warning" data-feather="trending-up"></i>
+                                        <h1 class="fs-2 mb-0"
+                                            th:text="${companyResponse.getCompanyBookingStatistics().getFinishedBookingsCount()}"></h1>
+                                        <p>Finished</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <i class="icon-sm text-danger" data-feather="trending-down"></i>
+                                        <h1 class="fs-2 mb-0"
+                                            th:text="${companyResponse.getCompanyBookingStatistics().getRejectedBookingsCount()}">
+                                            %</h1>
+                                        <p>Rejected</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- card  -->
+                    <div class="col-xl-6 col-lg-12 col-md-12 col-12 mb-5 mb-xl-0">
+                        <div class="card h-100">
+                            <!-- card header  -->
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h4 class="mb-0">Worker Services</h4>
+                            </div>
+                            <!-- table  -->
+                            <div class="card-body">
+                                <div class="table-responsive table-card">
+                                    <table class="table text-nowrap mb-0 table-centered table-hover">
+                                        <thead class="table-light">
+                                        <tr>
+                                            <th>image</th>
+                                            <th>title</th>
+                                            <th>duration</th>
+                                            <th>description</th>
+                                            <th>price</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="service : ${companyResponse.serviceList}">
+                                            <td>
+                                                <div class="form-check" th:if="${service.getPictureName() != null}">
+                                                    <div th:if="${service.getPictureName() != null}">
+                                                        <img
+                                                                th:src="@{/getImage(imageName=${service.getPictureName()})}"
+                                                                alt="Image" class="avatar avatar-sm rounded-circle">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td th:text="${service.title}"></td>
+                                            <td>
+                                                <span class="badge badge-success-soft"
+                                                      th:text="${service.duration}"></span>
+                                            </td>
+                                            <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px;">
+                                                <span class="badge badge-success-soft"
+                                                      th:text="${service.description}"></span>
+                                            </td>
+                                            <td>
+                                                <span class="badge badge-success-soft"
+                                                      th:text="${service.price + '$'}"></span>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <a  href="/director/all-services"><button type="button" class="btn btn-dark mb-2">View All
+                                Services
+                            </button></a>
+                        </div>
+                    </div>
+                    <!-- card  -->
+                    <div class="col-xl-6 col-lg-12 col-md-12 col-12 mb-5 mb-xl-0">
+                        <div class="card h-100">
+                            <div class="card-header">
+                                <h4 class="mb-0">Bookings</h4>
+                            </div>
+                            <!-- table  -->
+                            <div class="card-body">
+                                <div class="table-responsive table-card" data-simplebar="" style="max-height: 380px">
+                                    <table class="table text-nowrap mb-0 table-centered table-hover">
+                                        <thead class="table-light">
+                                        <tr>
+                                            <th>Data</th>
+                                            <th>Payment Method</th>
+                                            <th>Title</th>
+                                            <th>Price</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="booking : ${companyResponse.getFinishedBookings()}">
+                                            <td th:text="${#dates.format(booking.bookingDate, 'dd-MM-yyyy')}"></td>
+                                            <td th:text="${booking.paymentMethod}"></td>
+                                            <td th:text="${booking.serviceResponse.title}"></td>
+                                            <td th:text="${booking.serviceResponse.price + '$'}"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <a  href="/director/all-bookings"><button type="button" class="btn btn-dark mb-2">View All
+                               In This Month Bookings
+                            </button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script th:inline="javascript">
+    window.financeData = {
+        approved: /*[[${companyResponse.getCompanyBookingStatistics().getApprovedBookingsCount()}]]*/ 0,
+        finished: /*[[${companyResponse.getCompanyBookingStatistics().getFinishedBookingsCount()}]]*/ 0,
+        rejected: /*[[${companyResponse.getCompanyBookingStatistics().getRejectedBookingsCount()}]]*/ 0
+    };
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(() => {
+            if (!window.financeData || Object.keys(window.financeData).length === 0) {
+                console.error("Finance data is empty!");
+                return;
+            }
+
+            let chartContainer = document.getElementById("perfomanceChart");
+            if (!chartContainer) {
+                console.error("Chart container not found!");
+                return;
+            }
+
+            chartContainer.innerHTML = "";
+
+            let options = {
+                series: [window.financeData.approved, window.financeData.finished, window.financeData.rejected],
+                chart: {height: 320, type: "radialBar"},
+                colors: ["#28a745", "#ffc107", "#dc3545"],
+                stroke: {lineCap: "round"},
+                plotOptions: {
+                    radialBar: {
+                        startAngle: -168,
+                        endAngle: -450,
+                        hollow: {size: "55%"},
+                        track: {background: "transparent"},
+                        dataLabels: {show: false}
+                    }
+                }
+            };
+
+            let chart = new ApexCharts(chartContainer, options);
+            chart.render();
+        }, 500);
+    });
+</script>
+
+<script src="/allCss/dashuipro/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/feather-icons/dist/feather.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/simplebar/dist/simplebar.min.js"></script>
+<script src="/allCss/dashuipro/assets/js/theme.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+</body>
+</html>

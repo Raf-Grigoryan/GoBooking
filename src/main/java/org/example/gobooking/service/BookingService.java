@@ -1,6 +1,7 @@
 package org.example.gobooking.service;
 
 import org.example.gobooking.dto.booking.*;
+import org.example.gobooking.dto.subscription.BookingStatistics;
 import org.example.gobooking.entity.booking.Type;
 import org.example.gobooking.entity.user.User;
 import org.springframework.data.domain.Page;
@@ -24,6 +25,16 @@ public interface BookingService {
     Page<PendingBookingResponse> getFinishedBookings(int workerId, PageRequest pageRequest);
 
     void save(SaveBookingRequest saveBookingRequest, User user, Date bookingDate, String cardNumber);
+
+    int getBookingCountByCompanyId(int companyId);
+
+    double getMonthEarningByCompanyId(int companyId);
+
+    BookingStatistics getRandomServicesByCompanyId(int companyId);
+
+    List<WorkerBookingResponse> getFinishedBookingsByCompanyId(int companyId);
+
+    List<WorkerBookingResponse> getFinishedBookingsByDirectorId(int directorId);
 
     void reject(int bookingId);
 
