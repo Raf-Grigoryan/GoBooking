@@ -202,7 +202,7 @@ public class MailServiceImpl implements MailService {
     }
 
 
-    @Scheduled(cron = "0 0 1 * * ?")
+
     public void sendScheduledEmail() {
         for (User director : userRepository.getUserByRole(Role.DIRECTOR)) {
             try {

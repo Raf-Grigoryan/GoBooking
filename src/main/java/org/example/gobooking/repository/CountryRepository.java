@@ -4,4 +4,7 @@ import org.example.gobooking.entity.company.Country;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CountryRepository extends JpaRepository<Country, Integer> {
+
+    Country getCountryById(int id);
+
 }
