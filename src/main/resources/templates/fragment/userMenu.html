@@ -25,7 +25,7 @@
                     <form action="/booking/search-company">
                         <div class="input-group">
                             <input class="form-control rounded-3 bg-transparent ps-9" type="search"
-                                   id="searchInput" placeholder="Search Company" name="keyword">
+                                   id="searchInput" th:placeholder="#{userMenu.searchCompanies}" name="keyword">
                             <span class="">
 						</span>
                             <button class="btn position-absolute start-0" type="submit" style="margin-left: 200px">
@@ -58,13 +58,14 @@
                                 <li>
                                     <a class="dropdown-item d-flex align-items-center" href="/auth/edit-profile">
                                         <i class="me-2 icon-xxs dropdown-item-icon" data-feather="settings"></i>
-                                        Edit Profile
+                                        <span th:text="#{userMenu.editProfile}"></span>
                                     </a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="/logout">
                                         <i class="me-2 icon-xxs dropdown-item-icon" data-feather="power"></i>
-                                        Logout
+                                        <span th:text="#{userMenu.logOut}"></span>
+
                                     </a>
                                 </li>
                             </ul>
@@ -85,35 +86,30 @@
             <!-- Navbar nav -->
             <ul class="navbar-nav flex-column" id="sideNavbar">
                 <!-- Nav item -->
-                <li class="nav-item">
+                <li class="nav-item" th:if="${currentUser.getRole().name == 'ADMIN'}">
                     <a class="nav-link has-arrow  collapsed " href="#!" data-bs-toggle="collapse"
                        data-bs-target="#navDashboard" aria-expanded="false" aria-controls="navDashboard">
-                        <i data-feather="home" class="nav-icon me-2 icon-xxs"></i>
-                        Dashboard
+                        <i class='bx bx-user' style="margin-right: 7px"></i>
+                        Admin
                     </a>
 
                     <div id="navDashboard" class="collapse " data-bs-parent="#sideNavbar">
                         <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                   href="/allCss/dashuipro/pages/dashboard-analytics.html">Analytics</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="/allCss/dashuipro/index.html">Project</a>
-                            </li>
 
                             <li class="nav-item">
-                                <a class="nav-link has-arrow " href="/allCss/dashuipro/pages/dashboard-ecommerce.html">Ecommerce</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link has-arrow " href="/allCss/dashuipro/pages/dashboard-crm.html">CRM</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link has-arrow " href="/allCss/dashuipro/pages/dashboard-finance.html">Finance</a>
+                                <a class="nav-link has-arrow " href="/admin/analytics">Analytic</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link has-arrow "
-                                   href="/allCss/dashuipro/pages/dashboard-blog.html">Blog</a>
+                                   href="/admin/promotion-request">Promotion Request</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link has-arrow "
+                                   href="/admin/valid-company">Valid Company</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link has-arrow "
+                                   href="/admin/not-valid-company">Not Valid Company</a>
                             </li>
                         </ul>
                     </div>
@@ -320,25 +316,25 @@
                         <a class="nav-link " href="/loginSuccess" data-bs-toggle="collapse"
                            data-bs-target="#navprofilePages">
                             <i data-feather="user"></i>
-                            Worker Panel <i class='bx bx-chevron-down'></i>
+                            <span th:text="#{userMenu.workerPanel}"></span> <i class='bx bx-chevron-down'></i>
                         </a>
                         <div id="navprofilePages" class="collapse  show " data-bs-parent="#sideNavbar">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
                                     <a class="nav-link "
-                                       href="/worker/my-work-graphic">My Work Graphic</a>
+                                       href="/worker/my-work-graphic" th:text="#{userMenu.myWorkGraphic}"></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link " href="/worker/my-services">My Services</a>
+                                    <a class="nav-link " href="/worker/my-services" th:text="#{userMenu.myServices}"></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link  active " href="/worker/my-unfinished-bookings">My Unfinished
-                                        Bookings</a>
+                                    <a class="nav-link  active " href="/worker/my-unfinished-bookings" th:text="#{userMenu.myUnfinishedBookings}">
+                                        </a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link " href="/worker/my-finished-bookings">My Finished
-                                        Bookings</a>
+                                    <a class="nav-link " href="/worker/my-finished-bookings" th:text="#{userMenu.myFinishedBookings}">
+                                        </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link "
@@ -389,13 +385,13 @@
                 <li class="nav-item">
                     <a class="nav-link  collapsed " href="#!" data-bs-toggle="collapse" data-bs-target="#navlayoutPage"
                        aria-expanded="false" aria-controls="navlayoutPage">
-                        <i class="nav-icon me-2 icon-xxs" data-feather="file"></i>
-                        Booking
+                        <i class="nav-icon me-2 icon-xxs" data-feather="file" ></i>
+                        <span th:text="#{userMenu.booking}"></span>
                     </a>
                     <div id="navlayoutPage" class="collapse " data-bs-parent="#sideNavbar">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link " href="/booking/search-company">Search Companies</a>
+                                <a class="nav-link " href="/booking/search-company" th:text="#{userMenu.searchCompanies}">Search Companies</a>
                             </li>
 
                             <li class="nav-item">

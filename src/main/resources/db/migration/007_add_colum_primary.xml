@@ -3,14 +3,11 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
 
-    <changeSet id="1" author="Hovhannes">
-        <createTable tableName="project_finance">
-            <column name="id" type="INT" autoIncrement="true">
-                <constraints primaryKey="true"/>
-            </column>
-            <column name="balance" type="DECIMAL(10,2)" defaultValue="0.0">
+    <changeSet id="1" author="Gevor">
+        <addColumn tableName="card">
+            <column name="primary" type="boolean" defaultValue="0">
                 <constraints nullable="false"/>
             </column>
-        </createTable>
+        </addColumn>
     </changeSet>
 </databaseChangeLog>

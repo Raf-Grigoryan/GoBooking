@@ -121,7 +121,7 @@
                                     <div>
                                         <span class="fw-semi-bold">Potential Earnings</span>
                                         <h3 class="mb-0 mt-1 fw-bold">
-                                            $<span class="counter-value" id="totalPrice" data-total-price="0"></span>
+                                            $<span  th:text="${sumTotalEarningsByWorkerWhereTypeApproved}"></span>
                                         </h3>
                                     </div>
                                 </div>
@@ -168,16 +168,29 @@
                                         <td th:text="${booking.getClient().email}"></td>
                                         <td th:attr="data-price=${booking.serviceResponse.price}"
                                             th:text="${booking.serviceResponse.price + '$'}"></td>
-                                        <td>
-                                            <div>
-                                                <div class="dropdown">
-                                                    <a class="btn btn-ghost btn-icon btn-sm rounded-circle"
-                                                       href="#!" role="button" data-bs-toggle="dropdown"
-                                                       aria-expanded="false">
-                                                        <i data-feather="more-vertical" class="icon-xs"></i>
-                                                    </a>
+                                        <td><div>
+                                            <div class="dropdown">
+                                                <a class="btn btn-ghost btn-icon btn-sm rounded-circle"
+                                                   href="#!" role="button" data-bs-toggle="dropdown"
+                                                   aria-expanded="false">
+                                                    <i data-feather="more-vertical" class="icon-xs"></i>
+                                                </a>
+                                                <div class="dropdown-menu">
+                                                    <form action="/worker/finished" method="POST">
+                                                        <input type="hidden" name="bookingId" th:value="${booking.getId()}">
+                                                        <button type="submit" class="dropdown-item d-flex align-items-center">
+                                                            <i class="me-2 icon-xs" data-feather="eye"></i>Finished
+                                                        </button>
+                                                    </form>
+                                                    <form action="/worker/reject" method="POST">
+                                                        <input type="hidden" name="bookingId" th:value="${booking.getId()}">
+                                                        <button type="submit" class="dropdown-item d-flex align-items-center">
+                                                            <i class="me-2 icon-xs" data-feather="trash-2"></i>Rejected
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </div>
+                                        </div>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -186,21 +199,16 @@
                         </div>
 
                         <div class="card-footer d-md-flex justify-content-between align-items-center "
-                             style="margin-top: 80px">
+                             style="margin-top: 80px" th:if="${pageNumbers != null}">
                             <nav class="mt-2 mt-md-0">
                                 <ul class="pagination mb-0" id="pagination">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" id="prevPage">Previous</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <p class="page-link active" href="#" id="currentPage">1</p>
-                                    </li>
-                                    <li class="page-item">
-                                        <p class="page-link" href="#" id="nextPage">Next</p>
+                                    <li class="page-item" th:each="pageNumber : ${pageNumbers}">
+                                        <a class="page-link active" th:href="@{/worker/my-unfinished-bookings(pageNumer=${pageNumber - 1})}" th:text="${pageNumber}"></a>
                                     </li>
                                 </ul>
                             </nav>
                         </div>
+
                     </div>
                 </div>
             </div>

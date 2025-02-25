@@ -1,6 +1,7 @@
 package org.example.gobooking.mapper;
 
 import org.example.gobooking.dto.company.CompanyDto;
+import org.example.gobooking.dto.company.CompanyForAdminDto;
 import org.example.gobooking.dto.company.CompanyResponse;
 import org.example.gobooking.dto.company.SaveCompanyRequest;
 import org.example.gobooking.entity.company.Company;
@@ -21,6 +22,8 @@ public interface CompanyMapper {
 
     @Mapping(source = "directorId", target = "director")
     Company toEntity(SaveCompanyRequest request);
+
+    CompanyForAdminDto toAdminDto(Company company);
 
 
 }

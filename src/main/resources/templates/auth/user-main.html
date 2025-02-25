@@ -40,7 +40,7 @@
                         <div class="d-flex justify-content-between align-items-center mb-5">
                             <h3 class="mb-0 " th:text="${currentUser.getRole}"></h3>
 
-                            <a href="/user/role-change-acceptance-dashboard">
+                            <a href="/user/role-change-acceptance">
                                 <div th:if="${currentUser.getRole().name == 'USER'}" style="width: 40px; height: 40px">
                                     <i class='bx bx-bell' style="font-size: 35px; color: grey"></i>
                                     <div th:if="${roleChangeRequestCount > 0}" style="background: red; border-radius: 50%; width: 20px; height: 20px;

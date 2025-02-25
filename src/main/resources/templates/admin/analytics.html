@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="Codescandy">
+
+	<!-- Google tag (gtag.js) -->
+	<script async="" src="/allCss/dashuipro/gtag/js?id=G-M8S4MT3EYG"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-M8S4MT3EYG');
+	</script>
+
+	<!-- Favicon icon-->
+	<link rel="shortcut icon" type="image/x-icon" href="/allCss/dashuipro/assets/images/favicon/favicon.ico">
+
+	<!-- Color modes -->
+	<script src="/allCss/dashuipro/assets/js/vendors/color-modes.js"></script>
+
+	<!-- Libs CSS -->
+	<link href="/allCss/dashuipro/assets/libs/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
+	<link href="/allCss/dashuipro/assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
+	<link href="/allCss/dashuipro/assets/libs/simplebar/dist/simplebar.min.css" rel="stylesheet">
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" href="/allCss/dashuipro/assets/css/theme.min.css">
+
+	<title>Ecommerce | Dash UI - Bootstrap 5 Admin Dashboard Template</title>
+</head>
+
+<body>
+<main id="main-wrapper" class="main-wrapper">
+
+
+	<th:block th:include="fragment/userMenu::mainPanel"></th:block>
+
+
+
+	<!-- page content -->
+	<div id="app-content">
+		<div class="app-content-area">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-12">
+						<!-- Page header -->
+
+					</div>
+				</div>
+				<div class="row row-cols-1  row-cols-xl-4 row-cols-md-2 ">
+					<div class="col mb-5">
+						<div class="card h-100 card-lift">
+							<div class="card-body">
+								<div class="d-flex justify-content-between align-items-center">
+									<span class="text-muted fw-semi-bold ">Valid Company</span>
+									<span><i data-feather="shopping-cart" class="text-info"></i></span>
+
+								</div>
+								<div class="mt-4 mb-3 d-flex align-items-center lh-1">
+									<h3 class="fw-bold  mb-0" th:text="${companyValid}"></h3>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col mb-5">
+						<div class="card h-100 card-lift">
+							<div class="card-body">
+								<div class="d-flex justify-content-between align-items-center">
+									<span class="text-muted fw-semi-bold "> Not Valid Company</span>
+									<span><i data-feather="shopping-cart" class="text-info"></i></span>
+
+								</div>
+								<div class="mt-4 mb-3 d-flex align-items-center lh-1">
+									<h3 class="fw-bold  mb-0" th:text="${companyNotValid}"></h3>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col mb-5">
+						<div class="card h-100 card-lift">
+							<div class="card-body">
+								<div class="d-flex justify-content-between align-items-center">
+									<span class="text-muted fw-semi-bold ">Project Finance</span>
+									<span><i data-feather="dollar-sign" class="text-info"></i></span>
+
+								</div>
+								<div class="mt-4 mb-3 d-flex align-items-center lh-1">
+									<h3 class="fw-bold  mb-0"><span>$</span><span th:text="${projectFinance}"></span></h3>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col mb-5">
+						<div class="card h-100 card-lift">
+							<div class="card-body">
+								<div class="d-flex justify-content-between align-items-center">
+									<span class="text-muted fw-semi-bold ">Booking Balance</span>
+									<span><i data-feather="dollar-sign" class="text-info"></i></span>
+
+								</div>
+								<div class="mt-4 mb-3 d-flex align-items-center lh-1">
+									<h3 class="fw-bold  mb-0"><span>$</span><span th:text="${bookingBalance}"></span></h3>
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="row ">
+					<div class="col-xl-8 col-12 mb-5">
+						<div class="card h-100">
+							<div class="card-body">
+								<div id="revenueChart"></div>
+								<div class="mt-4 px-lg-6 ">
+									<h2>Monthly User Registrations</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-4 col-12 mb-5">
+						<div class="card h-100">
+							<div class="card-header ">
+								<h4 class="mb-0">Total Sales</h4>
+							</div>
+							<div class="card-body">
+
+								<div id="salesChart" class="d-flex justify-content-center"></div>
+								<table class="table table-sm table-borderless  mb-0 mt-5">
+									<tbody>
+									<tr>
+										<td><i class="mdi mdi-square-rounded text-primary fs-5 me-2"></i>Worker
+										</td>
+										<td class="text-end" th:text="${series.get(0)}"></td>
+
+									</tr>
+									<tr>
+										<td><i class="mdi mdi-square-rounded text-warning fs-5 me-2"></i>Director
+										</td>
+										<td class="text-end" th:text="${series.get(1)}"></td>
+
+									</tr>
+									<tr>
+										<td><i class="mdi mdi-square-rounded text-danger fs-5 me-2"></i>User
+										</td>
+										<td class="text-end" th:text="${series.get(2)}"></td>
+
+									</tr>
+									</tbody>
+								</table>
+
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+	</div>
+</main>
+
+<!-- Scripts -->
+
+
+<!-- Libs JS -->
+
+
+
+<script src="/allCss/dashuipro/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/feather-icons/dist/feather.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/simplebar/dist/simplebar.min.js"></script>
+
+<!-- Theme JS -->
+<script src="/allCss/dashuipro/assets/js/theme.min.js"></script>
+
+<!-- jsvectormap -->
+<script src="/allCss/dashuipro/assets/libs/jsvectormap/dist/js/jsvectormap.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/jsvectormap/dist/maps/world.js"></script>
+<script src="/allCss/dashuipro/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+<script src="/allCss/dashuipro/assets/js/vendors/chart.js"></script>
+
+<script th:inline="javascript">
+	let currentWeek = /*[[${currentWeek}]]*/ [];
+	let labels = /*[[${labels}]]*/ [];
+
+
+
+
+	let options = {
+		series: [
+			{ name: "Users", data: currentWeek }],
+		labels: labels,
+		chart: { height: 350, type: "area" },
+		colors: ["#624bff"],
+		stroke: { curve: "smooth", width: 2 }
+	};
+
+	let chart = new ApexCharts(document.querySelector("#revenueChart"), options);
+	chart.render();
+</script>
+
+<script th:inline="javascript">
+
+
+	/*<![CDATA[*/
+	let seriesData = /*[[${series}]]*/ [];
+
+
+	let options2 = {
+		series: seriesData,
+		labels: ["Worker", "Director", "User"],
+		colors: ["#624BFF", "#dfa923", "#DC3545"],
+		chart: {type: "donut", height: 377},
+		legend: {show: !1},
+		dataLabels: {enabled: !0},
+		plotOptions: {pie: {donut: {size: "70%"}}},
+		stroke: {width: 0},
+		responsive: [{breakpoint: 1400, options: {chart: {type: "donut", width: 290, height: 330}}}]
+
+	};
+
+	document.addEventListener("DOMContentLoaded", function () {
+		new ApexCharts(document.querySelector("#salesChart"), options2).render();
+	});
+
+	console.log(seriesData);
+	/*]]>*/
+
+</script>
+
+
+
+
+</body>
+
+</html>

@@ -3,6 +3,7 @@ package org.example.gobooking.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.gobooking.dto.booking.PendingBookingResponse;
 import org.example.gobooking.dto.work.CreateServiceRequest;
 import org.example.gobooking.dto.work.EditServiceRequest;
 import org.example.gobooking.dto.work.EditWorkGraphicRequest;
@@ -10,11 +11,16 @@ import org.example.gobooking.security.CurrentUser;
 import org.example.gobooking.service.BookingService;
 import org.example.gobooking.service.WorkGraphicService;
 import org.example.gobooking.service.WorkService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
+import java.util.stream.IntStream;
 
 @Controller
 @RequestMapping("/worker")
@@ -99,18 +105,59 @@ public class WorkerController {
     }
 
     @GetMapping("/my-unfinished-bookings")
-    public String myUnfinishedBookings(@AuthenticationPrincipal CurrentUser user, ModelMap modelMap) {
-        modelMap.put("bookings", bookingService.getUnfinishedServices(user.getUser().getId()));
-        modelMap.put("analytics", bookingService.getBookingAnalyticsWorker(user.getUser().getId()));
+    public String myUnfinishedBookings(@AuthenticationPrincipal CurrentUser user, ModelMap modelMap,
+                                       @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
+                                       @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
+        getPageRequest(pageNumber, pageSize, user.getUser().getId(), modelMap);
+        modelMap.put("sumTotalEarningsByWorkerWhereTypeApproved", bookingService.getSumTotalEarningsByWorkerWhereTypeApproved(user.getUser().getId()));
         return "/worker/my-bookings";
     }
 
     @GetMapping("/my-finished-bookings")
-    public String myFinishedBookings(@AuthenticationPrincipal CurrentUser user, ModelMap modelMap) {
-        modelMap.put("bookings", bookingService.getFinishedBookings(user.getUser().getId()));
-        modelMap.put("analytics", bookingService.getBookingAnalyticsWorker(user.getUser().getId()));
+    public String myFinishedBookings(@AuthenticationPrincipal CurrentUser user, ModelMap modelMap,
+                                     @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
+                                     @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
+        getPageRequest(pageNumber, pageSize, user.getUser().getId(), modelMap);
+        modelMap.put("sumTotalEarningsByWorkerWhereTypeFinished", bookingService.getSumTotalEarningsByWorkerWhereTypeFinished(user.getUser().getId()));
+
         return "/worker/my-finished-bookings";
     }
 
+    @PostMapping("/reject")
+    public String reject(@AuthenticationPrincipal CurrentUser user, ModelMap modelMap,
+                         @RequestParam("bookingId") int bookingId,
+                         @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
+                         @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
+        bookingService.reject(bookingId);
+        getPageRequest(pageNumber, pageSize, user.getUser().getId(), modelMap);
+        modelMap.put("sumTotalEarningsByWorkerWhereTypeApproved", bookingService.getSumTotalEarningsByWorkerWhereTypeApproved(user.getUser().getId()));
+        return "/worker/my-bookings";
+    }
+
+    @PostMapping("/finished")
+    public String finished(@AuthenticationPrincipal CurrentUser user, ModelMap modelMap,
+                         @RequestParam("bookingId") int bookingId,
+                           @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
+                           @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
+        bookingService.finished(bookingId);
+        getPageRequest(pageNumber, pageSize, user.getUser().getId(), modelMap);
+        modelMap.put("sumTotalEarningsByWorkerWhereTypeApproved", bookingService.getSumTotalEarningsByWorkerWhereTypeApproved(user.getUser().getId()));
+        return "/worker/my-bookings";
+    }
+
+
+    private void getPageRequest(int pageNumber, int pageSize, int userId, ModelMap modelMap) {
+        PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
+        Page<PendingBookingResponse> pendingBookingResponses = bookingService.getFinishedBookings(userId, pageRequest);
+        int totalPages = pendingBookingResponses.getTotalPages();
+        if (totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
+                    .boxed()
+                    .toList();
+            modelMap.addAttribute("pageNumbers", pageNumbers);
+        }
+        modelMap.put("bookings", pendingBookingResponses);
+        modelMap.put("analytics", bookingService.getBookingAnalyticsWorker(userId));
+    }
 
 }

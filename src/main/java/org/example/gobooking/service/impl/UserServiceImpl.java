@@ -16,6 +16,7 @@ import org.example.gobooking.entity.user.Role;
 import org.example.gobooking.entity.user.User;
 import org.example.gobooking.mapper.UserMapper;
 import org.example.gobooking.repository.CompanyRepository;
+import org.example.gobooking.repository.PromotionRequestsRepository;
 import org.example.gobooking.repository.UserRepository;
 import org.example.gobooking.service.MailService;
 import org.example.gobooking.service.UserService;
@@ -45,6 +46,8 @@ public class UserServiceImpl implements UserService {
     private final CompanyRepository companyRepository;
 
     private final WorkGraphicServiceImpl workGraphicService;
+
+    private final PromotionRequestsRepository promotionRequestsRepository;
 
     @Value("${image.upload.path}")
     private String imageUploadPath;
@@ -234,6 +237,29 @@ public class UserServiceImpl implements UserService {
         user.setPictureName("user-removal-linear-style-icon-600nw-2473043843.webp");
         user.setEnable(false);
         userRepository.save(user);
+    }
+
+    @Override
+    public List<Integer> analyticUsers() {
+        List<Integer> usersInMonths = new ArrayList<>();
+        for (int i = 1; i <= 12; i++){
+            usersInMonths.add(userRepository.usersInMonths(i));
+        }
+        return usersInMonths;
+    }
+
+    @Override
+    public List<Integer> getAllRolesUsersCount() {
+        List<Integer> users = new ArrayList<>();
+        users.add(userRepository.countWorker());
+        users.add(userRepository.countDirector());
+        users.add(userRepository.countUsers());
+        return users;
+    }
+
+    @Override
+    public int grtRoleChangeRequestCount(User user) {
+        return promotionRequestsRepository.countPromotionRequestsByRequester(user);
     }
 
 }

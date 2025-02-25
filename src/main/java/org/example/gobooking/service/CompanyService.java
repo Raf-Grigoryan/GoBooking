@@ -1,9 +1,6 @@
 package org.example.gobooking.service;
 
-import org.example.gobooking.dto.company.CompanyDto;
-import org.example.gobooking.dto.company.CompanyResponse;
-import org.example.gobooking.dto.company.SaveAddressRequest;
-import org.example.gobooking.dto.company.SaveCompanyRequest;
+import org.example.gobooking.dto.company.*;
 import org.example.gobooking.entity.company.Company;
 import org.example.gobooking.entity.user.User;
 import org.springframework.data.domain.Page;
@@ -26,5 +23,9 @@ public interface CompanyService {
     Page<CompanyResponse> companyByKeyword(String keyword, PageRequest pageRequest);
 
     Page<CompanyResponse> getAllCompanies(PageRequest pageRequest);
+
+    int countCompaniesByValid(boolean valid);
+
+    Page<CompanyForAdminDto> getAllCompaniesByValid(boolean valid, PageRequest pageRequest);
 
 }

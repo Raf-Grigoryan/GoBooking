@@ -19,4 +19,6 @@ public interface CardRepository extends JpaRepository<Card, Integer> {
 
     Card findCardByCardNumber(String cardNumber);
 
+    Card findCardByUserIdAndPrimary(int userId, boolean primary );
+
 }

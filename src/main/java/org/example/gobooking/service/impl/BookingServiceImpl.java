@@ -6,6 +6,7 @@ import org.example.gobooking.dto.booking.SaveBookingRequest;
 import org.example.gobooking.dto.booking.SelectTimeResponse;
 import org.example.gobooking.dto.booking.*;
 import org.example.gobooking.entity.booking.Booking;
+import org.example.gobooking.entity.booking.PaymentMethod;
 import org.example.gobooking.entity.booking.Type;
 import org.example.gobooking.entity.user.Card;
 import org.example.gobooking.entity.user.User;
@@ -14,14 +15,12 @@ import org.example.gobooking.entity.work.WorkGraphic;
 import org.example.gobooking.mapper.BookingMapper;
 import org.example.gobooking.repository.BookingRepository;
 import org.example.gobooking.repository.ServiceRepository;
-import org.example.gobooking.service.BookingService;
-import org.example.gobooking.service.CardService;
-import org.example.gobooking.service.WorkGraphicService;
-import org.example.gobooking.service.WorkService;
+import org.example.gobooking.service.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.*;
 import java.util.*;
 
 
@@ -40,6 +39,8 @@ public class BookingServiceImpl implements BookingService {
     private final BookingMapper bookingMapper;
 
     private final CardService cardService;
+
+    private final BookingBalanceService bookingBalanceService;
 
     @Override
     public SelectTimeResponse getSelectTimeByWorkerIdAndServiceId(int workerId, int serviceId, Date bookingDate) {
@@ -76,6 +77,10 @@ public class BookingServiceImpl implements BookingService {
                         isSlotAvailable = false;
                         break;
                     }
+                    if (removeTime(new Date()).equals(removeTime(booking.getBookingDate())) && LocalTime.now().isAfter(currentSlot)) {
+                        isSlotAvailable = false;
+                        currentSlot = currentSlot.plusMinutes(30);
+                    }
                 }
                 if (isSlotAvailable) {
                     availableSlots.add(currentSlot);
@@ -96,38 +101,47 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void save(SaveBookingRequest saveBookingRequest, User user, Date bookingDate, String cardNumber) {
-
-        if (cardNumber != null && !cardNumber.isEmpty()) {
-            Card card = cardService.getCardByCardNumber(cardNumber);
-            Service service = serviceRepository.findById(saveBookingRequest.getServiceId()).orElse(null);
-            assert service != null;
-            if (card.getBalance().compareTo(BigDecimal.valueOf(service.getPrice())) > 0) {
+        Service service = serviceRepository.findById(saveBookingRequest.getServiceId()).orElse(null);
+        if (service != null && !service.getWorker().equals(user)) {
+            if (cardNumber != null && !cardNumber.isEmpty()) {
+                Card card = cardService.getCardByCardNumber(cardNumber);
+                if (card.getBalance().compareTo(BigDecimal.valueOf(service.getPrice())) > 0) {
+                    Date date = Objects.requireNonNullElseGet(bookingDate, Date::new);
+                    bookingSave(service, user, date, saveBookingRequest);
+                    card.setBalance(card.getBalance().subtract(BigDecimal.valueOf(service.getPrice())));
+                    cardService.editCard(card);
+                    bookingBalanceService.addFunds(service.getPrice());
+                } else {
+                    throw new InsufficientFundsException("There may be insufficient funds on your card.");
+                }
+            } else {
                 Date date = Objects.requireNonNullElseGet(bookingDate, Date::new);
                 bookingSave(service, user, date, saveBookingRequest);
-                card.setBalance(card.getBalance().subtract(BigDecimal.valueOf(service.getPrice())));
-                cardService.editCard(card);
-            } else {
-                throw new InsufficientFundsException("There may be insufficient funds on your card.");
             }
-        } else {
-            Date date = Objects.requireNonNullElseGet(bookingDate, Date::new);
-            Service service = serviceRepository.findById(saveBookingRequest.getServiceId()).orElse(null);
-            bookingSave(service, user, date, saveBookingRequest);
         }
 
     }
 
-    private void bookingSave(Service service, User user, Date bookingDate, SaveBookingRequest saveBookingRequest) {
-        Date date = Objects.requireNonNullElseGet(bookingDate, Date::new);
-        bookingRepository.save(Booking.builder()
-                .service(service)
-                .client(user)
-                .startedTime(saveBookingRequest.getStartTime())
-                .endedTime(saveBookingRequest.getStartTime().plusMinutes(service.getDuration()))
-                .paymentMethod(saveBookingRequest.getPaymentMethod())
-                .type(Type.APPROVED)
-                .bookingDate(date)
-                .build());
+    private synchronized void bookingSave(Service service, User user, Date bookingDate, SaveBookingRequest saveBookingRequest) {
+        if ((removeTime(new Date()).equals(removeTime(bookingDate)) && saveBookingRequest.getStartTime().isAfter(LocalTime.now()))
+        || (removeTime(new Date()).before(removeTime(bookingDate)))) {
+            Date date = Objects.requireNonNullElseGet(bookingDate, Date::new);
+            bookingRepository.save(Booking.builder()
+                    .service(service)
+                    .client(user)
+                    .startedTime(saveBookingRequest.getStartTime())
+                    .endedTime(saveBookingRequest.getStartTime().plusMinutes(service.getDuration()))
+                    .paymentMethod(saveBookingRequest.getPaymentMethod())
+                    .type(Type.APPROVED)
+                    .bookingDate(date)
+                    .build());
+        }
+    }
+
+    @Override
+    public Page<WorkerBookingResponse> clientFinishedBookings(int clientId, Type type, PageRequest pageRequest) {
+        Page<Booking> bookings = bookingRepository.getBookingByService_Worker_IdAndType(clientId, type, pageRequest);
+        return bookings.map(bookingMapper::toBookingResponse);
     }
 
     @Override
@@ -135,9 +149,11 @@ public class BookingServiceImpl implements BookingService {
         return bookingMapper.workerBookingResponses(bookingRepository.getBookingByService_Worker_IdAndType(clientId, type));
     }
 
+
     @Override
-    public List<PendingBookingResponse> getUnfinishedServices(int workerId) {
-        return bookingMapper.pendingBookingResponses(bookingRepository.getBookingByService_Worker_IdAndType(workerId, Type.APPROVED));
+    public Page<PendingBookingResponse> getUnfinishedServices(int workerId, PageRequest pageRequest) {
+        Page<Booking> bookings = bookingRepository.getBookingByService_Worker_IdAndType(workerId, Type.APPROVED, pageRequest);
+        return bookings.map(bookingMapper::toPendingBookingResponse);
     }
 
     @Override
@@ -150,8 +166,73 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public List<PendingBookingResponse> getFinishedBookings(int workerId) {
-        return bookingMapper.pendingBookingResponses(bookingRepository.getBookingByService_Worker_IdAndType(workerId, Type.FINISHED));
+    public Page<PendingBookingResponse> getFinishedBookings(int workerId, PageRequest pageRequest) {
+        Page<Booking> bookings = bookingRepository.getBookingByService_Worker_IdAndType(workerId, Type.APPROVED, pageRequest);
+        return bookings.map(bookingMapper::toPendingBookingResponse);
     }
 
+    @Override
+    public synchronized void reject(int bookingId) {
+        Optional<Booking> bookingOpt = bookingRepository.findById(bookingId);
+        if (bookingOpt.isPresent()) {
+            Booking booking = bookingOpt.get();
+            booking.setType(Type.REJECTED);
+            if(booking.getPaymentMethod().equals(PaymentMethod.CARD)){
+            Card card = cardService.getCardByUserIdAndMainIs(booking.getClient().getId(), true);
+            card.setBalance(card.getBalance().add(BigDecimal.valueOf(booking.getService().getPrice())));
+            bookingBalanceService.subtractFunds(booking.getService().getPrice());
+            cardService.editCard(card);
+            }
+            bookingRepository.save(booking);
+
+
+        }
+    }
+
+    @Override
+    public synchronized void finished(int bookingId) {
+        Optional<Booking> bookingOpt = bookingRepository.findById(bookingId);
+        if (bookingOpt.isPresent()) {
+            Booking booking = bookingOpt.get();
+            Date date = removeTime(new Date());
+            Date bookingDate = removeTime(booking.getBookingDate());
+            if (bookingDate.equals(date) && booking.getEndedTime().isBefore(LocalTime.now())) {
+                finishBooking(booking);
+            } else if (bookingDate.before(date)) {
+                finishBooking(booking);
+            }
+
+        }
+    }
+
+    @Override
+    public double getSumTotalEarningsByWorkerWhereTypeApproved(int workerId) {
+        return bookingRepository.sumTotalEarningsByWorkerWhereTypeApproved(workerId);
+    }
+
+    @Override
+    public double getSumTotalEarningsByWorkerWhereTypeFinished(int workerId) {
+        return bookingRepository.sumTotalEarningsByWorkerWhereTypeFinished(workerId);
+    }
+
+    private void finishBooking(Booking booking) {
+        if(booking.getPaymentMethod().equals(PaymentMethod.CARD)){
+            Card card = cardService.getCardByUserIdAndMainIs(booking.getService().getWorker().getId(), true);
+            card.setBalance(card.getBalance().add(BigDecimal.valueOf(booking.getService().getPrice())));
+            bookingBalanceService.subtractFunds(booking.getService().getPrice());
+            cardService.editCard(card);
+        }
+        booking.setType(Type.FINISHED);
+        bookingRepository.save(booking);
+    }
+
+    private Date removeTime(Date date) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        return cal.getTime();
+    }
 }

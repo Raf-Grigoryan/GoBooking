@@ -35,13 +35,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a href="/loginSuccess" class="nav-link">
-                            Main Panel
+                        <a href="/loginSuccess" class="nav-link" th:text="#{index.mainPanel}">
+
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/logout" class="nav-link" th:if="${currentUser != null}">
-                            Sign Out
+                        <a href="/logout" class="nav-link" th:if="${currentUser != null}" th:text="#{index.signOut}">
+
                         </a>
                     </li>
 
@@ -60,7 +60,7 @@
                     <h1 class="display-1 text-white">GoBooking convenient and fast</h1>
                     <div class="pt-4" th:if="${currentUser == null}">
                         <a class="btn btn-primary" href="/auth/login">
-                            <span class="btn--text">GET STARTED</span>
+                            <span class="btn--text" th:text="#{index.getStarted}"></span>
                         </a>
                     </div>
                 </div>

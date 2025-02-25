@@ -4,10 +4,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.gobooking.customException.AddressOnlyExistException;
 import org.example.gobooking.customException.CompanyAlreadyExistsException;
-import org.example.gobooking.dto.company.CompanyDto;
-import org.example.gobooking.dto.company.CompanyResponse;
-import org.example.gobooking.dto.company.SaveAddressRequest;
-import org.example.gobooking.dto.company.SaveCompanyRequest;
+import org.example.gobooking.dto.company.*;
 import org.example.gobooking.entity.company.Address;
 import org.example.gobooking.entity.company.Company;
 import org.example.gobooking.entity.user.User;
@@ -26,7 +23,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Optional;
 
 
 @Service
@@ -107,6 +103,17 @@ public class CompanyServiceImpl implements CompanyService {
     public Page<CompanyResponse> getAllCompanies(PageRequest pageRequest) {
         Page<Company> companies = companyRepository.findCompaniesByValid(true, pageRequest);
         return companies.map(companyMapper::toResponse);
+    }
+
+    @Override
+    public int countCompaniesByValid(boolean valid) {
+        return companyRepository.countCompaniesByValid(valid);
+    }
+
+    @Override
+    public Page<CompanyForAdminDto> getAllCompaniesByValid(boolean valid, PageRequest pageRequest) {
+        Page<Company> companies = companyRepository.findCompaniesByValid(valid, pageRequest);
+        return companies.map(companyMapper::toAdminDto);
     }
 
     private boolean isValidImage(MultipartFile image) {

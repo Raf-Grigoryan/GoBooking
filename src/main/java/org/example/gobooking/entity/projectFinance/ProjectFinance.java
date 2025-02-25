@@ -9,6 +9,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,5 +20,9 @@ public class ProjectFinance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private double balance;
+    BigDecimal balance;
+
+    public void sum(BigDecimal projectBalance) {
+        this.balance = this.balance.add(projectBalance);
+    }
 }

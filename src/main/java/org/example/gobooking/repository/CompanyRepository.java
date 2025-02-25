@@ -24,4 +24,6 @@ public interface CompanyRepository extends JpaRepository<Company, Integer> {
 
     void deleteByDirector(User director);
 
+    int countCompaniesByValid(boolean valid);
+
 }
