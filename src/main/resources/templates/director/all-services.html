@@ -1,0 +1,210 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Codescandy">
+
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="../../gtag/js?id=G-M8S4MT3EYG"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-M8S4MT3EYG');
+    </script>
+
+    <!-- Favicon icon-->
+    <link rel="shortcut icon" type="image/x-icon" href="/allCss/dashuipro/assets/images/favicon/favicon.ico">
+
+    <!-- Color modes -->
+    <script src="/allCss/dashuipro/assets/js/vendors/color-modes.js"></script>
+
+    <!-- Libs CSS -->
+    <link href="/allCss/dashuipro/assets/libs/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="/allCss/dashuipro/assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="/allCss/dashuipro/assets/libs/simplebar/dist/simplebar.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="/allCss/dashuipro/assets/css/theme.min.css">
+
+
+    <title>All Services</title>
+
+
+</head>
+
+<body>
+<main id="main-wrapper" class="main-wrapper">
+    <th:block th:include="fragment/userMenu::mainPanel"></th:block>
+
+    <div id="app-content">
+        <div class="app-content-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-12">
+                        <div class="mb-5">
+                            <h3 class="mb-0 ">Services</h3>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <!-- row -->
+                    <div class="col-xxl-9 col-lg-8 col-12">
+                        <div class="card mb-4" id="list-of-records">
+                            <div class="card-body">
+                                <div class="table-responsive table-card">
+                                    <table class="table text-nowrap mb-0 table-centered">
+                                        <thead class="table-light">
+                                        <tr>
+                                            <th class="ps-1 sort" default-sort-order="asc" data-sort='company_name'>
+                                                Worker Information
+                                            </th>
+                                            <th class="sort" data-sort='owner'>Service Image</th>
+                                            <th class="sort" data-sort='category'>Title</th>
+                                            <th class="sort" data-sort='rating'>Price</th>
+                                            <th class="sort" data-sort='location'>Duration</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="list list-of-records-container">
+                                        <tr th:each="service : ${services}">
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div>
+                                                        <img th:src="@{/getImage(imageName=${service.worker.getPictureName()})}"
+                                                             alt="Image"
+                                                             class="avatar avatar-sm rounded-circle">
+                                                    </div>
+                                                    <div class="ms-3 lh-1">
+                                                        <h5 class="mb-1">
+                                                            <a href="#!" class="text-inherit"
+                                                               th:text="${service.worker.name + ' ' + service.worker.surname}"></a>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div>
+                                                        <img th:src="@{/getImage(imageName=${service.getPictureName()})}"
+                                                             alt="Image"
+                                                             class="avatar avatar-sm rounded-circle">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td th:text="${service.title}"></td>
+                                            <td th:text="${service.price + '$'}"></td>
+                                            <td th:text="${service.duration + ' minute'}"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card-footer d-md-flex justify-content-between align-items-center">
+                                <nav class="mt-2 mt-md-0">
+                                    <div class="d-flex justify-content-end mt-3">
+                                            <a class="page-item pagination-prev" href="#" style="margin-right: 20px">
+                                                Previous
+                                            </a>
+                                            <ul class="pagination listjs-pagination mb-0" style="margin-top: -10px"></ul>
+                                            <a class="page-item pagination-next" href="#" style="margin-left: 20px">
+                                                Next
+                                            </a>
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</main>
+
+<script src="/allCss/dashuipro/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/feather-icons/dist/feather.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/simplebar/dist/simplebar.min.js"></script>
+
+<script src="/allCss/dashuipro/assets/js/theme.min.js"></script>
+
+<script src="/allCss/dashuipro/assets/libs/%40popperjs/core/dist/umd/popper.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/tippy.js/dist/tippy-bundle.umd.min.js"></script>
+<script src="/allCss/dashuipro/assets/js/vendors/tooltip.js"></script>
+
+
+<!-- Listjs required js scripts -->
+<script src="/allCss/dashuipro/assets/libs/list.js/dist/list.min.js"></script>
+<script src="/allCss/dashuipro/assets/libs/list.pagination.js/dist/list.pagination.min.js"></script>
+<script src='../../npm/moment%402.29.1/min/moment.min.js'></script>
+
+<!-- CRM Company js -->
+<script src="/allCss/dashuipro/assets/js/vendors/crm-company.init.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const rows = document.querySelectorAll('.list-of-records-container tr');
+        const rowsPerPage = 5;
+        const totalRows = rows.length;
+        const totalPages = Math.ceil(totalRows / rowsPerPage);
+        let currentPage = 1;
+
+
+        function showPage(page) {
+
+            rows.forEach((row, index) => {
+                row.style.display = (index >= (page - 1) * rowsPerPage && index < page * rowsPerPage)
+                    ? '' : 'none';
+            });
+            updatePagination(page);
+        }
+
+        function updatePagination(page) {
+            const paginationList = document.querySelector('.listjs-pagination');
+            paginationList.innerHTML = '';
+
+            for (let i = 1; i <= totalPages; i++) {
+                const li = document.createElement('li');
+                li.className = 'page-item' + (i === page ? ' active' : '');
+                li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+                li.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    currentPage = i;
+                    showPage(currentPage);
+                });
+                paginationList.appendChild(li);
+            }
+        }
+
+
+        document.querySelector('.pagination-prev').addEventListener('click', function (e) {
+            e.preventDefault();
+            if (currentPage > 1) {
+                currentPage--;
+                showPage(currentPage);
+            }
+        });
+
+        document.querySelector('.pagination-next').addEventListener('click', function (e) {
+            e.preventDefault();
+            if (currentPage < totalPages) {
+                currentPage++;
+                showPage(currentPage);
+            }
+        });
+
+
+        showPage(currentPage);
+    });
+</script>
+</body>
+
+</html>

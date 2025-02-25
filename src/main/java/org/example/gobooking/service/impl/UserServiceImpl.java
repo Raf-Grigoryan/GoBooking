@@ -225,7 +225,7 @@ public class UserServiceImpl implements UserService {
                 companyRepository.deleteByDirector(user);
             }
         }
-        if(user.getRole().equals(Role.WORKER)){
+        if (user.getRole().equals(Role.WORKER)) {
             user.setRole(Role.USER);
             user.setCompany(null);
             userRepository.save(user);
@@ -236,5 +236,9 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
+    @Override
+    public List<WorkerResponse> getWorkersByDirectorId(int directorId) {
+        return userMapper.toDto(userRepository.getUserByCompany_Director_Id(directorId));
+    }
 }
 

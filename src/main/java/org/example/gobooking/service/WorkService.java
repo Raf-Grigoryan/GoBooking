@@ -1,6 +1,7 @@
 package org.example.gobooking.service;
 
 import org.example.gobooking.dto.work.CreateServiceRequest;
+import org.example.gobooking.dto.work.DirectorServiceResponse;
 import org.example.gobooking.dto.work.EditServiceRequest;
 import org.example.gobooking.dto.work.ServiceResponse;
 import org.example.gobooking.entity.work.Service;
@@ -22,4 +23,9 @@ public interface WorkService {
 
     Service getServiceByIdForBooking(int id);
 
+    int getWorkerServiceCountByDirector(int directorId);
+
+    List<ServiceResponse> getServicesByCompanyId(int companyId);
+
+    List<DirectorServiceResponse> getAllServicesByDirectorId(int directorId);
 }

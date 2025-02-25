@@ -2,9 +2,8 @@ package org.example.gobooking.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.example.gobooking.customException.InsufficientFundsException;
-import org.example.gobooking.dto.booking.SaveBookingRequest;
-import org.example.gobooking.dto.booking.SelectTimeResponse;
 import org.example.gobooking.dto.booking.*;
+import org.example.gobooking.dto.subscription.BookingStatistics;
 import org.example.gobooking.entity.booking.Booking;
 import org.example.gobooking.entity.booking.Type;
 import org.example.gobooking.entity.user.Card;
@@ -132,7 +131,7 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public List<WorkerBookingResponse> clientFinishedBookings(int clientId, Type type) {
-        return bookingMapper.workerBookingResponses(bookingRepository.getBookingByService_Worker_IdAndType(clientId, type));
+        return bookingMapper.workerBookingResponses(bookingRepository.getBookingsByClient_IdAndType(clientId, type));
     }
 
     @Override
@@ -146,6 +145,7 @@ public class BookingServiceImpl implements BookingService {
                 .clientCount(bookingRepository.countDistinctClientsByWorker(workerId))
                 .totalEarnings(bookingRepository.sumTotalEarningsByWorker(workerId))
                 .bookingCount(bookingRepository.countBookingsByWorker(workerId))
+                .potentialEarnings(bookingRepository.potentialEarnings(workerId))
                 .build();
     }
 
@@ -154,4 +154,32 @@ public class BookingServiceImpl implements BookingService {
         return bookingMapper.pendingBookingResponses(bookingRepository.getBookingByService_Worker_IdAndType(workerId, Type.FINISHED));
     }
 
+    @Override
+    public int getBookingCountByCompanyId(int companyId) {
+        return bookingRepository.countBookingsByCompanyId(companyId);
+    }
+
+    @Override
+    public double getMonthEarningByCompanyId(int companyId) {
+        return bookingRepository.sumMonthlyEarningsByCompany(companyId);
+    }
+
+    @Override
+    public BookingStatistics getRandomServicesByCompanyId(int companyId) {
+        return BookingStatistics.builder()
+                .approvedBookingsCount(bookingRepository.countApprovedBookings(companyId))
+                .finishedBookingsCount(bookingRepository.countFinishedBookings(companyId))
+                .rejectedBookingsCount(bookingRepository.countRejectedBookings(companyId))
+                .build();
+    }
+
+    @Override
+    public List<WorkerBookingResponse> getFinishedBookingsByCompanyId(int companyId) {
+        return bookingMapper.workerBookingResponses(bookingRepository.findFinishedBookingsByCompanyId(companyId));
+    }
+
+    @Override
+    public List<WorkerBookingResponse> getFinishedBookingsByDirectorId(int directorId) {
+        return bookingMapper.workerBookingResponses(bookingRepository.findBookingsByDirectorIdInCurrentMonth(directorId));
+    }
 }

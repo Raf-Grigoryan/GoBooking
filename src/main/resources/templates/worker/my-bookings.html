@@ -31,10 +31,8 @@
     <link href="/allCss/dashuipro/assets/libs/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="/allCss/dashuipro/assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
     <link href="/allCss/dashuipro/assets/libs/simplebar/dist/simplebar.min.css" rel="stylesheet">
-
-    <!-- Theme CSS -->
     <link rel="stylesheet" href="/allCss/dashuipro/assets/css/theme.min.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
     <title>My Unfinished Bookings</title>
 </head>
@@ -121,7 +119,7 @@
                                     <div>
                                         <span class="fw-semi-bold">Potential Earnings</span>
                                         <h3 class="mb-0 mt-1 fw-bold">
-                                            $<span class="counter-value" id="totalPrice" data-total-price="0"></span>
+                                           <span th:text="${analytics.potentialEarnings + '$'}"></span>
                                         </h3>
                                     </div>
                                 </div>
@@ -143,6 +141,7 @@
                                         <th>Ended Time</th>
                                         <th>Email</th>
                                         <th>Amount</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody id="bookingsTable">

@@ -1,6 +1,7 @@
 package org.example.gobooking.service;
 
 import org.example.gobooking.dto.booking.*;
+import org.example.gobooking.dto.subscription.BookingStatistics;
 import org.example.gobooking.entity.booking.Type;
 import org.example.gobooking.entity.user.User;
 
@@ -20,4 +21,14 @@ public interface BookingService {
     List<PendingBookingResponse> getFinishedBookings(int workerId);
 
     void save(SaveBookingRequest saveBookingRequest, User user, Date bookingDate, String cardNumber);
+
+    int getBookingCountByCompanyId(int companyId);
+
+    double getMonthEarningByCompanyId(int companyId);
+
+    BookingStatistics getRandomServicesByCompanyId(int companyId);
+
+    List<WorkerBookingResponse> getFinishedBookingsByCompanyId(int companyId);
+
+    List<WorkerBookingResponse> getFinishedBookingsByDirectorId(int directorId);
 }

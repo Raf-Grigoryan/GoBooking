@@ -3,7 +3,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="/allCss/dashuipro/assets/images/favicon/favicon.ico">
 
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <body>
 <div class="navbar-vertical navbar nav-dashboard" th:fragment="mainPanel">
     <div class="header">
@@ -279,31 +279,27 @@
                         File Manager
                     </a>
                 </li>
-                <!-- Nav item -->
-                <li class="nav-item">
+                <li class="nav-item" th:if="${currentUser.getRole().name == 'DIRECTOR'}">
                     <a class="nav-link has-arrow  collapsed " href="#!" data-bs-toggle="collapse"
                        data-bs-target="#navCRM" aria-expanded="false" aria-controls="navCRM">
                         <i data-feather="pie-chart" class="nav-icon me-2 icon-xxs"></i>
-
-                        CRM
+                        Director Panel
                     </a>
 
                     <div id="navCRM" class="collapse " data-bs-parent="#sideNavbar">
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link has-arrow "
-                                   href="/allCss/dashuipro/pages/crm-contacts.html">Contacts</a>
+                                   href="/director/my-company">My Company</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link has-arrow "
-                                   href="/allCss/dashuipro/pages/crm-company.html">Company</a>
+                                   href="/director/all-services">All Services</a>
+                            </li> <li class="nav-item">
+                                <a class="nav-link has-arrow "
+                                   href="/director/all-bookings">All Bookings</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link has-arrow " href="/allCss/dashuipro/pages/deals.html">
-                                    Deals
-                                    <span class="badge text-bg-primary ms-2">New</span>
-                                </a>
-                            </li>
+
                             <li class="nav-item">
                                 <a class="nav-link has-arrow " href="/allCss/dashuipro/pages/deals-single.html">
                                     Deals Single
@@ -320,7 +316,7 @@
                         <a class="nav-link " href="/loginSuccess" data-bs-toggle="collapse"
                            data-bs-target="#navprofilePages">
                             <i data-feather="user"></i>
-                            Worker Panel <i class='bx bx-chevron-down'></i>
+                            Worker Panel
                         </a>
                         <div id="navprofilePages" class="collapse  show " data-bs-parent="#sideNavbar">
                             <ul class="nav flex-column">

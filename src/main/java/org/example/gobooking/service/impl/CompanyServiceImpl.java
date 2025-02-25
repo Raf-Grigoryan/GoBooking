@@ -1,5 +1,6 @@
 package org.example.gobooking.service.impl;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.gobooking.customException.AddressOnlyExistException;
@@ -62,7 +63,7 @@ public class CompanyServiceImpl implements CompanyService {
                 image.transferTo(file);
                 company.setCompanyPicture(fileName);
             }
-        }catch (IOException e) {
+        } catch (IOException e) {
             throw new RuntimeException("File upload error: " + e.getMessage(), e);
         } catch (Exception e) {
             throw new RuntimeException("User update error: " + e.getMessage(), e);
@@ -141,5 +142,12 @@ public class CompanyServiceImpl implements CompanyService {
     private boolean isValidImage(MultipartFile image) {
         String contentType = image.getContentType();
         return contentType != null && (contentType.equals("image/png") || contentType.equals("image/jpeg"));
+    }
+
+    @Override
+    public CompanyResponse getCompanyResponseByDirectorId(int doctorId) {
+        Company company = companyRepository.findCompanyByDirectorId(doctorId)
+                .orElseThrow(() -> new EntityNotFoundException("Company not found"));
+        return companyMapper.toResponse(company);
     }
 }
