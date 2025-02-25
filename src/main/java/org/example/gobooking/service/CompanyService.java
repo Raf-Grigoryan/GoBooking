@@ -27,5 +27,7 @@ public interface CompanyService {
 
     Page<CompanyResponse> getAllCompanies(PageRequest pageRequest);
 
+    void editCompany(SaveCompanyRequest companyRequest, int id, MultipartFile image, SaveAddressRequest addressRequest, int addressId);
+
     CompanyResponse getCompanyResponseByDirectorId(int doctorId);
 }

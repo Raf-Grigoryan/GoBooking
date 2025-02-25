@@ -153,6 +153,24 @@ public class DirectorController {
         return "redirect:/director";
     }
 
+    @GetMapping("/edit-company")
+    public String editCompanyPage(ModelMap modelMap, @RequestParam("companyId") int companyId){
+        log.info("Fetching edit company page");
+        modelMap.put("company", companyService.getCompanyById(companyId));
+        modelMap.put("countries", countryService.getAllCountries());
+        return "/director/edit-company";
+    }
+
+    @PostMapping("/edit-company")
+    public String editCompany(@Valid @ModelAttribute SaveCompanyRequest companyRequest,
+                              @Valid @ModelAttribute SaveAddressRequest addressRequest,
+                              @RequestParam("image") MultipartFile image,
+                              @RequestParam("companyId") int companyId,
+                              @RequestParam("addressId") int addressId){
+        companyService.editCompany(companyRequest,companyId,image,addressRequest,addressId);
+        return "redirect:/director";
+    }
+
     @GetMapping("/my-company")
     public String getMyCompanyPage(@AuthenticationPrincipal CurrentUser currentUser, ModelMap modelMap) {
         modelMap.put("companyResponse", directorService.getCompanyManagementByDirectorId(currentUser.getUser().getId()));
