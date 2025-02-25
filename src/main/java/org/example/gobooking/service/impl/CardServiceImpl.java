@@ -37,6 +37,9 @@ public class CardServiceImpl implements CardService {
         }
         Card card = cardMapper.toEntity(saveCardRequest);
         card.setBalance(BigDecimal.ZERO);
+        if(cardRepository.findCardByUserId(saveCardRequest.getUserId()).isEmpty()) {
+            card.setPrimary(true);
+        }
         cardRepository.save(card);
     }
 
@@ -60,6 +63,12 @@ public class CardServiceImpl implements CardService {
     @Override
     public void editCard(Card card) {
         cardRepository.save(card);
+    }
+
+    @Override
+    public Card getCardByUserIdAndMainIs(int userId, boolean mainIs) {
+
+        return cardRepository.findCardByUserIdAndPrimary(userId, mainIs);
     }
 
     @Override

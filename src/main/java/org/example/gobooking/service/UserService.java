@@ -44,5 +44,11 @@ public interface UserService {
 
     void delete(User user);
 
+    List<Integer> analyticUsers();
+
+    List<Integer> getAllRolesUsersCount();
+
+    int grtRoleChangeRequestCount(User user);
+
     List<WorkerResponse> getWorkersByDirectorId(int directorId);
 }

@@ -4,6 +4,7 @@ import org.example.gobooking.dto.card.CardResponse;
 import org.example.gobooking.dto.card.SaveCardRequest;
 import org.example.gobooking.entity.user.Card;
 
+
 import java.util.List;
 
 public interface CardService {
@@ -21,4 +22,6 @@ public interface CardService {
     int getCardsCountByUserId(int userId);
 
     void editCard(Card card);
+
+    Card getCardByUserIdAndMainIs(int userId, boolean mainIs);
 }

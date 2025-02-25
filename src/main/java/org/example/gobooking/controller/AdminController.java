@@ -3,10 +3,10 @@ package org.example.gobooking.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.gobooking.dto.company.CompanyForAdminDto;
 import org.example.gobooking.dto.request.PromotionRequestDto;
 import org.example.gobooking.dto.subscription.SaveSubscriptionRequest;
-import org.example.gobooking.service.PromotionRequestsService;
-import org.example.gobooking.service.SubscriptionService;
+import org.example.gobooking.service.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -24,6 +24,11 @@ public class AdminController {
 
     private final PromotionRequestsService promotionRequestsService;
     private final SubscriptionService subscriptionService;
+    private final UserService userService;
+    private final CompanyService companyService;
+    private final ProjectFinanceService projectFinanceService;
+    private final BookingBalanceService bookingBalanceService;
+    private final AdminService adminService;
 
     @GetMapping("/panel-1")
     public String panel() {
@@ -83,5 +88,66 @@ public class AdminController {
         subscriptionService.save(subscriptionRequest);
         log.debug("Subscription created successfully.");
         return "redirect:/";
+    }
+
+    @GetMapping("/analytics")
+    public String analytics(ModelMap modelMap) {
+        List<Integer> currentWeek = userService.analyticUsers();
+        List<String> labels = List.of(
+                "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+        );
+        modelMap.addAttribute("currentWeek", currentWeek);
+        modelMap.addAttribute("labels", labels);
+
+        List<Integer> series = userService.getAllRolesUsersCount();
+        modelMap.addAttribute("series", series);
+
+        modelMap.addAttribute("companyValid", companyService.countCompaniesByValid(true));
+        modelMap.addAttribute("companyNotValid", companyService.countCompaniesByValid(false));
+
+        modelMap.addAttribute("projectFinance", projectFinanceService.getProjectFinance());
+        modelMap.addAttribute("bookingBalance", bookingBalanceService.getBookingBalance());
+        return "/admin/analytics";
+    }
+
+    @GetMapping("/valid-company")
+    public String validCompany(ModelMap modelMap,
+                               @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
+                               @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
+        PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
+        Page<CompanyForAdminDto> companies =companyService.getAllCompaniesByValid(true,pageRequest);
+        int totalPages = companies.getTotalPages();
+        if (totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
+                    .boxed()
+                    .toList();
+            modelMap.addAttribute("pageNumbers", pageNumbers);
+        }
+        modelMap.addAttribute("companies", companies);
+        return "/admin/valid-company";
+    }
+
+    @GetMapping("/not-valid-company")
+    public String notValidCompany(ModelMap modelMap,
+                               @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
+                               @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
+        PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
+        Page<CompanyForAdminDto> companies =companyService.getAllCompaniesByValid(false,pageRequest);
+        int totalPages = companies.getTotalPages();
+        if (totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
+                    .boxed()
+                    .toList();
+            modelMap.addAttribute("pageNumbers", pageNumbers);
+        }
+        modelMap.addAttribute("companies", companies);
+        return "/admin/not-valid-company";
+    }
+
+    @PostMapping("/delete-company")
+    public String deleteCompany(@RequestParam("id") int directorID) {
+        adminService.deleteCompany(directorID);
+        return "redirect:/admin/not-valid-company";
     }
 }

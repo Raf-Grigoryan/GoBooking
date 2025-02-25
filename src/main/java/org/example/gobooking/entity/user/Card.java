@@ -23,4 +23,6 @@ public class Card {
     private BigDecimal balance;
     @ManyToOne
     private User user;
+    @Column(name = "`primary`")
+    private boolean primary;
 }

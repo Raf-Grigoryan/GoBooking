@@ -2,6 +2,8 @@ package org.example.gobooking.repository;
 
 import org.example.gobooking.entity.booking.Booking;
 import org.example.gobooking.entity.booking.Type;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,6 +15,8 @@ import java.util.List;
 public interface BookingRepository extends JpaRepository<Booking, Integer> {
 
     List<Booking> findBookingByBookingDateAndServiceWorkerId(Date bookingDate, int workerId);
+
+    Page<Booking> getBookingByService_Worker_IdAndType(int workerId, Type type, Pageable pageable);
 
     List<Booking> getBookingByService_Worker_IdAndType(int workerId, Type type);
 
@@ -69,4 +73,10 @@ public interface BookingRepository extends JpaRepository<Booking, Integer> {
             @Param("directorId") int directorId);
 
 
+
+    @Query("SELECT SUM(b.service.price) FROM Booking b WHERE b.service.worker.id = :workerId AND b.type = 'APPROVED'")
+    double sumTotalEarningsByWorkerWhereTypeApproved(@Param("workerId") int workerId);
+
+    @Query("SELECT SUM(b.service.price) FROM Booking b WHERE b.service.worker.id = :workerId AND b.type = 'FINISHED'")
+    double sumTotalEarningsByWorkerWhereTypeFinished(@Param("workerId") int workerId);
 }

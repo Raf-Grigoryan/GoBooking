@@ -26,6 +26,4 @@ public interface BookingMapper {
     @Mapping(source = "service", target = "serviceResponse")
     PendingBookingResponse toPendingBookingResponse(Booking booking);
 
-    List<PendingBookingResponse> pendingBookingResponses(List<Booking> bookings);
-
 }

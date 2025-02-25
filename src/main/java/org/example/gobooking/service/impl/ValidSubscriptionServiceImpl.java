@@ -8,10 +8,7 @@ import org.example.gobooking.entity.subscription.Subscription;
 import org.example.gobooking.entity.subscription.ValidSubscription;
 import org.example.gobooking.entity.user.Card;
 import org.example.gobooking.repository.ValidSubscriptionRepository;
-import org.example.gobooking.service.CardService;
-import org.example.gobooking.service.MailService;
-import org.example.gobooking.service.SubscriptionService;
-import org.example.gobooking.service.ValidSubscriptionService;
+import org.example.gobooking.service.*;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +25,7 @@ public class ValidSubscriptionServiceImpl implements ValidSubscriptionService {
     private final CardService cardService;
     private final SubscriptionService subscriptionService;
     private final MailService mailService;
+    private final ProjectFinanceService projectFinanceService;
 
     @Transactional
     public void save(Company company, String subscriptionTitle, String cardNumber) {
@@ -37,6 +35,7 @@ public class ValidSubscriptionServiceImpl implements ValidSubscriptionService {
             throw new InsufficientFundsException("Not enough balance on the card.");
         }
         card.setBalance(card.getBalance().subtract(subscription.getPrice()));
+        projectFinanceService.addFunds(subscription.getPrice());
         ValidSubscription validSubscription = new ValidSubscription();
         validSubscription.setStartedDate(new Date());
         validSubscription.setCompany(company);

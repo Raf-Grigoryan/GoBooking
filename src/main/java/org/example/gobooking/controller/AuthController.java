@@ -6,13 +6,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.gobooking.dto.auth.PasswordChangeRequest;
 import org.example.gobooking.dto.auth.UserEditRequest;
 import org.example.gobooking.dto.card.SaveCardRequest;
-import org.example.gobooking.entity.user.User;
 import org.example.gobooking.entity.booking.Type;
+import org.example.gobooking.entity.user.User;
 import org.example.gobooking.security.CurrentUser;
 import org.example.gobooking.service.BookingService;
 import org.example.gobooking.service.CardService;
 import org.example.gobooking.service.UserService;
-import org.hibernate.validator.internal.util.stereotypes.Lazy;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -39,6 +38,7 @@ public class AuthController {
     public String userPanel(@AuthenticationPrincipal CurrentUser user, ModelMap modelMap) {
         modelMap.addAttribute("cards", cardService.getCardsByUserId(user.getUser().getId()));
         modelMap.addAttribute("bookings", bookingService.clientFinishedBookings(user.getUser().getId(), Type.FINISHED));
+        modelMap.addAttribute("roleChangeRequestCount", userService.grtRoleChangeRequestCount(user.getUser()));
         return "/auth/user-main";
     }
 

@@ -60,7 +60,7 @@
                     <h1 class="display-1 text-white">GoBooking convenient and fast</h1>
                     <div class="pt-4" th:if="${currentUser == null}">
                         <a class="btn btn-primary" href="/auth/login">
-                            <span class="btn--text">GET STARTED</span>
+                            <span class="btn--text" th:text="#{index.getStarted}"></span>
                         </a>
                     </div>
                 </div>

@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Codescandy">
+
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="../../gtag/js?id=G-M8S4MT3EYG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-M8S4MT3EYG');
+    </script>
+
+    <!-- Favicon icon-->
+    <link rel="shortcut icon" type="image/x-icon" href="/allCss/dashuipro/assets/images/favicon/favicon.ico">
+
+    <!-- Color modes -->
+    <script src="/allCss/dashuipro/assets/js/vendors/color-modes.js"></script>
+
+    <!-- Libs CSS -->
+    <link href="/allCss/dashuipro/assets/libs/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="/allCss/dashuipro/assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="/allCss/dashuipro/assets/libs/simplebar/dist/simplebar.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="/allCss/dashuipro/assets/css/theme.min.css">
+
+
+    <title>My Unfinished Bookings</title>
+</head>
+
+<body>
+<!-- Wrapper -->
+<main id="main-wrapper" class="main-wrapper">
+    <th:block th:include="fragment/userMenu::mainPanel"></th:block>
+    <div id="app-content">
+        <!-- Container fluid -->
+        <div class="app-content-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-12">
+                        <!-- Page header -->
+                        <div class="mb-5">
+                            <h3 class="mb-0 ">Valid Companies</h3>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <!-- row -->
+                    <div class="row"></div>
+                    <div class="row">
+                        <div class="col-12">
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive table-card">
+                                <table class="table text-nowrap mb-0 table-centered">
+                                    <thead class="table-light">
+                                    <tr>
+                                        <th>Company Picture</th>
+                                        <th>Company Name</th>
+                                        <th>Director</th>
+                                        <th>phone</th>
+                                        <th>Country</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="bookingsTable">
+                                    <tr th:each="company : ${companies}">
+                                        <td class="ps-1">
+                                            <div class="d-flex align-items-center" style="margin-left: 30px">
+                                                <img th:src="@{/getImage(imageName=${company.getCompanyPicture()})}"
+                                                     alt="Image" class="avatar avatar-sm rounded-circle">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span th:text="${company.getName()}"></span>
+                                        </td>
+
+                                        <td><span th:text="${company.getDirector().getName()}"></span> <span th:text="${company.getDirector().getSurname()}"></span></td>
+                                        <td th:text="${company.getPhone()}"></td>
+                                        <td th:text="${company.getAddress().getCountry().getName()}"></td>
+
+                            </div>
+                            </td>
+                            </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card-footer d-md-flex justify-content-between align-items-center "
+                         style="margin-top: 80px" th:if="${pageNumbers != null}">
+                        <nav class="mt-2 mt-md-0">
+                            <ul class="pagination mb-0" id="pagination">
+                                <li class="page-item" th:each="pageNumber : ${pageNumbers}">
+                                    <a class="page-link active"
+                                       th:href="@{/admin/valid-company(pageNumer=${pageNumber - 1})}"
+                                       th:text="${pageNumber}"></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/allCss/dashuipro/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/allCss/dashuipro/assets/libs/feather-icons/dist/feather.min.js"></script>
+    <script src="/allCss/dashuipro/assets/libs/simplebar/dist/simplebar.min.js"></script>
+    <script src="/allCss/dashuipro/assets/js/theme.min.js"></script>
+    <script src="/allCss/dashuipro/assets/libs/%40popperjs/core/dist/umd/popper.min.js"></script>
+    <script src="/allCss/dashuipro/assets/libs/tippy.js/dist/tippy-bundle.umd.min.js"></script>
+    <script src="/allCss/dashuipro/assets/js/vendors/tooltip.js"></script>
+    <script src="/allCss/dashuipro/assets/js/vendors/counter.js"></script>
+    <script src="/js/booking.js"></script>
+</body>
+</html>
