@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: GoBooking
+  datasource:
+    url: jdbc:mysql://localhost:3306/go_booking?createDatabaseIfNotExist=true
+    username: root
+    password: rootroot
+  liquibase:
+    change-log: classpath:/db/changelog.xml
+  mail:
+    host: smtp.gmail.com
+    username: mailsenderforjava@gmail.com
+    password: iltifceckjkwsohf
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          ssl:
+            trust: smtp.gmail.com
+site:
+  url: http://localhost:8080
+image:
+  upload:
+    path: C:\Users\hovha\IdeaProjects\GoBooking\img\
