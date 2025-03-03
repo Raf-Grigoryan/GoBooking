@@ -3,6 +3,7 @@ package org.example.gobookingcommon.service.impl;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.example.gobookingcommon.customException.UnauthorizedServiceDeletionException;
 import org.example.gobookingcommon.dto.work.CreateServiceRequest;
 import org.example.gobookingcommon.dto.work.DirectorServiceResponse;
 import org.example.gobookingcommon.dto.work.EditServiceRequest;
@@ -43,9 +44,6 @@ public class WorkServiceImpl implements WorkService {
 
     @Override
     public void save(CreateServiceRequest createServiceRequest, MultipartFile image) {
-        if (createServiceRequest == null) {
-            throw new IllegalArgumentException("CreateServiceRequest cannot be null");
-        }
 
         if (image != null && !image.isEmpty()) {
             if (isValidImage(image)) {
@@ -66,8 +64,13 @@ public class WorkServiceImpl implements WorkService {
     }
 
     @Override
-    public void deleteById(int id) {
-        serviceRepository.deleteById(id);
+    public void deleteById(int userId, int id) {
+        Service service = serviceRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        if (service.getWorker().getId() == userId) {
+            serviceRepository.deleteById(id);
+        } else {
+            throw new UnauthorizedServiceDeletionException("You are not authorized to delete another service");
+        }
     }
 
 

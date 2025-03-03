@@ -79,12 +79,12 @@
                 <!-- Card body -->
                 <div class="card-body p-6">
                     <div class="mb-4">
-                        <h1><a href="/" style="color: green">Go Booking</a></h1>
+                        <h1><a href="/static" style="color: green">Go Booking</a></h1>
                         <h3  class="mb-6" th:if="${errorMessages != null}" th:text="${errorMessages}"
                            style="color: red;font-family: revert "></h3>
                     </div>
 
-                    <form method="post" action="/user/register">
+                    <form method="post" action="/auth/register">
                         <div class="mb-3">
                             <label for="email" class="form-label">Name</label>
                             <label for="name"></label><input type="text" id="name" class="form-control" name="name"
@@ -111,7 +111,7 @@
                         <div>
                             <button type="submit" class="btn btn-primary" style="margin-left: 100px;width: 200px;background-color: green;border: white">Register</button>
                             <div style="margin-top: 20px">
-                                <a href="/user/login" style="color: #0a3622">Login</a> / <a href="/" style="color: #0a3622">Back</a>
+                                <a href="/user/login" style="color: #0a3622">Login</a> / <a href="/static" style="color: #0a3622">Back</a>
                             </div>
                         </div>
                     </form>

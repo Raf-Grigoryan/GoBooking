@@ -16,7 +16,7 @@ public interface WorkService {
 
     void save(CreateServiceRequest createServiceRequest, MultipartFile image);
 
-    void deleteById(int id);
+    void deleteById(int userId,int id);
 
     ServiceResponse getById(int id);
 

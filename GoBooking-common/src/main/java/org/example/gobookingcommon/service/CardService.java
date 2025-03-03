@@ -1,10 +1,7 @@
 package org.example.gobookingcommon.service;
 
 
-import org.example.gobookingcommon.dto.card.CardResponse;
-import org.example.gobookingcommon.dto.card.SaveCardRequest;
 import org.example.gobookingcommon.entity.user.Card;
-
 
 import java.util.List;
 

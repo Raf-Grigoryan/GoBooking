@@ -3,7 +3,6 @@ package org.example.gobookingcommon.service.impl;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -20,11 +19,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-import javax.mail.MessagingException;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
@@ -36,11 +35,12 @@ public class MailServiceImpl implements MailService {
 
     private final MailSender mailSender;
 
-    private final JavaMailSender javaMailSender;
+    private final JavaMailSenderImpl javaMailSender;
 
     private final UserRepository userRepository;
 
     private final CompanyRepository companyRepository;
+
     private final BookingRepository bookingRepository;
 
 
