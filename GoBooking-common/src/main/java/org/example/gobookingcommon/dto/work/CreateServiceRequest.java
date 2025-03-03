@@ -18,7 +18,7 @@ public class CreateServiceRequest {
     @NotBlank(message = "Price cannot be empty")
     private String price;
 
-    @Min(value = 1, message = "Duration must be at least 1 minute")
+    @Min(value = 30, message = "Duration must be at least 30 minute")
     private int duration;
 
     private String pictureName;

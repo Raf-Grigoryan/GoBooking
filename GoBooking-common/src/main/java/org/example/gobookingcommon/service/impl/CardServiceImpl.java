@@ -1,10 +1,11 @@
 package org.example.gobookingcommon.service.impl;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-
 import org.example.gobookingcommon.customException.CardCountException;
 import org.example.gobookingcommon.customException.CardOnlyExistException;
+import org.example.gobookingcommon.customException.UnauthorizedCardAccessException;
 import org.example.gobookingcommon.dto.card.CardResponse;
 import org.example.gobookingcommon.dto.card.SaveCardRequest;
 import org.example.gobookingcommon.entity.user.Card;
@@ -38,7 +39,7 @@ public class CardServiceImpl implements CardService {
         }
         Card card = cardMapper.toEntity(saveCardRequest);
         card.setBalance(BigDecimal.ZERO);
-        if(cardRepository.findCardByUserId(saveCardRequest.getUserId()).isEmpty()) {
+        if (cardRepository.findCardByUserId(saveCardRequest.getUserId()).isEmpty()) {
             card.setPrimary(true);
         }
         cardRepository.save(card);
@@ -52,8 +53,17 @@ public class CardServiceImpl implements CardService {
     @Override
     @Transactional
     public void deleteCardByCardNumber(String email, String cardNumber) {
-        cardRepository.deleteCardByCardNumber(cardNumber);
-        mailService.sendMailForDeleteCard(email, cardNumber);
+        Card cardInDb = cardRepository.findCardByCardNumber(cardNumber);
+        if (cardInDb != null) {
+            if (cardInDb.getUser().getEmail().equals(email)) {
+                cardRepository.deleteCardByCardNumber(cardNumber);
+                mailService.sendMailForDeleteCard(email, cardNumber);
+            }else {
+                throw new UnauthorizedCardAccessException("You are not the owner of this card.");
+            }
+        }
+        throw new EntityNotFoundException("Card not found");
+
     }
 
     @Override

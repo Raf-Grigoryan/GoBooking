@@ -3,6 +3,7 @@ package org.example.gobookingcommon.service.impl;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.example.gobookingcommon.customException.UnauthorizedWorkGraphicModificationException;
 import org.example.gobookingcommon.dto.work.EditWorkGraphicRequest;
 import org.example.gobookingcommon.dto.work.WorkGraphicResponse;
 import org.example.gobookingcommon.entity.user.User;
@@ -56,7 +57,7 @@ public class WorkGraphicServiceImpl implements WorkGraphicService {
 
     @Override
     public void editWorkGraphic(int workerId, EditWorkGraphicRequest editWorkGraphicRequest) {
-        Optional<WorkGraphic> workGraphic = workerGraphicRepository.findById(editWorkGraphicRequest.getId());
+        Optional<WorkGraphic> workGraphic = workerGraphicRepository.getWorkGraphicByWorker_IdAndWeekday(workerId, editWorkGraphicRequest.getWeekDay());
         if (workGraphic.isPresent()) {
             WorkGraphic workGraphicEntity = workGraphic.get();
             if (workGraphicEntity.getWorker().getId() == workerId) {
@@ -64,6 +65,8 @@ public class WorkGraphicServiceImpl implements WorkGraphicService {
                 workGraphicEntity.setEndedWorkDate(editWorkGraphicRequest.getEndWorkDate());
                 workGraphicEntity.setActive(editWorkGraphicRequest.isActive());
                 workerGraphicRepository.save(workGraphicEntity);
+            } else {
+                throw new UnauthorizedWorkGraphicModificationException("You are not allowed to edit this work graphic");
             }
         } else {
             throw new EntityNotFoundException("Work graphic not found");

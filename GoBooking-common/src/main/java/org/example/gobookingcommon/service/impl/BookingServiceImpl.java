@@ -141,8 +141,8 @@ public class BookingServiceImpl implements BookingService {
 
 
     @Override
-    public List<WorkerBookingResponse> clientFinishedBookings(int clientId, Type type) {
-        return bookingMapper.workerBookingResponses(bookingRepository.getBookingsByClient_IdAndType(clientId, type));
+    public List<WorkerBookingResponse> clientFinishedBookings(int clientId) {
+        return bookingMapper.workerBookingResponses(bookingRepository.getBookingsByClient_IdAndType(clientId, Type.FINISHED));
     }
 
 

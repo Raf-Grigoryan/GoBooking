@@ -27,7 +27,7 @@ site:
   url: http://localhost:8081
 image:
   upload:
-    path: C:\Users\hovha\IdeaProjects\GoBooking\img\
+    path: /Users/raf/IdeaProjects/GoBooking/img/
 jwt:
   secret: R29Cb29raW5nIGlzIHZlcnkgZ29vZCBuaWNlIGJlYXR5ZnVsIGFwcGxpY2F0aW9uIGluIHRoZSB3b3JsZCBhbmQgZ2FsYWN0aWM=
   expiration: 600000

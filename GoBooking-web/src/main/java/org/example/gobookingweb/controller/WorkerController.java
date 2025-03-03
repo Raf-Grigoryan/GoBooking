@@ -36,9 +36,8 @@ public class WorkerController {
     private final BookingService bookingService;
 
 
-
     @GetMapping("/my-work-graphic")
-    public String createServicePage(@AuthenticationPrincipal CurrentUser user, ModelMap modelMap) {
+    public String seeMyWorkGraphic(@AuthenticationPrincipal CurrentUser user, ModelMap modelMap) {
         log.info("Worker {} accessing their work graphic.", user.getUser().getName());
         modelMap.put("workGraphic", workGraphicService.getWorkGraphicsByWorkerId(user.getUser().getId()));
         modelMap.put("weekdays", workGraphicService.weekDays());
@@ -47,15 +46,12 @@ public class WorkerController {
 
     @PostMapping("/edit-work-graphic")
     public String editWorkGraphic(@AuthenticationPrincipal CurrentUser user, @ModelAttribute EditWorkGraphicRequest editWorkGraphicRequest) {
-        log.info("Worker {} is editing their work graphic.", user.getUser().getName());
         workGraphicService.editWorkGraphic(user.getUser().getId(), editWorkGraphicRequest);
-        log.debug("Work graphic for worker {} updated successfully.", user.getUser().getName());
         return "redirect:/worker/my-work-graphic";
     }
 
     @GetMapping("/my-services")
     public String myServices(@AuthenticationPrincipal CurrentUser user, ModelMap modelMap) {
-        log.info("Worker {} accessing their services.", user.getUser().getName());
         modelMap.put("services", workService.getServicesByWorkerId(user.getUser().getId()));
         return "/worker/my-services";
     }
@@ -66,29 +62,24 @@ public class WorkerController {
         return "/worker/create-service";
     }
 
-    @PostMapping("/create-service")
+    @PostMapping("/create-service") //+R
     public String createService(@AuthenticationPrincipal CurrentUser user,
                                 @ModelAttribute @Valid CreateServiceRequest serviceRequest,
                                 @RequestParam("image") MultipartFile image) {
         serviceRequest.setWorkerId(user.getUser().getId());
-        log.info("Worker {} creating a new service: {}", user.getUser().getName(), serviceRequest.getTitle());
         workService.save(serviceRequest, image);
-        log.debug("New service {} created successfully for worker {}", serviceRequest.getTitle(), user.getUser().getName());
         return "redirect:/worker/my-services";
     }
 
     @GetMapping("/delete-service")
-    public String deleteService(@RequestParam("serviceId") int serviceId) {
-        log.info("Attempting to delete service with ID: {}", serviceId);
-        workService.deleteById(serviceId);
-        log.debug("Service with ID: {} deleted successfully.", serviceId);
+    public String deleteService(@AuthenticationPrincipal CurrentUser user, @RequestParam("serviceId") int serviceId) {
+        workService.deleteById(user.getUser().getId(), serviceId);
         return "redirect:/worker/my-services";
     }
 
     @GetMapping("/edit-service")
     public String editServicePage(@RequestParam("serviceId") int serviceId,
                                   ModelMap modelMap) {
-        log.info("Worker accessing service editing page for service ID: {}", serviceId);
         modelMap.put("service", workService.getById(serviceId));
         return "/worker/edit-service";
     }
@@ -98,13 +89,11 @@ public class WorkerController {
                               @ModelAttribute @Valid EditServiceRequest editServiceRequest,
                               @RequestParam("image") MultipartFile image) {
         editServiceRequest.setWorkerId(user.getUser().getId());
-        log.info("Worker {} editing service with ID: {}", user.getUser().getName(), editServiceRequest.getId());
         workService.editService(editServiceRequest, image);
-        log.debug("Service with ID: {} edited successfully by worker {}", editServiceRequest.getId(), user.getUser().getName());
         return "redirect:/worker/my-services";
     }
 
-    @GetMapping("/my-unfinished-bookings")
+    @GetMapping("/my-unfinished-bookings")//+G
     public String myUnfinishedBookings(@AuthenticationPrincipal CurrentUser user, ModelMap modelMap,
                                        @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
                                        @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
@@ -113,7 +102,7 @@ public class WorkerController {
         return "/worker/my-bookings";
     }
 
-    @GetMapping("/my-finished-bookings")
+    @GetMapping("/my-finished-bookings")//+G
     public String myFinishedBookings(@AuthenticationPrincipal CurrentUser user, ModelMap modelMap,
                                      @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
                                      @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
@@ -123,7 +112,7 @@ public class WorkerController {
         return "/worker/my-finished-bookings";
     }
 
-    @PostMapping("/reject")
+    @PostMapping("/reject")//+G
     public String reject(@AuthenticationPrincipal CurrentUser user, ModelMap modelMap,
                          @RequestParam("bookingId") int bookingId,
                          @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
@@ -134,9 +123,9 @@ public class WorkerController {
         return "/worker/my-bookings";
     }
 
-    @PostMapping("/finished")
+    @PostMapping("/finished")//+G
     public String finished(@AuthenticationPrincipal CurrentUser user, ModelMap modelMap,
-                         @RequestParam("bookingId") int bookingId,
+                           @RequestParam("bookingId") int bookingId,
                            @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
                            @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
         bookingService.finished(bookingId);

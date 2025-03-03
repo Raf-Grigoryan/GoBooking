@@ -1,4 +1,4 @@
-package org.example.security;
+package org.example.gobookingrest.security;
 
 import lombok.RequiredArgsConstructor;
 import org.example.gobookingcommon.entity.user.User;

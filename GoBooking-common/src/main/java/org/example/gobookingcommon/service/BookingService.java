@@ -13,7 +13,7 @@ public interface BookingService {
 
     SelectTimeResponse getSelectTimeByWorkerIdAndServiceId(int workerId, int serviceId, Date bookingDate);
 
-    List<WorkerBookingResponse> clientFinishedBookings(int clientId, Type type);
+    List<WorkerBookingResponse> clientFinishedBookings(int clientId);
 
     BookingAnalyticsWorker getBookingAnalyticsWorker(int workerId);
 
