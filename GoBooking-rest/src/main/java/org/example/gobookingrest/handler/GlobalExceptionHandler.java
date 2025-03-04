@@ -24,11 +24,11 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect password");
     }
 
-//    @ExceptionHandler(Exception.class)
-//    public ResponseEntity<String> handleGeneralException(Exception ex) {
-//        log.error(ex.getMessage());
-//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong");
-//    }
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<String> handleGeneralException(Exception ex) {
+        log.error(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong");
+    }
 
     @ExceptionHandler(UserOnlyExistException.class)
     public ResponseEntity<String> handleUserOnlyExistException(UserOnlyExistException ex) {
@@ -75,5 +75,47 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> unauthorizedWorkGraphicModificationException(UnauthorizedWorkGraphicModificationException ex) {
         log.info(ex.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(AddressOnlyExistException.class)
+    public ResponseEntity<String> AddressOnlyExistException(AddressOnlyExistException ex) {
+        log.info(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(AlreadyRoleChangeRequestException.class)
+    public ResponseEntity<String> AlreadyRoleChangeRequestException(AlreadyRoleChangeRequestException ex) {
+        log.info(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(CardCountException.class)
+    public ResponseEntity<String> CardCountException(CardCountException ex) {
+        log.info(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(CardOnlyExistException.class)
+    public ResponseEntity<String> CardOnlyExistException(CardOnlyExistException ex) {
+        log.info(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(CompanyAlreadyExistsException.class)
+    public ResponseEntity<String> CompanyAlreadyExistsException(CompanyAlreadyExistsException ex) {
+        log.info(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(InsufficientFundsException.class)
+    public ResponseEntity<String> InsufficientFundsException(InsufficientFundsException ex) {
+        log.info(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(SubscriptionOnlyExistException.class)
+    public ResponseEntity<String> SubscriptionOnlyExistException(SubscriptionOnlyExistException ex) {
+        log.info(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
     }
 }

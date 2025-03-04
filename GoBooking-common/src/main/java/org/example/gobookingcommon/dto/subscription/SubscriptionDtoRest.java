@@ -5,16 +5,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class SubscriptionDto {
-    private String title;
-    private String description;
-    private int duration;
-    private BigDecimal price;
-    private int employeeCount;
+public class SubscriptionDtoRest {
+
+    private String subscriptionTitle;
+    private String cardNumber;
 }

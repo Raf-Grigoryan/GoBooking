@@ -8,6 +8,7 @@ import org.example.gobookingcommon.customException.CardOnlyExistException;
 import org.example.gobookingcommon.customException.UnauthorizedCardAccessException;
 import org.example.gobookingcommon.dto.card.CardResponse;
 import org.example.gobookingcommon.dto.card.SaveCardRequest;
+import org.example.gobookingcommon.dto.card.SaveCardRequestRest;
 import org.example.gobookingcommon.entity.user.Card;
 import org.example.gobookingcommon.mapper.CardMapper;
 import org.example.gobookingcommon.repository.CardRepository;
@@ -31,15 +32,31 @@ public class CardServiceImpl implements CardService {
 
     @Override
     public void save(SaveCardRequest saveCardRequest) {
-        if (cardRepository.countByUserId(saveCardRequest.getUserId()) >= 4) {
+        if (checkCardCount(saveCardRequest.getUserId())) {
             throw new CardCountException("Card count can't be more than 4");
         }
-        if (cardRepository.existsCardByCardNumber(saveCardRequest.getCardNumber())) {
+        if (checkCardCount(saveCardRequest.getUserId())) {
             throw new CardOnlyExistException("Card already exists");
         }
         Card card = cardMapper.toEntity(saveCardRequest);
         card.setBalance(BigDecimal.ZERO);
         if (cardRepository.findCardByUserId(saveCardRequest.getUserId()).isEmpty()) {
+            card.setPrimary(true);
+        }
+        cardRepository.save(card);
+    }
+
+    @Override
+    public void save(SaveCardRequestRest saveCardRequestRest) {
+        if (cardRepository.countByUserId(saveCardRequestRest.getUserId()) >= 4) {
+            throw new CardCountException("Card count can't be more than 4");
+        }
+        if (cardRepository.existsCardByCardNumber(saveCardRequestRest.getCardNumber())) {
+            throw new CardOnlyExistException("Card already exists");
+        }
+        Card card = cardMapper.toEntity(saveCardRequestRest);
+        card.setBalance(BigDecimal.ZERO);
+        if (cardRepository.findCardByUserId(saveCardRequestRest.getUserId()).isEmpty()) {
             card.setPrimary(true);
         }
         cardRepository.save(card);
@@ -90,5 +107,12 @@ public class CardServiceImpl implements CardService {
     @Override
     public int getCardsCountByUserId(int userId) {
         return cardRepository.countByUserId(userId);
+    }
+
+    private boolean checkCardCount(int userId) {
+        if (cardRepository.countByUserId(userId) >= 4) {
+            throw new CardCountException("Card count can't be more than 4");
+        }
+        return false;
     }
 }
