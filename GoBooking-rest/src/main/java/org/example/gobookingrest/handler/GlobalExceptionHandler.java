@@ -59,12 +59,6 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
     }
 
-    @ExceptionHandler(CardOnlyExistException.class)
-    public ResponseEntity<String> cardOnlyExistException(CardOnlyExistException ex) {
-        log.info(ex.getMessage());
-        return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
-    }
-
     @ExceptionHandler(UnauthorizedCardAccessException.class)
     public ResponseEntity<String> unauthorizedCardAccessException(UnauthorizedCardAccessException ex) {
         log.info(ex.getMessage());
@@ -89,11 +83,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
     }
 
-    @ExceptionHandler(CardCountException.class)
-    public ResponseEntity<String> CardCountException(CardCountException ex) {
-        log.info(ex.getMessage());
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ex.getMessage());
-    }
+
 
     @ExceptionHandler(CardOnlyExistException.class)
     public ResponseEntity<String> CardOnlyExistException(CardOnlyExistException ex) {
@@ -118,4 +108,36 @@ public class GlobalExceptionHandler {
         log.info(ex.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
     }
+
+    @ExceptionHandler(InvalidRoleException.class)
+    public ResponseEntity<String> invalidRoleException(InvalidRoleException ex) {
+        log.info(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(CompanyNotFoundException.class)
+    public ResponseEntity<String> companyNotFoundException(CompanyNotFoundException ex) {
+        log.info(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(UsersMismatchException.class)
+    public ResponseEntity<String> usersMismatchException(UsersMismatchException ex) {
+        log.info(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(TypeNotExistException.class)
+    public ResponseEntity<String> usersMismatchException(TypeNotExistException ex) {
+        log.info(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(SlotAlreadyBookedException.class)
+    public ResponseEntity<String> slotAlreadyBookedException(SlotAlreadyBookedException ex) {
+        log.info(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+
+
 }

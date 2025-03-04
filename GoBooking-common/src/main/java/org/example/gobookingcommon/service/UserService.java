@@ -44,7 +44,7 @@ public interface UserService {
 
     WorkerResponse getWorkerById(int id);
 
-    void delete(User user);
+    void delete(User user, String password, String confirmPassword);
 
     List<Integer> analyticUsers();
 

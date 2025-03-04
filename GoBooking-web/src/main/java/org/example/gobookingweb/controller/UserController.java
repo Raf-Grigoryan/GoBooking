@@ -37,10 +37,8 @@ public class UserController {
     }
 
     @PostMapping("/send-promotion-request")
-    public String promotionRequests(@ModelAttribute @Valid SavePromotionRequest savePromotionRequest) {
-        log.info("Sending promotion request for: {}", savePromotionRequest);
+    public String sendPromotionRequests(@ModelAttribute @Valid SavePromotionRequest savePromotionRequest) {
         promotionRequestsService.savePromotion(savePromotionRequest);
-        log.debug("Promotion request successfully sent for: {}", savePromotionRequest);
         return "promotion_requests/promotion_requests";
     }
 

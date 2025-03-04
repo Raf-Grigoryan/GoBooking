@@ -1,5 +1,6 @@
 package org.example.gobookingcommon.entity.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,5 +34,6 @@ public class User {
     private String token;
     private boolean accountNonLocked;
     @ManyToOne
+    @JsonIgnore
     private Company company;
 }

@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import org.example.gobookingcommon.dto.admin.AdminAnalyticDto;
 import org.example.gobookingcommon.dto.company.CompanyForAdminDto;
 import org.example.gobookingcommon.dto.request.PromotionRequestDto;
 import org.example.gobookingcommon.dto.subscription.SaveSubscriptionRequest;
@@ -31,28 +32,18 @@ public class AdminController {
     private final BookingBalanceService bookingBalanceService;
     private final AdminService adminService;
 
-    @GetMapping("/panel-1")
-    public String panel() {
-        log.info("Admin accessed the panel-1 page.");
-        return "admin/profile-followers";
-    }
-
     @GetMapping("/promotion-request")
     public String promotionRequest(ModelMap modelMap,
                                    @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
                                    @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
                                    @RequestParam(value = "keyword", defaultValue = "") String keyword) {
-        log.info("Fetching promotion requests: pageNumber = {}, pageSize = {}, keyword = {}", pageNumber, pageSize, keyword);
-
         PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
         Page<PromotionRequestDto> promotionRequestDtoList;
 
         if (keyword != null && !keyword.isEmpty()) {
             promotionRequestDtoList = promotionRequestsService.getAllPromotionsByRequesterEmail(pageRequest, keyword);
-            log.debug("Fetching promotions with keyword: {}", keyword);
         } else {
             promotionRequestDtoList = promotionRequestsService.getAllPromotions(pageRequest);
-            log.debug("Fetching all promotion requests without a keyword.");
         }
 
         int totalPages = promotionRequestDtoList.getTotalPages();
@@ -61,7 +52,6 @@ public class AdminController {
                     .boxed()
                     .toList();
             modelMap.addAttribute("pageNumbers", pageNumbers);
-            log.debug("Total pages: {}", totalPages);
         }
 
         modelMap.addAttribute("promotionRequestDtoList", promotionRequestDtoList);
@@ -71,7 +61,6 @@ public class AdminController {
     @PostMapping("/agree")
     public String promotionRequestsAgree(@RequestParam("id") int id,
                                          @RequestParam("agree") boolean agree) {
-        log.info("Admin is processing promotion request: id = {}, agree = {}", id, agree);
         promotionRequestsService.agree(id, agree);
         log.debug("Promotion request with ID: {} processed with decision: {}", id, agree);
         return "redirect:/admin/promotion-request-dashboard";
@@ -79,13 +68,11 @@ public class AdminController {
 
     @GetMapping("/create-subscription")
     public String createSubscriptionPage() {
-        log.info("Admin accessed the create subscription page.");
         return "/subscription/create-subscription";
     }
 
     @PostMapping("/create-subscription")
     public String createSubscription(@Valid @ModelAttribute SaveSubscriptionRequest subscriptionRequest) {
-        log.info("Creating a new subscription with details: {}", subscriptionRequest);
         subscriptionService.save(subscriptionRequest);
         log.debug("Subscription created successfully.");
         return "redirect:/";
@@ -93,22 +80,9 @@ public class AdminController {
 
     @GetMapping("/analytics")
     public String analytics(ModelMap modelMap) {
-        List<Integer> currentWeek = userService.analyticUsers();
-        List<String> labels = List.of(
-                "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-        );
-        modelMap.addAttribute("currentWeek", currentWeek);
-        modelMap.addAttribute("labels", labels);
 
-        List<Integer> series = userService.getAllRolesUsersCount();
-        modelMap.addAttribute("series", series);
-
-        modelMap.addAttribute("companyValid", companyService.countCompaniesByValid(true));
-        modelMap.addAttribute("companyNotValid", companyService.countCompaniesByValid(false));
-
-        modelMap.addAttribute("projectFinance", projectFinanceService.getProjectFinance());
-        modelMap.addAttribute("bookingBalance", bookingBalanceService.getBookingBalance());
+        AdminAnalyticDto adminAnalyticDto = adminService.getadminAnalyticDto();
+        modelMap.addAttribute("adminAnalyticDto", adminAnalyticDto);
         return "/admin/analytics";
     }
 

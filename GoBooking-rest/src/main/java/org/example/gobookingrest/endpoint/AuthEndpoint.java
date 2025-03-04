@@ -9,6 +9,7 @@ import org.example.gobookingcommon.dto.auth.UserAuthResponse;
 import org.example.gobookingcommon.dto.auth.UserEditRequest;
 import org.example.gobookingcommon.dto.booking.WorkerBookingResponse;
 import org.example.gobookingcommon.dto.card.CardResponse;
+import org.example.gobookingcommon.dto.user.PasswordConfirmationDto;
 import org.example.gobookingcommon.dto.card.SaveCardRequestRest;
 import org.example.gobookingcommon.dto.user.SaveUserRequest;
 import org.example.gobookingcommon.service.BookingService;
@@ -106,6 +107,13 @@ public class AuthEndpoint {
                                                  @RequestBody PasswordChangeRequest passwordChangeRequest) {
         userService.changePassword(user.getUser(), passwordChangeRequest);
         return ResponseEntity.ok("Password changed successfully");
+    }
+
+    @DeleteMapping("/delete-profile")
+    public ResponseEntity<?> deleteProfile(@AuthenticationPrincipal CurrentUser currentUser,
+                                @RequestBody PasswordConfirmationDto passwordConfirmationDto) {
+        userService.delete(currentUser.getUser(), passwordConfirmationDto.getPassword(), passwordConfirmationDto.getConfirmPassword());
+        return ResponseEntity.ok().build();
     }
 
 }

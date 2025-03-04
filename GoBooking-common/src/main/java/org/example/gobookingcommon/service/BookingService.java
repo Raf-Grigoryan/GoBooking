@@ -2,12 +2,13 @@ package org.example.gobookingcommon.service;
 
 import org.example.gobookingcommon.dto.booking.*;
 import org.example.gobookingcommon.dto.subscription.BookingStatistics;
-import org.example.gobookingcommon.entity.booking.Type;
 import org.example.gobookingcommon.entity.user.User;
-import java.util.Date;
-import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 public interface BookingService {
 
@@ -31,11 +32,13 @@ public interface BookingService {
 
     List<WorkerBookingResponse> getFinishedBookingsByDirectorId(int directorId);
 
-    void reject(int bookingId);
+    void reject(int bookingId, User user);
 
-    void finished(int bookingId);
+    void finished(int bookingId, User user);
 
-    double getSumTotalEarningsByWorkerWhereTypeApproved(int workerId);
+    Optional<Double> getSumTotalEarningsByWorkerWhereTypeApproved(int workerId);
 
-    double getSumTotalEarningsByWorkerWhereTypeFinished(int workerId);
+    Optional<Double> getSumTotalEarningsByWorkerWhereTypeFinished(int workerId);
+
+    Page<PendingBookingResponse> getUnfinishedBookings(int userId, PageRequest pageRequest);
 }

@@ -66,7 +66,7 @@
 
 								</div>
 								<div class="mt-4 mb-3 d-flex align-items-center lh-1">
-									<h3 class="fw-bold  mb-0" th:text="${companyValid}"></h3>
+									<h3 class="fw-bold  mb-0" th:text="${adminAnalyticDto.companyValid}"></h3>
 								</div>
 							</div>
 						</div>
@@ -80,7 +80,7 @@
 
 								</div>
 								<div class="mt-4 mb-3 d-flex align-items-center lh-1">
-									<h3 class="fw-bold  mb-0" th:text="${companyNotValid}"></h3>
+									<h3 class="fw-bold  mb-0" th:text="${adminAnalyticDto.companyNotValid}"></h3>
 								</div>
 							</div>
 						</div>
@@ -94,7 +94,7 @@
 
 								</div>
 								<div class="mt-4 mb-3 d-flex align-items-center lh-1">
-									<h3 class="fw-bold  mb-0"><span>$</span><span th:text="${projectFinance}"></span></h3>
+									<h3 class="fw-bold  mb-0"><span>$</span><span th:text="${adminAnalyticDto.projectFinance}"></span></h3>
 								</div>
 							</div>
 						</div>
@@ -108,7 +108,7 @@
 
 								</div>
 								<div class="mt-4 mb-3 d-flex align-items-center lh-1">
-									<h3 class="fw-bold  mb-0"><span>$</span><span th:text="${bookingBalance}"></span></h3>
+									<h3 class="fw-bold  mb-0"><span>$</span><span th:text="${adminAnalyticDto.bookingBalance}"></span></h3>
 
 								</div>
 							</div>
@@ -140,19 +140,19 @@
 									<tr>
 										<td><i class="mdi mdi-square-rounded text-primary fs-5 me-2"></i>Worker
 										</td>
-										<td class="text-end" th:text="${series.get(0)}"></td>
+										<td class="text-end" th:text="${adminAnalyticDto.getAllRolesUsersCount().get(0)}"></td>
 
 									</tr>
 									<tr>
 										<td><i class="mdi mdi-square-rounded text-warning fs-5 me-2"></i>Director
 										</td>
-										<td class="text-end" th:text="${series.get(1)}"></td>
+										<td class="text-end" th:text="${adminAnalyticDto.getAllRolesUsersCount().get(1)}"></td>
 
 									</tr>
 									<tr>
 										<td><i class="mdi mdi-square-rounded text-danger fs-5 me-2"></i>User
 										</td>
-										<td class="text-end" th:text="${series.get(2)}"></td>
+										<td class="text-end" th:text="${adminAnalyticDto.getAllRolesUsersCount().get(2)}"></td>
 
 									</tr>
 									</tbody>
@@ -187,8 +187,8 @@
 <script src="/allCss/dashuipro/assets/js/vendors/chart.js"></script>
 
 <script th:inline="javascript">
-	let currentWeek = /*[[${currentWeek}]]*/ [];
-	let labels = /*[[${labels}]]*/ [];
+	let currentWeek = /*[[${adminAnalyticDto.getAdminAnalytic()}]]*/ [];
+	let labels = /*[[${adminAnalyticDto.getLabels()}]]*/ [];
 
 
 
@@ -210,7 +210,7 @@
 
 
 	/*<![CDATA[*/
-	let seriesData = /*[[${series}]]*/ [];
+	let seriesData = /*[[${adminAnalyticDto.getAllRolesUsersCount()}]]*/ [];
 
 
 	let options2 = {
