@@ -112,23 +112,18 @@ public class AuthController {
 
     }
 
-    @GetMapping("/delete-profile")//G
+    @GetMapping("/delete-profile")
     public String deleteProfile() {
         return "/auth/delete-profile";
     }
 
-    @PostMapping("/delete-profile")
+    @PostMapping("/delete-profile")//G
     public String deleteProfile(@AuthenticationPrincipal CurrentUser currentUser,
                                 @RequestParam("password") String password,
                                 @RequestParam("confirmPassword") String confirmPassword) {
         User user = currentUser.getUser();
-        log.info("User {} is requesting to delete their profile.", user.getName());
-        if (password.equals(confirmPassword) && passwordEncoder.matches(password, user.getPassword())) {
-            userService.delete(user);
-            log.debug("User profile deleted successfully for: {}", user.getName());
-            return "redirect:/logout";
-        }
-        return "redirect:/auth/delete-profile?error=true";
+        userService.delete(user, password, confirmPassword);
+        return "redirect:/logout";
     }
 
     @GetMapping("/delete-card")

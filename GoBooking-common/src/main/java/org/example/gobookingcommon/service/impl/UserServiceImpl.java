@@ -215,7 +215,10 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public void delete(User user) {
+    public void delete(User user, String password, String confirmPassword) {
+        if (!(password.equals(confirmPassword) && passwordEncoder.matches(password, user.getPassword()))) {
+            throw new PasswordIncorrectException("Password does not match");
+        }
         if (user.getRole().equals(Role.DIRECTOR)) {
             if (companyRepository.existsCompanyByDirector(user)) {
                 List<User> workers = userRepository.findUserByCompany_Id(user.getCompany().getId());

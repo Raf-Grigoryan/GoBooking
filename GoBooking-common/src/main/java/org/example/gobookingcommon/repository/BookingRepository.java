@@ -2,14 +2,18 @@ package org.example.gobookingcommon.repository;
 
 import org.example.gobookingcommon.entity.booking.Booking;
 import org.example.gobookingcommon.entity.booking.Type;
+import org.example.gobookingcommon.entity.user.User;
+import org.example.gobookingcommon.entity.work.Service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 
 public interface BookingRepository extends JpaRepository<Booking, Integer> {
@@ -17,8 +21,6 @@ public interface BookingRepository extends JpaRepository<Booking, Integer> {
     List<Booking> findBookingByBookingDateAndServiceWorkerId(Date bookingDate, int workerId);
 
     Page<Booking> getBookingByService_Worker_IdAndType(int workerId, Type type, Pageable pageable);
-
-    List<Booking> getBookingByService_Worker_IdAndType(int workerId, Type type);
 
     List<Booking> getBookingsByClient_IdAndType(int clientId, Type type);
 
@@ -75,8 +77,11 @@ public interface BookingRepository extends JpaRepository<Booking, Integer> {
 
 
     @Query("SELECT SUM(b.service.price) FROM Booking b WHERE b.service.worker.id = :workerId AND b.type = 'APPROVED'")
-    double sumTotalEarningsByWorkerWhereTypeApproved(@Param("workerId") int workerId);
+    Optional<Double> sumTotalEarningsByWorkerWhereTypeApproved(@Param("workerId") int workerId);
 
     @Query("SELECT SUM(b.service.price) FROM Booking b WHERE b.service.worker.id = :workerId AND b.type = 'FINISHED'")
-    double sumTotalEarningsByWorkerWhereTypeFinished(@Param("workerId") int workerId);
+    Optional<Double> sumTotalEarningsByWorkerWhereTypeFinished(@Param("workerId") int workerId);
+
+    boolean existsAllByBookingDateAndStartedTimeAndService_Worker(Date bookingDate, LocalTime startedTime, User worker);
+
 }
