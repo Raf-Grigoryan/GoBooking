@@ -59,12 +59,6 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
     }
 
-    @ExceptionHandler(CardOnlyExistException.class)
-    public ResponseEntity<String> cardOnlyExistException(CardOnlyExistException ex) {
-        log.info(ex.getMessage());
-        return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
-    }
-
     @ExceptionHandler(UnauthorizedCardAccessException.class)
     public ResponseEntity<String> unauthorizedCardAccessException(UnauthorizedCardAccessException ex) {
         log.info(ex.getMessage());
@@ -89,11 +83,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
     }
 
-    @ExceptionHandler(CardCountException.class)
-    public ResponseEntity<String> CardCountException(CardCountException ex) {
-        log.info(ex.getMessage());
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ex.getMessage());
-    }
+
 
     @ExceptionHandler(CardOnlyExistException.class)
     public ResponseEntity<String> CardOnlyExistException(CardOnlyExistException ex) {
