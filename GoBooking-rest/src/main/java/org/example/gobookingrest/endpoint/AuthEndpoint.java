@@ -10,6 +10,7 @@ import org.example.gobookingcommon.dto.auth.UserEditRequest;
 import org.example.gobookingcommon.dto.booking.WorkerBookingResponse;
 import org.example.gobookingcommon.dto.card.CardResponse;
 import org.example.gobookingcommon.dto.user.PasswordConfirmationDto;
+import org.example.gobookingcommon.dto.card.SaveCardRequestRest;
 import org.example.gobookingcommon.dto.user.SaveUserRequest;
 import org.example.gobookingcommon.service.BookingService;
 import org.example.gobookingcommon.service.CardService;
@@ -72,6 +73,12 @@ public class AuthEndpoint {
                                          @RequestParam String token) {
         userService.verifyUserAccount(email, token);
         return ResponseEntity.ok("User verified");
+    }
+
+    @PostMapping("/create-card")
+    public ResponseEntity<String> createCard(@Valid @RequestBody SaveCardRequestRest cardRequest) {
+        cardService.save(cardRequest);
+        return ResponseEntity.ok("Card created successfully");
     }
 
 

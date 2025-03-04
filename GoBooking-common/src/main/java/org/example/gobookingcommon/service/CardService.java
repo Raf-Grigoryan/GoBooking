@@ -1,6 +1,7 @@
 package org.example.gobookingcommon.service;
 
 
+import org.example.gobookingcommon.dto.card.SaveCardRequestRest;
 import org.example.gobookingcommon.entity.user.Card;
 
 import java.util.List;
@@ -10,6 +11,8 @@ public interface CardService {
     void save(org.example.gobookingcommon.dto.card.SaveCardRequest saveCardRequest);
 
     void save(org.example.gobookingcommon.entity.user.Card card);
+
+    void save(SaveCardRequestRest saveCardRequestRest);
 
     List<org.example.gobookingcommon.dto.card.CardResponse> getCardsByUserId(int userId);
 
