@@ -6,7 +6,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/go_booking?createDatabaseIfNotExist=true
     username: root
-    password: rootroot
+    password: root
   liquibase:
     change-log: classpath:/db/changelog.xml
   mail:
@@ -27,7 +27,7 @@ site:
   url: http://localhost:8081
 image:
   upload:
-    path: /Users/raf/IdeaProjects/GoBooking/img/
+    path: C:/Users/hovha/IdeaProjects/GoBooking/img
 jwt:
   secret: R29Cb29raW5nIGlzIHZlcnkgZ29vZCBuaWNlIGJlYXR5ZnVsIGFwcGxpY2F0aW9uIGluIHRoZSB3b3JsZCBhbmQgZ2FsYWN0aWM=
   expiration: 600000
