@@ -3,7 +3,6 @@ package org.example.gobookingweb.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
 import org.example.gobookingcommon.dto.admin.AdminAnalyticDto;
 import org.example.gobookingcommon.dto.company.CompanyForAdminDto;
 import org.example.gobookingcommon.dto.request.PromotionRequestDto;
@@ -26,10 +25,7 @@ public class AdminController {
 
     private final PromotionRequestsService promotionRequestsService;
     private final SubscriptionService subscriptionService;
-    private final UserService userService;
     private final CompanyService companyService;
-    private final ProjectFinanceService projectFinanceService;
-    private final BookingBalanceService bookingBalanceService;
     private final AdminService adminService;
 
     @GetMapping("/promotion-request")
@@ -53,7 +49,6 @@ public class AdminController {
                     .toList();
             modelMap.addAttribute("pageNumbers", pageNumbers);
         }
-
         modelMap.addAttribute("promotionRequestDtoList", promotionRequestDtoList);
         return "/admin/promotion_request";
     }
@@ -62,7 +57,7 @@ public class AdminController {
     public String promotionRequestsAgree(@RequestParam("id") int id,
                                          @RequestParam("agree") boolean agree) {
         promotionRequestsService.agree(id, agree);
-        log.debug("Promotion request with ID: {} processed with decision: {}", id, agree);
+        log.info("Promotion request with ID: {} processed with decision: {}", id, agree);
         return "redirect:/admin/promotion-request-dashboard";
     }
 
@@ -74,13 +69,12 @@ public class AdminController {
     @PostMapping("/create-subscription")
     public String createSubscription(@Valid @ModelAttribute SaveSubscriptionRequest subscriptionRequest) {
         subscriptionService.save(subscriptionRequest);
-        log.debug("Subscription created successfully.");
+        log.info("Subscription created successfully.");
         return "redirect:/";
     }
 
     @GetMapping("/analytics")
     public String analytics(ModelMap modelMap) {
-
         AdminAnalyticDto adminAnalyticDto = adminService.getadminAnalyticDto();
         modelMap.addAttribute("adminAnalyticDto", adminAnalyticDto);
         return "/admin/analytics";
@@ -123,6 +117,7 @@ public class AdminController {
     @PostMapping("/delete-company")
     public String deleteCompany(@RequestParam("id") int directorID) {
         adminService.deleteCompany(directorID);
+        log.info("Company deleted successfully.");
         return "redirect:/admin/not-valid-company";
     }
 }

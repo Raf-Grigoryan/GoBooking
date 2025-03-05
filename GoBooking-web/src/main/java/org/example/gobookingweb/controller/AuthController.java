@@ -29,8 +29,6 @@ public class AuthController {
 
     private final CardService cardService;
 
-    private final PasswordEncoder passwordEncoder;
-
     private final BookingService bookingService;
 
 
@@ -62,7 +60,6 @@ public class AuthController {
 
     @PostMapping("/register")
     public String register(@Valid @ModelAttribute SaveUserRequest user) {
-        log.info("Registering new user: {}", user.getName());
         userService.register(user);
         log.debug("User registration successful: {}", user.getName());
         return "redirect:/user/login";
@@ -91,12 +88,12 @@ public class AuthController {
     @PostMapping("/create-card")
     public String createCard(@Valid @ModelAttribute SaveCardRequest cardRequest) {
         cardService.save(cardRequest);
+        log.info("Card saved: {} ",cardRequest.getCardNumber());
         return "redirect:/loginSuccess";
     }
 
     @GetMapping("/edit-profile")
     public String editProfilePage() {
-        log.info("User is on the edit profile page.");
         return "/auth/edit-profile";
     }
 
@@ -108,6 +105,7 @@ public class AuthController {
         if (isEmailChanged) {
             return "redirect:/loginSuccess";
         }
+        log.info("User edited successfully for user: {}", user.getUser().getName());
         return "redirect:/logout";
 
     }
@@ -123,12 +121,14 @@ public class AuthController {
                                 @RequestParam("confirmPassword") String confirmPassword) {
         User user = currentUser.getUser();
         userService.delete(user, password, confirmPassword);
+        log.debug("User deleted: {}", user.getName());
         return "redirect:/logout";
     }
 
     @GetMapping("/delete-card")
     public String deleteCard(@AuthenticationPrincipal CurrentUser currentUser, @RequestParam("cardNumber") String cardNumber) {
         cardService.deleteCardByCardNumber(currentUser.getUser().getEmail(), cardNumber);
+        log.debug("Card deleted: {}", cardNumber);
         return "redirect:/loginSuccess";
     }
 

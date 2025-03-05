@@ -52,6 +52,7 @@ public class AuthEndpoint {
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody @Valid SaveUserRequest saveUserRequest) {
         userService.register(saveUserRequest);
+        log.info("User registered: {}", saveUserRequest.getEmail());
         return ResponseEntity.status(HttpStatus.CREATED).body("User successfully registered");
     }
 
@@ -63,7 +64,7 @@ public class AuthEndpoint {
         if (isEmailChanged) {
             return ResponseEntity.status(HttpStatus.CREATED).body("User edited successfully. Please verify your email");
         }
-
+        log.info("User edited profile: {}", userEditRequest.getEmail());
         return ResponseEntity.status(HttpStatus.OK).body("User edited successfully");
     }
 
@@ -78,6 +79,7 @@ public class AuthEndpoint {
     @PostMapping("/create-card")
     public ResponseEntity<String> createCard(@Valid @RequestBody SaveCardRequestRest cardRequest) {
         cardService.save(cardRequest);
+        log.info("Card created {} ", cardRequest.getCardNumber());
         return ResponseEntity.ok("Card created successfully");
     }
 
@@ -86,6 +88,7 @@ public class AuthEndpoint {
     public ResponseEntity<?> deleteCard(@AuthenticationPrincipal CurrentUser user,
                                         @RequestParam("cardNumber") String cardNumber) {
         cardService.deleteCardByCardNumber(user.getUser().getEmail(), cardNumber);
+        log.info("Card deleted: {}", cardNumber);
         return ResponseEntity.ok("Card deleted successfully");
     }
 
@@ -106,6 +109,7 @@ public class AuthEndpoint {
     public ResponseEntity<String> changePassword(@AuthenticationPrincipal CurrentUser user,
                                                  @RequestBody PasswordChangeRequest passwordChangeRequest) {
         userService.changePassword(user.getUser(), passwordChangeRequest);
+        log.info("Password changed: {}", passwordChangeRequest.getNewPassword());
         return ResponseEntity.ok("Password changed successfully");
     }
 
@@ -113,6 +117,7 @@ public class AuthEndpoint {
     public ResponseEntity<?> deleteProfile(@AuthenticationPrincipal CurrentUser currentUser,
                                 @RequestBody PasswordConfirmationDto passwordConfirmationDto) {
         userService.delete(currentUser.getUser(), passwordConfirmationDto.getPassword(), passwordConfirmationDto.getConfirmPassword());
+        log.info("Profile deleted: {}", passwordConfirmationDto.getPassword());
         return ResponseEntity.ok().build();
     }
 

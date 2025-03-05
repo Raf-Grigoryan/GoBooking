@@ -86,6 +86,7 @@ public class BookingEndpoint {
     public ResponseEntity<?> saveBooking(@AuthenticationPrincipal CurrentUser currentUser,
                               @RequestBody SaveBookingRequestForRest saveBookingRequestForRest) {
         bookingService.save(saveBookingRequestForRest.getSaveBookingRequest(), currentUser.getUser(), saveBookingRequestForRest.getBookingDate(), saveBookingRequestForRest.getCard());
+        log.info("Booking saved");
         return ResponseEntity.ok().build();
     }
 
