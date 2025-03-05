@@ -39,6 +39,7 @@ public class WorkerEndpoint {
     @PutMapping("/edit-work-graphic")
     public ResponseEntity<?> editWorkGraphic(@AuthenticationPrincipal CurrentUser user, @RequestBody @Valid EditWorkGraphicRequest editWorkGraphicRequest) {
         workGraphicService.editWorkGraphic(user.getUser().getId(), editWorkGraphicRequest);
+        log.info("Work graphic updated");
         return ResponseEntity.ok("Work graphic updated");
     }
 
@@ -53,6 +54,7 @@ public class WorkerEndpoint {
                                            @RequestParam("image") MultipartFile image) {
         serviceRequest.setWorkerId(user.getUser().getId());
         workService.save(serviceRequest, image);
+        log.info("Service created");
         return ResponseEntity.ok("Service created");
     }
 
@@ -60,12 +62,14 @@ public class WorkerEndpoint {
     public ResponseEntity<?> editService(@ModelAttribute @Valid EditServiceRequest editServiceRequest,
                                          @RequestParam("image") MultipartFile image) {
         workService.editService(editServiceRequest, image);
+        log.info("Service updated");
         return ResponseEntity.ok("Service updated");
     }
 
     @DeleteMapping("/delete-service/{id}")
     public ResponseEntity<?> deleteService(@AuthenticationPrincipal CurrentUser user, @PathVariable int id) {
         workService.deleteById(user.getUser().getId(), id);
+        log.info("Service deleted");
         return ResponseEntity.ok("Service deleted");
     }
 
@@ -97,6 +101,7 @@ public class WorkerEndpoint {
         bookingService.reject(bookingId, user.getUser());
         PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
         Page<PendingBookingResponse> pendingBookingResponse = bookingService.getFinishedBookings(user.getUser().getId(), pageRequest);
+        log.info("Booking rejected");
         return ResponseEntity.ok(pendingBookingResponse);
     }
 
@@ -108,6 +113,7 @@ public class WorkerEndpoint {
         bookingService.finished(bookingId, user.getUser());
         PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
         Page<PendingBookingResponse> pendingBookingResponse = bookingService.getFinishedBookings(user.getUser().getId(), pageRequest);
+        log.info("Booking finished");
         return ResponseEntity.ok(pendingBookingResponse);
     }
 

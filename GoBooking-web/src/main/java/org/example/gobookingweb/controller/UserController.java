@@ -32,13 +32,13 @@ public class UserController {
 
     @GetMapping("/send-promotion-request")
     public String promotionRequestsPage() {
-        log.info("Navigating to send promotion request page.");
         return "promotion_requests/promotion_requests";
     }
 
     @PostMapping("/send-promotion-request")
     public String sendPromotionRequests(@ModelAttribute @Valid SavePromotionRequest savePromotionRequest) {
         promotionRequestsService.savePromotion(savePromotionRequest);
+        log.info("Promotion sent");
         return "promotion_requests/promotion_requests";
     }
 
@@ -46,8 +46,6 @@ public class UserController {
     public String roleChangeAcceptance(@AuthenticationPrincipal CurrentUser currentUser, ModelMap modelMap,
                                        @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
                                        @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
-        log.info("User {} accessing role change acceptance page.", currentUser.getUser().getName());
-
         PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
         Page<RoleChangeRequestDto> roleChangeRequestDtoPage = roleChangeRequestService.findByEmployee(currentUser.getUser(), pageRequest);
 
@@ -59,8 +57,6 @@ public class UserController {
             modelMap.addAttribute("pageNumbers", pageNumbers);
         }
         modelMap.addAttribute("roleChangeRequestDtoPage", roleChangeRequestDtoPage);
-        log.debug("Fetched {} role change requests for user {}.", roleChangeRequestDtoPage.getContent().size(), currentUser.getUser().getName());
-
         return "/user/role_change_acceptance";
     }
 
@@ -68,10 +64,8 @@ public class UserController {
     public String agree(@AuthenticationPrincipal CurrentUser currentUser,
                         @RequestParam("companyId") int companyId,
                         @RequestParam("agree") boolean agree) {
-        log.info("User {} responding to role change request for companyId: {} with decision: {}",
-                currentUser.getUser().getName(), companyId, agree ? "AGREE" : "DISAGREE");
         roleChangeRequestService.agree(companyId, agree, currentUser.getUser());
-        log.debug("Role change request for companyId: {} processed successfully for user {}", companyId, currentUser.getUser().getName());
+        log.info("Role change request for companyId: {} processed successfully for user {}", companyId, currentUser.getUser().getName());
         return "redirect:/logout";
     }
 
