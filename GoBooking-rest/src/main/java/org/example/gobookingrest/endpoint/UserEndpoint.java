@@ -27,6 +27,7 @@ public class UserEndpoint {
     @PostMapping("/send-promotion-request")
     public ResponseEntity<String> sendPromotionRequest(@RequestBody @Valid SavePromotionRequest savePromotionRequest) {
         promotionRequestsService.savePromotion(savePromotionRequest);
+        log.info("Promotion request sent successfully");
         return ResponseEntity.ok("Promotion request sent successfully");
     }
 
@@ -40,10 +41,6 @@ public class UserEndpoint {
         PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
         Page<RoleChangeRequestDto> roleChangeRequestDtoPage =
                 roleChangeRequestService.findByEmployee(currentUser.getUser(), pageRequest);
-
-        log.debug("Fetched {} role change requests for user {}.",
-                roleChangeRequestDtoPage.getContent().size(), currentUser.getUser().getName());
-
         return ResponseEntity.ok(roleChangeRequestDtoPage);
     }
 
@@ -54,6 +51,7 @@ public class UserEndpoint {
             @PathVariable("agree") String agree) {
         boolean agreeBoolean = "1".equals(agree) || Boolean.parseBoolean(agree);
         roleChangeRequestService.agree(companyId, agreeBoolean, currentUser.getUser());
+        log.info("Role change request processed successfully");
         return ResponseEntity.ok("Role change request processed successfully");
     }
 

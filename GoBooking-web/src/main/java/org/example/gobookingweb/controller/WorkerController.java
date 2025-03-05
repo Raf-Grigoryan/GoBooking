@@ -34,7 +34,6 @@ public class WorkerController {
 
     @GetMapping("/my-work-graphic")
     public String seeMyWorkGraphic(@AuthenticationPrincipal CurrentUser user, ModelMap modelMap) {
-        log.info("Worker {} accessing their work graphic.", user.getUser().getName());
         modelMap.put("workGraphic", workGraphicService.getWorkGraphicsByWorkerId(user.getUser().getId()));
         modelMap.put("weekdays", workGraphicService.weekDays());
         return "/worker/my-work-graphic";
@@ -43,6 +42,7 @@ public class WorkerController {
     @PostMapping("/edit-work-graphic")
     public String editWorkGraphic(@AuthenticationPrincipal CurrentUser user, @ModelAttribute EditWorkGraphicRequest editWorkGraphicRequest) {
         workGraphicService.editWorkGraphic(user.getUser().getId(), editWorkGraphicRequest);
+        log.info("Work graphic edited");
         return "redirect:/worker/my-work-graphic";
     }
 
@@ -54,7 +54,6 @@ public class WorkerController {
 
     @GetMapping("/create-service")
     public String createService() {
-        log.info("Accessing create service page for new service creation.");
         return "/worker/create-service";
     }
 
@@ -64,12 +63,14 @@ public class WorkerController {
                                 @RequestParam("image") MultipartFile image) {
         serviceRequest.setWorkerId(user.getUser().getId());
         workService.save(serviceRequest, image);
+        log.info("Service created");
         return "redirect:/worker/my-services";
     }
 
     @GetMapping("/delete-service")
     public String deleteService(@AuthenticationPrincipal CurrentUser user, @RequestParam("serviceId") int serviceId) {
         workService.deleteById(user.getUser().getId(), serviceId);
+        log.info("Service deleted");
         return "redirect:/worker/my-services";
     }
 
@@ -86,6 +87,7 @@ public class WorkerController {
                               @RequestParam("image") MultipartFile image) {
         editServiceRequest.setWorkerId(user.getUser().getId());
         workService.editService(editServiceRequest, image);
+        log.info("Service edited");
         return "redirect:/worker/my-services";
     }
 
@@ -115,6 +117,7 @@ public class WorkerController {
         bookingService.reject(bookingId, user.getUser());
         WorkerUtil.getFinishedPageRequest(pageNumber, pageSize, user.getUser().getId(), modelMap, bookingService);
         modelMap.put("sumTotalEarningsByWorkerWhereTypeApproved", bookingService.getSumTotalEarningsByWorkerWhereTypeApproved(user.getUser().getId()));
+        log.info("Booking rejected");
         return "/worker/my-bookings";
     }
 
@@ -126,6 +129,7 @@ public class WorkerController {
         bookingService.finished(bookingId, user.getUser());
         WorkerUtil.getFinishedPageRequest(pageNumber, pageSize, user.getUser().getId(), modelMap, bookingService);
         modelMap.put("sumTotalEarningsByWorkerWhereTypeApproved", bookingService.getSumTotalEarningsByWorkerWhereTypeApproved(user.getUser().getId()));
+        log.info("Booking finished");
         return "/worker/my-bookings";
     }
 
