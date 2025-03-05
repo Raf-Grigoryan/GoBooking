@@ -1,7 +1,7 @@
 package org.example.gobookingweb.controller;
 
 import lombok.RequiredArgsConstructor;
-
+import lombok.extern.slf4j.Slf4j;
 import org.example.gobookingcommon.dto.booking.SaveBookingRequest;
 import org.example.gobookingcommon.dto.company.CompanyResponse;
 import org.example.gobookingcommon.service.*;
@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.MessageFormat;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
@@ -22,6 +23,7 @@ import java.util.stream.IntStream;
 @Controller
 @RequestMapping("/booking")
 @RequiredArgsConstructor
+@Slf4j
 public class BookingController {
 
     private final CompanyService companyService;
@@ -94,12 +96,13 @@ public class BookingController {
                               ModelMap modelmap) {
         modelmap.put("cards", cardService.getCardsByUserId(currentUser.getUser().getId()));
         bookingService.save(saveBookingRequest, currentUser.getUser(), bookingDate, card);
+        log.info("Booking saved");
         if (bookingDate != null) {
-            return "redirect:/booking/select-time?workerId=" + workerId + "&serviceId=" + saveBookingRequest.getServiceId() + "&bookingDate=" + bookingDate.toInstant()
+            return MessageFormat.format("redirect:/booking/select-time?workerId={0}&serviceId={1}&bookingDate={2}", workerId, saveBookingRequest.getServiceId(), bookingDate.toInstant()
                     .atZone(ZoneId.systemDefault())
-                    .toLocalDate();
+                    .toLocalDate());
         }
-        return "redirect:/booking/select-time?workerId=" + workerId + "&serviceId=" + saveBookingRequest.getServiceId() + "&bookingDate=";
+        return MessageFormat.format("redirect:/booking/select-time?workerId={0}&serviceId={1}&bookingDate=", workerId, saveBookingRequest.getServiceId());
     }
 
 }

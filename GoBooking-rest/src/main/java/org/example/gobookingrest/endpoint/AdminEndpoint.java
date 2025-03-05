@@ -85,6 +85,7 @@ public class AdminEndpoint {
     @DeleteMapping("/delete-company/{directorID}")
     public ResponseEntity<?> deleteCompany(@PathVariable("directorID") int directorID) {
         adminService.deleteCompany(directorID);
+        log.info("Company deleted successfully.");
         return ResponseEntity.ok().build();
     }
 }
