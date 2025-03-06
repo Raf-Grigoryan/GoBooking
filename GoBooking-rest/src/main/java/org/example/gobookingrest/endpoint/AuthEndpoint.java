@@ -79,6 +79,7 @@ public class AuthEndpoint {
         if (isEmailChanged) {
             return ResponseEntity.status(HttpStatus.CREATED).body("User edited successfully. Please verify your email");
         }
+        log.info("User edited profile: {}", userEditRequest.getEmail());
         return ResponseEntity.status(HttpStatus.OK).body("User edited successfully");
     }
 
