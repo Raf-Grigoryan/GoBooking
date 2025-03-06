@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import javax.xml.bind.ValidationException;
+
 @ControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
@@ -15,13 +17,13 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<String> handleEntityNotFound(EntityNotFoundException ex) {
         log.warn(ex.getMessage());
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You cannot log in");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 
     @ExceptionHandler(PasswordIncorrectException.class)
     public ResponseEntity<String> passwordIncorrectException(PasswordIncorrectException ex) {
         log.warn("Password incorrect: {}", ex.getMessage());
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect password");
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ex.getMessage());
     }
 
     @ExceptionHandler(Exception.class)
@@ -44,7 +46,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(AccountNotVerifiedException.class)
     public ResponseEntity<String> accountNotVerifiedException(AccountNotVerifiedException ex) {
         log.info(ex.getMessage());
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ex.getMessage());
     }
 
     @ExceptionHandler(CannotVerifyUserException.class)
@@ -62,13 +64,13 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(UnauthorizedCardAccessException.class)
     public ResponseEntity<String> unauthorizedCardAccessException(UnauthorizedCardAccessException ex) {
         log.info(ex.getMessage());
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ex.getMessage());
     }
 
     @ExceptionHandler(UnauthorizedWorkGraphicModificationException.class)
     public ResponseEntity<String> unauthorizedWorkGraphicModificationException(UnauthorizedWorkGraphicModificationException ex) {
         log.info(ex.getMessage());
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
     }
 
     @ExceptionHandler(AddressOnlyExistException.class)
@@ -82,7 +84,6 @@ public class GlobalExceptionHandler {
         log.info(ex.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
     }
-
 
 
     @ExceptionHandler(CardOnlyExistException.class)
@@ -118,7 +119,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(CompanyNotFoundException.class)
     public ResponseEntity<String> companyNotFoundException(CompanyNotFoundException ex) {
         log.info(ex.getMessage());
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 
     @ExceptionHandler(UsersMismatchException.class)
@@ -137,6 +138,35 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> slotAlreadyBookedException(SlotAlreadyBookedException ex) {
         log.info(ex.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(ValidationException.class)
+    public ResponseEntity<String> validationException(ValidationException ex) {
+        log.info(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(ConfirmPasswordIncorrectException.class)
+    public ResponseEntity<String> confirmPasswordIncorrectException(ConfirmPasswordIncorrectException ex) {
+        log.info(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(AlreadyDirectorRequestedException.class)
+    public ResponseEntity<String> alreadyDirectorRequestedException(AlreadyDirectorRequestedException ex) {
+        log.info(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<String> illegalArgumentException(IllegalArgumentException ex) {
+        log.info(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+    @ExceptionHandler(UnauthorizedServiceDeletionException.class)
+    public ResponseEntity<String> unauthorizedServiceDeletionException(UnauthorizedServiceDeletionException ex) {
+        log.info(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ex.getMessage());
     }
 
 

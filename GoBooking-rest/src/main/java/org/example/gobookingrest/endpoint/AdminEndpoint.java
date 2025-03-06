@@ -1,5 +1,7 @@
 package org.example.gobookingrest.endpoint;
 
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -52,6 +54,10 @@ public class AdminEndpoint {
 
 
     @PostMapping("/create-subscription")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "409", description = "SubscriptionOnlyExistException"),
+            @ApiResponse(responseCode = "200", description = "Subscription created successfully.")
+    })
     public ResponseEntity<?> createSubscription(@Valid @ModelAttribute SaveSubscriptionRequest subscriptionRequest) {
         subscriptionService.save(subscriptionRequest);
         log.debug("Subscription created successfully.");
@@ -83,6 +89,10 @@ public class AdminEndpoint {
     }
 
     @DeleteMapping("/delete-company/{directorID}")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Company is deleted"),
+            @ApiResponse(responseCode = "404", description = "Company not found")
+    })
     public ResponseEntity<?> deleteCompany(@PathVariable("directorID") int directorID) {
         adminService.deleteCompany(directorID);
         return ResponseEntity.ok().build();

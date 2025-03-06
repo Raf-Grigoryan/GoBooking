@@ -86,45 +86,44 @@ public class WorkServiceImpl implements WorkService {
     @Override
     public void editService(EditServiceRequest editServiceRequest, MultipartFile image) {
         Optional<Service> serviceInDb = serviceRepository.findById(editServiceRequest.getId());
-        if (serviceInDb.isPresent()) {
-            Service service = serviceInDb.get();
-
-            if (service.getWorker().getId() != editServiceRequest.getWorkerId()) {
-                throw new EntityNotFoundException("You are not allowed to edit this service");
-            }
-
-            if (image != null && !image.isEmpty()) {
-                if (isValidImage(image)) {
-                    throw new IllegalArgumentException("Invalid image format");
-                }
-
-                String fileName = System.currentTimeMillis() + "_" + image.getOriginalFilename();
-                File file = new File(imageUploadPath, fileName);
-                try {
-                    image.transferTo(file);
-                    editServiceRequest.setPictureName(fileName);
-                } catch (IOException e) {
-                    throw new RuntimeException("Failed to save image", e);
-                }
-            } else {
-                editServiceRequest.setPictureName(service.getPictureName());
-            }
-
-
-            User worker = userService.getUserById(editServiceRequest.getWorkerId());
-            if (worker == null) {
-                throw new EntityNotFoundException("Worker not found");
-            }
-            service.setTitle(editServiceRequest.getTitle());
-            service.setDescription(editServiceRequest.getDescription());
-            service.setPrice(Double.parseDouble(editServiceRequest.getPrice()));
-            service.setDuration(editServiceRequest.getDuration());
-            service.setPictureName(editServiceRequest.getPictureName());
-            service.setWorker(worker);
-            serviceRepository.save(service);
-        } else {
+        if (serviceInDb.isEmpty()) {
             throw new EntityNotFoundException("Service with id " + editServiceRequest.getId() + " not found");
         }
+
+        Service service = serviceInDb.get();
+        if (service.getWorker().getId() != editServiceRequest.getWorkerId()) {
+            throw new EntityNotFoundException("You are not allowed to edit this service");
+        }
+
+        if (image != null && !image.isEmpty()) {
+            if (!isValidImage(image)) {
+                throw new IllegalArgumentException("Invalid image format");
+            }
+
+            String fileName = System.currentTimeMillis() + "_" + image.getOriginalFilename();
+            File file = new File(imageUploadPath, fileName);
+            try {
+                image.transferTo(file);
+                editServiceRequest.setPictureName(fileName);
+            } catch (IOException e) {
+                throw new IllegalArgumentException("Failed to save image", e);
+            }
+        } else {
+            editServiceRequest.setPictureName(service.getPictureName());
+        }
+
+        User worker = userService.getUserById(editServiceRequest.getWorkerId());
+        if (worker == null) {
+            throw new EntityNotFoundException("Worker not found");
+        }
+
+        service.setTitle(editServiceRequest.getTitle());
+        service.setDescription(editServiceRequest.getDescription());
+        service.setPrice(Double.parseDouble(editServiceRequest.getPrice()));
+        service.setDuration(editServiceRequest.getDuration());
+        service.setPictureName(editServiceRequest.getPictureName());
+        service.setWorker(worker);
+        serviceRepository.save(service);
     }
 
     private boolean isValidImage(MultipartFile image) {

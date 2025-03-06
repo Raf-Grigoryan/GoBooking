@@ -1,7 +1,6 @@
 package org.example.gobookingcommon.service.impl;
 
 import lombok.RequiredArgsConstructor;
-
 import org.example.gobookingcommon.customException.InsufficientFundsException;
 import org.example.gobookingcommon.customException.SlotAlreadyBookedException;
 import org.example.gobookingcommon.customException.TypeNotExistException;
@@ -21,9 +20,11 @@ import org.example.gobookingcommon.repository.ServiceRepository;
 import org.example.gobookingcommon.service.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.scheduling.annotation.Async;
 
 import java.math.BigDecimal;
-import java.time.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.*;
 
 
@@ -104,12 +105,12 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void save(SaveBookingRequest saveBookingRequest, User user, Date bookingDate, String cardNumber) {
-        if(bookingDate == null) {
+        if (bookingDate == null) {
             bookingDate = removeTime(new Date());
         }
         Service service = serviceRepository.findById(saveBookingRequest.getServiceId()).orElse(null);
         if (service != null && !service.getWorker().equals(user)) {
-            if(bookingRepository.existsAllByBookingDateAndStartedTimeAndService_Worker(bookingDate, saveBookingRequest.getStartTime(), service.getWorker())){
+            if (bookingRepository.existsAllByBookingDateAndStartedTimeAndService_Worker(bookingDate, saveBookingRequest.getStartTime(), service.getWorker())) {
                 throw new SlotAlreadyBookedException("Slot already booked!");
             }
             if (cardNumber != null && !cardNumber.isEmpty()) {
@@ -131,7 +132,7 @@ public class BookingServiceImpl implements BookingService {
 
     private synchronized void bookingSave(Service service, User user, Date bookingDate, SaveBookingRequest saveBookingRequest) {
         if ((removeTime(new Date()).equals(removeTime(bookingDate)) && saveBookingRequest.getStartTime().isAfter(LocalTime.now()))
-        || (removeTime(new Date()).before(removeTime(bookingDate)))) {
+                || (removeTime(new Date()).before(removeTime(bookingDate)))) {
             Date date = Objects.requireNonNullElseGet(bookingDate, Date::new);
             bookingRepository.save(Booking.builder()
                     .service(service)
@@ -144,7 +145,6 @@ public class BookingServiceImpl implements BookingService {
                     .build());
         }
     }
-
 
 
     @Override
@@ -170,26 +170,25 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
+
     public synchronized void reject(int bookingId, User user) {
         Optional<Booking> bookingOpt = bookingRepository.findById(bookingId);
         if (bookingOpt.isPresent()) {
             Booking booking = bookingOpt.get();
-            if(!user.getEmail().equals(booking.getService().getWorker().getEmail())) {
+            if (!user.getEmail().equals(booking.getService().getWorker().getEmail())) {
                 throw new UsersMismatchException("You are not allowed to reject this booking.");
             }
-            if(!booking.getType().equals(Type.APPROVED)){
-                throw new TypeNotExistException("Booking type is not approved.");
+            if (!booking.getType().equals(Type.APPROVED)) {
+                throw new TypeNotExistException("Booking type is not approved ");
             }
             booking.setType(Type.REJECTED);
-            if(booking.getPaymentMethod().equals(PaymentMethod.CARD)){
-            Card card = cardService.getCardByUserIdAndMainIs(booking.getClient().getId(), true);
-            card.setBalance(card.getBalance().add(BigDecimal.valueOf(booking.getService().getPrice())));
-            bookingBalanceService.subtractFunds(booking.getService().getPrice());
-            cardService.editCard(card);
+            if (booking.getPaymentMethod().equals(PaymentMethod.CARD)) {
+                Card card = cardService.getCardByUserIdAndMainIs(booking.getClient().getId(), true);
+                card.setBalance(card.getBalance().add(BigDecimal.valueOf(booking.getService().getPrice())));
+                bookingBalanceService.subtractFunds(booking.getService().getPrice());
+                cardService.editCard(card);
             }
             bookingRepository.save(booking);
-
-
         }
     }
 
@@ -198,10 +197,10 @@ public class BookingServiceImpl implements BookingService {
         Optional<Booking> bookingOpt = bookingRepository.findById(bookingId);
         if (bookingOpt.isPresent()) {
             Booking booking = bookingOpt.get();
-            if(!user.getEmail().equals(booking.getService().getWorker().getEmail())) {
-                throw new UsersMismatchException("You are not allowed to reject this booking.");
+            if (!user.getEmail().equals(booking.getService().getWorker().getEmail())) {
+                throw new UsersMismatchException("You are not allowed to reject this booking");
             }
-            if(!booking.getType().equals(Type.APPROVED)){
+            if (!booking.getType().equals(Type.APPROVED)) {
                 throw new TypeNotExistException("Booking type is not approved.");
             }
             Date date = removeTime(new Date());
@@ -232,7 +231,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
     private void finishBooking(Booking booking) {
-        if(booking.getPaymentMethod().equals(PaymentMethod.CARD)){
+        if (booking.getPaymentMethod().equals(PaymentMethod.CARD)) {
             Card card = cardService.getCardByUserIdAndMainIs(booking.getService().getWorker().getId(), true);
             card.setBalance(card.getBalance().add(BigDecimal.valueOf(booking.getService().getPrice())));
             bookingBalanceService.subtractFunds(booking.getService().getPrice());
@@ -251,6 +250,7 @@ public class BookingServiceImpl implements BookingService {
         cal.set(Calendar.MILLISECOND, 0);
         return cal.getTime();
     }
+
     @Override
     public int getBookingCountByCompanyId(int companyId) {
         return bookingRepository.countBookingsByCompanyId(companyId);

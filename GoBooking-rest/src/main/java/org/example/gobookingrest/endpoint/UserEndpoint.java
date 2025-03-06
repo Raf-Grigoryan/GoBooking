@@ -1,5 +1,7 @@
 package org.example.gobookingrest.endpoint;
 
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +26,10 @@ public class UserEndpoint {
 
     private final RoleChangeRequestService roleChangeRequestService;
 
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Ok - Promotion request sent successfully"),
+            @ApiResponse(responseCode = "409", description = "Conflict - A request to become a director has already been submitted"),
+    })
     @PostMapping("/send-promotion-request")
     public ResponseEntity<String> sendPromotionRequest(@RequestBody @Valid SavePromotionRequest savePromotionRequest) {
         promotionRequestsService.savePromotion(savePromotionRequest);
@@ -35,8 +41,6 @@ public class UserEndpoint {
             @AuthenticationPrincipal CurrentUser currentUser,
             @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
             @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
-
-
         PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
         Page<RoleChangeRequestDto> roleChangeRequestDtoPage =
                 roleChangeRequestService.findByEmployee(currentUser.getUser(), pageRequest);

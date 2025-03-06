@@ -17,7 +17,6 @@
     <description>GoBooking REST API</description>
 
     <dependencies>
-
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>GoBooking-common</artifactId>
@@ -45,6 +44,7 @@
             <artifactId>jjwt-api</artifactId>
             <version>0.11.5</version>
         </dependency>
+
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-impl</artifactId>

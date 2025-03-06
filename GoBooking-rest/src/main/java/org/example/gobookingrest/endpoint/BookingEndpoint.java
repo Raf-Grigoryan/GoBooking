@@ -1,5 +1,8 @@
 package org.example.gobookingrest.endpoint;
 
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.gobookingcommon.dto.booking.SaveBookingRequestForRest;
@@ -37,8 +40,8 @@ public class BookingEndpoint {
 
     @GetMapping("/search-company")
     public ResponseEntity<?> searchCompany(@RequestParam(value = "keyword", defaultValue = "") String keyword,
-                                        @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
-                                        @RequestParam(value = "pageSize", defaultValue = "8") int pageSize) {
+                                           @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
+                                           @RequestParam(value = "pageSize", defaultValue = "8") int pageSize) {
         PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
         Page<CompanyResponse> companyResponses;
         if (keyword.isEmpty()) {
@@ -50,6 +53,10 @@ public class BookingEndpoint {
     }
 
     @GetMapping("/single-company")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Ok"),
+            @ApiResponse(responseCode = "404", description = "Not Found - Company not found")
+    })
     public ResponseEntity<?> singleCompany(@RequestParam(value = "id") int id) {
         CompanyAndWorkersDto dto = CompanyAndWorkersDto.builder()
                 .company(companyService.getCompanyById(id))
@@ -70,10 +77,14 @@ public class BookingEndpoint {
     }
 
     @GetMapping("/select-time")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "409", description = "There may be insufficient funds on your card"),
+            @ApiResponse(responseCode = "200",description = "Successful retrieval of available booking times and payment options")
+    })
     public ResponseEntity<?> confirm(@RequestParam("workerId") int workerId,
-                          @RequestParam("serviceId") int serviceId,
-                          @RequestParam(value = "bookingDate", defaultValue = "") @DateTimeFormat(pattern = "yyyy-MM-dd") Date bookingDate,
-                          @AuthenticationPrincipal CurrentUser currentUser) {
+                                     @RequestParam("serviceId") int serviceId,
+                                     @RequestParam(value = "bookingDate", defaultValue = "") @DateTimeFormat(pattern = "yyyy-MM-dd") Date bookingDate,
+                                     @AuthenticationPrincipal CurrentUser currentUser) {
         SelectTimeInformationForRest selectTimeInformationForRest = SelectTimeInformationForRest.builder()
                 .selectTimeResponse(bookingService.getSelectTimeByWorkerIdAndServiceId(workerId, serviceId, bookingDate))
                 .bookingDate(bookingDate)
@@ -84,7 +95,7 @@ public class BookingEndpoint {
 
     @PostMapping("/save-booking")
     public ResponseEntity<?> saveBooking(@AuthenticationPrincipal CurrentUser currentUser,
-                              @RequestBody SaveBookingRequestForRest saveBookingRequestForRest) {
+                                         @RequestBody @Valid SaveBookingRequestForRest saveBookingRequestForRest) {
         bookingService.save(saveBookingRequestForRest.getSaveBookingRequest(), currentUser.getUser(), saveBookingRequestForRest.getBookingDate(), saveBookingRequestForRest.getCard());
         return ResponseEntity.ok().build();
     }

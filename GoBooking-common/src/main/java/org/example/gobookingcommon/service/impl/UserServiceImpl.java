@@ -133,7 +133,7 @@ public class UserServiceImpl implements UserService {
             throw new PasswordIncorrectException("Error: Old password does not match");
         }
         if (!passwordChangeRequest.getNewPassword().equals(passwordChangeRequest.getConfirmPassword())) {
-            throw new PasswordIncorrectException("Error: Confirm password does not match");
+            throw new ConfirmPasswordIncorrectException("Error: Confirm password does not match");
         }
         user.setPassword(passwordEncoder.encode(passwordChangeRequest.getNewPassword()));
         userRepository.save(user);
