@@ -92,7 +92,7 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     @Named("getCompanyById")
     public Company getCompanyById(int id) {
-        return companyRepository.findById(id).orElse(null);
+        return companyRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Company not found"));
     }
 
     @Override
@@ -119,15 +119,14 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
 
-
     @Override
     public void editCompany(SaveCompanyRequest companyRequest, int id, MultipartFile image, SaveAddressRequest addressRequest, int addressId) {
         Company company = companyRepository.getCompanyById(id);
         try {
             company.setId(id);
-        company.setName(companyRequest.getName());
-        company.setPhone(companyRequest.getPhone());
-        if (image != null && !image.isEmpty()) {
+            company.setName(companyRequest.getName());
+            company.setPhone(companyRequest.getPhone());
+            if (image != null && !image.isEmpty()) {
                 if (!isValidImage(image)) {
                     throw new IllegalArgumentException("Invalid image format");
                 }
@@ -136,9 +135,9 @@ public class CompanyServiceImpl implements CompanyService {
                 image.transferTo(file);
                 company.setCompanyPicture(fileName);
             }
-        company.setDirector(userRepository.getUserById(companyRequest.getDirectorId()));
-        company.setAddress(addressService.editAddress(addressRequest, addressId));
-        }catch (IOException e) {
+            company.setDirector(userRepository.getUserById(companyRequest.getDirectorId()));
+            company.setAddress(addressService.editAddress(addressRequest, addressId));
+        } catch (IOException e) {
             throw new RuntimeException("File upload error: " + e.getMessage(), e);
         } catch (Exception e) {
             throw new RuntimeException("User update error: " + e.getMessage(), e);

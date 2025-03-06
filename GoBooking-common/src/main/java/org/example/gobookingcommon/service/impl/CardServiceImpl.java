@@ -71,16 +71,15 @@ public class CardServiceImpl implements CardService {
     @Transactional
     public void deleteCardByCardNumber(String email, String cardNumber) {
         Card cardInDb = cardRepository.findCardByCardNumber(cardNumber);
-        if (cardInDb != null) {
-            if (cardInDb.getUser().getEmail().equals(email)) {
-                cardRepository.deleteCardByCardNumber(cardNumber);
-                mailService.sendMailForDeleteCard(email, cardNumber);
-            }else {
-                throw new UnauthorizedCardAccessException("You are not the owner of this card.");
-            }
+        if (cardInDb == null) {
+            throw new EntityNotFoundException("Card not found");
         }
-        throw new EntityNotFoundException("Card not found");
 
+        if (!cardInDb.getUser().getEmail().equals(email)) {
+            throw new UnauthorizedCardAccessException("You are not the owner of this card.");
+        }
+        cardRepository.deleteCardByCardNumber(cardNumber);
+        mailService.sendMailForDeleteCard(email, cardNumber);
     }
 
     @Override

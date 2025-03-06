@@ -17,6 +17,7 @@ import java.util.List;
 public class SubscriptionServiceImpl implements SubscriptionService {
 
     private final SubscriptionRepository subscriptionRepository;
+
     private final SubscriptionMapper subscriptionMapper;
 
     @Override
