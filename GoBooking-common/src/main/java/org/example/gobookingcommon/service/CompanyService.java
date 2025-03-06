@@ -14,7 +14,7 @@ public interface CompanyService {
 
     CompanyDto getCompanyDtoByDirector(User director);
 
-    void deleteCompany(int id);
+    void deleteCompany(int id, User user);
 
     Company getCompanyById(int id);
 
@@ -28,7 +28,7 @@ public interface CompanyService {
 
     Page<CompanyForAdminDto> getAllCompaniesByValid(boolean valid, PageRequest pageRequest);
 
-    void editCompany(SaveCompanyRequest companyRequest, int id, MultipartFile image, SaveAddressRequest addressRequest, int addressId);
+    void editCompany(SaveCompanyRequest companyRequest, int id, MultipartFile image, SaveAddressRequest addressRequest, int addressId, User user);
 
     CompanyResponse getCompanyResponseByDirectorId(int doctorId);
 }

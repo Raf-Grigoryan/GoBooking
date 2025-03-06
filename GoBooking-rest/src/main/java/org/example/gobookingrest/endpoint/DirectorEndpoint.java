@@ -46,14 +46,14 @@ public class DirectorEndpoint {
 
     private final WorkService workService;
 
-    @GetMapping
-    public ResponseEntity<CompanyDto> getDirectorPage(@AuthenticationPrincipal CurrentUser currentUser) {
+    @GetMapping("/company")
+    public ResponseEntity<CompanyDto> getCompany(@AuthenticationPrincipal CurrentUser currentUser) {
         CompanyDto company = companyService.getCompanyDtoByDirector(currentUser.getUser());
         return ResponseEntity.ok(company);
     }
 
-    @GetMapping("/create-company")
-    public ResponseEntity<List<Country>> getCreateCompanyData() {
+    @GetMapping("/countries")
+    public ResponseEntity<List<Country>> getCountries() {
         List<Country> countries = countryService.getAllCountries();
         return ResponseEntity.ok(countries);
     }
@@ -71,14 +71,14 @@ public class DirectorEndpoint {
     }
 
     @DeleteMapping("/delete-company/{id}")
-    public ResponseEntity<String> deleteCompany(@PathVariable int id) {
-        companyService.deleteCompany(id);
+    public ResponseEntity<String> deleteCompany(@PathVariable int id, @AuthenticationPrincipal CurrentUser currentUser) {
+        companyService.deleteCompany(id,currentUser.getUser());
         log.info("Company deleted successfully");
         return ResponseEntity.ok("Company deleted successfully");
     }
 
-    @GetMapping("/send-role-change-request")
-    public ResponseEntity<List<UserDto>> sendRoleChangeRequest(@RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
+    @GetMapping("/role-change-request")
+    public ResponseEntity<List<UserDto>> roleChangeRequest(@RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
                                                                @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
                                                                @RequestParam(value = "keyword", defaultValue = "") String keyword) {
         PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
@@ -87,8 +87,8 @@ public class DirectorEndpoint {
     }
 
     @PostMapping("/send-role-change-request")
-    public ResponseEntity<String> sendRoleChangeRequest(@RequestBody SaveRoleChangeRequest roleChangeRequest) {
-        directorService.sendWorkRequest(roleChangeRequest);
+    public ResponseEntity<String> sendRoleChangeRequest(@RequestBody SaveRoleChangeRequest roleChangeRequest, @AuthenticationPrincipal CurrentUser currentUser) {
+        directorService.sendWorkRequest(roleChangeRequest, currentUser.getUser());
         log.info("Role change request sent successfully");
         return ResponseEntity.ok("Role change request sent successfully");
     }
@@ -106,26 +106,19 @@ public class DirectorEndpoint {
         return ResponseEntity.ok("Subscription purchased successfully");
     }
 
-    @GetMapping("/edit-company/{companyId}")
-    public ResponseEntity<List<?>> getEditCompany(@PathVariable("companyId") int companyId) {
-        List<Object> response = new ArrayList<>();
-        response.add(companyService.getCompanyById(companyId));
-        response.add(countryService.getAllCountries());
-        return ResponseEntity.ok(response);
-    }
-
     @PutMapping(value = "/edit-company/{companyId}/{addressId}", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<String> editCompany(@Valid @RequestBody CreateCompanyRequest companyRequest,
                                               @RequestParam(value = "image", required = false) MultipartFile image,
                                               @PathVariable("companyId") int companyId,
-                                              @PathVariable("addressId") int addressId) {
-        companyService.editCompany(companyRequest.getSaveCompanyRequest(), companyId, image, companyRequest.getSaveAddressRequest(), addressId);
+                                              @PathVariable("addressId") int addressId,
+                                              @AuthenticationPrincipal  CurrentUser currentUser) {
+        companyService.editCompany(companyRequest.getSaveCompanyRequest(), companyId, image, companyRequest.getSaveAddressRequest(), addressId, currentUser.getUser());
         log.info("Company updated successfully");
         return ResponseEntity.ok("Company updated successfully");
     }
 
     @GetMapping("/my-company")
-    public ResponseEntity<?> getMyCompanyPage(@AuthenticationPrincipal CurrentUser currentUser) {
+    public ResponseEntity<?> getMyCompany(@AuthenticationPrincipal CurrentUser currentUser) {
         return ResponseEntity.ok(directorService.getCompanyManagementByDirectorId(currentUser.getUser().getId()));
     }
 

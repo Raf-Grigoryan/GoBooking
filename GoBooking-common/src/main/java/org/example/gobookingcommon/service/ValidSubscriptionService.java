@@ -1,6 +1,5 @@
 package org.example.gobookingcommon.service;
 
-import org.example.gobookingcommon.entity.company.Company;
 
 public interface ValidSubscriptionService {
 

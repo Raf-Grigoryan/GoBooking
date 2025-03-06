@@ -74,38 +74,38 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(AddressOnlyExistException.class)
-    public ResponseEntity<String> AddressOnlyExistException(AddressOnlyExistException ex) {
+    public ResponseEntity<String> addressOnlyExistException(AddressOnlyExistException ex) {
         log.info(ex.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
     }
 
     @ExceptionHandler(AlreadyRoleChangeRequestException.class)
-    public ResponseEntity<String> AlreadyRoleChangeRequestException(AlreadyRoleChangeRequestException ex) {
+    public ResponseEntity<String> alreadyRoleChangeRequestException(AlreadyRoleChangeRequestException ex) {
         log.info(ex.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
     }
 
 
     @ExceptionHandler(CardOnlyExistException.class)
-    public ResponseEntity<String> CardOnlyExistException(CardOnlyExistException ex) {
+    public ResponseEntity<String> cardOnlyExistException(CardOnlyExistException ex) {
         log.info(ex.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
     }
 
     @ExceptionHandler(CompanyAlreadyExistsException.class)
-    public ResponseEntity<String> CompanyAlreadyExistsException(CompanyAlreadyExistsException ex) {
+    public ResponseEntity<String> companyAlreadyExistsException(CompanyAlreadyExistsException ex) {
         log.info(ex.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
     }
 
     @ExceptionHandler(InsufficientFundsException.class)
-    public ResponseEntity<String> InsufficientFundsException(InsufficientFundsException ex) {
+    public ResponseEntity<String> insufficientFundsException(InsufficientFundsException ex) {
         log.info(ex.getMessage());
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ex.getMessage());
     }
 
     @ExceptionHandler(SubscriptionOnlyExistException.class)
-    public ResponseEntity<String> SubscriptionOnlyExistException(SubscriptionOnlyExistException ex) {
+    public ResponseEntity<String> subscriptionOnlyExistException(SubscriptionOnlyExistException ex) {
         log.info(ex.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
     }
@@ -163,11 +163,29 @@ public class GlobalExceptionHandler {
         log.info(ex.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
     }
+
     @ExceptionHandler(UnauthorizedServiceDeletionException.class)
     public ResponseEntity<String> unauthorizedServiceDeletionException(UnauthorizedServiceDeletionException ex) {
         log.info(ex.getMessage());
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ex.getMessage());
     }
 
+    @ExceptionHandler(DirectorNotMatchException.class)
+    public ResponseEntity<String> directorNotMatchException(DirectorNotMatchException ex) {
+        log.info(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(SubscriptionNotValidException.class)
+    public ResponseEntity<String> subscriptionNotValidException(SubscriptionNotValidException ex) {
+        log.info(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(CardNotExistException.class)
+    public ResponseEntity<String> cardNotExistException(CardNotExistException ex) {
+        log.info(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
 
 }

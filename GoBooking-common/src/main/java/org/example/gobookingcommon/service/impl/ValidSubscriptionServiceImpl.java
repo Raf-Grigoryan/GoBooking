@@ -3,6 +3,7 @@ package org.example.gobookingcommon.service.impl;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
+import org.example.gobookingcommon.customException.CardNotExistException;
 import org.example.gobookingcommon.customException.InsufficientFundsException;
 import org.example.gobookingcommon.entity.company.Company;
 import org.example.gobookingcommon.entity.subscription.Subscription;
@@ -31,6 +32,9 @@ public class ValidSubscriptionServiceImpl implements ValidSubscriptionService {
     public void save(Company company, String subscriptionTitle, String cardNumber) {
         Subscription subscription = subscriptionService.getSubscriptionByTitle(subscriptionTitle);
         Card card = cardService.getCardByCardNumber(cardNumber);
+        if (card == null){
+            throw new CardNotExistException("Card not exist");
+        }
         if (card.getBalance().compareTo(subscription.getPrice()) < 0) {
             throw new InsufficientFundsException("Not enough balance on the card.");
         }

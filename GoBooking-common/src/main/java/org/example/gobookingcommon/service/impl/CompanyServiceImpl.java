@@ -5,6 +5,8 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.gobookingcommon.customException.AddressOnlyExistException;
 import org.example.gobookingcommon.customException.CompanyAlreadyExistsException;
+import org.example.gobookingcommon.customException.CompanyNotFoundException;
+import org.example.gobookingcommon.customException.DirectorNotMatchException;
 import org.example.gobookingcommon.dto.company.*;
 import org.example.gobookingcommon.entity.company.Company;
 import org.example.gobookingcommon.entity.user.User;
@@ -51,7 +53,7 @@ public class CompanyServiceImpl implements CompanyService {
         Company company = companyMapper.toEntity(saveCompanyRequest);
         try {
             if (image != null && !image.isEmpty()) {
-                if (!isValidImage(image)) {
+                if (isValidImage(image)) {
                     throw new IllegalArgumentException("Invalid image format");
                 }
                 String fileName = System.currentTimeMillis() + "_" + image.getOriginalFilename();
@@ -85,7 +87,14 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Transactional
     @Override
-    public void deleteCompany(int id) {
+    public void deleteCompany(int id, User user) {
+       Company company = companyRepository.getCompanyById(id);
+        if (company == null){
+            throw new CompanyNotFoundException("Company not exist");
+        }
+        if (!company.getDirector().equals(user)){
+            throw new DirectorNotMatchException("Director does not match");
+        }
         companyRepository.deleteById(id);
     }
 
@@ -120,14 +129,20 @@ public class CompanyServiceImpl implements CompanyService {
 
 
     @Override
-    public void editCompany(SaveCompanyRequest companyRequest, int id, MultipartFile image, SaveAddressRequest addressRequest, int addressId) {
+    public void editCompany(SaveCompanyRequest companyRequest, int id, MultipartFile image, SaveAddressRequest addressRequest, int addressId, User user) {
         Company company = companyRepository.getCompanyById(id);
+        if (company == null){
+            throw new CompanyNotFoundException("Company not exist");
+        }
+        if (!company.getDirector().equals(user)){
+            throw new DirectorNotMatchException("Director does not match");
+        }
         try {
             company.setId(id);
             company.setName(companyRequest.getName());
             company.setPhone(companyRequest.getPhone());
             if (image != null && !image.isEmpty()) {
-                if (!isValidImage(image)) {
+                if (isValidImage(image)) {
                     throw new IllegalArgumentException("Invalid image format");
                 }
                 String fileName = System.currentTimeMillis() + "_" + image.getOriginalFilename();
@@ -147,7 +162,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     private boolean isValidImage(MultipartFile image) {
         String contentType = image.getContentType();
-        return contentType != null && (contentType.equals("image/png") || contentType.equals("image/jpeg"));
+        return contentType == null || (!contentType.equals("image/png") && !contentType.equals("image/jpeg"));
     }
 
     @Override
