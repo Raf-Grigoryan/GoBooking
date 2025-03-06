@@ -21,7 +21,7 @@ public class GlobalExceptionHandler {
     public ModelAndView message(UserOnlyExistException e) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("errorMessages", e.getMessage());
-        modelAndView.setViewName("user/register");
+        modelAndView.setViewName("auth/register");
         return modelAndView;
     }
 
@@ -44,9 +44,9 @@ public class GlobalExceptionHandler {
 
         String requestURI = request.getRequestURI();
 
-        if (requestURI.contains("/user/register")) {
-            modelAndView.setViewName("user/register");
-        } else if (requestURI.contains("/user/create-card")) {
+        if (requestURI.contains("/auth/register")) {
+            modelAndView.setViewName("auth/register");
+        } else if (requestURI.contains("/auth/create-card")) {
             modelAndView.setViewName("error/globalErrorPage");
             modelAndView.addObject("status", "400 bad request");
         }
@@ -178,6 +178,33 @@ public class GlobalExceptionHandler {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("errorMessage", e.getMessage());
         modelAndView.addObject("status", "409 Conflict");
+        modelAndView.setViewName("error/globalErrorPage");
+        return modelAndView;
+    }
+
+    @ExceptionHandler(DirectorNotMatchException.class)
+    public ModelAndView message(DirectorNotMatchException e) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("errorMessage", e.getMessage());
+        modelAndView.addObject("status", "409 bad request");
+        modelAndView.setViewName("error/globalErrorPage");
+        return modelAndView;
+    }
+
+    @ExceptionHandler(SubscriptionNotValidException.class)
+    public ModelAndView message(SubscriptionNotValidException e) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("errorMessage", e.getMessage());
+        modelAndView.addObject("status", "409 Conflict");
+        modelAndView.setViewName("error/globalErrorPage");
+        return modelAndView;
+    }
+
+    @ExceptionHandler(CardNotExistException.class)
+    public ModelAndView message(CardNotExistException e) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("errorMessage", e.getMessage());
+        modelAndView.addObject("status", "409 bad request");
         modelAndView.setViewName("error/globalErrorPage");
         return modelAndView;
     }

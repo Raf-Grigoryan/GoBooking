@@ -73,8 +73,8 @@ public class DirectorController {
     }
 
     @GetMapping("/delete-company")
-    public String deleteCompany(@RequestParam("id") int id) {
-        companyService.deleteCompany(id);
+    public String deleteCompany(@RequestParam("id") int id, @AuthenticationPrincipal CurrentUser currentUser) {
+        companyService.deleteCompany(id, currentUser.getUser());
         return "redirect:/director";
     }
 
@@ -108,9 +108,9 @@ public class DirectorController {
     }
 
     @PostMapping("/send-role-change-request")
-    public String sendRoleChangeRequest(@ModelAttribute SaveRoleChangeRequest roleChangeRequest) {
+    public String sendRoleChangeRequest(@ModelAttribute SaveRoleChangeRequest roleChangeRequest, @AuthenticationPrincipal CurrentUser currentUser) {
         log.info("Sending role change request: {}", roleChangeRequest);
-        directorService.sendWorkRequest(roleChangeRequest);
+        directorService.sendWorkRequest(roleChangeRequest, currentUser.getUser());
         log.debug("Role change request sent.");
         return "redirect:/director/send-role-change-request";
     }
@@ -153,8 +153,9 @@ public class DirectorController {
                               @Valid @ModelAttribute SaveAddressRequest addressRequest,
                               @RequestParam("image") MultipartFile image,
                               @RequestParam("companyId") int companyId,
-                              @RequestParam("addressId") int addressId){
-        companyService.editCompany(companyRequest,companyId,image,addressRequest,addressId);
+                              @RequestParam("addressId") int addressId,
+                              @AuthenticationPrincipal CurrentUser currentUser){
+        companyService.editCompany(companyRequest,companyId,image,addressRequest,addressId,currentUser.getUser());
         log.info("Company edited successfully");
         return "redirect:/director";
     }

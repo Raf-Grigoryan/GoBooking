@@ -2,10 +2,14 @@ package org.example.gobookingcommon.service.impl;
 
 import lombok.RequiredArgsConstructor;
 
+import org.example.gobookingcommon.customException.SubscriptionNotValidException;
 import org.example.gobookingcommon.dto.company.CompanyManagement;
 import org.example.gobookingcommon.dto.company.CompanyResponse;
 import org.example.gobookingcommon.dto.request.SaveRoleChangeRequest;
+import org.example.gobookingcommon.entity.subscription.ValidSubscription;
+import org.example.gobookingcommon.entity.user.User;
 import org.example.gobookingcommon.mapper.RoleChangeRequestMapper;
+import org.example.gobookingcommon.repository.ValidSubscriptionRepository;
 import org.example.gobookingcommon.service.*;
 import org.springframework.stereotype.Service;
 
@@ -25,8 +29,14 @@ public class DirectorServiceImpl implements DirectorService {
 
     private final BookingService bookingService;
 
+    private final ValidSubscriptionRepository validSubscriptionRepository;
+
     @Override
-    public void sendWorkRequest(SaveRoleChangeRequest request) {
+    public void sendWorkRequest(SaveRoleChangeRequest request, User user) {
+        ValidSubscription subscription = validSubscriptionRepository.findByCompany(companyService.getCompanyByDirector(user));
+        if (subscription == null){
+          throw new SubscriptionNotValidException("Subscription not valid");
+        }
         roleChangeRequestService.save(roleChangeRequestMapper.toEntity(request));
     }
 
