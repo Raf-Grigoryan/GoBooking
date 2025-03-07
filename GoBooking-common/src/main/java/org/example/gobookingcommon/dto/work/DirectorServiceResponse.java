@@ -12,5 +12,4 @@ public class DirectorServiceResponse {
     private double price;
     private String pictureName;
     private int duration;
-    private WorkerResponse worker;
 }

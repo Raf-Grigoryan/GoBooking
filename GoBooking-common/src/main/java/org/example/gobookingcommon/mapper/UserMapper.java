@@ -18,5 +18,5 @@ public interface UserMapper {
 
     WorkerResponse toWorker(User user);
 
-   UserAuthResponse loginResponse(User user);
+    UserAuthResponse loginResponse(User user);
 }

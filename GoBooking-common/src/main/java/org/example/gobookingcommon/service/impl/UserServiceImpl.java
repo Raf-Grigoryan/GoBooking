@@ -210,6 +210,7 @@ public class UserServiceImpl implements UserService {
         if (user.isPresent()) {
             return userMapper.toWorker(user.get());
         }
+        System.out.println(id);
         throw new EntityNotFoundException("Worker does not exist");
     }
 
@@ -275,7 +276,7 @@ public class UserServiceImpl implements UserService {
         Optional<User> userInDb = userRepository.findByEmail(userAuthRequest.getEmail());
         if (userInDb.isPresent()) {
             User user = userInDb.get();
-            if (!user.isEnable()){
+            if (!user.isEnable()) {
                 throw new AccountNotVerifiedException("User does not have verification required");
             }
             if (!passwordEncoder.matches(userAuthRequest.getPassword(), user.getPassword())) {

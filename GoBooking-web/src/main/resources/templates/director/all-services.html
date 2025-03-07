@@ -67,9 +67,6 @@
                                     <table class="table text-nowrap mb-0 table-centered">
                                         <thead class="table-light">
                                         <tr>
-                                            <th class="ps-1 sort" default-sort-order="asc" data-sort='company_name'>
-                                                Worker Information
-                                            </th>
                                             <th class="sort" data-sort='owner'>Service Image</th>
                                             <th class="sort" data-sort='category'>Title</th>
                                             <th class="sort" data-sort='rating'>Price</th>
@@ -78,21 +75,6 @@
                                         </thead>
                                         <tbody class="list list-of-records-container">
                                         <tr th:each="service : ${services}">
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div>
-                                                        <img th:src="@{/getImage(imageName=${service.worker.getPictureName()})}"
-                                                             alt="Image"
-                                                             class="avatar avatar-sm rounded-circle">
-                                                    </div>
-                                                    <div class="ms-3 lh-1">
-                                                        <h5 class="mb-1">
-                                                            <a href="#!" class="text-inherit"
-                                                               th:text="${service.worker.name + ' ' + service.worker.surname}"></a>
-                                                        </h5>
-                                                    </div>
-                                                </div>
-                                            </td>
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div>

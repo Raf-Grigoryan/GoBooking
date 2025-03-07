@@ -5,11 +5,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.gobookingcommon.dto.company.CompanyDto;
 import org.example.gobookingcommon.dto.company.CreateCompanyRequest;
-
 import org.example.gobookingcommon.dto.request.SaveRoleChangeRequest;
 import org.example.gobookingcommon.dto.subscription.SubscriptionDto;
 import org.example.gobookingcommon.dto.subscription.SubscriptionDtoRest;
 import org.example.gobookingcommon.dto.user.UserDto;
+import org.example.gobookingcommon.dto.work.DirectorServiceResponse;
 import org.example.gobookingcommon.entity.company.Country;
 import org.example.gobookingcommon.service.*;
 import org.example.gobookingrest.security.CurrentUser;
@@ -71,15 +71,15 @@ public class DirectorEndpoint {
 
     @DeleteMapping("/delete-company/{id}")
     public ResponseEntity<String> deleteCompany(@PathVariable int id, @AuthenticationPrincipal CurrentUser currentUser) {
-        companyService.deleteCompany(id,currentUser.getUser());
+        companyService.deleteCompany(id, currentUser.getUser());
         log.info("Company deleted successfully");
         return ResponseEntity.ok("Company deleted successfully");
     }
 
     @GetMapping("/role-change-request")
     public ResponseEntity<List<UserDto>> roleChangeRequest(@RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
-                                                               @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
-                                                               @RequestParam(value = "keyword", defaultValue = "") String keyword) {
+                                                           @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
+                                                           @RequestParam(value = "keyword", defaultValue = "") String keyword) {
         PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
         Page<UserDto> userDtoList = keyword.isEmpty() ? userService.getAllUsers(pageRequest) : userService.getAllUsersByEmail(pageRequest, keyword);
         return ResponseEntity.ok(userDtoList.getContent());
@@ -110,7 +110,7 @@ public class DirectorEndpoint {
                                               @RequestParam(value = "image", required = false) MultipartFile image,
                                               @PathVariable("companyId") int companyId,
                                               @PathVariable("addressId") int addressId,
-                                              @AuthenticationPrincipal  CurrentUser currentUser) {
+                                              @AuthenticationPrincipal CurrentUser currentUser) {
         companyService.editCompany(companyRequest.getSaveCompanyRequest(), companyId, image, companyRequest.getSaveAddressRequest(), addressId, currentUser.getUser());
         log.info("Company updated successfully");
         return ResponseEntity.ok("Company updated successfully");
@@ -122,7 +122,7 @@ public class DirectorEndpoint {
     }
 
     @GetMapping("/all-services")
-    public ResponseEntity<?> getAllServices(@AuthenticationPrincipal CurrentUser currentUser) {
+    public ResponseEntity<List<DirectorServiceResponse>> getAllServices(@AuthenticationPrincipal CurrentUser currentUser) {
         return ResponseEntity.ok(workService.getAllServicesByDirectorId(currentUser.getUser().getId()));
     }
 

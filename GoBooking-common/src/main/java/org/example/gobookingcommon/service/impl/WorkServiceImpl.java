@@ -8,6 +8,7 @@ import org.example.gobookingcommon.dto.work.CreateServiceRequest;
 import org.example.gobookingcommon.dto.work.DirectorServiceResponse;
 import org.example.gobookingcommon.dto.work.EditServiceRequest;
 import org.example.gobookingcommon.dto.work.ServiceResponse;
+import org.example.gobookingcommon.entity.user.Role;
 import org.example.gobookingcommon.entity.user.User;
 import org.example.gobookingcommon.entity.work.Service;
 import org.example.gobookingcommon.mapper.ServiceMapper;
@@ -143,7 +144,7 @@ public class WorkServiceImpl implements WorkService {
 
     @Override
     public int getWorkerServiceCountByDirector(int directorId) {
-        return serviceRepository.countByWorker_Company_Director_Id(directorId);
+        return serviceRepository.countByWorker_Company_Director_Id_AndWorker_Role(directorId, Role.WORKER);
     }
 
     @Override
