@@ -62,7 +62,7 @@ public class ValidSubscriptionServiceImpl implements ValidSubscriptionService {
         }
     }
 
-    @Scheduled(cron = "0 0 0 * * ?")
+
     @Override
     public void deleteExpiredSubscriptions() {
         Date today = new Date();
