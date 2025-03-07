@@ -39,6 +39,7 @@ public class RestSecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/auth/login", "/auth/register").permitAll()
                         .requestMatchers("/worker/**").hasAuthority("WORKER")
                         .requestMatchers("/admin/**").hasAuthority("ADMIN")
+                        .requestMatchers("/director/**").hasAuthority("DIRECTOR")
                         .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
                         .anyRequest().authenticated()
                 )

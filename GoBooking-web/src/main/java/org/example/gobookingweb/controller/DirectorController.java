@@ -166,7 +166,7 @@ public class DirectorController {
         return "/director/my-company";
     }
 
-    @GetMapping("all-services")
+    @GetMapping("/all-services")
     public String getAllServicesPage(@AuthenticationPrincipal CurrentUser currentUser, ModelMap modelMap) {
         modelMap.put("services", workService.getAllServicesByDirectorId(currentUser.getUser().getId()));
         return "/director/all-services";
