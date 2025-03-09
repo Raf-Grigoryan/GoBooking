@@ -3,6 +3,7 @@ package org.example.gobookingcommon.service.impl;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
+import lombok.extern.slf4j.Slf4j;
 import org.example.gobookingcommon.customException.CardNotExistException;
 import org.example.gobookingcommon.customException.InsufficientFundsException;
 import org.example.gobookingcommon.entity.company.Company;
@@ -20,6 +21,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ValidSubscriptionServiceImpl implements ValidSubscriptionService {
 
     private final org.example.gobookingcommon.repository.ValidSubscriptionRepository validSubscriptionRepository;
@@ -69,11 +71,13 @@ public class ValidSubscriptionServiceImpl implements ValidSubscriptionService {
         List<ValidSubscription> expiredSubscriptions = validSubscriptionRepository.findByEndedDateBefore(today);
         if (!expiredSubscriptions.isEmpty()) {
             for (ValidSubscription sub : expiredSubscriptions) {
-                mailService.sendSubscriptionDeletedEmail(sub.getCompany().getDirector().getEmail(), sub.getCompany().getDirector().getName());
+                try {
+                    mailService.sendSubscriptionDeletedEmail(sub.getCompany().getDirector().getEmail(), sub.getCompany().getDirector().getName());
+                } catch (RuntimeException e) {
+                    log.error("Failed to send email for subscription with ID: {}", sub.getId(), e);
+                }
             }
-
             validSubscriptionRepository.deleteAll(expiredSubscriptions);
-            System.out.println("Deleted " + expiredSubscriptions.size() + " expired subscriptions.");
         }
     }
 }

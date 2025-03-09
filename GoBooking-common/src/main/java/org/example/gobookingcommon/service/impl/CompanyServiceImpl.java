@@ -160,7 +160,7 @@ public class CompanyServiceImpl implements CompanyService {
         companyRepository.save(company);
     }
 
-    private boolean isValidImage(MultipartFile image) {
+     boolean isValidImage(MultipartFile image) {
         String contentType = image.getContentType();
         return contentType == null || (!contentType.equals("image/png") && !contentType.equals("image/jpeg"));
     }

@@ -43,6 +43,9 @@ public class DirectorServiceImpl implements DirectorService {
     @Override
     public CompanyManagement getCompanyManagementByDirectorId(int directorId) {
         CompanyResponse companyResponse = companyService.getCompanyResponseByDirectorId(directorId);
+        if (companyResponse == null) {
+            throw new IllegalArgumentException("Company not found for director ID: " + directorId);
+        }
         return CompanyManagement.builder()
                 .workers(userService.getWorkersByDirectorId(directorId))
                 .company(companyResponse)

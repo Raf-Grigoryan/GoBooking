@@ -19,6 +19,9 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public void saveAddress(Address address) {
+        if (address == null) {
+            throw new IllegalArgumentException("Address cannot be null");
+        }
         addressRepository.save(address);
     }
 
@@ -29,6 +32,14 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public Address editAddress(SaveAddressRequest addressRequest, int id) {
+        if (addressRequest == null ||
+                addressRequest.getRegion() == null ||
+                addressRequest.getCity() == null ||
+                addressRequest.getStreet() == null ||
+                addressRequest.getApartmentNumber() == null) {
+            throw new IllegalArgumentException("Invalid address request");
+        }
+
         Address address = addressRepository.getById(id);
         address.setCountry(countryRepository.getCountryById(addressRequest.getCountryId()));
         address.setRegion(addressRequest.getRegion());

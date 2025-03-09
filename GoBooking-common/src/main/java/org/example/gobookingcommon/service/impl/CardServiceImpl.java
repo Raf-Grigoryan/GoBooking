@@ -29,18 +29,17 @@ public class CardServiceImpl implements CardService {
 
     private final MailService mailService;
 
-
     @Override
     public void save(SaveCardRequest saveCardRequest) {
-        if (checkCardCount(saveCardRequest.getUserId())) {
+        if (cardRepository.countByUserId(saveCardRequest.getUserId()) >= 4) {
             throw new CardCountException("Card count can't be more than 4");
         }
-        if (checkCardCount(saveCardRequest.getUserId())) {
+        if (cardRepository.existsCardByCardNumber(saveCardRequest.getCardNumber())) {
             throw new CardOnlyExistException("Card already exists");
         }
         Card card = cardMapper.toEntity(saveCardRequest);
         card.setBalance(BigDecimal.ZERO);
-        if (cardRepository.findCardByUserId(saveCardRequest.getUserId()).isEmpty()) {
+        if (cardRepository.findByUserId(saveCardRequest.getUserId()).isEmpty()) {
             card.setPrimary(true);
         }
         cardRepository.save(card);
@@ -56,7 +55,7 @@ public class CardServiceImpl implements CardService {
         }
         Card card = cardMapper.toEntity(saveCardRequestRest);
         card.setBalance(BigDecimal.ZERO);
-        if (cardRepository.findCardByUserId(saveCardRequestRest.getUserId()).isEmpty()) {
+        if (cardRepository.findByUserId(saveCardRequestRest.getUserId()).isEmpty()) {
             card.setPrimary(true);
         }
         cardRepository.save(card);
@@ -75,7 +74,7 @@ public class CardServiceImpl implements CardService {
             throw new EntityNotFoundException("Card not found");
         }
 
-        if (!cardInDb.getUser().getEmail().equals(email)) {
+        if (cardInDb.getUser().getEmail() == null || !cardInDb.getUser().getEmail().equals(email)) {
             throw new UnauthorizedCardAccessException("You are not the owner of this card.");
         }
         cardRepository.deleteCardByCardNumber(cardNumber);
@@ -84,11 +83,17 @@ public class CardServiceImpl implements CardService {
 
     @Override
     public Card getCardByCardNumber(String cardNumber) {
+        if (cardNumber == null || cardNumber.isEmpty()) {
+            throw new IllegalArgumentException("Card number cannot be null or empty");
+        }
         return cardRepository.findCardByCardNumber(cardNumber);
     }
 
     @Override
     public void editCard(Card card) {
+        if (card == null) {
+            throw new IllegalArgumentException("Card cannot be null");
+        }
         cardRepository.save(card);
     }
 
@@ -100,6 +105,9 @@ public class CardServiceImpl implements CardService {
 
     @Override
     public void save(Card card) {
+        if (card == null) {
+            throw new IllegalArgumentException("Card cannot be null");
+        }
         cardRepository.save(card);
     }
 
@@ -108,10 +116,5 @@ public class CardServiceImpl implements CardService {
         return cardRepository.countByUserId(userId);
     }
 
-    private boolean checkCardCount(int userId) {
-        if (cardRepository.countByUserId(userId) >= 4) {
-            throw new CardCountException("Card count can't be more than 4");
-        }
-        return false;
-    }
+
 }

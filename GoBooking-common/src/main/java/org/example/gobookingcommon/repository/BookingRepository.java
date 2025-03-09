@@ -3,7 +3,6 @@ package org.example.gobookingcommon.repository;
 import org.example.gobookingcommon.entity.booking.Booking;
 import org.example.gobookingcommon.entity.booking.Type;
 import org.example.gobookingcommon.entity.user.User;
-import org.example.gobookingcommon.entity.work.Service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

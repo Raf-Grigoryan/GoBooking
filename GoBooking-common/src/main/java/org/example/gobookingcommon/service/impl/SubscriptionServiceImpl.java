@@ -1,5 +1,6 @@
 package org.example.gobookingcommon.service.impl;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.example.gobookingcommon.customException.SubscriptionOnlyExistException;
 import org.example.gobookingcommon.dto.subscription.SaveSubscriptionRequest;
@@ -35,11 +36,25 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
     @Override
     public SubscriptionDto getSubscriptionDtoByTitle(String title) {
-        return subscriptionMapper.toDto(subscriptionRepository.findSubscriptionByTitle(title));
+        Subscription subscription = subscriptionRepository.findSubscriptionByTitle(title);
+        if (subscription == null) {
+            throw new EntityNotFoundException("Subscription not found");
+        }
+        return subscriptionMapper.toDto(subscription);
     }
 
     @Override
     public Subscription getSubscriptionByTitle(String title) {
-        return subscriptionRepository.findSubscriptionByTitle(title);
+        if (title == null) {
+            throw new IllegalArgumentException("Subscription title cannot be null");
+        }
+        if (title.isEmpty()) {
+            throw new IllegalArgumentException("Subscription title cannot be empty");
+        }
+        Subscription subscription = subscriptionRepository.findSubscriptionByTitle(title);
+        if (subscription == null) {
+            throw new EntityNotFoundException("Subscription not found");
+        }
+        return subscription;
     }
 }

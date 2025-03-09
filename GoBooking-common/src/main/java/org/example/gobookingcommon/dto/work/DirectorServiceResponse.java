@@ -2,7 +2,6 @@ package org.example.gobookingcommon.dto.work;
 
 import lombok.Builder;
 import lombok.Data;
-import org.example.gobookingcommon.dto.user.WorkerResponse;
 
 @Data
 @Builder

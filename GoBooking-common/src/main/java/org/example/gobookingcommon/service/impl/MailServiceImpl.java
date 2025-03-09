@@ -1,5 +1,6 @@
 package org.example.gobookingcommon.service.impl;
 
+
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +19,6 @@ import org.example.gobookingcommon.service.MailService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
@@ -229,7 +229,7 @@ public class MailServiceImpl implements MailService {
     }
 
     @Override
-    public void sendSubscriptionDeletedEmail(String toEmail, String userName) {
+    public void sendSubscriptionDeletedEmail(String toEmail, String userName){
         SimpleMailMessage message = new SimpleMailMessage();
 
         message.setTo(toEmail);

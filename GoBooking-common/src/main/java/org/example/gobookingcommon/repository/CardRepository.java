@@ -4,6 +4,7 @@ import org.example.gobookingcommon.entity.user.Card;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CardRepository extends JpaRepository<Card, Integer> {
 
@@ -18,6 +19,8 @@ public interface CardRepository extends JpaRepository<Card, Integer> {
     int countByUserId(int userId);
 
     Card findCardByCardNumber(String cardNumber);
+
+    Optional<Card> findByUserId(int userId);
 
     Card findCardByUserIdAndPrimary(int userId, boolean primary );
 

@@ -15,33 +15,43 @@ import java.util.Optional;
 public class BookingBalanceServiceImpl implements BookingBalanceService {
 
 
-    private final static int BALANCE_ID = 1;
+    static final int BALANCE_ID = 1;
 
     private final BookingBalanceRepository bookingBalanceRepository;
 
 
     @Override
     public synchronized void addFunds(double money) {
-            Optional<BookingBalance> bookingBalanceOpt = bookingBalanceRepository.findById(BALANCE_ID);
-            if (bookingBalanceOpt.isEmpty()) {
-                BookingBalance bookingBalance = new BookingBalance();
-                bookingBalance.setBalance(BigDecimal.valueOf(money));
-                bookingBalanceRepository.save(bookingBalance);
-            } else {
-                bookingBalanceOpt.get().sum(BigDecimal.valueOf(money));
-                bookingBalanceRepository.save(bookingBalanceOpt.get());
-            }
+        Optional<BookingBalance> bookingBalanceOpt = bookingBalanceRepository.findById(BALANCE_ID);
+        if (bookingBalanceOpt.isEmpty()) {
+            BookingBalance bookingBalance = new BookingBalance();
+            bookingBalance.setBalance(BigDecimal.valueOf(money));
+            bookingBalanceRepository.save(bookingBalance);
+        } else {
+            BookingBalance existingBalance = bookingBalanceOpt.get();
+            BigDecimal newBalance = existingBalance.getBalance().add(BigDecimal.valueOf(money));
 
+            if (money != 0.0) {
+                existingBalance.setBalance(newBalance);
+                bookingBalanceRepository.save(existingBalance);
+            }
+        }
     }
 
     @Override
     public synchronized void subtractFunds(double money) {
         Optional<BookingBalance> bookingBalanceOpt = bookingBalanceRepository.findById(BALANCE_ID);
         if (bookingBalanceOpt.isPresent()) {
-            bookingBalanceOpt.get().subtract(BigDecimal.valueOf(money));
+            BigDecimal currentBalance = bookingBalanceOpt.get().getBalance();
+            BigDecimal newBalance = currentBalance.subtract(BigDecimal.valueOf(money));
+            if (newBalance.compareTo(BigDecimal.ZERO) < 0) {
+                return;
+            }
+            bookingBalanceOpt.get().setBalance(newBalance);
             bookingBalanceRepository.save(bookingBalanceOpt.get());
         }
     }
+
 
     @Override
     public double getBookingBalance() {
