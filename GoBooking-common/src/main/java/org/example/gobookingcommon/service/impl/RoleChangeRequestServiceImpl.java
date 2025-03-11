@@ -43,11 +43,6 @@ public class RoleChangeRequestServiceImpl implements RoleChangeRequestService {
     }
 
     @Override
-    public int countByEmployee(User user) {
-        return roleChangeRequestRepository.countByEmployee(user);
-    }
-
-    @Override
     public Page<RoleChangeRequestDto> findByEmployee(User user, Pageable pageable) {
         Page<RoleChangeRequest> result = roleChangeRequestRepository.findByEmployee(user, pageable);
         return result.map(roleChangeRequestMapper::toDto);
@@ -68,4 +63,7 @@ public class RoleChangeRequestServiceImpl implements RoleChangeRequestService {
         }
         roleChangeRequestRepository.deleteByCompany(company);
     }
+
+
+
 }

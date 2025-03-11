@@ -37,10 +37,8 @@ class ValidSubscriptionServiceTest {
     private ProjectFinanceServiceImpl projectFinanceService;
     @Mock
     private ValidSubscriptionRepository validSubscriptionRepository;
-
     @InjectMocks
     private ValidSubscriptionServiceImpl validSubscriptionService;
-
     @Mock
     private Company company;
     @Mock
@@ -97,7 +95,7 @@ class ValidSubscriptionServiceTest {
         when(cardService.getCardByCardNumber(CARD_NUMBER)).thenReturn(card);
         when(card.getBalance()).thenReturn(BigDecimal.valueOf(100));
         when(subscription.getPrice()).thenReturn(BigDecimal.valueOf(50));
-        when(subscription.getDuration()).thenReturn(12); // Duration is 12 months
+        when(subscription.getDuration()).thenReturn(12);
 
         validSubscriptionService.save(company, SUBSCRIPTION_TITLE, CARD_NUMBER);
 
@@ -110,7 +108,7 @@ class ValidSubscriptionServiceTest {
 
         Calendar expectedEndDate = Calendar.getInstance();
         expectedEndDate.setTime(startDate);
-        expectedEndDate.add(Calendar.MONTH, 12); // Добавляем 12 месяцев
+        expectedEndDate.add(Calendar.MONTH, 12);
         assertEquals(expectedEndDate.getTime(), endDate);
     }
 
@@ -127,39 +125,30 @@ class ValidSubscriptionServiceTest {
 
     @Test
     void shouldSendEmailsWhenSubscriptionsAreExpiringSoon() {
-        // Given
         ValidSubscription validSubscription1 = mock(ValidSubscription.class);
         ValidSubscription validSubscription2 = mock(ValidSubscription.class);
 
-        // Mocking the company and director for validSubscription1
         Company company1 = mock(Company.class);
-        User director1 = mock(User.class); // Assuming Director is a class that is part of Company
+        User director1 = mock(User.class);
         when(validSubscription1.getCompany()).thenReturn(company1);
         when(company1.getDirector()).thenReturn(director1);
         when(director1.getEmail()).thenReturn("director1@example.com");
         when(director1.getName()).thenReturn("Director 1");
 
-        // Mocking the company and director for validSubscription2
         Company company2 = mock(Company.class);
-        User director2 = mock(User.class); // Assuming Director is a class that is part of Company
+        User director2 = mock(User.class);
         when(validSubscription2.getCompany()).thenReturn(company2);
         when(company2.getDirector()).thenReturn(director2);
         when(director2.getEmail()).thenReturn("director2@example.com");
         when(director2.getName()).thenReturn("Director 2");
-
-        // Mocking the subscription end dates
         when(validSubscription1.getEndedDate()).thenReturn(new Date(System.currentTimeMillis() + (2L * 24 * 60 * 60 * 1000))); // 2 days from now
         when(validSubscription2.getEndedDate()).thenReturn(new Date(System.currentTimeMillis() + ((long) 24 * 60 * 60 * 1000))); // 1 day from now
 
-        // Mocking the repository to return expiring subscriptions
         when(validSubscriptionRepository.findByEndedDate(any(Date.class)))
                 .thenReturn(Arrays.asList(validSubscription1, validSubscription2));
 
-        // Act
         validSubscriptionService.notifyExpiringSubscriptions();
 
-        // Assert
-        // Verify that the mail service's send method is called twice (for both subscriptions)
         verify(mailService, times(2)).sendSubscriptionExpiryEmail(anyString(), anyString(), anyString());
 
         // Capture arguments passed to the send method to check email content
@@ -238,7 +227,6 @@ class ValidSubscriptionServiceTest {
 
     @Test
     void shouldHandleExceptionWhenSendingEmail() {
-        // Arrange
         ValidSubscription expiredSubscription = mock(ValidSubscription.class);
         Company company = mock(Company.class);
         User director = mock(User.class);
@@ -254,14 +242,11 @@ class ValidSubscriptionServiceTest {
         when(validSubscriptionRepository.findByEndedDateBefore(any(Date.class)))
                 .thenReturn(expiredSubscriptions);
 
-        // Simulate an email sending failure as an unchecked exception
         doThrow(new RuntimeException("Email service failure")).when(mailService)
                 .sendSubscriptionDeletedEmail(anyString(), anyString());
 
-        // Act & Assert
         assertDoesNotThrow(() -> validSubscriptionService.deleteExpiredSubscriptions());
 
-        // Verify that email was attempted to be sent even if it failed
         verify(mailService, times(1)).sendSubscriptionDeletedEmail("director@example.com", "Director");
         verify(validSubscriptionRepository, times(1)).deleteAll(expiredSubscriptions);
     }

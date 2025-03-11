@@ -39,7 +39,6 @@ public class WorkServiceImpl implements WorkService {
 
     @Override
     public List<ServiceResponse> getServicesByWorkerId(int workerId) {
-
         return serviceMapper.mapServices(serviceRepository.findAllByWorker_id(workerId));
     }
 
@@ -127,7 +126,7 @@ public class WorkServiceImpl implements WorkService {
         serviceRepository.save(service);
     }
 
-    private boolean isValidImage(MultipartFile image) {
+    public boolean isValidImage(MultipartFile image) {
         String contentType = image.getContentType();
         return contentType == null || (!contentType.equals("image/png") && !contentType.equals("image/jpeg"));
     }
@@ -156,5 +155,7 @@ public class WorkServiceImpl implements WorkService {
     public List<DirectorServiceResponse> getAllServicesByDirectorId(int directorId) {
         return serviceMapper.mapDirectorServices(serviceRepository.findAllServicesByDirectorIdDesc(directorId));
     }
+
+
 }
 

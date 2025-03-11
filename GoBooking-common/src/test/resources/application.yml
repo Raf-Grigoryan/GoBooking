@@ -1,0 +1,42 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:go_booking;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: password
+    driver-class-name: org.h2.Driver
+    h2:
+      console:
+        enabled: true
+        path: /h2-console
+
+  application:
+    name: GoBooking
+
+  liquibase:
+    change-log: classpath:/db/changelog.xml
+
+  mail:
+    host: smtp.gmail.com
+    username: mailsenderforjava@gmail.com
+    password: iltifceckjkwsohf
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          ssl:
+            trust: smtp.gmail.com
+
+site:
+  url: http://localhost:8081
+
+image:
+  upload:
+    path: C:/Users/hovha/IdeaProjects/GoBooking/img
+
+jwt:
+  secret: R29Cb29raW5nIGlzIHZlcnkgZ29vZCBuaWNlIGJlYXR5ZnVsIGFwcGxpY2F0aW9uIGluIHRoZSB3b3JsZCBhbmQgZ2FsYWN0aWM=
+  expiration: 600000
