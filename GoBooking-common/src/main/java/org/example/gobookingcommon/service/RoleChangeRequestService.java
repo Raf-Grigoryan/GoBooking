@@ -7,9 +7,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface RoleChangeRequestService {
     void save(org.example.gobookingcommon.entity.request.RoleChangeRequest request);
-
-    int countByEmployee(User user);
-
+    
     Page<RoleChangeRequestDto> findByEmployee(User user, Pageable pageable);
 
     void agree(int companyId, boolean agree, User user);

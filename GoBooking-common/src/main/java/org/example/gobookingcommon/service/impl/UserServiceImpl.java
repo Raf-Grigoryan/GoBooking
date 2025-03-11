@@ -85,17 +85,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public void verifyUserAccount(String email, String token) {
         Optional<User> userDb = userRepository.findByEmail(email);
-
         if (userDb.isEmpty()) {
             throw new CannotVerifyUserException("Error: Cannot verify user account. User with email " + email + " not found.");
         }
-
         User user = userDb.get();
-
         if (user.getToken() == null || !user.getToken().equals(token)) {
             throw new CannotVerifyUserException("Error: Invalid verification token.");
         }
-
         user.setEnable(true);
         user.setToken(null);
         userRepository.save(user);
@@ -193,7 +189,7 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    private boolean isValidImage(MultipartFile image) {
+    public boolean isValidImage(MultipartFile image) {
         String contentType = image.getContentType();
         return contentType != null && (contentType.equals("image/png") || contentType.equals("image/jpeg"));
     }
@@ -286,6 +282,7 @@ public class UserServiceImpl implements UserService {
         }
         throw new UserNotFoundException("User does not exist");
     }
+
 
 }
 
