@@ -20,7 +20,6 @@ import org.example.gobookingcommon.repository.ServiceRepository;
 import org.example.gobookingcommon.service.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.scheduling.annotation.Async;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

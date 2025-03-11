@@ -31,7 +31,7 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public void deleteCompany(int directorId) {
         User user = userRepository.findById(directorId).orElseThrow(() -> new UserNotFoundException("Director not found"));
-        if (user.getRole() == Role.DIRECTOR) {
+        if (!user.getRole().equals(Role.DIRECTOR)) {
             throw new InvalidRoleException("User Role is not exist");
         }
         if (user.getCompany() == null) {
