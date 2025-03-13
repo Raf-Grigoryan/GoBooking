@@ -188,4 +188,12 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
     }
 
+   @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<String> runtimeException(RuntimeException ex) {
+        log.info(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+
+
+
 }
