@@ -1,4 +1,4 @@
-package org.example.gobookingrest.endpointTest;
+package org.example.gobookingrest.endpoint;
 
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
