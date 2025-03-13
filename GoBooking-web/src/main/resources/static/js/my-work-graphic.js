@@ -7,11 +7,14 @@ document.addEventListener("DOMContentLoaded", function () {
             let startWorkDate = this.getAttribute("data-start");
             let endWorkDate = this.getAttribute("data-end");
             let active = this.getAttribute("data-active") === "true";
+
             document.getElementById("workGraphicId").value = workGraphicId;
             document.getElementById("weekdayLabel").innerText = weekday;
             document.getElementById("startWorkDate").value = startWorkDate;
             document.getElementById("endWorkDate").value = endWorkDate;
             document.getElementById("active").value = active.toString();
+
+            document.getElementById("weekDay").value = weekday;
         });
     });
 });
