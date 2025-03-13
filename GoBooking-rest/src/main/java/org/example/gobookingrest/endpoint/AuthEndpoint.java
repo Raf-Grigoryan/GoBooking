@@ -160,5 +160,4 @@ public class AuthEndpoint {
         log.info("Profile deleted: {}", passwordConfirmationDto.getPassword());
         return ResponseEntity.ok().build();
     }
-
 }

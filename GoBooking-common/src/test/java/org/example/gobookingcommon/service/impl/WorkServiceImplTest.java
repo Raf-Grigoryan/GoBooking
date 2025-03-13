@@ -42,7 +42,6 @@ public class WorkServiceImplTest {
     @Mock
     private ServiceMapper serviceMapper;
 
-    private final String imageUploadPath = "/fake/path/";
 
     @Mock
     private UserServiceImpl userService;
