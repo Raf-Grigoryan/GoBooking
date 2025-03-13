@@ -1,4 +1,4 @@
-package org.example.gobookingrest.endpoint;
+package org.example.gobookingrest.endpointTest;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

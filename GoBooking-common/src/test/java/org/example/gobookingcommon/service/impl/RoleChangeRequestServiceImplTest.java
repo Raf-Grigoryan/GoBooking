@@ -54,9 +54,7 @@ class RoleChangeRequestServiceImplTest {
         when(roleChangeRequestRepository.findByEmployeeAndCompany(request.getEmployee(), request.getCompany()))
                 .thenReturn(request);
 
-        assertThrows(AlreadyRoleChangeRequestException.class, () -> {
-            roleChangeRequestService.save(request);
-        });
+        assertThrows(AlreadyRoleChangeRequestException.class, () -> roleChangeRequestService.save(request));
     }
 
 

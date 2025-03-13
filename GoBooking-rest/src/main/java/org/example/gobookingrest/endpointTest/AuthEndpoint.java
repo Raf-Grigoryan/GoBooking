@@ -1,4 +1,4 @@
-package org.example.gobookingrest.endpoint;
+package org.example.gobookingrest.endpointTest;
 
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -160,5 +160,4 @@ public class AuthEndpoint {
         log.info("Profile deleted: {}", passwordConfirmationDto.getPassword());
         return ResponseEntity.ok().build();
     }
-
 }
